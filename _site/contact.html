@@ -37,8 +37,14 @@
             <li class="nav-item">
               <a class="nav-link" href="./about.html">About Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./schedule.html">Schedule</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Schedule
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
+                <li><a class="dropdown-item" href="./league.html">League Information</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./gallery.html">Gallery</a>
@@ -86,61 +92,76 @@
                     </a>
                 </li>
                
-       <!--   <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> -->
+ 
         </div>
       </div>
     </nav>
-     <!--   <nav class="content-wrapper">
-             <div class="logo">
-            <img src="images/Glos Pickle.jpg" style="height: 70px;" alt="Logo">
-        </div>
-        <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About Us</a></li>
-                <li><a href="./schedule.html">Schedule</a></li>
-                <li><a href="./gallery.html">Gallery</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="https://www.pickleballengland.org/rules/">PB Rules</a></li>
-                <li><a href="https://www.pickleballengland.org/wp-content/uploads/2025/01/PickleballENGLAND-Code-of-Conduct.pdf">PB Code of Conduct</a></li>
-                <li><a href="https://www.facebook.com/groups/8687603144677202?locale=en_GB"><img src="images/facebook.png" style="height: 70px;" alt="Logo"></a></li>
-            </ul>
-            
-        </nav> -->
+
     </header>
 
     <main>
-        <section id="schedule" class="section">
-        <div class="content-wrapper">
-            <h2>FOR MORE INFORMATION</h2>
-              </h2>   WE CAN BE FOUND AT:</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Method</th>
-                        <th>Link</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>email</td>
-                        <td><a href="mailto:glospickle@gmail.com">glospickle@gmail.com</a></td>
-                        <td>Contact us @ glospickle@gmail.com</td>
-                    </tr>
-                     <tr>
-                        <td>WhatsApp</td>
-                        <td><a href="https://wa.me/+447831100939" target="_blank">WhatsApp</a></td>
-                        <td>Contact us on 07831 100939</td>
-                    </tr>
-                    
-                                       
-                </tbody>
-            </table>
-        </div>
-    </section>
+             <section id="contact" class="section py-5">
+  <div class="container text-center text-black">
+    
+    <!-- Clean, Solid Black Section Title (Matching Schedule & Gallery) -->
+    <div class="d-inline-block pb-3 mb-5 border-bottom border-4 border-dark">
+      <h2 class="display-2 fw-bold mb-0 text-uppercase">
+        Contact Us
+      </h2>
+    </div>
+
+    <!-- Layout Wrapper & Subtitle -->
+    <div class="w-100 w-lg-75 mx-auto">
+      <h3 class="fs-4 fw-normal mb-5 text-muted">
+        For more information, we can be found at:
+      </h3>
+
+      <!-- Responsive Table Container -->
+      <div class="table-responsive">
+        
+        <!-- Completely transparent, borderless table matching your Schedule section -->
+        <table class="table table-borderless text-black align-middle fs-5" style="background: transparent;">
+          
+          <!-- Header Row with matching thicker line styling -->
+          <thead class="border-bottom border-2 border-dark fw-bold text-uppercase fs-6">
+            <tr>
+              <th class="py-3 w-50">Method</th>
+              <th class="py-3 w-50">Link</th>
+            </tr>
+          </thead>
+          
+          <!-- Contact Channels Body -->
+          <tbody>
+            <!-- Row 1: Email -->
+            <tr class="border-bottom border-1 border-dark-subtle">
+              <td class="py-4">Email</td>
+              <td class="py-4">
+                <a href="mailto:glospickle@gmail.com" 
+                   class="text-primary fw-bold text-decoration-underline">
+                  glospickle@gmail.com
+                </a>
+              </td>
+            </tr>
+            
+            <!-- Row 2: WhatsApp -->
+            <tr>
+              <td class="py-4">WhatsApp</td>
+              <td class="py-4">
+                <a href="https://wa.me" 
+                   target="_blank" 
+                   class="text-primary fw-bold text-decoration-underline">
+                  Chat on WhatsApp
+                </a>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 

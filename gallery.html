@@ -1,65 +1,55 @@
 ---
 layout: default
 ---
-<!--
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-- For better SEO:
-        <meta name="description" content="Put whatever you feel best describes your club.">
-     
-    <title>Pickleball Club</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-</head>
-<body>
-    <header>
-        <nav class="content-wrapper">
-             <div class="logo">
-            <img src="images/Glos Pickle.jpg" style="height: 70px;" alt="Logo">
-        </div>
-        <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About Us</a></li>
-                <li><a href="./schedule.html">Schedule</a></li>
-                <li><a href="./gallery.html">Gallery</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="https://www.pickleballengland.org/rules/">PB Rules</a></li>
-                <li><a href="https://www.pickleballengland.org/wp-content/uploads/2025/01/PickleballENGLAND-Code-of-Conduct.pdf">PB Code of Conduct</a></li>
-            </ul>
-        </nav>
-    </header>
--->
 
-    <section id="gallery" class="section">
-        <div class="content-wrapper">
-            <h2>Gallery</h2>
-            <div class="gallery-container">
-                <div class="gallery-item">
-                    <img src="images/gallery 1.jpg" alt="Photo 1">
-                    <div class="gallery-overlay">
-                        <p>The only league that matters!</p>
-                    </div>
-                </div>
-                 <div class="gallery-item">
-                    <img src="images/gallery 2.jpg" alt="Photo 2">
-                    <div class="gallery-overlay">
-                        <p>First ladies session</p>
-                    </div>
-                </div>
-               
-                <div class="gallery-item">
-                    <img src="images/gallery 3.jpg" alt="Photo 3">
-                    <div class="gallery-overlay">
-                        <p>Everyone's a winner</p>
-                    </div>
-                </div>
-                <!--Continue adding photos here. Formatting is automatic.-->
-            </div>
+
+<section id="gallery" class="section py-5">
+  <div class="container text-center text-black">
+    
+    <!-- Clean, Solid Black Section Title (Matching the Schedule header format) -->
+    <div class="d-inline-block pb-3 mb-5 border-bottom border-4 border-dark">
+      <h2 class="display-2 fw-bold mb-0 text-uppercase">
+        Gallery
+      </h2>
+    </div>
+
+    <!-- Responsive Bootstrap Grid System -->
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Photo 1 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="position-relative overflow-hidden rounded bg-dark gallery-hover-wrapper" style="cursor: pointer;">
+          <img src="images/gallery 1.jpg" alt="Photo 1" class="img-fluid w-100 d-block object-fit-cover transition-img" style="height: 300px;">
+          <!-- Bootstrap standard hover overlay mask -->
+          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-black bg-opacity-75 opacity-0 transition-overlay p-3">
+            <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wide">The only league that matters!</p>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <!-- Photo 2 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="position-relative overflow-hidden rounded bg-dark gallery-hover-wrapper" style="cursor: pointer;">
+          <img src="images/gallery 2.jpg" alt="Photo 2" class="img-fluid w-100 d-block object-fit-cover transition-img" style="height: 300px;">
+          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-black bg-opacity-75 opacity-0 transition-overlay p-3">
+            <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wide">First ladies session</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo 3 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="position-relative overflow-hidden rounded bg-dark gallery-hover-wrapper" style="cursor: pointer;">
+          <img src="images/gallery 3.jpg" alt="Photo 3" class="img-fluid w-100 d-block object-fit-cover transition-img" style="height: 300px;">
+          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-black bg-opacity-75 opacity-0 transition-overlay p-3">
+            <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wide">Everyone's a winner</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continue adding more photo blocks here. The structural columns manage sizing dynamically. -->
+
+    </div>
+  </div>
+</section>
 

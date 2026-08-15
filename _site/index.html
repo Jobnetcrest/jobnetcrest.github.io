@@ -37,8 +37,14 @@
             <li class="nav-item">
               <a class="nav-link" href="./about.html">About Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./schedule.html">Schedule</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Schedule
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
+                <li><a class="dropdown-item" href="./league.html">League Information</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./gallery.html">Gallery</a>
@@ -86,53 +92,38 @@
                     </a>
                 </li>
                
-       <!--   <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> -->
+ 
         </div>
       </div>
     </nav>
-     <!--   <nav class="content-wrapper">
-             <div class="logo">
-            <img src="images/Glos Pickle.jpg" style="height: 70px;" alt="Logo">
-        </div>
-        <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About Us</a></li>
-                <li><a href="./schedule.html">Schedule</a></li>
-                <li><a href="./gallery.html">Gallery</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="https://www.pickleballengland.org/rules/">PB Rules</a></li>
-                <li><a href="https://www.pickleballengland.org/wp-content/uploads/2025/01/PickleballENGLAND-Code-of-Conduct.pdf">PB Code of Conduct</a></li>
-                <li><a href="https://www.facebook.com/groups/8687603144677202?locale=en_GB"><img src="images/facebook.png" style="height: 70px;" alt="Logo"></a></li>
-            </ul>
-            
-        </nav> -->
+
     </header>
 
     <main>
-        <section id="home" class="section h-100">
+             <section id="home" class="section min-vh-100 position-relative overflow-hidden">
 
-  <!-- Main Full-Width Banner (Set to exactly 100vh full screen height with no scroll) -->
-  <div class="container-fluid d-flex flex-column justify-content-start text-center p-0 vh-100" 
+  <!-- Main Full-Width Banner with min-vh-100 to prevent mobile text overflows -->
+  <div class="container-fluid d-flex flex-column justify-content-center justify-content-md-start text-center p-0 min-vh-100" 
        style="background-image: url('images/glos1.png'); 
               background-size: cover; 
               background-position: center; 
               background-repeat: no-repeat;">
     
-    <!-- 1. THE FIXED HEADER -->
-    <header class="bg-transparent mt-5 pt-4 pb-3 w-100">
-      <div class="d-inline-block pb-3 border-bottom border-4 border-dark">
-        <h1 class="display-1 fw-bold mb-0 text-uppercase text-black">
+    <!-- 1. RESPONSIVE HEADER -->
+    <!-- Changed absolute top margins to fluid vertical padding for mobile devices -->
+    <header class="bg-transparent py-4 py-md-5 mt-md-4 w-100 px-3">
+      <div class="d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
+        <!-- Changed display-1 to display-4 on mobile, scaling up to display-1 on desktop screens -->
+        <h1 class="display-4 display-md-1 fw-bold mb-0 text-uppercase text-black lh-sm">
           PICKLEBALL GLOUCESTERSHIRE
         </h1>
       </div>
     </header>
 
     <!-- 2. WIDE HERO SUBTEXT -->
-    <div class="container-fluid pt-4 pb-4">
-      <p class="fs-4 text-black fw-bold mt-5 w-100 w-md-75 mx-auto" style="max-width: 1200px;">
+    <div class="container-fluid px-3 px-md-4 py-2">
+      <!-- Standardized font scale from fs-5 (mobile friendly) to fs-4 (desktop friendly) -->
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-5 w-100 w-md-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
         We bring people of all ages and skill levels together across Gloucester, Cheltenham, and Stroud to play, learn, and socialise through fun, low-impact games.
       </p>

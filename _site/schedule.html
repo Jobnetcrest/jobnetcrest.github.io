@@ -37,8 +37,14 @@
             <li class="nav-item">
               <a class="nav-link" href="./about.html">About Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./schedule.html">Schedule</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Schedule
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
+                <li><a class="dropdown-item" href="./league.html">League Information</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./gallery.html">Gallery</a>
@@ -86,67 +92,120 @@
                     </a>
                 </li>
                
-       <!--   <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> -->
+ 
         </div>
       </div>
     </nav>
-     <!--   <nav class="content-wrapper">
-             <div class="logo">
-            <img src="images/Glos Pickle.jpg" style="height: 70px;" alt="Logo">
-        </div>
-        <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About Us</a></li>
-                <li><a href="./schedule.html">Schedule</a></li>
-                <li><a href="./gallery.html">Gallery</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-                <li><a href="https://www.pickleballengland.org/rules/">PB Rules</a></li>
-                <li><a href="https://www.pickleballengland.org/wp-content/uploads/2025/01/PickleballENGLAND-Code-of-Conduct.pdf">PB Code of Conduct</a></li>
-                <li><a href="https://www.facebook.com/groups/8687603144677202?locale=en_GB"><img src="images/facebook.png" style="height: 70px;" alt="Logo"></a></li>
-            </ul>
-            
-        </nav> -->
+
     </header>
 
     <main>
-        <section id="schedule" class="section">
-        <div class="content-wrapper">
-            <h2>Schedule</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Type</th>
-                        <th>Venue</th>
-                        <th>Book</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>19:00 - 21:00 </td>
-                        <td>Graded Play</td>
-                        <td><a href="https://www.google.com/maps/place/Oxstalls+Sports+Park/@51.8784639,-2.2373279,17z/data=!3m1!4b1!4m6!3m5!1s0x4871042a2444147f:0xae0bae45b9ed1912!8m2!3d51.8784639!4d-2.234753!16s%2Fg%2F12330zrny?entry=ttu&g_ep=EgoyMDI2MDgxMC4wIKXMDSoASAFQAw%3D%3D">Oxstalls Sports Park</a></td>
-                        <td> via  PBTable - <a href="https://pbtable.com/">PBTable</a></td>
-                    </tr>
-                     <tr>
-                        <td>Thursday</td>
-                        <td>tbd </td>
-                        <td>Recreational</td>
-                        <td>tbd</td>
-                        <td> via whatsapp group poll</td>
-                    </tr>
-                    
-                                       
-                </tbody>
-            </table>
-        </div>
-    </section>
-   
+             <section id="schedule" class="section py-4 py-md-5">
+  <div class="container text-center text-black">
+    
+    <!-- Section Title -->
+    <div class="d-inline-block pb-2 mb-4 mb-md-5 border-bottom border-4 border-dark">
+      <h2 class="display-4 display-md-2 fw-bold mb-0 text-uppercase">
+        Schedule
+      </h2>
+    </div>
+
+    <!-- Responsive Container -->
+    <div class="w-100 w-lg-75 mx-auto">
+      
+      <!-- Table: Turned into blocks on mobile (d-block d-md-table) -->
+      <table class="table table-borderless text-black align-middle fs-5 d-block d-md-table" style="background: transparent;">
+        
+        <!-- Header: Hidden entirely on mobile, visible on desktop -->
+        <thead class="border-bottom border-2 border-dark fw-bold text-uppercase fs-6 d-none d-md-table-header-group">
+          <tr>
+            <th class="py-3">Day</th>
+            <th class="py-3">Time</th>
+            <th class="py-3">Frequency</th>
+            <th class="py-3">Type</th>
+            <th class="py-3">Venue</th>
+            <th class="py-3">Price</th>
+            <th class="py-3">Status / Link</th>
+          </tr>
+        </thead>
+        
+        <!-- Table Body: Turned into blocks on mobile -->
+        <tbody class="d-block d-md-table-row-group">
+          
+          <!-- Row 1: Graded Play -->
+          <tr class="border-bottom border-1 border-dark-subtle d-block d-md-table-row text-start text-md-center py-3 py-md-0">
+            <!-- Mobile labels added using data attributes if needed, or structured layout -->
+            <td class="py-2 py-md-4 d-block d-md-table-cell fs-4 fs-md-5 fw-md-normal">Wednesday</td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell"><span class="d-inline d-md-none text-muted small">Time: </span>19:00 - 21:00</td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell"><span class="d-inline d-md-none text-muted small">Frequency: </span>Weekly</td>
+            <td class="py-2 py-md-4 d-block d-md-table-cell">
+              <span class="badge border border-dark text-dark px-2 py-1 text-uppercase fs-7">Graded Play</span>
+            </td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell">
+              <span class="d-inline d-md-none text-muted small">Venue: </span>
+              <a href="https://google.com" 
+                 target="_blank" 
+                 class="text-primary fw-bold text-decoration-underline">
+                Oxstalls Sports Park
+              </a>
+            </td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell ">
+              <span class="d-inline d-md-none text-muted small fw-normal text-initial">Price: </span>£7 <span class="fs-7 fw-normal ">/ session</span>
+            </td>
+            <td class="py-2 py-md-4 d-block d-md-table-cell">
+              <a href="https://pbtable.com" 
+                 target="_blank" 
+                 class="text-primary fw-bold text-decoration-underline text-uppercase fs-7">
+                Link to PBTable
+              </a>
+            </td>
+          </tr>
+          
+          <!-- Row 2: Recreational -->
+          <tr class="d-block d-md-table-row text-start text-md-center py-3 py-md-0 border-bottom border-1 border-dark-subtle d-md-none-border">
+            <td class="py-2 py-md-4 d-block d-md-table-cell fs-4 fs-md-5 ">Thursday</td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell text-muted italic"><span class="d-inline d-md-none text-muted small normal-style">Time: </span>TBD</td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell"><span class="d-inline d-md-none text-muted small">Frequency: </span>Weekly</td>
+            <td class="py-2 py-md-4 d-block d-md-table-cell">
+              <span class="badge border border-dark text-dark px-2 py-1 text-uppercase fs-7">Recreational Play</span>
+            </td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell text-muted italic"><span class="d-inline d-md-none text-muted small normal-style">Venue: </span>TBD</td>
+            <td class="py-1 py-md-4 d-block d-md-table-cell text-muted italic"><span class="d-inline d-md-none text-muted small normal-style">Price: </span>TBD</td>
+            <td class="py-2 py-md-4 d-block d-md-table-cell">
+              <span >WhatsApp Poll</span>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
+      <div class="mt-4 mt-md-5 text-start text-md-center fs-6 text-muted">
+        <p class="mb-0">
+          * Please note: Schedule details, locations, and pricing are subject to adjustment based on court availability. For real-time updates and seasonal announcements, make sure to check our official announcement channels.
+        </p>
+      </div>
+        <!-- NEW: Text Block Beneath Table -->
+      <div class="mt-4 mt-md-5 text-start text-md-center fs-6 ">
+        <p class="mb-0">
+          Members use PBTable app to book and pay for sessions using a prepaid wallet system.  Membership is free: People wishing to join will be asked to register with Pickleball Gloucestershire using Picklebook.  
+        </p>
+      </div>
+
+
+</section>
+
+<style>
+  /* Quick helper stylesheet to fix small edge-case scaling */
+  @media (max-width: 767.98px) {
+    .normal-style { font-style: normal !important; }
+    .text-initial { font-weight: initial !important; }
+  }
+  @media (min-width: 768px) {
+    .d-md-none-border { border-bottom: none !important; }
+  }
+</style>   
 
     <footer>
         <div class="content-wrapper">

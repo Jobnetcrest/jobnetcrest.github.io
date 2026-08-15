@@ -265,3 +265,18 @@ footer p {
         font-size: 20px;
     }
 }
+
+  .gallery-hover-wrapper .transition-img {
+    transition: transform 0.3s ease-in-out;
+  }
+  .gallery-hover-wrapper .transition-overlay {
+    transition: opacity 0.3s ease-in-out;
+  }
+  /* Triggers clean transition effects on hover states */
+  .gallery-hover-wrapper:hover .transition-img {
+    transform: scale(1.05);
+  }
+  .gallery-hover-wrapper:hover .transition-overlay {
+    opacity: 1 !important;
+  }
+
