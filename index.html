@@ -32,12 +32,11 @@ background_image: "/images/glos1.png"
     <div class="container-fluid px-3 px-md-4 mt-4 mt-md-5">
       <div id="heroCarousel" class="carousel slide carousel-fade mx-auto shadow rounded-3 overflow-hidden" data-bs-ride="carousel" style="max-width: 1200px;">
         
-        <!-- Indicators/Dots (Updated for 4 total slides) -->
+        <!-- Indicators/Dots -->
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
         </div>
 
         <!-- Carousel Items -->
@@ -70,42 +69,6 @@ background_image: "/images/glos1.png"
             </div>
           </div>
 
-          <!-- Slide 4: INTEGRATED FACEBOOK FEED SLIDE -->
-          <div class="carousel-item h-100 bg-dark">
-            <!-- Background Image Blur Effect to maintain design consistency with other slides -->
-            <img src="path/to/your/image1.jpg" alt="" class="w-100 h-100 object-fit-cover opacity-25 position-absolute top-0 start-0" style="filter: blur(5px);">
-            
-            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 top-0 start-0 end-0 bottom-0 p-3" style="z-index: 2;">
-              
-              <div class="w-100 mx-auto d-flex flex-column align-items-center" style="max-width: 450px;">
-                <h2 class="h4 fw-bold text-uppercase text-white mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Latest Facebook Updates</h2>
-                
-                <!-- Script Integration Block -->
-                <div id="fb-root"></div>
-                <script async defer crossorigin="anonymous" src="https://facebook.net"></script>
-                
-                <!-- Configured Embedded Component Box scaled to fit the 350px height restrictions smoothly -->
-                <div class="w-100 bg-white rounded-3 shadow-sm overflow-hidden" style="height: 230px;">
-                  <div class="fb-page" 
-                       data-href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" 
-                       data-tabs="timeline" 
-                       data-width="450" 
-                       data-height="230" 
-                       data-small-header="true" 
-                       data-adapt-container-width="true" 
-                       data-hide-cover="true" 
-                       data-show-facepile="false">
-                    <blockquote class="fb-xfbml-parse-ignore">
-                      <a href="https://www.facebook.com/groups/8687603144677202" class="btn btn-primary btn-sm my-5">Open Facebook Group</a>
-                    </blockquote>
-                  </div>
-                </div>
-                
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
         <!-- Controls/Arrows -->
@@ -121,7 +84,45 @@ background_image: "/images/glos1.png"
       </div>
     </div>
 
+    <!-- 4. LIVE CLUB NEWS (FACEBOOK TIMELINE) -->
+    <!-- Safely positioned completely outside the carousel DOM container -->
+    <div class="container-fluid px-3 px-md-4 mt-5 mb-5 text-center">
+      <div class="mx-auto" style="max-width: 500px;"> <!-- Standard sidebar/feed width -->
+        
+        <div class="d-inline-block pb-2 mb-4 border-bottom border-3 border-dark">
+          <h3 class="h4 fw-bold text-uppercase mb-0 text-black">Latest Club News</h3>
+        </div>
+
+        <!-- Facebook Plugin Container -->
+        <div class="bg-white p-2 rounded-3 shadow-sm border">
+          
+          <!-- STEP A: Fixed JavaScript SDK URL (Points directly to Meta CDN servers) -->
+          <div id="fb-root"></div>
+          <script async defer crossorigin="anonymous" src="https://facebook.net"></script>
+
+          <!-- STEP B: The Plugin Embed Box -->
+          <!-- Note: Meta Page Plugin only renders public business Pages. Communities hosted as a private or public Facebook Group will show a fallback link instead. -->
+          <div class="fb-page" 
+               data-href="https://www.facebook.com/groups/8687603144677202" 
+               data-tabs="timeline" 
+               data-width="500" 
+               data-height="500" 
+               data-small-header="false" 
+               data-adapt-container-width="true" 
+               data-hide-cover="false" 
+               data-show-facepile="true">
+            <blockquote class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/groups/8687603144677202">Visit Facebook Group Updates</a>
+            </blockquote>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
 </section>
+Use code with caution.
 
   
 
