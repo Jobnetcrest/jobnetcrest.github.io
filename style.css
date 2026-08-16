@@ -8,7 +8,10 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    padding-top: 90px; /* Adjust this value to match your 80px logo layout */
+    background-color: #ffffff; /* Forces the padding area and page background to white */
 }
+
 
 .content-wrapper {
     max-width: 1200px;
@@ -59,9 +62,9 @@ nav ul li a:hover {
     border-bottom: 1px solid #ddd;
 }
 
-.section:nth-of-type(odd) {
+/*.section:nth-of-type(odd) {
     background: #f4f4f4;
-}
+}*/
 
 h1, h2, h3 {
     margin-bottom: 20px;

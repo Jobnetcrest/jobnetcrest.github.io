@@ -1,20 +1,17 @@
 ---
 layout: default
+background_image: "/images/glos1.png"
 ---
-
 <section id="home" class="section min-vh-100 position-relative overflow-hidden">
 
-  <!-- Main Full-Width Banner with min-vh-100 to prevent mobile text overflows -->
-  <div class="container-fluid d-flex flex-column justify-content-center justify-content-md-start text-center p-0 min-vh-100" 
-       style="background-image: url('images/glos1.png'); 
-              background-size: cover; 
-              background-position: center; 
-              background-repeat: no-repeat;">
+
     
     <!-- 1. RESPONSIVE HEADER -->
     <!-- Changed absolute top margins to fluid vertical padding for mobile devices -->
-    <header class="bg-transparent py-4 py-md-5 mt-md-4 w-100 px-3">
-      <div class="d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
+    <!-- Added text-center to center the content block within the header -->
+    <header class="bg-transparent py-4 py-md-5 mt-md-4 w-100 px-3 text-center">
+      <!-- Changed d-inline-block to mx-auto d-inline-block to center the border block -->
+      <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
         <!-- Changed display-1 to display-4 on mobile, scaling up to display-1 on desktop screens -->
         <h1 class="display-4 display-md-1 fw-bold mb-0 text-uppercase text-black lh-sm">
           PICKLEBALL GLOUCESTERSHIRE
@@ -23,17 +20,112 @@ layout: default
     </header>
 
     <!-- 2. WIDE HERO SUBTEXT -->
-    <div class="container-fluid px-3 px-md-4 py-2">
+    <!-- Added text-center to keep layout alignment consistent with the new centered header -->
+    <div class="container-fluid px-3 px-md-4 py-2 text-center">
       <!-- Standardized font scale from fs-5 (mobile friendly) to fs-4 (desktop friendly) -->
-      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-5 w-100 w-md-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-5 w-75 w-md-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
-        We bring people of all ages and skill levels together across Gloucester, Cheltenham, and Stroud to play, learn, and socialise through fun, low-impact games.
       </p>
     </div>
 
-  </div>
+    <!-- 3. HERO BOOTSTRAP CAROUSEL -->
+    <div class="container-fluid px-3 px-md-4 mt-4 mt-md-5">
+      <div id="heroCarousel" class="carousel slide carousel-fade mx-auto shadow rounded-3 overflow-hidden" data-bs-ride="carousel" style="max-width: 1200px;">
+        
+        <!-- Indicators/Dots (Updated for 4 total slides) -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner" style="height: 350px;">
+          
+          <!-- Slide 1 -->
+          <div class="carousel-item active h-100">
+            <img src="path/to/your/image1.jpg" alt="Pickleball courts in Gloucestershire" class="w-100 h-100 object-fit-cover">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
+              <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Join the Action</h2>
+              <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Discover sessions across Gloucester, Cheltenham, and Stroud.</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item h-100">
+            <img src="path/to/your/image2.jpg" alt="Fun pickleball social games" class="w-100 h-100 object-fit-cover">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
+              <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">All Ages & Abilities</h2>
+              <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Friendly, low-impact games perfect for beginners and seasoned players alike.</p>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item h-100">
+            <img src="path/to/your/image3.jpg" alt="Pickleball equipment and coaching" class="w-100 h-100 object-fit-cover">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
+              <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Learn & Socialise</h2>
+              <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Meet new friends and improve your skills with local coaching sessions.</p>
+            </div>
+          </div>
+
+          <!-- Slide 4: INTEGRATED FACEBOOK FEED SLIDE -->
+          <div class="carousel-item h-100 bg-dark">
+            <!-- Background Image Blur Effect to maintain design consistency with other slides -->
+            <img src="path/to/your/image1.jpg" alt="" class="w-100 h-100 object-fit-cover opacity-25 position-absolute top-0 start-0" style="filter: blur(5px);">
+            
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 top-0 start-0 end-0 bottom-0 p-3" style="z-index: 2;">
+              
+              <div class="w-100 mx-auto d-flex flex-column align-items-center" style="max-width: 450px;">
+                <h2 class="h4 fw-bold text-uppercase text-white mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Latest Facebook Updates</h2>
+                
+                <!-- Script Integration Block -->
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous" src="https://facebook.net"></script>
+                
+                <!-- Configured Embedded Component Box scaled to fit the 350px height restrictions smoothly -->
+                <div class="w-100 bg-white rounded-3 shadow-sm overflow-hidden" style="height: 230px;">
+                  <div class="fb-page" 
+                       data-href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" 
+                       data-tabs="timeline" 
+                       data-width="450" 
+                       data-height="230" 
+                       data-small-header="true" 
+                       data-adapt-container-width="true" 
+                       data-hide-cover="true" 
+                       data-show-facepile="false">
+                    <blockquote class="fb-xfbml-parse-ignore">
+                      <a href="https://www.facebook.com/groups/8687603144677202" class="btn btn-primary btn-sm my-5">Open Facebook Group</a>
+                    </blockquote>
+                  </div>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Controls/Arrows -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+
+      </div>
+    </div>
 
 </section>
+
+  
+
+
 
 
 
