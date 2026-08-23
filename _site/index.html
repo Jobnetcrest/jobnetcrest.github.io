@@ -56,29 +56,17 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              About Us
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-              <li><a class="dropdown-item" href="about.html#about">About Us</a></li>
-              <li><a class="dropdown-item" href="about.html#meet-the-team">Meet the team</a></li>
-              <li><a class="dropdown-item" href="policy.html">Policy Information</a></li>
-            </ul>
-          </li> <!-- FIXED: Added missing closing LI tag here -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Schedule
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
-              <li><a class="dropdown-item" href="./league.html">League Information</a></li>
-              <li><a class="dropdown-item" href="./festival.html">Festival Information</a></li>
-              <li><a class="dropdown-item" href="./tournament.html">Tournament Information</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="./About.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./schedule.html">Schedule</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./coaching.html">Coaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./programmes.html">Programmes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./gallery.html">Gallery</a>
@@ -143,94 +131,75 @@
     </div>
 
     <!-- 3. HERO BOOTSTRAP CAROUSEL -->
-    <div class="container-fluid px-3 px-md-4 mt-4 mt-md-5">
-      <div id="heroCarousel" class="carousel slide carousel-fade mx-auto shadow rounded-3 overflow-hidden" data-bs-ride="carousel" style="max-width: 1200px;">
-        
-        <!-- Indicators/Dots -->
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
 
-        <!-- Carousel Items -->
-        <div class="carousel-inner" style="height: 400px;">
-          
-          <!-- Slide 1 (Uses Liquid's relative_url filter for safe server resolution) -->
-          <div class="carousel-item active h-100">
-            <img src="/images/alexsaks1.jpg" alt="Pickleball courts in Gloucestershire" class="d-block w-100 h-100 object-fit-cover">
-            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
-              <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Join the Action</h2>
-              <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Discover sessions across Gloucester, Cheltenham, and Stroud.</p>
-            </div>
-          </div>
+<div class="mx-auto" style="max-width: 75%;"> <!-- This makes it 1/4 smaller and centers it -->
+  <div id="threeSlideCarousel" class="carousel slide" data-bs-ride="carousel">    
 
-          <!-- Slide 2 -->
-          <div class="carousel-item h-100">
-            <img src="/images/alexsaks1.jpg" alt="Fun pickleball social games" class="w-100 h-100 object-fit-cover">
-            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
-              <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">All Ages & Abilities</h2>
-              <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Friendly, low-impact games perfect for beginners and seasoned players alike.</p>
-            </div>
-          </div>
 
-          <!-- Slide 3 -->
-          <div class="carousel-item h-100">
-            <img src= "/images/alexsaks1.jpg" alt="Pickleball equipment and coaching" class="w-100 h-100 object-fit-cover">
-            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
-              <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Learn & Socialise</h2>
-              <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Meet new friends and improve your skills with local coaching sessions.</p>
-            </div>
-          </div>
+<div id="threeSlideCarousel" class="carousel slide" data-bs-ride="carousel">
+  
+  <!-- Slide Indicators (Bottom Dots) -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
 
-        </div>
-
-        <!-- Controls/Arrows -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-
+  <div class="carousel-inner">
+    
+    <!-- Slide 1 (Active) -->
+    <div class="carousel-item active">
+      <img src="/images/alexsaks1.jpg" class="d-block w-100" alt="First Slide">
+      <div class="carousel-caption px-2" style="top: 5%;">
+        <h5 class="fs-5 fs-md-2 fw-bold text-shadow">Join the Action</h5>
+        <p class="small fs-5 text-shadow mb-0">Discover sessions across Gloucester, Cheltenham, and the whole of Gloucestershire.</p>
       </div>
     </div>
 
-    <!-- 4. LIVE CLUB NEWS (FACEBOOK TIMELINE) -->
-    <div class="container-fluid px-3 px-md-4 mt-5 mb-5 text-center">
-      <div class="mx-auto" style="max-width: 500px;">
-        
-        <div class="d-inline-block pb-2 mb-4 border-bottom border-3 border-dark">
-          <h3 class="h4 fw-bold text-uppercase mb-0 text-black">Latest Club News</h3>
-        </div>
-
-        <!-- Facebook Plugin Container -->
-        <div class="bg-white p-2 rounded-3 shadow-sm border">
-          
-          <div id="fb-root"></div>
-          <!-- FIXED: Re-applied the official complete Meta script endpoint location -->
-          <script async defer crossorigin="anonymous" src="https://facebook.net"></script>
-
-          <div class="fb-page" 
-               data-href="https://www.facebook.com/groups/8687603144677202" 
-               data-tabs="timeline" 
-               data-width="500" 
-               data-height="500" 
-               data-small-header="false" 
-               data-adapt-container-width="true" 
-               data-hide-cover="false" 
-               data-show-facepile="true">
-            <blockquote class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/groups/8687603144677202" target="_blank" rel="noopener">Visit Facebook Group Updates</a>
-            </blockquote>
-          </div>
-
-        </div>
-
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <img src="/images/gallery 2.jpg" class="d-block w-100" alt="Second Slide">
+      <div class="carousel-caption px-2" style="top: 6%;">
+        <h5 class="fs-5 fs-md-2 fw-bold text-shadow">All Ages & Abilities</h5>
+        <p class="small fs-5 text-shadow mb-0">Friendly, low-impact games perfect for beginners and seasoned players alike.</p>
       </div>
     </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <img src="/images/gallery 3.jpg" class="d-block w-100" alt="Third Slide">
+      <div class="carousel-caption px-2" style="top: 3%;">
+        <h5 class="fs-5 fs-md-2 fw-bold text-shadow">Learn & Socialise</h5>
+        <p class="small fs-5 text-shadow mb-0">Join our community and improve your skills while making new friends.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Left/Right Arrow Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#threeSlideCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true">
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#threeSlideCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true">
+    <span class="visually-hidden">Next</span>
+  </button>
+  
+</div>
+
+</div>
+
+
+<!-- Text shadow ensures legibility on any image background -->
+<style>
+  .text-shadow {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
+  }
+</style>
+
+
+
 
 </div>
 

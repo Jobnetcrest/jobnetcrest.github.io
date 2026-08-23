@@ -174,3 +174,7 @@ td {
 }
 Use code with caution.
 
+#threeSlideCarousel .carousel-caption {
+  top: 1%;       /* Adjust this percentage to push it higher or lower from the top */
+  bottom: auto;  /* Clears Bootstrap's default bottom positioning */
+}

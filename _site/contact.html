@@ -56,29 +56,17 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              About Us
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-              <li><a class="dropdown-item" href="about.html#about">About Us</a></li>
-              <li><a class="dropdown-item" href="about.html#meet-the-team">Meet the team</a></li>
-              <li><a class="dropdown-item" href="policy.html">Policy Information</a></li>
-            </ul>
-          </li> <!-- FIXED: Added missing closing LI tag here -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Schedule
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
-              <li><a class="dropdown-item" href="./league.html">League Information</a></li>
-              <li><a class="dropdown-item" href="./festival.html">Festival Information</a></li>
-              <li><a class="dropdown-item" href="./tournament.html">Tournament Information</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="./About.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./schedule.html">Schedule</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./coaching.html">Coaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./programmes.html">Programmes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./gallery.html">Gallery</a>
@@ -120,67 +108,185 @@
   <!-- Main Content Area (flex-grow keeps footer at bottom if content is short) -->
   <main class="flex-grow-1">
     <div class="container position-relative z-1 py-4">   
-       <section id="contact" class="section py-5">
+       <!-- Responsive breakpoint controls for tab buttons and active canvas windows -->
+<style>
+  .responsive-map-body {
+    height: 220px; /* Compact height for mobile layouts */
+  }
+  @media (min-width: 992px) {
+    .responsive-map-body {
+      height: 100%; 
+      min-height: 320px; /* Extended to match larger table matrices on desktops */
+    }
+  }
+  .nav-tabs .nav-link.active {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+    border-color: #212529 !important;
+  }
+  .nav-tabs .nav-link {
+    color: #212529;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+</style>
+
+<section id="contact" class="section py-5">
   <div class="container text-center text-black">
     
-    <!-- Clean, Solid Black Section Title (Matching Schedule & Gallery) -->
-    <div class="d-inline-block pb-3 mb-5 border-bottom border-4 border-dark">
-      <h2 class="display-2 fw-bold mb-0 text-uppercase">
-        Contact Us
-      </h2>
-    </div>
+    <!-- 1. RESPONSIVE HEADER -->
+    <header class="bg-transparent py-4 py-md-5 mt-md-2 w-100 px-3 text-center">
+      <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
+        <h1 class="display-4 display-md-1 fw-bold mb-0 text-uppercase text-black lh-sm">
+          CONTACT US
+        </h1>
+      </div>
+    </header>
 
     <!-- Layout Wrapper & Subtitle -->
-    <div class="w-100 w-lg-75 mx-auto">
+    <div class="w-100 mx-auto">
       <h3 class="fs-4 fw-normal mb-5 text-muted">
         For more information, we can be found at:
       </h3>
 
-      <!-- Responsive Table Container -->
-      <div class="table-responsive">
+      <!-- 2-COLUMN RESPONSIVE LAYOUT GRID -->
+      <div class="row g-4 text-start">
         
-        <!-- FIXED: Removed table-borderless and applied unified border styling directly to the table -->
-        <table class="table text-black align-middle fs-5 border-dark-subtle mx-auto" style="background: transparent;">
-          
-          <!-- Header Row with matching line styling color -->
-          <thead class="border-bottom border-1 border-dark-subtle fw-bold text-uppercase fs-6">
-            <tr>
-              <th class="py-3 w-50">Method</th>
-              <th class="py-3 w-50">Link</th>
-            </tr>
-          </thead>
-          
-          <!-- Contact Channels Body -->
-          <tbody>
-            <!-- Row 1: Email -->
-            <tr class="border-bottom border-1 border-dark-subtle">
-              <td class="py-4">Email</td>
-              <td class="py-4">
-                <a href="mailto:glospickle@gmail.com" 
-                   class="text-primary fw-bold text-decoration-underline">
-                  glospickle@gmail.com
-                </a>
-              </td>
-            </tr>
+        <!-- LEFT COLUMN: PRIMARY CONTACT METHODS TABLE -->
+        <div class="col-12 col-lg-6">
+          <div class="w-100 rounded-4 overflow-hidden shadow">
+            <div class="table-responsive">
+              <table class="table table-hover align-middle fs-5 mb-0 table-light text-dark" style="--bs-table-hover-bg: rgba(0, 0, 0, 0.04);">
+                
+                <thead class="table-dark text-white text-uppercase tracking-wide" style="font-size: 0.9rem;">
+                  <tr>
+                    <th scope="col" class="py-3 ps-3 w-50">Method</th>
+                    <th scope="col" class="py-3 w-50">Link</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr>
+                    <td class="py-4 fw-bold ps-3">Email</td>
+                    <td class="py-4">
+                      <a href="mailto:glospickle@gmail.com" class="text-decoration-underline text-primary fw-bold">
+                        glospickle@gmail.com
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 fw-bold ps-3">WhatsApp</td>
+                    <td class="py-4">
+                      <a href="https://wa.me" target="_blank" rel="noopener" class="text-decoration-underline text-primary fw-bold">
+                        Chat with us on WhatsApp
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: INTERACTIVE VENUE MAP FINDER WITH ACTIVE TABS -->
+        <div class="col-12 col-lg-6">
+          <div class="card h-100 rounded-4 overflow-hidden shadow border-0 table-light text-dark">
             
-            <!-- Row 2: WhatsApp -->
-            <tr class="border-bottom border-1 border-dark-subtle">
-              <td class="py-4">WhatsApp</td>
-              <td class="py-4">
-                <a href="https://wa.me/+447831100939" 
-                   class="text-primary fw-bold text-decoration-underline">
-                  Chat with us on WhatsApp
-                </a>
-              </td>
-            </tr>
-          </tbody>
+            <!-- Tabbed Venue Navigation Bar Header -->
+            <div class="card-header bg-dark p-2">
+              <ul class="nav nav-tabs card-header-tabs border-0" id="venueMapTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active border-0 px-3 py-2 text-uppercase" id="oxstalls-tab" data-bs-toggle="tab" data-bs-target="#venue-oxstalls" type="button" role="tab" aria-controls="venue-oxstalls" aria-selected="true">
+                    Oxstalls
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link border-0 px-3 py-2 text-uppercase text-white" id="dursley-tab" data-bs-toggle="tab" data-bs-target="#venue-dursley" type="button" role="tab" aria-controls="venue-dursley" aria-selected="false">
+                    Dursley Rec
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link border-0 px-3 py-2 text-uppercase text-white" id="rednock-tab" data-bs-toggle="tab" data-bs-target="#venue-rednock" type="button" role="tab" aria-controls="venue-rednock" aria-selected="false">
+                    Rednock School
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Map Canvas Outputs Wrapper -->
+            <div class="tab-content flex-grow-1 d-flex flex-column" id="venueMapTabContent">
+              
+              <!-- VENUE 1: OXSTALLS TENNIS CENTRE -->
+              <div class="tab-pane fade show active flex-grow-1 d-flex flex-column" id="venue-oxstalls" role="tabpanel" aria-labelledby="oxstalls-tab">
+                <div class="card-body p-0 position-relative responsive-map-body flex-grow-1">
+                  <!-- Embed link coordinates for Oxstalls Indoor Centre -->
+                  <iframe 
+                    src="https://google.com" 
+                    width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+                <div class="card-footer bg-light p-3 border-top">
+                  <h6 class="fw-bold mb-1 text-dark">Oxstalls Sports Park</h6>
+                  <p class="text-muted mb-0 small">Plock Court, Tewkesbury Road, Gloucester, GL2 9DW</p>
+                  <a href="https://google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
+                    Get Directions
+                  </a>
+                </div>
+              </div>
 
-        </table>
-      </div>
+              <!-- VENUE 2: DURSLEY REC (CAM & DURSLEY TENNIS CLUB) -->
+              <div class="tab-pane fade flex-grow-1 d-flex flex-column" id="venue-dursley" role="tabpanel" aria-labelledby="dursley-tab">
+                <div class="card-body p-0 position-relative responsive-map-body flex-grow-1">
+                  <!-- Embed link coordinates for Cam & Dursley Tennis Club -->
+                  <iframe 
+                    src="https://google.com" 
+                    width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+                <div class="card-footer bg-light p-3 border-top">
+                  <h6 class="fw-bold mb-1 text-dark">Dursley Recreation Ground</h6>
+                  <p class="text-muted mb-0 small">Cam & Dursley Tennis Club, 2 Everlands, Cam, GL11 5NL</p>
+                  <a href="https://google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
+                    Get Directions
+                  </a>
+                </div>
+              </div>
 
-    </div>
-  </div>
+              <!-- VENUE 3: REDNOCK SCHOOL -->
+              <div class="tab-pane fade flex-grow-1 d-flex flex-column" id="venue-rednock" role="tabpanel" aria-labelledby="rednock-tab">
+                <div class="card-body p-0 position-relative responsive-map-body flex-grow-1">
+                  <!-- Embed link coordinates for Rednock School -->
+                  <iframe 
+                    src="https://google.com" 
+                    width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
+                </div>
+                <div class="card-footer bg-light p-3 border-top">
+                  <h6 class="fw-bold mb-1 text-dark">Rednock School Sports Hall</h6>
+                  <p class="text-muted mb-0 small">Kingshill Road, Dursley, Gloucestershire, GL11 4BY</p>
+                  <a href="https://google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+
+            </div> <!-- Closes .tab-content -->
+          </div> <!-- Closes .card -->
+        </div> <!-- Closes Right Column -->
+
+      </div> <!-- Closes Row -->
+    </div> <!-- Closes Layout Wrapper -->
+  </div> <!-- Closes Container -->
 </section>
+
+<!-- JAVASCRIPT FIXED FOR BOOTSTRAP TAB HIDDEN HEIGHT REDRAW ISSUES -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var tabElements = document.querySelectorAll('button[data-bs-toggle="tab"]');
+    tabElements.forEach(function (tab) {
+      tab.addEventListener('shown.bs.tab', function (e) {
+        // Target target content wrapper map inside active panel frame
 
 
 
