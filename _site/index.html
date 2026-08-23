@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For better SEO:
-        <meta name="description" content="Put whatever you feel best describes your club.">
+        <meta name="description" content="Official website for Gloucestershire Pickleball club. Join us for regular play, tournaments, and coaching.">
      -->
-    <title>Gloucestershire Pickleball  </title>
-    <!--added Bootsrap Link-->
+    <title>Gloucestershire Pickleball</title>
+    <!-- Added Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css"> 
@@ -15,111 +15,120 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <style>
+        /* Adds spacing so your fixed top navbar doesn't cut off the top of your page content */
+        body {
+            padding-top: 85px; 
+        }
+    </style>
 </head>
-<body
-  
-    style="background-image: url('/images/glos1.png'); 
-           background-size: cover; 
-           background-position: center; 
-           background-repeat: no-repeat; 
-           background-attachment: fixed;"
-  
->
-    
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="images/Pickleball Glos.png" alt="Logo" width="90" height="60">
-    </a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left side links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./about.html">About Us</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Schedule
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
-            <li><a class="dropdown-item" href="./league.html">League Information</a></li>
-            <li><a class="dropdown-item" href="./festival.html">Festival Information</a></li>
-            <li><a class="dropdown-item" href="./tournament.html">Tournament Information</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./coaching.html">Coaching</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./gallery.html">Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./contact.html">Contact</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="./news.html">News</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Links
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <li><a class="dropdown-item" href="https://www.pickleballengland.org/rules/">PB Rules</a></li>
-            <li><a class="dropdown-item" href="https://www.pickleballengland.org/wp-content/uploads/2025/01/PickleballENGLAND-Code-of-Conduct.pdf">PB Code of Conduct</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="https://www.youtube.com/playlist?list=PL1DrvSW1_WqjpbPpRYUH4DxSg8MTGzWT7">Beginner Tutorials</a></li>
-            <li><a class="dropdown-item" href="./otherclubs.html">Other Clubs</a></li>
-         </ul>
-        </li>
-      </ul>
+<body class="min-vh-100 d-flex flex-column position-relative m-0 p-0 text-dark">
 
-      <!-- Right side social icons -->
-      <ul class="navbar-nav d-flex flex-row gap-3">
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank">
-            <i class="fa fa-facebook" style="font-size:32px; color:#1877F2;"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" title="Chat with us on WhatsApp">
-            <i class="fa fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
-          </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="mailto:glospickle@gmail.com"> 
-            <i class="fa fa-envelope" style="font-size:32px; color:#EA4335;"></i>
-          </a>
-        </li>
-      </ul> <!-- FIXED: Added missing closing UL tag -->
+  
+    <!-- Flag Background Layer -->
+    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1" 
+         style="background-image: url('/images/glos%20flag.png'); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat;">
+    </div>
+    
+    <!-- Modern Soft Glassmorphism Overlay (Ensures Text Readability) -->
+    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1 bg-white bg-opacity-75" 
+         style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+    </div>
+  
+
+  <!-- Main Navigation Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="images/Pickleball Glos.png" alt="Logo" width="90" height="60">
+      </a>
       
-    </div> <!-- Closes #navbarSupportedContent -->
-  </div> <!-- Closes .container -->
-</nav> <!-- Closes navbar -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left side links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <li><a class="dropdown-item" href="about.html#about">About Us</a></li>
+              <li><a class="dropdown-item" href="about.html#meet-the-team">Meet the team</a></li>
+              <li><a class="dropdown-item" href="policy.html">Policy Information</a></li>
+            </ul>
+          </li> <!-- FIXED: Added missing closing LI tag here -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Schedule
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
+              <li><a class="dropdown-item" href="./league.html">League Information</a></li>
+              <li><a class="dropdown-item" href="./festival.html">Festival Information</a></li>
+              <li><a class="dropdown-item" href="./tournament.html">Tournament Information</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./coaching.html">Coaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="./news.html">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pickle resources.html">Pickleball Resources</a>
+          </li>
+        </ul>
 
-    
+        <!-- Right side social icons -->
+        <ul class="navbar-nav d-flex flex-row gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank" rel="noopener">
+              <i class="fa fa-facebook" style="font-size:32px; color:#1877F2;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+              <i class="fa fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mailto:glospickle@gmail.com"> 
+              <i class="fa fa-envelope" style="font-size:32px; color:#EA4335;"></i>
+            </a>
+          </li>
+        </ul>
+        
+      </div> <!-- Closes #navbarSupportedContent -->
+    </div> <!-- Closes .container -->
+  </nav> <!-- Closes navbar -->
 
-    <main>
-             <section id="home" class="section min-vh-100 position-relative overflow-hidden">
+  <!-- Main Content Area (flex-grow keeps footer at bottom if content is short) -->
+  <main class="flex-grow-1">
+    <div class="container position-relative z-1 py-4">   
+       <!-- 
+  The 'position-relative z-index' rule guarantees your elements stack 
+  completely above your background flag layer.
+-->
+<div class="container pt-4 position-relative" style="z-index: 2;">
 
-
-    
     <!-- 1. RESPONSIVE HEADER -->
-    <!-- Changed absolute top margins to fluid vertical padding for mobile devices -->
-    <!-- Added text-center to center the content block within the header -->
-    <header class="bg-transparent py-4 py-md-5 mt-md-4 w-100 px-3 text-center">
-      <!-- Changed d-inline-block to mx-auto d-inline-block to center the border block -->
+    <header class="bg-transparent py-4 py-md-5 mt-md-2 w-100 px-3 text-center">
       <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
-        <!-- Changed display-1 to display-4 on mobile, scaling up to display-1 on desktop screens -->
         <h1 class="display-4 display-md-1 fw-bold mb-0 text-uppercase text-black lh-sm">
           PICKLEBALL GLOUCESTERSHIRE
         </h1>
@@ -127,10 +136,8 @@
     </header>
 
     <!-- 2. WIDE HERO SUBTEXT -->
-    <!-- Added text-center to keep layout alignment consistent with the new centered header -->
     <div class="container-fluid px-3 px-md-4 py-2 text-center">
-      <!-- Standardized font scale from fs-5 (mobile friendly) to fs-4 (desktop friendly) -->
-      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-5 w-75 w-md-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-4 w-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
       </p>
     </div>
@@ -147,11 +154,11 @@
         </div>
 
         <!-- Carousel Items -->
-        <div class="carousel-inner" style="height: 350px;">
+        <div class="carousel-inner" style="height: 400px;">
           
-          <!-- Slide 1 -->
+          <!-- Slide 1 (Uses Liquid's relative_url filter for safe server resolution) -->
           <div class="carousel-item active h-100">
-            <img src="path/to/your/image1.jpg" alt="Pickleball courts in Gloucestershire" class="w-100 h-100 object-fit-cover">
+            <img src="/images/alexsaks1.jpg" alt="Pickleball courts in Gloucestershire" class="d-block w-100 h-100 object-fit-cover">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
               <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Join the Action</h2>
               <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Discover sessions across Gloucester, Cheltenham, and Stroud.</p>
@@ -160,7 +167,7 @@
 
           <!-- Slide 2 -->
           <div class="carousel-item h-100">
-            <img src="path/to/your/image2.jpg" alt="Fun pickleball social games" class="w-100 h-100 object-fit-cover">
+            <img src="/images/alexsaks1.jpg" alt="Fun pickleball social games" class="w-100 h-100 object-fit-cover">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
               <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">All Ages & Abilities</h2>
               <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Friendly, low-impact games perfect for beginners and seasoned players alike.</p>
@@ -169,7 +176,7 @@
 
           <!-- Slide 3 -->
           <div class="carousel-item h-100">
-            <img src="path/to/your/image3.jpg" alt="Pickleball equipment and coaching" class="w-100 h-100 object-fit-cover">
+            <img src= "/images/alexsaks1.jpg" alt="Pickleball equipment and coaching" class="w-100 h-100 object-fit-cover">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
               <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Learn & Socialise</h2>
               <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Meet new friends and improve your skills with local coaching sessions.</p>
@@ -192,9 +199,8 @@
     </div>
 
     <!-- 4. LIVE CLUB NEWS (FACEBOOK TIMELINE) -->
-    <!-- Safely positioned completely outside the carousel DOM container -->
     <div class="container-fluid px-3 px-md-4 mt-5 mb-5 text-center">
-      <div class="mx-auto" style="max-width: 500px;"> <!-- Standard sidebar/feed width -->
+      <div class="mx-auto" style="max-width: 500px;">
         
         <div class="d-inline-block pb-2 mb-4 border-bottom border-3 border-dark">
           <h3 class="h4 fw-bold text-uppercase mb-0 text-black">Latest Club News</h3>
@@ -203,12 +209,10 @@
         <!-- Facebook Plugin Container -->
         <div class="bg-white p-2 rounded-3 shadow-sm border">
           
-          <!-- STEP A: Fixed JavaScript SDK URL (Points directly to Meta CDN servers) -->
           <div id="fb-root"></div>
+          <!-- FIXED: Re-applied the official complete Meta script endpoint location -->
           <script async defer crossorigin="anonymous" src="https://facebook.net"></script>
 
-          <!-- STEP B: The Plugin Embed Box -->
-          <!-- Note: Meta Page Plugin only renders public business Pages. Communities hosted as a private or public Facebook Group will show a fallback link instead. -->
           <div class="fb-page" 
                data-href="https://www.facebook.com/groups/8687603144677202" 
                data-tabs="timeline" 
@@ -219,7 +223,7 @@
                data-hide-cover="false" 
                data-show-facepile="true">
             <blockquote class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/groups/8687603144677202">Visit Facebook Group Updates</a>
+              <a href="https://www.facebook.com/groups/8687603144677202" target="_blank" rel="noopener">Visit Facebook Group Updates</a>
             </blockquote>
           </div>
 
@@ -228,8 +232,8 @@
       </div>
     </div>
 
-</section>
-Use code with caution.
+</div>
+
 
   
 
@@ -240,27 +244,33 @@ Use code with caution.
 
 
    
+    </div>
+  </main>
 
-    <footer>
-        <div class="content-wrapper">
-            <p>&copy; [Pickleball Gloucestershire]. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- Sticky Footer Layout -->
+  <footer class="bg-dark text-light py-3 mt-auto position-relative z-1">
+      <div class="container text-center">
+          <p class="mb-1">&copy; 2026 Pickleball Gloucestershire. All rights reserved.</p>
+          <p class="mb-0"><a href="policy.html" class="text-decoration-none text-info">Our Policies</a></p>
+      </div>
+  </footer>
 
-    </main>
+  <!-- Smooth Anchor Scrolling Script -->
+  <script>
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+              const targetId = this.getAttribute('href');
+              if (targetId !== '#') {
+                  e.preventDefault();
+                  document.querySelector(targetId).scrollIntoView({
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+  </script>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-
-<!--added Boostrap scripts-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

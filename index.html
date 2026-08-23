@@ -1,18 +1,17 @@
 ---
 layout: default
-background_image: "/images/glos1.png"
+background_image: "/images/glos flag.png"
 ---
-<section id="home" class="section min-vh-100 position-relative overflow-hidden">
 
+<!-- 
+  The 'position-relative z-index' rule guarantees your elements stack 
+  completely above your background flag layer.
+-->
+<div class="container pt-4 position-relative" style="z-index: 2;">
 
-    
     <!-- 1. RESPONSIVE HEADER -->
-    <!-- Changed absolute top margins to fluid vertical padding for mobile devices -->
-    <!-- Added text-center to center the content block within the header -->
-    <header class="bg-transparent py-4 py-md-5 mt-md-4 w-100 px-3 text-center">
-      <!-- Changed d-inline-block to mx-auto d-inline-block to center the border block -->
+    <header class="bg-transparent py-4 py-md-5 mt-md-2 w-100 px-3 text-center">
       <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
-        <!-- Changed display-1 to display-4 on mobile, scaling up to display-1 on desktop screens -->
         <h1 class="display-4 display-md-1 fw-bold mb-0 text-uppercase text-black lh-sm">
           PICKLEBALL GLOUCESTERSHIRE
         </h1>
@@ -20,10 +19,8 @@ background_image: "/images/glos1.png"
     </header>
 
     <!-- 2. WIDE HERO SUBTEXT -->
-    <!-- Added text-center to keep layout alignment consistent with the new centered header -->
     <div class="container-fluid px-3 px-md-4 py-2 text-center">
-      <!-- Standardized font scale from fs-5 (mobile friendly) to fs-4 (desktop friendly) -->
-      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-5 w-75 w-md-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-4 w-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
       </p>
     </div>
@@ -40,11 +37,11 @@ background_image: "/images/glos1.png"
         </div>
 
         <!-- Carousel Items -->
-        <div class="carousel-inner" style="height: 350px;">
+        <div class="carousel-inner" style="height: 400px;">
           
-          <!-- Slide 1 -->
+          <!-- Slide 1 (Uses Liquid's relative_url filter for safe server resolution) -->
           <div class="carousel-item active h-100">
-            <img src="path/to/your/image1.jpg" alt="Pickleball courts in Gloucestershire" class="w-100 h-100 object-fit-cover">
+            <img src="/images/alexsaks1.jpg" alt="Pickleball courts in Gloucestershire" class="d-block w-100 h-100 object-fit-cover">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
               <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Join the Action</h2>
               <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Discover sessions across Gloucester, Cheltenham, and Stroud.</p>
@@ -53,7 +50,7 @@ background_image: "/images/glos1.png"
 
           <!-- Slide 2 -->
           <div class="carousel-item h-100">
-            <img src="path/to/your/image2.jpg" alt="Fun pickleball social games" class="w-100 h-100 object-fit-cover">
+            <img src="/images/alexsaks1.jpg" alt="Fun pickleball social games" class="w-100 h-100 object-fit-cover">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
               <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">All Ages & Abilities</h2>
               <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Friendly, low-impact games perfect for beginners and seasoned players alike.</p>
@@ -62,7 +59,7 @@ background_image: "/images/glos1.png"
 
           <!-- Slide 3 -->
           <div class="carousel-item h-100">
-            <img src="path/to/your/image3.jpg" alt="Pickleball equipment and coaching" class="w-100 h-100 object-fit-cover">
+            <img src= "/images/alexsaks1.jpg" alt="Pickleball equipment and coaching" class="w-100 h-100 object-fit-cover">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center position-absolute inset-0 bg-dark bg-opacity-40 top-0 start-0 end-0 bottom-0 p-4">
               <h2 class="h3 h1-md fw-bold text-uppercase mb-2" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">Learn & Socialise</h2>
               <p class="fs-6 fs-md-5 mb-0 d-none d-sm-block" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.6);">Meet new friends and improve your skills with local coaching sessions.</p>
@@ -85,9 +82,8 @@ background_image: "/images/glos1.png"
     </div>
 
     <!-- 4. LIVE CLUB NEWS (FACEBOOK TIMELINE) -->
-    <!-- Safely positioned completely outside the carousel DOM container -->
     <div class="container-fluid px-3 px-md-4 mt-5 mb-5 text-center">
-      <div class="mx-auto" style="max-width: 500px;"> <!-- Standard sidebar/feed width -->
+      <div class="mx-auto" style="max-width: 500px;">
         
         <div class="d-inline-block pb-2 mb-4 border-bottom border-3 border-dark">
           <h3 class="h4 fw-bold text-uppercase mb-0 text-black">Latest Club News</h3>
@@ -96,12 +92,10 @@ background_image: "/images/glos1.png"
         <!-- Facebook Plugin Container -->
         <div class="bg-white p-2 rounded-3 shadow-sm border">
           
-          <!-- STEP A: Fixed JavaScript SDK URL (Points directly to Meta CDN servers) -->
           <div id="fb-root"></div>
+          <!-- FIXED: Re-applied the official complete Meta script endpoint location -->
           <script async defer crossorigin="anonymous" src="https://facebook.net"></script>
 
-          <!-- STEP B: The Plugin Embed Box -->
-          <!-- Note: Meta Page Plugin only renders public business Pages. Communities hosted as a private or public Facebook Group will show a fallback link instead. -->
           <div class="fb-page" 
                data-href="https://www.facebook.com/groups/8687603144677202" 
                data-tabs="timeline" 
@@ -112,7 +106,7 @@ background_image: "/images/glos1.png"
                data-hide-cover="false" 
                data-show-facepile="true">
             <blockquote class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/groups/8687603144677202">Visit Facebook Group Updates</a>
+              <a href="https://www.facebook.com/groups/8687603144677202" target="_blank" rel="noopener">Visit Facebook Group Updates</a>
             </blockquote>
           </div>
 
@@ -121,8 +115,8 @@ background_image: "/images/glos1.png"
       </div>
     </div>
 
-</section>
-Use code with caution.
+</div>
+
 
   
 

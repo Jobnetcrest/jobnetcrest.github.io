@@ -1,26 +1,40 @@
 ---
 layout: default
-background_image: "/images/glos1.png"
+background_image: "/images/glos flag.png"
 ---
 
-
 <!-- Main Content Area -->
-<div class="container py-5" style="max-width: 1140px;">
-    <div class="row">
-        <div class="col-12">
-            <!-- Header section matching Bootstrap standards -->
-            <h2 class="mb-4 pb-2 border-bottom border-primary border-3 d-inline-block">News & Social Feed Updates</h2>
+<div class="container-fluid py-5 px-md-5">
+    <div class="row g-4">
+        
+        <!-- Left Side: Live Blog Section (1/3rd Width) -->
+        <div class="col-12 col-lg-4">
+            <h2 class="mb-4 pb-2 border-bottom border-primary border-3 d-inline-block">Live Blog</h2>
+            <div class="card border-0 shadow-sm overflow-hidden rounded-3">
+                <iframe src="https://pickleballgloucestershire.blogspot.com/" width="100%" height="800px" style="border:none;"></iframe>
+            </div>
+        </div>
+        
+        <!-- Right Side: Social Feed Section (2/3rds Width) -->
+        <div class="col-12 col-lg-8">
+            <h2 class="mb-4 pb-2 border-bottom border-primary border-3 d-inline-block">News & Social Updates</h2>
             
             <!-- Feed Wrapper Card -->
-            <div class="card border-0 shadow-sm p-3 p-md-4 bg-white rounded-3">
+            <div class="card border-0 shadow-sm p-3 p-md-4 bg-white rounded-3" style="max-height: 800px; overflow-y: auto;">
+                
                 <!-- Curator.io Placement Target -->
-                <div id="curator-feed-default-feed-layout">
+                <div id="curator-feed-default-feed-layout" class="mb-4">
                     <a href="https://curator.io" target="_blank" class="crt-logo crt-tag text-decoration-none text-muted small">
                         Powered by Curator.io
                     </a>
                 </div>
+
+                <!-- ADDED: SociableKit Facebook Group Target is now placed correctly inside the grid container -->
+                  <div class="sk-ww-facebook-group-posts" data-embed-id="25707462"></div><script src="https://widgets.sociablekit.com/facebook-group-posts/widget.js" defer></script>
+
             </div>
         </div>
+
     </div>
 </div>
 
@@ -36,4 +50,10 @@ background_image: "/images/glos1.png"
     e = d.getElementsByTagName(s)[0];
     e.parentNode.insertBefore(i, e);
 })();
+
+
+
 </script>
+
+<!-- Scripts remain safely at the bottom of the document -->
+<script src="https://widgets.sociablekit.com/facebook-group-posts/widget.js" defer></script>

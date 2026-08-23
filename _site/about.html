@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For better SEO:
-        <meta name="description" content="Put whatever you feel best describes your club.">
+        <meta name="description" content="Official website for Gloucestershire Pickleball club. Join us for regular play, tournaments, and coaching.">
      -->
-    <title>Gloucestershire Pickleball  </title>
-    <!--added Bootsrap Link-->
+    <title>Gloucestershire Pickleball</title>
+    <!-- Added Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css"> 
@@ -15,97 +15,99 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <style>
+        /* Adds spacing so your fixed top navbar doesn't cut off the top of your page content */
+        body {
+            padding-top: 85px; 
+        }
+    </style>
 </head>
-<body
-  
-    class="bg-white text-black"
-  
->
-    
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="images/Pickleball Glos.png" alt="Logo" width="90" height="60">
-    </a>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left side links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./about.html">About Us</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Schedule
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
-            <li><a class="dropdown-item" href="./league.html">League Information</a></li>
-            <li><a class="dropdown-item" href="./festival.html">Festival Information</a></li>
-            <li><a class="dropdown-item" href="./tournament.html">Tournament Information</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./coaching.html">Coaching</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./gallery.html">Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./contact.html">Contact</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="./news.html">News</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Links
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <li><a class="dropdown-item" href="https://www.pickleballengland.org/rules/">PB Rules</a></li>
-            <li><a class="dropdown-item" href="https://www.pickleballengland.org/wp-content/uploads/2025/01/PickleballENGLAND-Code-of-Conduct.pdf">PB Code of Conduct</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="https://www.youtube.com/playlist?list=PL1DrvSW1_WqjpbPpRYUH4DxSg8MTGzWT7">Beginner Tutorials</a></li>
-            <li><a class="dropdown-item" href="./otherclubs.html">Other Clubs</a></li>
-         </ul>
-        </li>
-      </ul>
+<body class="min-vh-100 d-flex flex-column position-relative m-0 p-0 text-dark">
 
-      <!-- Right side social icons -->
-      <ul class="navbar-nav d-flex flex-row gap-3">
-        <li class="nav-item">
-          <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank">
-            <i class="fa fa-facebook" style="font-size:32px; color:#1877F2;"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" title="Chat with us on WhatsApp">
-            <i class="fa fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
-          </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="mailto:glospickle@gmail.com"> 
-            <i class="fa fa-envelope" style="font-size:32px; color:#EA4335;"></i>
-          </a>
-        </li>
-      </ul> <!-- FIXED: Added missing closing UL tag -->
+  
+
+  <!-- Main Navigation Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="images/Pickleball Glos.png" alt="Logo" width="90" height="60">
+      </a>
       
-    </div> <!-- Closes #navbarSupportedContent -->
-  </div> <!-- Closes .container -->
-</nav> <!-- Closes navbar -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left side links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <li><a class="dropdown-item" href="about.html#about">About Us</a></li>
+              <li><a class="dropdown-item" href="about.html#meet-the-team">Meet the team</a></li>
+              <li><a class="dropdown-item" href="policy.html">Policy Information</a></li>
+            </ul>
+          </li> <!-- FIXED: Added missing closing LI tag here -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Schedule
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" href="./schedule.html">Regular Play</a></li>
+              <li><a class="dropdown-item" href="./league.html">League Information</a></li>
+              <li><a class="dropdown-item" href="./festival.html">Festival Information</a></li>
+              <li><a class="dropdown-item" href="./tournament.html">Tournament Information</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./coaching.html">Coaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="./news.html">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pickle resources.html">Pickleball Resources</a>
+          </li>
+        </ul>
 
-    
+        <!-- Right side social icons -->
+        <ul class="navbar-nav d-flex flex-row gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank" rel="noopener">
+              <i class="fa fa-facebook" style="font-size:32px; color:#1877F2;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+              <i class="fa fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mailto:glospickle@gmail.com"> 
+              <i class="fa fa-envelope" style="font-size:32px; color:#EA4335;"></i>
+            </a>
+          </li>
+        </ul>
+        
+      </div> <!-- Closes #navbarSupportedContent -->
+    </div> <!-- Closes .container -->
+  </nav> <!-- Closes navbar -->
 
-    <main>
-             <section id="about" class="section">
+  <!-- Main Content Area (flex-grow keeps footer at bottom if content is short) -->
+  <main class="flex-grow-1">
+    <div class="container position-relative z-1 py-4">   
+       <section id="about" class="section">
 
 <!-- Section 1: The Fixed Background Banner (Contained) -->
 
@@ -155,24 +157,84 @@
 
 
     
-
+<section id="meet-the-team" class="section">
 </div>
    <h1 class="display-2">MEET THE TEAM</h1>
+
+   <!-- Main responsive grid container -->
+<div class="row g-4 justify-content-center">
+
+  <!-- Team Member 1 Card -->
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="card h-100 border-0 shadow-sm text-center p-4 bg-white">
+      <img src="images/Ian.jpg" alt="Coach Name" class="rounded-circle border border-2 border-light mx-auto mb-3" style="width: 180px; height: 180px; object-fit: cover;">
+      <div class="card-body p-0 d-flex flex-column">
+        <h4 class="card-title fw-bold h5 mb-1 text-dark">Ian Walkley</h4>
+        <span class="text-muted small fst-italic mb-3">Head Coach</span>
+        <p class="card-text text-secondary small mb-0">Founder & Person who makes it happen.p>
+       <p class="mb-3 fw-bold">Mad about Pickleball!</p>
+    
+    <p class="mb-3">Born and bred in Gloucestershire, I was introduced to pickleball by friends in October 2023.</p>
+    
+    <p class="mb-3">I started playing at Bristol Pickleball Club and quickly joined Thornbury, Swindon and Gloucester pickleball clubs so that I could play as much as possible.</p>
+    
+    <p class="mb-3">I completed my pickleball instructor’s course on 7 December 2024, which helped me run a few starter sessions at Stroud Leisure Centre. That experience gave me the confidence to take on the role of County Representative for Pickleball England in February 2025, with responsibility for helping to develop the game across Gloucestershire.</p>
+    
+    <p class="mb-0">Since then, I have qualified as a Level 1 coach, run a couple of tournaments, started the Gloucestershire Pickleball League, and become Chairman of Pickleball Gloucestershire — a great honour. I could not have done any of this without the support of my family and the Pickleball Gloucestershire team. Thank you all for your help.</p>
+ 
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Member 2 Card -->
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="card h-100 border-0 shadow-sm text-center p-4 bg-white">
+      <img src="images/team2.jpg" alt="Coach Name" class="rounded-circle border border-2 border-light mx-auto mb-3" style="width: 180px; height: 180px; object-fit: cover;">
+      <div class="card-body p-0 d-flex flex-column">
+        <h4 class="card-title fw-bold h5 mb-1 text-dark">Jane Smith</h4>
+        <span class="text-muted small fst-italic mb-3">Club Secretary</span>
+        <p class="card-text text-secondary small mb-0">Organizes local Gloucestershire league scheduling, court venues, and general member updates.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Member 3 Card -->
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="card h-100 border-0 shadow-sm text-center p-4 bg-white">
+      <img src="images/team3.jpg" alt="Player Name" class="rounded-circle border border-2 border-light mx-auto mb-3" style="width: 180px; height: 180px; object-fit: cover;">
+      <div class="card-body p-0 d-flex flex-column">
+        <h4 class="card-title fw-bold h5 mb-1 text-dark">Mike Johnson</h4>
+        <span class="text-muted small fst-italic mb-3">Tournament Coordinator</span>
+        <p class="card-text text-secondary small mb-0">Oversees seasonal match-play brackets and youth pickleball introductory clinics.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
 <div class="container my-5">
   <div class="row g-4 text-center">
     
-    <!-- Team Member 1 -->
-    <div class="col-md-4">
-      <div class="d-flex flex-column h-100">
-        <!-- ratio-1x1 creates a perfect square container in BS5 -->
-        <div class="ratio ratio-1x1 mb-3">
-          <img src="images/Ian.jpg" class="rounded object-fit-cover" alt="Ian Walkley Profile">
-        </div>
-        <h4>Ian Walkley</h4>
-        <p class="text-muted small mb-2">Founder & Person who makes it happen</p>
-        <p>Mad about Pickleball!Short bio about person 1.</p>
-      </div>
+<!-- Team Member 1 -->
+<!-- Added text-start to force left alignment for everything inside -->
+<div class="col-md-4 text-start">
+  <div class="d-flex flex-column h-100">
+    <!-- ratio-1x1 creates a perfect square container in BS5 -->
+    <div class="ratio ratio-1x1 mb-3">
+      <img src="images/Ian.jpg" class="rounded object-fit-cover" alt="Ian Walkley Profile">
     </div>
+    <h4>Ian Walkley</h4>
+    <p class="text-muted small mb-2">Founder & Person who makes it happen</p>
+    <p class="mb-3 fw-bold">Mad about Pickleball!</p>
+    
+    <p class="mb-3">Born and bred in Gloucestershire, I was introduced to pickleball by friends in October 2023.</p>
+    
+    <p class="mb-3">I started playing at Bristol Pickleball Club and quickly joined Thornbury, Swindon and Gloucester pickleball clubs so that I could play as much as possible.</p>
+    
+    <p class="mb-3">I completed my pickleball instructor’s course on 7 December 2024, which helped me run a few starter sessions at Stroud Leisure Centre. That experience gave me the confidence to take on the role of County Representative for Pickleball England in February 2025, with responsibility for helping to develop the game across Gloucestershire.</p>
+    
+    <p class="mb-0">Since then, I have qualified as a Level 1 coach, run a couple of tournaments, started the Gloucestershire Pickleball League, and become Chairman of Pickleball Gloucestershire — a great honour. I could not have done any of this without the support of my family and the Pickleball Gloucestershire team. Thank you all for your help.</p>
+  </div>
+</div>
 
     <!-- Team Member 2 -->
     <div class="col-md-4">
@@ -200,40 +262,41 @@
 
   </div>
 </div>        
-
+</section>
 
   
 
 
-    </section>
+</section>
 
-<section id="policy" class="section">
-  <div class="container my-5">
-    <h1 class="display-2">OUR POLICY</h1>
-    <p class="text-start mb-0">We are committed to providing a safe and inclusive environment for all players. Our policy is to ensure that everyone, regardless of age, gender, ability, or background, can enjoy the game of pickleball in a respectful and supportive atmosphere. We encourage fair play, sportsmanship, and mutual respect among all participants.</p>
-</div>
-</section>   
+   
+    </div>
+  </main>
 
-    <footer>
-        <div class="content-wrapper">
-            <p>&copy; [Pickleball Gloucestershire]. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- Sticky Footer Layout -->
+  <footer class="bg-dark text-light py-3 mt-auto position-relative z-1">
+      <div class="container text-center">
+          <p class="mb-1">&copy; 2026 Pickleball Gloucestershire. All rights reserved.</p>
+          <p class="mb-0"><a href="policy.html" class="text-decoration-none text-info">Our Policies</a></p>
+      </div>
+  </footer>
 
-    </main>
+  <!-- Smooth Anchor Scrolling Script -->
+  <script>
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+              const targetId = this.getAttribute('href');
+              if (targetId !== '#') {
+                  e.preventDefault();
+                  document.querySelector(targetId).scrollIntoView({
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+  </script>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-
-<!--added Boostrap scripts-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <!-- Added Bootstrap Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -120,72 +120,99 @@
   <!-- Main Content Area (flex-grow keeps footer at bottom if content is short) -->
   <main class="flex-grow-1">
     <div class="container position-relative z-1 py-4">   
-       <section id="contact" class="section py-5">
-  <div class="container text-center text-black">
+       <section id="gallery" class="section py-5">
+  <div class="container-fluid px-md-5 text-black">
     
-    <!-- Clean, Solid Black Section Title (Matching Schedule & Gallery) -->
-    <div class="d-inline-block pb-3 mb-5 border-bottom border-4 border-dark">
-      <h2 class="display-2 fw-bold mb-0 text-uppercase">
-        Contact Us
-      </h2>
+    <!-- Clean, Solid Black Section Title (Centered) -->
+    <div class="text-center mb-5">
+      <div class="d-inline-block pb-3 border-bottom border-4 border-dark">
+        <h2 class="display-2 fw-bold mb-0 text-uppercase">
+          Pickleball Resources
+        </h2>
+      </div>
     </div>
 
-    <!-- Layout Wrapper & Subtitle -->
-    <div class="w-100 w-lg-75 mx-auto">
-      <h3 class="fs-4 fw-normal mb-5 text-muted">
-        For more information, we can be found at:
-      </h3>
+    <!-- Main Responsive Two-Column Layout -->
+    <div class="row g-5">
+      
+      <!-- Left Column: Stacked YouTube Videos (7/12 Width) -->
+      <div class="col-12 col-lg-7">
+        <div class="d-flex flex-column gap-4">
+          
+          <!-- Video 1 -->
+          <div class="card border-0 shadow-sm overflow-hidden rounded-3">
+            <div class="ratio ratio-16x9">
+              <iframe 
+                src="https://www.youtube.com/embed/rD1O3R9B0Sw" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
 
-      <!-- Responsive Table Container -->
-      <div class="table-responsive">
-        
-        <!-- FIXED: Removed table-borderless and applied unified border styling directly to the table -->
-        <table class="table text-black align-middle fs-5 border-dark-subtle mx-auto" style="background: transparent;">
+          <!-- Video 2 -->
+          <div class="card border-0 shadow-sm overflow-hidden rounded-3">
+            <div class="ratio ratio-16x9">
+              <iframe 
+                src="https://www.youtube.com/embed/fTvPYdKZqO0?t=9" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Links to Other Resources (5/12 Width - Left Aligned) -->
+      <div class="col-12 col-lg-5 text-start">
+        <div class="card border-0 shadow-sm p-4 bg-white rounded-3 h-100">
+          <h3 class="h4 fw-bold pb-2 mb-3 border-bottom border-2 text-uppercase text-start">Other Helpful Resources</h3>
           
-          <!-- Header Row with matching line styling color -->
-          <thead class="border-bottom border-1 border-dark-subtle fw-bold text-uppercase fs-6">
-            <tr>
-              <th class="py-3 w-50">Method</th>
-              <th class="py-3 w-50">Link</th>
-            </tr>
-          </thead>
-          
-          <!-- Contact Channels Body -->
-          <tbody>
-            <!-- Row 1: Email -->
-            <tr class="border-bottom border-1 border-dark-subtle">
-              <td class="py-4">Email</td>
-              <td class="py-4">
-                <a href="mailto:glospickle@gmail.com" 
-                   class="text-primary fw-bold text-decoration-underline">
-                  glospickle@gmail.com
-                </a>
-              </td>
-            </tr>
+          <div class="list-group list-group-flush text-start">
             
-            <!-- Row 2: WhatsApp -->
-            <tr class="border-bottom border-1 border-dark-subtle">
-              <td class="py-4">WhatsApp</td>
-              <td class="py-4">
-                <a href="https://wa.me/+447831100939" 
-                   class="text-primary fw-bold text-decoration-underline">
-                  Chat with us on WhatsApp
-                </a>
-              </td>
-            </tr>
-          </tbody>
+            <a href="https://pickleballengland.org" target="_blank" class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center text-start">
+              <div class="text-start">
+                <h5 class="mb-1 fw-semibold text-primary text-start">Pickleball England</h5>
+                <p class="mb-0 text-muted small text-start">Official rules, tournament data, and player insurance directories.</p>
+              </div>
+              <span class="badge bg-light text-dark rounded-pill">&rarr;</span>
+            </a>
 
-        </table>
+            <a href="./otherclubs.html" target="_blank" class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center text-start">
+              <div class="text-start">
+                <h5 class="mb-1 fw-semibold text-primary text-start">Other Clubs locally</h5>
+                <p class="mb-0 text-muted small text-start">Links to other pickleball clubs in the area, including contact information.</p>
+              </div>              <span class="badge bg-light text-dark rounded-pill">&rarr;</span>
+            </a>
+
+            <a href="https://pickleball.fyi/" target="_blank" class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center text-start">
+              <div class="text-start">
+                <h5 class="mb-1 fw-semibold text-primary text-start">Pickleball FYI</h5>
+                <p class="mb-0 text-muted small text-start">A FREE Pickleball App with Rules, FAQs, Etiquette, Drills, and more! Find and Share easily! Available on iOS and Android!.</p>
+              </div>
+              <span class="badge bg-light text-dark rounded-pill">&rarr;</span>
+            </a>
+
+            <a href="https://www.youtube.com/playlist?list=PL1DrvSW1_WqjpbPpRYUH4DxSg8MTGzWT7" class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center text-start">
+              <div class="text-start">
+                <h5 class="mb-1 fw-semibold text-primary text-start">Beginners Tutorials</h5>
+                <p class="mb-0 text-muted small text-start">Some helpful tutorials for new players.</p>
+              </div>
+              <span class="badge bg-light text-dark rounded-pill">&rarr;</span>
+            </a>
+
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
-
-
-
-
-
 
    
     </div>

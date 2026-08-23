@@ -1,95 +1,84 @@
 ---
 layout: default
+background_image: "/images/glos flag.png"
 ---
 
-<section id="schedule" class="section py-4 py-md-5">
-  <div class="container text-center text-black">
+<section id="schedule" class="section py-5" style="position: relative;">
+  <div class="container text-center text-white">
     
-    <!-- Section Title -->
-    <div class="d-inline-block pb-2 mb-4 mb-md-5 border-bottom border-4 border-dark">
-      <h2 class="display-4 display-md-2 fw-bold mb-0 text-uppercase">
+    <!-- Section Title Card with Dark Glass Pill Background -->
+    <div class="d-inline-block px-4 py-2 mb-4 mb-md-5 rounded-pill shadow-sm" style="background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <h2 class="display-5 fw-bold mb-0 text-uppercase tracking-wider text-white">
         Regular Play
       </h2>
     </div>
 
-    <!-- Container Wrapper -->
-    <div class="w-100 w-lg-75 mx-auto">
+    <!-- Table Container Wrapper with Heavy Dark Glass Overlay -->
+    <div class="w-100 w-lg-75 mx-auto rounded-4 p-3 p-md-4 shadow border" 
+         style="background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: rgba(255, 255, 255, 0.15) !important;">
       
-      <!-- Responsive Table Container -->
-      <div class="table-responsive">
-        <table class="table table-borderless text-black align-middle fs-5 mx-auto" style="background: transparent;">
+      <!-- Responsive Table Container Wrapper (Prevents layout breakage on phones) -->
+      <div class="table-responsive rounded-3 overflow-hidden shadow">
+        <table class="table table-hover align-middle fs-5 mx-auto mb-0" style="--bs-table-hover-bg: rgba(0, 0, 0, 0.04);">
           
-          <thead class="border-bottom border-2 border-dark fw-bold text-uppercase fs-6">
+          <!-- Black Title Row with White Text -->
+          <thead class="table-dark text-white text-uppercase tracking-wide" style="font-size: 0.9rem;">
             <tr>
-              <th class="py-3 px-2">Day</th>
-              <th class="py-3 px-2">Time</th>
-              <th class="py-3 px-2">Frequency</th>
-              <th class="py-3 px-2">Type</th>
-              <th class="py-3 px-2">Venue</th>
-              <th class="py-3 px-2">Price</th>
-              <th class="py-3 px-2">Status / Link</th>
+              <th scope="col" class="py-3 text-start ps-3">Day / Time</th>
+              <th scope="col" class="py-3">Frequency</th>
+              <th scope="col" class="py-3">Session Type</th>
+              <th scope="col" class="py-3">Venue</th>
+              <th scope="col" class="py-3">Price</th>
+              <th scope="col" class="py-3 text-end pe-3">Booking</th>
             </tr>
           </thead>
           
-          <tbody>
-            <!-- Row 1: Graded Play -->
-            <tr class="border-bottom border-1 border-dark-subtle">
-              <td class="py-4 px-2 fw-bold">Wednesday</td>
-              <td class="py-4 px-2">19:00 - 21:00</td>
-              <td class="py-4 px-2">Weekly</td>
-              <td class="py-4 px-2">
-                <span class="badge border border-dark text-dark px-2 py-1 text-uppercase fs-7">Graded Play</span>
-              </td>
-              <td class="py-4 px-2">
-                <a href="https://google.com" target="_blank" class="text-primary fw-bold text-decoration-underline">
-                  Oxstalls Sports Park
-                </a>
-              </td>
-              <td class="py-4 px-2">£7 <span class="fs-7 fw-normal ">/ session</span></td>
-              <td class="py-4 px-2">
-                <a href="https://pbtable.com" target="_blank" class="text-primary fw-bold text-decoration-underline text-uppercase fs-7">
-                  Link to PBTable
-                </a>
+          <!-- White Rows with Dark/Black Text -->
+          <tbody class="table-light text-dark">
+            <tr>
+              <td class="fw-bold text-dark text-start ps-3">Mon 18:30-20:00</td>
+              <td>Weekly</td>
+              <td><span class="badge bg-success text-white px-2 py-1">Social Play</span></td>              
+              <td><a href="https://www.google.com/maps/place/Oxstalls+Indoor+Tennis+Centre/@51.8783455,-2.237252,17z/data=!3m1!4b1!4m6!3m5!1s0x487106826bbb875b:0xadf985d63a7a73e1!8m2!3d51.8783455!4d-2.2346771!16s%2Fg%2F1th7xt3f?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="text-decoration-underline">Oxstall Tennis Centre</a></td>
+              <td class="fw-semibold">£7.00</td>
+              <td class="text-end pe-3">
+                <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-sm btn-dark px-3 fw-bold">Book Now</a>
               </td>
             </tr>
-            
-            <!-- Row 2: Recreational -->
-            <!-- FIXED: Removed d-md-none-border so it matches Row 1 color exactly -->
-            <tr class="border-bottom border-1 border-dark-subtle">
-              <td class="py-4 px-2 fw-bold">Friday</td>
-              <td class="py-4 px-2">19:30 - 21:30</td>
-              <td class="py-4 px-2">Weekly</td>
-              <td class="py-4 px-2">
-                <span class="badge border border-dark text-dark px-2 py-1 text-uppercase fs-7">Recreational/Social Play</span>
+            <tr>
+              <td class="fw-bold text-dark text-start ps-3">Wed 20:00-21:30</td>
+              <td>Weekly</td>
+              <td><span class="badge bg-primary text-white px-2 py-1">Graded</span></td>            
+              <td><a href="https://www.google.com/maps/place/Oxstalls+Indoor+Tennis+Centre/@51.8783455,-2.237252,17z/data=!3m1!4b1!4m6!3m5!1s0x487106826bbb875b:0xadf985d63a7a73e1!8m2!3d51.8783455!4d-2.2346771!16s%2Fg%2F1th7xt3f?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="text-decoration-underline">Oxstall Tennis Centre</a></td>
+              <td class="fw-semibold">£7.00</td>
+              <td class="text-end pe-3">
+                <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-sm btn-dark px-3 fw-bold">Book Now</a>
               </td>
-              <td class="py-4 px-2">
-                <a href="https://google.com" target="_blank" class="text-primary fw-bold text-decoration-underline">
-                  Oxstalls Sports Park
-                </a>
+            </tr>
+            <tr>
+              <td class="fw-bold text-dark text-start ps-3">Fri 19:30-21:30</td>
+              <td>Weekly</td>
+              <td><span class="badge bg-success text-white px-2 py-1">Social Play</span></td>              
+              <td><a href="https://www.google.com/maps/place/Oxstalls+Indoor+Tennis+Centre/@51.8783455,-2.237252,17z/data=!3m1!4b1!4m6!3m5!1s0x487106826bbb875b:0xadf985d63a7a73e1!8m2!3d51.8783455!4d-2.2346771!16s%2Fg%2F1th7xt3f?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="text-decoration-underline">Oxstall Tennis Centre</a></td>
+              <td class="fw-semibold">£7.00</td>
+              <td class="text-end pe-3">
+                <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-sm btn-dark px-3 fw-bold">Book Now</a>
               </td>
-              <td class="py-4 px-2 ">£7 <span class="fs-7 fw-normal ">/ session</span></td>
-              <td class="py-4 px-2 "><a href="https://pbtable.com" target="_blank" class="text-primary fw-bold text-decoration-underline text-uppercase fs-7">
-                  Link to PBTable</a></td>
             </tr>
           </tbody>
 
         </table>
       </div> <!-- Closes .table-responsive -->
-    </div> <!-- Closes sizing wrapper -->
+    </div> <!-- Closes dark glass overlay wrapper -->
 
-    <!-- Text Block Container -->
-    <div class="container max-width-md">
-      <!-- Disclaimer Text Block -->
-      <div class="mt-4 mt-md-5 text-start text-md-center fs-6 text-muted">
-        <p class="mb-0">
-          * Please note: Schedule details, locations, and pricing are subject to adjustment based on court availability. For real-time updates and seasonal announcements, make sure to check our official announcement channels.
-        </p>
-      </div>
-
-      <!-- Description Block -->
-      <div class="mt-4 mt-md-5 text-start text-md-center fs-6 text-black">
-        <p class="mb-0">
+    <!-- Info & Disclaimer Cards -->
+    <div class="w-100 w-lg-75 mx-auto mt-4">
+      <div class="p-3 rounded-3 shadow-sm border" style="background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.1) !important;">
+        <p class="mb-3 text-start text-md-center text-white" style="font-size: 0.95rem; line-height: 1.5;">
           Members book and pay for sessions online via PBTable using a convenient prepaid wallet system. Membership is entirely free: players wishing to join will be asked to register with Pickleball Gloucestershire using Picklebook.  
+        </p>
+        <p class="mb-0 text-start text-md-center text-white-50 border-top pt-2" style="font-size: 0.8rem; font-style: italic; border-color: rgba(255, 255, 255, 0.15) !important;">
+          * Please note: Schedule details, locations, and pricing are subject to adjustment based on court availability. For real-time updates and seasonal announcements, make sure to check our official announcement channels.
         </p>
       </div>
     </div>
