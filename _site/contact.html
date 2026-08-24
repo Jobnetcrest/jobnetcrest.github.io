@@ -25,19 +25,6 @@
 <body class="min-vh-100 d-flex flex-column position-relative m-0 p-0 text-dark">
 
   
-    <!-- Flag Background Layer -->
-    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1" 
-         style="background-image: url('/images/glos%20flag.png'); 
-                background-size: cover; 
-                background-position: center; 
-                background-repeat: no-repeat;">
-    </div>
-    
-    <!-- Modern Soft Glassmorphism Overlay (Ensures Text Readability) -->
-    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1 bg-white bg-opacity-75" 
-         style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-    </div>
-  
 
   <!-- Main Navigation Header -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
@@ -105,11 +92,19 @@
     </div> <!-- Closes .container -->
   </nav> <!-- Closes navbar -->
 
+
+
+
   <!-- Main Content Area (flex-grow keeps footer at bottom if content is short) -->
   <main class="flex-grow-1">
     <div class="container position-relative z-1 py-4">   
        <!-- Responsive breakpoint controls for tab buttons and active canvas windows -->
 <style>
+  /* CRITICAL FIX: Forces Bootstrap tabs using flexbox utilities to hide properly when inactive */
+  .tab-pane.d-flex:not(.active) {
+    display: none !important;
+  }
+
   .responsive-map-body {
     height: 220px; /* Compact height for mobile layouts */
   }
@@ -129,6 +124,38 @@
     font-weight: 600;
     font-size: 0.85rem;
   }
+
+  /* FIX 1: Explicitly controls the text visibility for all states */
+  .nav-tabs .nav-link {
+    color: #212529 !important; /* Default dark color for INACTIVE tab text */
+    font-weight: 600;
+    font-size: 0.85rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6 !important;
+  }
+  
+  /* When a tab button is clicked/active, turn its background dark and text white */
+  .nav-tabs .nav-link.active {
+    background-color: #212529 !important;
+    color: #ffffff !important; /* Crisp white on dark background */
+    border-color: #212529 !important;
+  }
+
+  /* FIX 2: Forces Bootstrap tabs using flexbox utilities to hide properly when inactive */
+  .tab-pane.d-flex:not(.active) {
+    display: none !important;
+  }
+
+  .responsive-map-body {
+    height: 220px; /* Compact height for mobile layouts */
+  }
+  @media (min-width: 992px) {
+    .responsive-map-body {
+      height: 100%; 
+      min-height: 320px; /* Extended to match larger table matrices on desktops */
+    }
+  }
+
 </style>
 
 <section id="contact" class="section py-5">
@@ -220,34 +247,32 @@
               <!-- VENUE 1: OXSTALLS TENNIS CENTRE -->
               <div class="tab-pane fade show active flex-grow-1 d-flex flex-column" id="venue-oxstalls" role="tabpanel" aria-labelledby="oxstalls-tab">
                 <div class="card-body p-0 position-relative responsive-map-body flex-grow-1">
-                  <!-- Embed link coordinates for Oxstalls Indoor Centre -->
                   <iframe 
-                    src="https://google.com" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.047500642129!2d-2.2372573871095662!3d51.87834547178282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487106826bbb875b%3A0xadf985d63a7a73e1!2sOxstalls%20Indoor%20Tennis%20Centre!5e0!3m2!1sen!2suk!4v1787494299951!5m2!1sen!2suk" 
                     width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                   </iframe>
                 </div>
                 <div class="card-footer bg-light p-3 border-top">
                   <h6 class="fw-bold mb-1 text-dark">Oxstalls Sports Park</h6>
                   <p class="text-muted mb-0 small">Plock Court, Tewkesbury Road, Gloucester, GL2 9DW</p>
-                  <a href="https://google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
+                  <a href="https://www.google.com/maps/dir//Oxstalls+Indoor+Tennis+Centre,+Plock+Ct,+Tewkesbury+Rd,+Gloucester+GL2+9DW/@51.8783455,-2.2372574,17z/data=!4m17!1m7!3m6!1s0x487106826bbb875b:0xadf985d63a7a73e1!2sOxstalls+Indoor+Tennis+Centre!8m2!3d51.8783455!4d-2.2346771!16s%2Fg%2F1th7xt3f!4m8!1m0!1m5!1m1!1s0x487106826bbb875b:0xadf985d63a7a73e1!2m2!1d-2.2346771!2d51.8783455!3e2?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
                     Get Directions
                   </a>
                 </div>
               </div>
 
-              <!-- VENUE 2: DURSLEY REC (CAM & DURSLEY TENNIS CLUB) -->
+              <!-- VENUE 2: DURSLEY REC -->
               <div class="tab-pane fade flex-grow-1 d-flex flex-column" id="venue-dursley" role="tabpanel" aria-labelledby="dursley-tab">
                 <div class="card-body p-0 position-relative responsive-map-body flex-grow-1">
-                  <!-- Embed link coordinates for Cam & Dursley Tennis Club -->
                   <iframe 
-                    src="https://google.com" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2473.670708473568!2d-2.3591654871183416!3d51.68417027173665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871a046286ee241%3A0x68f5b85dabfd9585!2sWar%20Memorial%20Recreational%20Ground!5e0!3m2!1sen!2suk!4v1787515990840!5m2!1sen!2suk" 
                     width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                   </iframe>
                 </div>
                 <div class="card-footer bg-light p-3 border-top">
                   <h6 class="fw-bold mb-1 text-dark">Dursley Recreation Ground</h6>
                   <p class="text-muted mb-0 small">Cam & Dursley Tennis Club, 2 Everlands, Cam, GL11 5NL</p>
-                  <a href="https://google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
+                  <a href="https://www.google.com/maps/dir//War+Memorial+Recreational+Ground,+Dursley+GL11+4BJ/@51.6841703,-2.3591655,17z/data=!4m17!1m7!3m6!1s0x4871a046286ee241:0x68f5b85dabfd9585!2sWar+Memorial+Recreational+Ground!8m2!3d51.6841703!4d-2.3565852!16s%2Fg%2F11f22zp_c5!4m8!1m0!1m5!1m1!1s0x4871a046286ee241:0x68f5b85dabfd9585!2m2!1d-2.3565852!2d51.6841703!3e2?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
                     Get Directions
                   </a>
                 </div>
@@ -256,16 +281,15 @@
               <!-- VENUE 3: REDNOCK SCHOOL -->
               <div class="tab-pane fade flex-grow-1 d-flex flex-column" id="venue-rednock" role="tabpanel" aria-labelledby="rednock-tab">
                 <div class="card-body p-0 position-relative responsive-map-body flex-grow-1">
-                  <!-- Embed link coordinates for Rednock School -->
-                  <iframe 
-                    src="https://google.com" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2473.5380601405955!2d-2.35998678711824!3d51.68659807173716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871a045e03c2259%3A0x5e79cf28ce242bbc!2sRednock%20School!5e0!3m2!1sen!2suk!4v1787494724204!5m2!1sen!2suk"
                     width="100%" height="100%" style="border:0; position: absolute; top:0; left:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                   </iframe>
                 </div>
                 <div class="card-footer bg-light p-3 border-top">
                   <h6 class="fw-bold mb-1 text-dark">Rednock School Sports Hall</h6>
                   <p class="text-muted mb-0 small">Kingshill Road, Dursley, Gloucestershire, GL11 4BY</p>
-                  <a href="https://google.com" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
+                  <a href="https://www.google.com/maps/dir//Rednock+School,+Kingshill+Rd,+Dursley+GL11+4BY/@51.6865981,-2.3599868,17z/data=!4m17!1m7!3m6!1s0x4871a045e03c2259:0x5e79cf28ce242bbc!2sRednock+School!8m2!3d51.6865981!4d-2.3574065!16s%2Fm%2F03qjhcp!4m8!1m0!1m5!1m1!1s0x4871a045e03c2259:0x5e79cf28ce242bbc!2m2!1d-2.3575628!2d51.6866318!3e2?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark mt-2 fw-bold w-100">
                     Get Directions
                   </a>
                 </div>
@@ -280,19 +304,22 @@
   </div> <!-- Closes Container -->
 </section>
 
-<!-- JAVASCRIPT FIXED FOR BOOTSTRAP TAB HIDDEN HEIGHT REDRAW ISSUES -->
+<!-- JAVASCRIPT REFRESH SCRIPT -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var tabElements = document.querySelectorAll('button[data-bs-toggle="tab"]');
     tabElements.forEach(function (tab) {
       tab.addEventListener('shown.bs.tab', function (e) {
-        // Target target content wrapper map inside active panel frame
-
-
-
-
-
-
+        var targetPaneId = e.target.getAttribute('data-bs-target');
+        var iframe = document.querySelector(targetPaneId + ' iframe');
+        if (iframe) {
+          var currentSrc = iframe.getAttribute('src');
+          iframe.setAttribute('src', currentSrc);
+        }
+      });
+    });
+  });
+</script>
    
     </div>
   </main>
