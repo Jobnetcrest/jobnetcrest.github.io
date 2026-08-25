@@ -6,7 +6,12 @@
     <!-- For better SEO:
         <meta name="description" content="Official website for Gloucestershire Pickleball club. Join us for regular play, tournaments, and coaching.">
      -->
+        
     <title>Gloucestershire Pickleball</title>
+
+        <!-- ALLOWS FACEBOOK TO SEND IMAGES SECURELY TO YOUR SITE -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
     <!-- Added Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -112,10 +117,8 @@
   <main class="flex-grow-1">
     <div class="container position-relative z-1 py-4">   
        <section id="schedule" class="section py-5" style="position: relative;">
-  <!-- Changed text-white to text-black -->
   <div class="container text-start text-black">
     
-    <!-- Section Title (Changed text-white to text-black) -->
     <!-- 1. RESPONSIVE HEADER -->
     <header class="bg-transparent py-4 py-md-5 mt-md-2 w-100 px-3 text-center">
       <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
@@ -131,7 +134,7 @@
       <!-- LEFT-HAND SIDE: TABLE & DISCLAIMER (75% width on large screens) -->
       <div class="col-12 col-lg-9">
         
-        <!-- Updated Wrapper: Adds a distinct rounded-4 shape and clips the table corners cleanly -->
+        <!-- Table Wrapper: Rounded corners and shadow clips cleanly -->
         <div class="w-100 rounded-4 overflow-hidden shadow">
           <div class="table-responsive">
             <table class="table table-hover align-middle fs-5 mb-0" style="--bs-table-hover-bg: rgba(0, 0, 0, 0.04);">
@@ -183,8 +186,8 @@
               </tbody>
 
             </table>
-          </div> <!-- Closes .table-responsive -->
-        </div> <!-- Closes rounded wrapper -->
+          </div>
+        </div>
 
         <!-- Info & Disclaimer -->
         <div class="w-100 mt-4">
@@ -203,43 +206,55 @@
       <div class="col-12 col-lg-3">
         <div class="h-100 d-flex flex-column">
           
-          <!-- Changed border color to dark alignment -->
           <h3 class="fs-4 fw-bold text-uppercase tracking-wide mb-3 pb-2 border-bottom" style="border-color: rgba(0, 0, 0, 0.15) !important;">
             Upcoming Events
           </h3>
 
-          <!-- Event 1 Item (Changed text-white to text-black) -->
-          <div class="mb-3 pb-3 border-bottom" style="border-color: rgba(0, 0, 0, 0.1) !important;">
-            <span class="badge bg-danger text-uppercase mb-1" style="font-size: 0.7rem;">Festival</span>
-            <h4 class="fs-6 fw-bold mb-1 text-black">Gloucestershire November Festival</h4>
-            <p class="small text-muted mb-0">More information to follow.</p>
+          <!-- HIGH-VISIBILITY GLOWING BREAKING NEWS CARD -->
+          <div class="p-3 mb-4 rounded-3 border border-2 border-warning shadow-sm position-relative overflow-hidden" 
+               style="background: linear-gradient(145deg, #fffbeb, #fef08a);">
+            
+            <div class="mb-2 d-inline-block px-2 py-1 bg-danger text-white rounded-pill fw-bold text-uppercase tracking-wider animate-flash" style="font-size: 0.65rem;">
+              <i class="fa fa-bolt me-1"></i>Breaking News
+            </div>
+            
+            <h4 class="fs-5 fw-black text-uppercase text-danger mb-1 tracking-wide">Save the Date!</h4>
+            <h5 class="fs-6 fw-extrabold text-dark mb-3">1st Gloucestershire Pickleball Festival</h5>
+            
+            <ul class="list-unstyled small text-dark mb-3 lh-sm">
+              <li class="mb-2"><i class="fa fa-calendar text-warning me-2"></i><strong>22nd November</strong></li>
+              <li class="mb-2"><i class="fa fa-clock-o text-warning me-2"></i><strong>9:30am - 4:00pm</strong></li>
+              <li class="mb-0"><i class="fa fa-map-marker text-warning me-2"></i><strong>Oxstalls Sports Park</strong></li>
+            </ul>
+
+            <p class="small text-muted mb-0 border-top pt-2 fw-medium" style="border-color: rgba(0,0,0,0.1) !important;">
+              History is in the making. Exciting details and registration options to follow soon!
+            </p>
           </div>
 
-          <!-- Event 2 Item (Changed text-white to text-black) -->
-          <div class="mb-4">
+          <!-- Event 2 Item -->
+          <div class="mb-3 pb-3 border-bottom" style="border-color: rgba(0, 0, 0, 0.1) !important;">
             <span class="badge bg-warning text-dark text-uppercase mb-1" style="font-size: 0.7rem;">Social Event</span>
             <h4 class="fs-6 fw-bold mb-1 text-black">Club Social & BBQ Nights</h4>
             <p class="small text-muted mb-0">Summer seasonal social announcements to follow.</p>
           </div>
 
-          <!-- Event 3 Item (Changed text-white to text-black) -->
+          <!-- Event 3 Item -->
           <div class="mb-4">
             <span class="badge bg-warning text-dark text-uppercase mb-1" style="font-size: 0.7rem;">GPL League</span>
             <h4 class="fs-6 fw-bold mb-1 text-black">Pickleball Gloucestershire League</h4>
-            <p class="small text-muted mb-0">3rd instalement - details being finalised. </p>
+            <p class="small text-muted mb-0">3rd instalment - details being finalised.</p>
           </div>
 
           <!-- Quick Actions / Useful External Navigation Links -->
           <div class="mt-auto pt-2">
-            <!-- Changed text-white-50 to text-muted -->
             <h5 class="fs-6 text-uppercase tracking-wider text-muted mb-2" style="font-size: 0.75rem;">Useful Links</h5>
             <div class="d-grid gap-2">
-              <!-- Swapped btn-outline-light for btn-outline-dark -->
               <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
                 <i class="bi bi-chevron-right me-1"></i> View Live Club Leaderboards
               </a>
-              <a href="#" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
-                <i class="bi bi-chevron-right me-1"></i> Player Registration Portal
+              <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
+                <i class="bi bi-chevron-right me-1"></i> Register on Picklebook
               </a>
             </div>
           </div>
@@ -248,9 +263,24 @@
       </div> <!-- Closes RHS Column -->
 
     </div> <!-- Closes Row -->
+  </div>
+</section>
 
-  </div> <!-- Closes top-level .container -->
-</section>   
+<!-- Additional Custom CSS Layout Support -->
+<style>
+  .fw-black { font-weight: 900; }
+  .fw-extrabold { font-weight: 800; }
+  .tracking-wide { letter-spacing: 0.05em; }
+  .tracking-wider { letter-spacing: 0.1em; }
+  
+  @keyframes flash {
+    0%, 100% { background-color: #dc3545; }
+    50% { background-color: #b91c1c; }
+  }
+  .animate-flash {
+    animation: flash 1.5s infinite ease-in-out;
+  }
+</style>   
     </div>
   </main>
 

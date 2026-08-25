@@ -13,9 +13,9 @@ background_image: "/images/glos flag.png"
       </h2>
     </div>
 
-    <!-- FIXED: Turned into a high-visibility glowing yellow/gold announcement container -->
-    <div class="w-100 w-lg-75 mx-auto py-5 px-4 border border-2 border-warning rounded-4 shadow-sm" 
-         style="background: linear-gradient(145deg, #fffbeb, #fef08a); position: relative; overflow: hidden;">
+    <!-- HIGH-VISIBILITY GOLD FLASHING ANNOUNCEMENT CONTAINER -->
+    <div class="w-100 w-lg-75 mx-auto py-5 px-4 border border-3 border-danger rounded-4 shadow-lg position-relative overflow-hidden" 
+         style="background: linear-gradient(145deg, #fffdf0, #fde047);">
       
       <!-- Subtle Decorative Background Star Graphics -->
       <div class="text-warning opacity-25 position-absolute" style="top: -20px; left: -20px; font-size: 90px; pointer-events: none;">
@@ -25,26 +25,77 @@ background_image: "/images/glos flag.png"
         <i class="fa fa-star"></i>
       </div>
 
+      <!-- Breaking News Alert Badge -->
+      <div class="mb-3 d-inline-block px-4 py-2 bg-danger text-white rounded-pill fw-bold text-uppercase tracking-wider shadow-sm animate-flash" style="font-size: 14px;">
+        <i class="fa fa-bolt me-2"></i>Breaking News
+      </div>
+
       <!-- Main Focal Yellow Star Icon -->
-      <div class="mb-3 text-warning drop-shadow" style="font-size: 48px;">
-        <i class="fa fa-star animate-pulse"></i>
+      <div class="mb-2 text-warning drop-shadow animate-bounce" style="font-size: 52px;">
+        <i class="fa fa-trophy"></i>
       </div>
       
       <!-- Main text block -->
-      <h3 class="display-5 fw-extrabold text-uppercase text-dark mb-2 tracking-wide">
-        Watch This Space
+      <h3 class="display-5 fw-black text-uppercase text-danger mb-3 tracking-wide">
+        Save the Date!
       </h3>
-      <p class="fs-5 text-dark mb-0 mx-auto fw-medium" style="max-width: 600px; line-height: 1.6;">
-        Discussions and planning are currently taking place regarding a gloucestershire Pickleball Festival. Check back soon or join our announcement groups to be the first to know!
+      
+      <h4 class="h2 fw-extrabold text-dark mb-4">
+        The First Gloucestershire Pickleball Festival
+      </h4>
+
+      <!-- Key Details Grid -->
+      <div class="row g-3 justify-content-center mb-4">
+        <div class="col-sm-5 col-md-4">
+          <div class="p-3 bg-white bg-opacity-75 rounded-3 border border-warning shadow-sm">
+            <div class="text-muted small text-uppercase fw-bold">Date</div>
+            <div class="fs-5 fw-bold text-dark">22nd November</div>
+          </div>
+        </div>
+        <div class="col-sm-5 col-md-4">
+          <div class="p-3 bg-white bg-opacity-75 rounded-3 border border-warning shadow-sm">
+            <div class="text-muted small text-uppercase fw-bold">Time</div>
+            <div class="fs-5 fw-bold text-dark">9:30am - 4:00pm</div>
+          </div>
+        </div>
+        <div class="col-10 col-md-8">
+          <div class="p-3 bg-white bg-opacity-75 rounded-3 border border-warning shadow-sm">
+            <div class="text-muted small text-uppercase fw-bold">Venue</div>
+            <div class="fs-5 fw-bold text-dark">Oxstalls Sports Park</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="fs-5 text-dark mb-0 mx-auto fw-bold text-uppercase tracking-wide" style="max-width: 600px; color: #1e293b;">
+        History is in the making. Full details and registration links are coming soon. Join our announcement groups to secure your spot first!
       </p>
     </div>
 
   </div>
 </section>
 
-<!-- Optional helper styles to make the yellow element pop -->
+<!-- Helper styles to make the elements pop and animate -->
 <style>
+  .fw-black { font-weight: 900; }
   .fw-extrabold { font-weight: 800; }
   .tracking-wide { letter-spacing: 0.05em; }
-  .drop-shadow { filter: drop-shadow(0px 2px 4px rgba(217, 119, 6, 0.4)); }
+  .tracking-wider { letter-spacing: 0.1em; }
+  .drop-shadow { filter: drop-shadow(0px 4px 6px rgba(217, 119, 6, 0.5)); }
+  
+  /* Animations */
+  @keyframes flash {
+    0%, 100% { opacity: 1; background-color: #dc3545; }
+    50% { opacity: 0.85; background-color: #b91c1c; }
+  }
+  .animate-flash {
+    animation: flash 1.5s infinite ease-in-out;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-bounce {
+    animation: bounce 2s infinite ease-in-out;
+  }
 </style>
