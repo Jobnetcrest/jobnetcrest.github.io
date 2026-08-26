@@ -1,0 +1,10 @@
+exclude:
+  - .vs
+  - .git
+  - .sass-cache
+  - node_modules
+  - vendor
+
+plugins:
+  - jekyll-sitemap
+

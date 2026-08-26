@@ -17,14 +17,14 @@ This template is designed to help you quickly set up a professional-looking webs
 
 1. **Download the Template:** Clone or download this repository to get started.
 2. **Customize Content:** Open the `index.html` file and replace the placeholder content with your own. Follow the comments in the code to easily identify where to place text, images, and other content.
-3. **Update Styles:** The `style.css` file contains the styles for the template. Modify it as needed to match your club's branding.
+3. **Update Styles:** The `site.css` file contains the styles for the template. Modify it as needed to match your club's branding.
 4. **Add Meta Tags:** For SEO and social media sharing, add meta tags in the `<head>` section of the `index.html` file. Comments are provided in the code to guide you on where to place these tags.
 5. **Deploy:** Once you're satisfied with the customization, deploy the website on your preferred platform (e.g., GitHub Pages, Netlify, etc.).
 
 ## File Structure
 
 - **index.html:** The main HTML file for the website.
-- **style.css:** The CSS file containing all styles for the template.
+- **site.css:** The CSS file containing all styles for the template.
 - **images/:** A directory for storing all images used in the template.
 - **README.md:** This file.
 - **LICENSE:** The MIT License file.

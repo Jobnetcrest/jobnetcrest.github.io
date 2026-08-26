@@ -172,9 +172,34 @@ td {
     h1 { font-size: 24px; }
     h2 { font-size: 20px; }
 }
-Use code with caution.
 
 #threeSlideCarousel .carousel-caption {
   top: 1%;       /* Adjust this percentage to push it higher or lower from the top */
   bottom: auto;  /* Clears Bootstrap's default bottom positioning */
 }
+
+.version{
+    font-size:8px;
+}
+
+/*section divider*/
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #234b58; /* var(--bs-border-color);  Dark grey bar background */
+    color: #fffdfd; /* var(--bs-body-color);Grey text colour */
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 100vw; /* Stretches across the full screen width */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 15px 0; /* Vertically spaces the bar */
+}
+
+    .divider span {
+        width: 100%; /* Centres text horizontally inside the bar */
+    }
