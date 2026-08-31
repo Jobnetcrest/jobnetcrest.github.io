@@ -4,6 +4,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Highlights the link corresponding to the current active Jekyll page */
+.navbar-nav .nav-link.active {
+    color: #234b58 !important;       /* Themes matching your dark slate blue */
+    font-weight: bold;               /* Emphasises the current active tab */
+    background-color: #f4f4f4;       /* Adds a clean, light grey contrast block */
+    border-radius: 4px;              
+}
 
 body {
     font-family: Arial, sans-serif;
