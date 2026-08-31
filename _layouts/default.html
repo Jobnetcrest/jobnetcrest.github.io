@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body class="min-vh-100 d-flex flex-column position-relative m-0 p-0 text-dark">
+<body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"> <!--removed p-o -->
 
   {% if page.background_image %}
     <!-- Flag Background Layer -->
@@ -70,9 +70,20 @@
           <li class="nav-item">
             <a class="nav-link" href="./coaching.html">Coaching</a>
           </li>
+          <!--
           <li class="nav-item">
             <a class="nav-link" href="./programmes.html">Programmes</a>
           </li>
+           -->
+          <!-- Disabled Item with Native Tooltip -->
+          <li class="nav-item d-flex align-items-center">  
+            <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
+              <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
+                Progs (Soon)
+              </a>
+            </span>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="./gallery.html">Gallery</a>
           </li>
@@ -147,6 +158,6 @@
   </script>
 
   <!-- Added Bootstrap Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

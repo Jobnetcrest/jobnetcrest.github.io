@@ -26,7 +26,16 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
+.disabled-wrapper {
+  cursor: not-allowed;      /* Shows the "no" sign on hover */
+}
 
+.disabled-nav {
+  color: #94a3b8;           
+  pointer-events: none;     /* Stops the link itself from being clickable */
+  opacity: 0.6;             
+  text-decoration: none;    
+}
 /* 
    NOTE: Custom legacy header & nav rules are removed or ignored 
    since Bootstrap 5 classes (.navbar, .navbar-expand-lg, .fixed-top) 
