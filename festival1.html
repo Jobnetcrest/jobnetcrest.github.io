@@ -4,6 +4,7 @@ background_image: "/images/glos flag.png"
 ---
 <!-- Font Awesome CDN Injection - FIXED -->
 
+
 <section id="league" class="section py-4 py-md-5" style="background-color: #022349;">
   <div class="container text-center text-white">
     
@@ -90,12 +91,12 @@ background_image: "/images/glos flag.png"
               <div class="position-relative text-start" style="z-index: 1;">
                 <div class="mb-2 text-primary fs-3"><i class="fas fa-graduation-cap"></i></div>
                 <div class="text-primary small text-uppercase fw-black mb-1 tracking-wider">Coaching</div>
-                <div class="h4 fw-black text-dark text-uppercase">Tasters &amp; Masterclasses</div>
+                <div class="h4 fw-black text-dark text-uppercase">Intro &amp; Masterclasses</div>
                 <div class="text-muted small mt-2">Certified pros on-site running clinics for all skill tiers.</div>
               </div>
               <div class="mt-4 text-start position-relative" style="z-index: 1;">
                 <a href="#coaching-schedule" class="btn btn-primary fw-black text-uppercase tracking-wider w-100 py-2 rounded-3 border-0 custom-btn-accent">
-                  Coaching Schedule <i class="fas fa-chevron-right ms-1 small"></i>
+                  Meet Coaches <i class="fas fa-chevron-right ms-1 small"></i>
                 </a>
               </div>
             </div>
@@ -127,22 +128,33 @@ background_image: "/images/glos flag.png"
             <div class="p-4 bg-white rounded-4 border-2 border-warning shadow h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
               <div class="custom-card-accent bg-warning"></div>
               <div class="position-relative text-start" style="z-index: 1;">
-                <div class="mb-2 text-primary fs-3"><i class="fas fa-gavel"></i></div>
-                <div class="text-primary small text-uppercase fw-black mb-1 tracking-wider">Terms</div>
-                <div class="h4 fw-black text-dark text-uppercase">Rules &amp; Regulations</div>
-                <div class="text-muted small mt-2">Standard pickleball association parameters apply to all flights.</div>
+                <div class="mb-2 text-primary fs-3"><i class="fas fa-file-contract"></i></div>
+                <div class="text-primary small text-uppercase fw-black mb-1 tracking-wider">Rules</div>
+                <div class="h4 fw-black text-dark text-uppercase">Terms &amp; Conditions</div>
+                <div class="text-muted small mt-2">Please read our event documentation and tournament waivers.</div>
               </div>
               <div class="mt-4 text-start position-relative" style="z-index: 1;">
-                <a href="#terms-conditions" class="btn btn-primary fw-black text-uppercase tracking-wider w-100 py-2 rounded-3 border-0 custom-btn-accent">
-                  View Rules <i class="fas fa-chevron-right ms-1 small"></i>
+                <a href="#terms-details" class="btn btn-primary fw-black text-uppercase tracking-wider w-100 py-2 rounded-3 border-0 custom-btn-accent">
+                  Read Terms <i class="fas fa-chevron-right ms-1 small"></i>
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-      </div> <!-- /Four Quarters Details Grid -->
-    </div> <!-- /High-Visibility Main Container -->
+      </div> <!-- /Original Quarters Details Grid -->
+
+      <!-- MAIN REGISTRATION CALL TO ACTION BUTTON -->
+      <div class="mt-5 pt-2 text-center position-relative" style="z-index: 3;">
+        <a href="#registration-form" class="btn btn-warning btn-lg px-5 py-3 rounded-pill fw-black text-uppercase tracking-wider text-dark fs-4 border border-3 border-white shadow-2xl animate-pulse d-inline-flex align-items-center justify-content-center gap-2" style="transition: all 0.3s ease;">
+          <i class="fas fa-ticket-alt"></i> Register Now
+        </a>
+        <div class="text-white opacity-75 small mt-2 fw-bold tracking-wide text-uppercase">
+          <i class="fas fa-fire me-1 text-warning"></i> Limited Spots Available!
+        </div>
+      </div>
+
+    </div> <!-- /Announcement Container -->
   </div> <!-- /Container -->
 </section>
 
@@ -259,4 +271,22 @@ background_image: "/images/glos flag.png"
             <p>Details about the terms and conditions for participating in the event. Please read our event documentation and tournament waivers.</p>
         </div>
     </section>
+    
 
+<!-- Advanced high-energy style overrides matching club design language -->
+<style>
+  .fw-black { font-weight: 900; }
+  .tracking-widest { letter-spacing: 0.15em; }
+  .drop-shadow { filter: drop-shadow(0px 8px 12px rgba(250, 204, 21, 0.4)); }
+  .text-shadow-sm { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+  
+  /* High Velocity Animations */
+  @keyframes flash {
+    0%, 100% { background-color: #facc15; color: #021a37; transform: scale(1); }
+    50% { background-color: #eab308; color: #000000; transform: scale(1.03); }
+  }
+  .animate-flash {
+    animation: flash 2s infinite ease-in-out;
+  }
+
+  @keyframes floating {
