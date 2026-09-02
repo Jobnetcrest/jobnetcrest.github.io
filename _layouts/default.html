@@ -102,6 +102,12 @@
        {% if page.url contains '/gallery' %}aria-current="page"{% endif %} 
        href="{{ '/gallery.html' | relative_url }}">Gallery</a>
   </li>
+
+    <li class="nav-item">
+    <a class="nav-link {% if page.url contains '/Evengallery' %}active{% endif %}" 
+       {% if page.url contains '/festival' %}aria-current="page"{% endif %} 
+       href="{{ '/festival.html' | relative_url }}">Festival</a>
+  </li>
   
   <li class="nav-item">
     <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" 
