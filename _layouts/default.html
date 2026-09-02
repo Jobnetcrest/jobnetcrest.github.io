@@ -9,14 +9,14 @@
         
     <title>Gloucestershire Pickleball</title>
 
-        <!-- ALLOWS FACEBOOK TO SEND IMAGES SECURELY TO YOUR SITE -->
+    <!-- ALLOWS FACEBOOK TO SEND IMAGES SECURELY TO YOUR SITE -->
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <!-- Added Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   
     <link rel="stylesheet" href="site.css"> 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link class="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -31,7 +31,7 @@
 </head>
 
 
-<body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"> <!--removed p-o -->
+<body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"> <!-- removed p-0 -->
 
   {% if page.background_image %}
     <!-- Flag Background Layer -->
@@ -61,93 +61,86 @@
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left side links -->
-<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-  <li class="nav-item">
-    <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}" 
-       {% if page.url == '/' or page.url == '/index.html' %}aria-current="page"{% endif %} 
-       href="{{ '/' | relative_url }}">Home</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/about' %}active{% endif %}" 
-       {% if page.url contains '/about' %}aria-current="page"{% endif %} 
-       href="{{ '/about.html' | relative_url }}">About Us</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/schedule' %}active{% endif %}" 
-       {% if page.url contains '/schedule' %}aria-current="page"{% endif %} 
-       href="{{ '/schedule.html' | relative_url }}">Schedule</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/coaching' %}active{% endif %}" 
-       {% if page.url contains '/coaching' %}aria-current="page"{% endif %} 
-       href="{{ '/coaching.html' | relative_url }}">Coaching</a>
-  </li>
-  
-  <!--
-  <li class="nav-item">
-    <a class="nav-link" href="{{ '/programmes.html' | relative_url }}">Programmes</a>
-  </li>
-  -->
-  
-  <!-- Disabled Item with Native Tooltip -->
-  <li class="nav-item d-flex align-items-center">  
-    <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
-      <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
-        Programmes
-      </a>
-    </span>
-  </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}" 
+               {% if page.url == '/' or page.url == '/index.html' %}aria-current="page"{% endif %} 
+               href="{{ '/' | relative_url }}">Home</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/about' %}active{% endif %}" 
+               {% if page.url contains '/about' %}aria-current="page"{% endif %} 
+               href="{{ '/about.html' | relative_url }}">About Us</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/schedule' %}active{% endif %}" 
+               {% if page.url contains '/schedule' %}aria-current="page"{% endif %} 
+               href="{{ '/schedule.html' | relative_url }}">Schedule</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/coaching' %}active{% endif %}" 
+               {% if page.url contains '/coaching' %}aria-current="page"{% endif %} 
+               href="{{ '/coaching.html' | relative_url }}">Coaching</a>
+          </li>
+          
+          <!-- Disabled Item with Native Tooltip -->
+          <li class="nav-item d-flex align-items-center">  
+            <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
+              <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
+                Training
+              </a>
+            </span>
+          </li>
 
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/gallery' %}active{% endif %}" 
-       {% if page.url contains '/gallery' %}aria-current="page"{% endif %} 
-       href="{{ '/gallery.html' | relative_url }}">Gallery</a>
-  </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/gallery' %}active{% endif %}" 
+               {% if page.url contains '/gallery' %}aria-current="page"{% endif %} 
+               href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+          </li>
 
-    <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/Evengallery' %}active{% endif %}" 
-       {% if page.url contains '/festival' %}aria-current="page"{% endif %} 
-       href="{{ '/festival.html' | relative_url }}">Festival</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" 
-       {% if page.url contains '/contact' %}aria-current="page"{% endif %} 
-       href="{{ '/contact.html' | relative_url }}">Contact</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/news' %}active{% endif %}" 
-       {% if page.url contains '/news' %}aria-current="page"{% endif %} 
-       href="{{ '/news.html' | relative_url }}">News</a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}" 
-       {% if page.url contains '/pickle' %}aria-current="page"{% endif %} 
-       href="{{ '/pickle resources.html' | relative_url }}">Pickleball Resources</a>
-  </li>
-</ul>
-
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/festival' or page.url contains '/Evengallery' %}active{% endif %}" 
+               {% if page.url contains '/festival' or page.url contains '/Evengallery' %}aria-current="page"{% endif %} 
+               href="{{ '/festival.html' | relative_url }}">Festival</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" 
+               {% if page.url contains '/contact' %}aria-current="page"{% endif %} 
+               href="{{ '/contact.html' | relative_url }}">Contact</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/news' %}active{% endif %}" 
+               {% if page.url contains '/news' %}aria-current="page"{% endif %} 
+               href="{{ '/news.html' | relative_url }}">News</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}" 
+               {% if page.url contains '/pickle' %}aria-current="page"{% endif %} 
+               href="{{ '/pickle-resources.html' | relative_url }}">Pickleball Resources</a>
+          </li>
+        </ul>
 
         <!-- Right side social icons -->
         <ul class="navbar-nav d-flex flex-row gap-3">
           <li class="nav-item">
             <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank" rel="noopener">
-              <i class="fa fa-facebook" style="font-size:32px; color:#1877F2;"></i>
+              <i class="fa-brands fa-facebook" style="font-size:32px; color:#1877F2;"></i>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
-              <i class="fa fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
+              <i class="fa-brands fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="mailto:glospickle@gmail.com"> 
-              <i class="fa fa-envelope" style="font-size:32px; color:#EA4335;"></i>
+              <i class="fa-solid fa-envelope" style="font-size:32px; color:#EA4335;"></i>
             </a>
           </li>
         </ul>
@@ -156,10 +149,7 @@
     </div> <!-- Closes .container -->
   </nav> <!-- Closes navbar -->
 
-
-
-
-  <!-- Main Content Area (flex-grow keeps footer at bottom if content is short) -->
+  <!-- Main Content Area -->
   <main class="flex-grow-1">
     <div class="container position-relative z-1 py-4">   
        {{ content }}   
@@ -172,8 +162,8 @@
           <p class="mb-1">&copy; 2026 Pickleball Gloucestershire. All rights reserved.</p>
           <p class="mb-0"><a href="policy.html" class="text-decoration-none text-info">Our Policies</a></p>
       </div>
-      <div class="version">
-          Version:{{site.time|date:"%Y%m%d%T"}}
+      <div class="version text-center text-muted small mt-2">
+          Version: {{ site.time | date: "%Y%m%d%H%M%S" }}
       </div>
   </footer>
 
@@ -184,9 +174,12 @@
               const targetId = this.getAttribute('href');
               if (targetId !== '#') {
                   e.preventDefault();
-                  document.querySelector(targetId).scrollIntoView({
-                      behavior: 'smooth'
-                  });
+                  const targetElement = document.querySelector(targetId);
+                  if (targetElement) {
+                      targetElement.scrollIntoView({
+                          behavior: 'smooth'
+                      });
+                  }
               }
           });
       });
