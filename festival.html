@@ -2,100 +2,206 @@
 layout: default
 background_image: "/images/glos flag.png"
 ---
+<!-- Font Awesome CDN Injection - FIXED -->
+<link rel="stylesheet" href="https://cloudflare.com" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <section id="league" class="section py-4 py-md-5">
   <div class="container text-center text-black">
     
     <!-- Section Title -->
     <div class="d-inline-block pb-2 mb-4 mb-md-5 border-bottom border-4 border-dark">
-      <h2 class="display-4 display-md-2 fw-bold mb-0 text-uppercase">
+      <h2 class="display-4 display-md-2 fw-black mb-0 text-uppercase tracking-wider">
         Festival Details
       </h2>
     </div>
 
-    <!-- HIGH-VISIBILITY GOLD FLASHING ANNOUNCEMENT CONTAINER -->
-    <div class="w-100 w-lg-75 mx-auto py-5 px-4 border border-3 border-danger rounded-4 shadow-lg position-relative overflow-hidden" 
-         style="background: linear-gradient(145deg, #fffdf0, #fde047);">
+    <!-- HIGH-VISIBILITY GOLD FLASHING ANNOUNCEMENT CONTAINER WITH CONFETTI BACKGROUND -->
+    <div class="w-100 mx-auto py-5 px-4 border border-4 border-danger rounded-5 shadow-2xl position-relative overflow-hidden custom-pulse-border" 
+         style="background: linear-gradient(135deg, #fffbeb 0%, #fef08a 50%, #facc15 100%); max-width: 950px;">
       
-      <!-- Subtle Decorative Background Star Graphics -->
-      <div class="text-warning opacity-25 position-absolute" style="top: -20px; left: -20px; font-size: 90px; pointer-events: none;">
-        <i class="fas fa-star"></i>
+      <!-- Sparkle & Star Decorative Graphics -->
+      <div class="text-danger opacity-25 position-absolute animate-spin-slow" style="top: -10px; left: -10px; font-size: 110px; pointer-events: none;">
+        <i class="fa fa-sparkles"></i>
       </div>
-      <div class="text-warning opacity-25 position-absolute" style="bottom: -20px; right: -20px; font-size: 90px; pointer-events: none;">
-        <i class="fas fa-star"></i>
-      </div>
-
-      <!-- Breaking News Alert Badge -->
-      <div class="mb-3 d-inline-block px-4 py-2 bg-danger text-white rounded-pill fw-bold text-uppercase tracking-wider shadow-sm animate-flash" style="font-size: 14px;">
-        <i class="fas fa-bolt me-2"></i>Breaking News
+      <div class="text-danger opacity-25 position-absolute animate-spin-slow" style="bottom: -10px; right: -10px; font-size: 110px; pointer-events: none;">
+        <i class="fa fa-star-of-david"></i>
       </div>
 
-      <!-- Main Focal Yellow Star Icon -->
-      <div class="mb-2 text-warning drop-shadow animate-bounce" style="font-size: 52px;">
-        <i class="fas fa-trophy"></i>
+      <!-- ULTRA ENLARGED FLASHING BREAKING NEWS ALERT BADGE -->
+      <div class="mb-4 d-inline-block px-5 py-3 bg-danger text-white rounded-pill fw-black text-uppercase tracking-widest shadow-lg animate-flash fs-4 border border-2 border-white">
+        <i class="fa fa-fire me-2 animate-bounce-fast"></i>Breaking News
+      </div>
+
+      <!-- GLOWING TIME & DATE STICKY BANNER -->
+      <div class="d-block mb-4">
+        <div class="d-inline-flex flex-wrap justify-content-center gap-3 p-3 bg-dark rounded-pill px-5 text-white shadow-lg position-relative border border-2 border-warning custom-glow" style="z-index: 2;">
+          <span class="fs-5 fw-black text-uppercase"><i class="fa fa-calendar-check text-warning me-2 animate-pulse"></i>22nd November</span>
+          <span class="text-warning fw-bold">|</span>
+          <span class="fs-5 fw-black text-uppercase"><i class="fa fa-stopwatch text-warning me-2 animate-pulse"></i>9:30am - 4:00pm</span>
+        </div>
+      </div>
+
+      <!-- Main Focal Yellow Trophy Icon with Fire Badge -->
+      <div class="mb-2 text-danger drop-shadow animate-bounce position-relative d-inline-block" style="font-size: 64px;">
+        <i class="fa fa-trophy text-warning"></i>
       </div>
       
       <!-- Main text block -->
-      <h3 class="display-5 fw-black text-uppercase text-danger mb-3 tracking-wide">
+      <h3 class="display-4 fw-black text-uppercase text-danger mb-2 tracking-widest text-shadow-sm">
         Save the Date!
       </h3>
       
-      <h4 class="h2 fw-extrabold text-dark mb-4">
-        The First Gloucestershire Pickleball Festival
+      <h4 class="display-6 fw-black text-dark mb-5 text-uppercase tracking-wide px-2">
+        The Double Gloucester <span class="text-danger">Pickleball</span> Festival
       </h4>
 
-      <!-- Key Details Grid -->
-      <div class="row g-3 justify-content-center mb-4">
-        <div class="col-sm-5 col-md-4">
-          <div class="p-3 bg-white bg-opacity-75 rounded-3 border border-warning shadow-sm">
-            <div class="text-muted small text-uppercase fw-bold">Date</div>
-            <div class="fs-5 fw-bold text-dark">22nd November</div>
+      <!-- The 4 Quarters Details Stacked Rows Grid -->
+      <div class="w-100 w-md-100 mx-auto mb-5 px-md-3">
+        
+        <!-- Row 1: Format & Coaching -->
+        <div class="row g-4 mb-4 justify-content-center">
+          <!-- Quarter 1: Format -->
+          <div class="col-12 col-md-6 transform-hover">
+            <div class="p-4 bg-white rounded-4 border-2 border-warning shadow h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+              <div class="custom-card-accent bg-danger"></div>
+              <div class="position-relative" style="z-index: 1;">
+                <div class="mb-2 text-danger fs-3"><i class="fa fa-bolt"></i></div>
+                <div class="text-danger small text-uppercase fw-black mb-1 tracking-wider">Format</div>
+                <div class="h4 fw-black text-dark text-uppercase">Group Stages &amp; Knockout</div>
+              </div>
+              <div class="text-muted small mt-2 position-relative" style="z-index: 1;">Cascading brackets ensure non-stop matches &amp; multiple premium games for every single team!</div>
+            </div>
+          </div>
+
+          <!-- Quarter 2: Coaching -->
+          <div class="col-12 col-md-6 transform-hover">
+            <div class="p-4 bg-white rounded-4 border-2 border-warning shadow h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+              <div class="custom-card-accent bg-warning"></div>
+              <div class="position-relative" style="z-index: 1;">
+                <div class="mb-2 text-danger fs-3"><i class="fa fa-rocket"></i></div>
+                <div class="text-danger small text-uppercase fw-black mb-1 tracking-wider">Coaching</div>
+                <div class="h4 fw-black text-dark text-uppercase">Intro &amp; Masterclasses</div>
+              </div>
+              <div class="text-muted small mt-2 position-relative" style="z-index: 1;">Certified pro players on-site running elite clinics and strategy labs for all skill tiers.</div>
+            </div>
           </div>
         </div>
-        <div class="col-sm-5 col-md-4">
-          <div class="p-3 bg-white bg-opacity-75 rounded-3 border border-warning shadow-sm">
-            <div class="text-muted small text-uppercase fw-bold">Time</div>
-            <div class="fs-5 fw-bold text-dark">9:30am - 4:00pm</div>
+
+        <!-- Row 2: Venue & Terms and Conditions -->
+        <div class="row g-4 justify-content-center">
+          <!-- Quarter 3: Venue -->
+          <div class="col-12 col-md-6 transform-hover">
+            <div class="p-4 bg-white rounded-4 border-2 border-warning shadow h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+              <div class="custom-card-accent bg-dark"></div>
+              <div class="position-relative" style="z-index: 1;">
+                <div class="mb-2 text-danger fs-3"><i class="fa fa-map-marked-alt"></i></div>
+                <div class="text-danger small text-uppercase fw-black mb-1 tracking-wider">Venue</div>
+                <div class="h4 fw-black text-dark text-uppercase">Oxstalls Sports Park</div>
+              </div>
+              <div class="text-muted small mt-2 position-relative" style="z-index: 1;">Plock Court, Tewkesbury Road, Gloucester GL2 9DW. Premium indoor court facilities.</div>
+            </div>
+          </div>
+
+          <!-- Quarter 4: Terms & Conditions -->
+          <div class="col-12 col-md-6 transform-hover">
+            <div class="p-4 bg-white rounded-4 border-2 border-warning shadow h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+              <div class="custom-card-accent bg-danger"></div>
+              <div class="position-relative" style="z-index: 1;">
+                <div class="mb-2 text-danger fs-3"><i class="fa fa-shield-alt"></i></div>
+                <div class="text-danger small text-uppercase fw-black mb-1 tracking-wider">Terms &amp; Conditions</div>
+                <div class="h4 fw-black text-dark text-uppercase">Ages 16+ / Safe Play</div>
+              </div>
+              <div class="text-muted small mt-2 position-relative" style="z-index: 1;">Pre-registration mandatory. Limited bracket spots. Standard tournament rules apply.</div>
+            </div>
           </div>
         </div>
-        <div class="col-10 col-md-8">
-          <div class="p-3 bg-white bg-opacity-75 rounded-3 border border-warning shadow-sm">
-            <div class="text-muted small text-uppercase fw-bold">Venue</div>
-            <div class="fs-5 fw-bold text-dark">Oxstalls Sports Park</div>
-          </div>
-        </div>
+
       </div>
 
-      <p class="fs-5 mb-0 mx-auto fw-bold text-uppercase tracking-wide" style="max-width: 600px; color: #1e293b;">
-        History is in the making. Full details and registration links are coming soon. Join our announcement groups to secure your spot first!
-      </p>
+      <!-- Action Callout Box -->
+      <div class="p-4 bg-dark text-white rounded-4 shadow mb-2 mx-auto" style="max-width: 750px;">
+        <p class="fs-5 mb-0 fw-bold text-uppercase tracking-wide text-warning animate-pulse">
+          ⚡ History is in the making! ⚡
+        </p>
+        <p class="small text-light mt-1 mb-0">
+          Full details and registration portals launch soon. Join our priority announcement list to lock down your bracket spot ahead of the crowd!
+        </p>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- Helper styles to make the elements pop and animate -->
+<!-- Advanced high-energy style overrides -->
 <style>
   .fw-black { font-weight: 900; }
-  .fw-extrabold { font-weight: 800; }
-  .tracking-wide { letter-spacing: 0.05em; }
-  .tracking-wider { letter-spacing: 0.1em; }
-  .drop-shadow { filter: drop-shadow(0px 4px 6px rgba(217, 119, 6, 0.5)); }
+  .tracking-widest { letter-spacing: 0.15em; }
+  .drop-shadow { filter: drop-shadow(0px 8px 12px rgba(220, 53, 69, 0.4)); }
+  .text-shadow-sm { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
   
-  /* Animations */
+  /* Left Colored Border Strip Accent for Grid Elements */
+  .custom-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+  }
+
+  /* Animated Border Pulse for Dashboard Wrapper */
+  @keyframes borderPulse {
+    0%, 100% { border-color: #dc3545; box-shadow: 0 10px 25px -5px rgba(220, 53, 69, 0.3); }
+    50% { border-color: #facc15; box-shadow: 0 25px 50px -12px rgba(250, 204, 21, 0.5); }
+  }
+  .custom-pulse-border {
+    animation: borderPulse 3s infinite ease-in-out;
+  }
+
+  /* Soft Outer Shadow Glow for Main Date Component */
+  .custom-glow {
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.4) !important;
+  }
+
+  /* Hover Lift Effects for Grid Components */
+  .transform-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .transform-hover:hover {
+    transform: translateY(-5px);
+  }
+
+  /* High Velocity Animations */
   @keyframes flash {
-    0%, 100% { opacity: 1; background-color: #dc3545; }
-    50% { opacity: 0.85; background-color: #b91c1c; }
+    0%, 100% { background-color: #dc3545; transform: scale(1); }
+    50% { background-color: #991b1b; transform: scale(1.03); }
   }
   .animate-flash {
-    animation: flash 1.5s infinite ease-in-out;
+    animation: flash 1.2s infinite ease-in-out;
   }
 
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-12px); }
   }
   .animate-bounce {
-    animation: bounce 2s infinite ease-in-out;
+    animation: bounce 1.8s infinite ease-in-out;
+  }
+
+  @keyframes bounceFast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  .animate-bounce-fast {
+    display: inline-block;
+    animation: bounceFast 0.6s infinite ease-in-out;
+  }
+
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spinSlow 20s infinite linear;
   }
 </style>
+
