@@ -80,10 +80,14 @@
                href="{{ '/schedule.html' | relative_url }}">Schedule</a>
           </li>
           
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/coaching' %}active{% endif %}" 
-               {% if page.url contains '/coaching' %}aria-current="page"{% endif %} 
-               href="{{ '/coaching.html' | relative_url }}">Coaching</a>
+          
+          <!-- Disabled Item with Native Tooltip -->
+          <li class="nav-item d-flex align-items-center">  
+            <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
+              <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
+                Coaching
+              </a>
+            </span>
           </li>
           
           <!-- Disabled Item with Native Tooltip -->
