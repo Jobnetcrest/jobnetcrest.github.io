@@ -38,110 +38,129 @@ background_image: ""
         </tr>
       </thead>
       
-      <!-- Table Body with Custom Row Colours -->
+<!-- Table Wrapper: Removed text-nowrap and optimized spacing to fit small windows -->
+<div class="w-100 rounded-4 overflow-hidden shadow">
+  <div class="table-responsive w-100">
+    <table class="table table-hover align-middle mb-0" style="--bs-table-hover-bg: rgba(0, 0, 0, 0.04); font-size: 0.9rem;">
+      
+      <!-- Black Title Row with White Text -->
+      <thead class="table-dark text-white text-uppercase tracking-wide">
+        <tr style="font-size: 0.75rem;">
+          <th scope="col" class="py-3 text-center" style="width: 20%;">Day / Time</th>
+          <th scope="col" class="py-3" style="width: 15%;">Organisation</th>
+          <th scope="col" class="py-3" style="width: 22%;">Session Type</th>
+          <th scope="col" class="py-3" style="width: 23%;">Venue</th>
+          <th scope="col" class="py-3" style="width: 12%;">Price</th>
+          <th scope="col" class="py-3 text-end pe-3" style="width: 8%;">Booking</th>
+        </tr>
+      </thead>
+      
+      <!-- Table Body -->
       <tbody>
-        <!-- Row 1: Tuesday Beginners (Freedom Leisure - Soft Pink Background) -->
+        <!-- ROW GROUP 1: PICKLEBALL GLOUCESTERSHIRE -->
+        <!-- Row 1: Wednesday Graded -->
+        <tr style="background-color: #f1f6ff !important;">
+          <td class="fw-bold text-center py-3" style="background-color: transparent !important;">
+            Wed 
+            <div class="text-muted fw-normal" style="font-size: 0.75rem;">20:00-21:30</div>
+            <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+          </td>
+          <td class="py-3 fw-bold" style="color: #4a77d4; background-color: transparent !important;">
+            * Pickleball
+            <div class="fw-normal text-dark">Gloucestershire</div>
+          </td>
+          <td class="py-3" style="background-color: transparent !important;"><span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #4a77d4;">Graded</span></td>            
+          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a></td>
+          <td class="fw-semibold py-3" style="background-color: transparent !important;">£7.00</td>
+          <td class="text-end pe-3 py-3" style="background-color: transparent !important;">
+            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please book via PBTable">
+              <button class="btn btn-sm px-2 fw-bold pe-none text-white" type="button" style="font-size: 0.8rem; background-color: #1a1a1a;" disabled>Book</button>
+            </span>
+          </td>
+        </tr>
+
+        <!-- Row 2: Friday Social Play -->
+        <tr style="background-color: #f1f6ff !important;">
+          <td class="fw-bold text-center py-3" style="background-color: transparent !important;">
+            Fri 
+            <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:30</div>
+            <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+          </td>
+          <td class="py-3 fw-bold" style="color: #4a77d4; background-color: transparent !important;">
+            * Pickleball
+            <div class="fw-normal text-dark">Gloucestershire</div>
+          </td>
+          <td class="py-3" style="background-color: transparent !important;"><span class="badge text-dark px-2 py-1" style="font-size: 0.7rem; background-color: #e6ee1a; font-weight: 700;">Social Play</span></td>              
+          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a></td>
+          <td class="fw-semibold py-3" style="background-color: transparent !important;">£7.00</td>
+          <td class="text-end pe-3 py-3" style="background-color: transparent !important;">
+            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please book via PBTable">
+              <button class="btn btn-sm px-2 fw-bold pe-none text-white" type="button" style="font-size: 0.8rem; background-color: #1a1a1a;" disabled>Book</button>
+            </span>
+          </td>
+        </tr>
+
+        <!-- INLINE BRAND SEPARATOR & DISCLAIMER ROW -->
+        <tr class="table-dark" style="background-color: #1a1a1a !important;">
+          <td colspan="6" class="py-2 px-3 text-start text-white fw-normal" style="font-size: 0.8rem; background-color: transparent !important;">
+            * <strong style="color: #4a77d4;">Note:</strong> Booking restrictions and external platform redirections apply exclusively to <strong style="color: #4a77d4;">Pickleball Gloucestershire</strong> sessions.
+          </td>
+        </tr>
+
+        <!-- ROW GROUP 2: FREEDOM LEISURE -->
+        <!-- Row 3: Tuesday Beginners -->
         <tr style="background-color: #fff0f3 !important;">
           <td class="fw-bold text-center py-3" style="background-color: transparent !important;">
             Tues 
             <div class="text-muted fw-normal" style="font-size: 0.75rem;">18:00-19:30</div>
             <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
           </td>     
-          <td class="py-3 fw-normal text-dark" style="background-color: transparent !important;">
+          <td class="py-3 fw-bold" style="color: #63256b; background-color: transparent !important;">
             Freedom
-            <div>Leisure</div>
+            <div class="fw-normal text-dark">Leisure</div>
           </td>
           <td class="py-3" style="background-color: transparent !important;"><span class="badge bg-success text-white px-2 py-1" style="font-size: 0.7rem;">Beginners Class</span></td>              
-          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline">Oxstalls Tennis Centre</a></td>
+          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a></td>
           <td class="fw-semibold py-3" style="background-color: transparent !important;">See Freedom Leisure</td>
           <td class="text-end pe-3 py-3" style="background-color: transparent !important;">
-            <a href="https://gladstonego.cloud" target="_blank" rel="noopener" class="btn btn-sm btn-dark px-2 fw-bold" style="font-size: 0.8rem;">Book</a>
+            <a href="https://gladstonego.cloud" target="_blank" rel="noopener" class="btn btn-sm text-white px-2 fw-bold" style="font-size: 0.8rem; background-color: #63256b;">Book</a>
           </td>
         </tr>
 
-        <!-- Row 2: Tuesday Improvers (Freedom Leisure - Soft Pink Background) -->
+        <!-- Row 4: Tuesday Improvers -->
         <tr style="background-color: #fff0f3 !important;">
           <td class="fw-bold text-center py-3" style="background-color: transparent !important;">
             Tues 
             <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:00</div>
             <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
           </td>      
-          <td class="py-3 fw-normal text-dark" style="background-color: transparent !important;">
+          <td class="py-3 fw-bold" style="color: #63256b; background-color: transparent !important;">
             Freedom
-            <div>Leisure</div>
+            <div class="fw-normal text-dark">Leisure</div>
           </td>
           <td class="py-3" style="background-color: transparent !important;"><span class="badge bg-success text-white px-2 py-1" style="font-size: 0.7rem;">Improvers Class</span></td>              
-          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline">Oxstalls Tennis Centre</a></td>
+          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a></td>
           <td class="fw-semibold py-3" style="background-color: transparent !important;">See Freedom Leisure</td>
           <td class="text-end pe-3 py-3" style="background-color: transparent !important;">
-            <a href="https://gladstonego.cloud" target="_blank" rel="noopener" class="btn btn-sm btn-dark px-2 fw-bold" style="font-size: 0.8rem;">Book</a>
+            <a href="https://gladstonego.cloud" target="_blank" rel="noopener" class="btn btn-sm text-white px-2 fw-bold" style="font-size: 0.8rem; background-color: #63256b;">Book</a>
           </td>
         </tr>
 
-        <!-- Row 3: Thursday Coming Soon (Freedom Leisure - Soft Pink Background) -->
+        <!-- Row 5: Thursday Coming Soon -->
         <tr style="background-color: #fff0f3 !important;">
           <td class="fw-bold text-center py-3" style="background-color: transparent !important;">
             Thurs
             <div class="text-muted fw-normal" style="font-size: 0.75rem;">Day Time</div>
             <div class="text-muted fw-normal" style="font-size: 0.75rem;">Coming Soon</div>
           </td>      
-          <td class="py-3 fw-normal text-dark" style="background-color: transparent !important;">
+          <td class="py-3 fw-bold" style="color: #63256b; background-color: transparent !important;">
             Freedom
-            <div>Leisure</div>
+            <div class="fw-normal text-dark">Leisure</div>
           </td>
           <td class="py-3" style="background-color: transparent !important;"><span class="badge bg-secondary text-white px-2 py-1" style="font-size: 0.7rem;">Pickleball Session</span></td>              
-          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline">Oxstalls Tennis Centre</a></td>
-          <td class="fw-semibold py-3" style="background-color: transparent !important;">See Freedom Leisure</td>
-          <td class="text-end pe-3 py-3" style="background-color: transparent !important;">
-            <button class="btn btn-sm btn-dark px-2 fw-bold pe-none" type="button" style="font-size: 0.8rem;" disabled>Book</button>
-          </td>
-        </tr>
+          <td class="py-3" style="background-color: transparent !important;"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a></td>
 
-        <!-- Row 4: Wednesday Graded (Pickleball Gloucestershire - Clean White Background) -->
-        <tr class="table-light text-dark">
-          <td class="fw-bold text-center py-3">
-            Wed 
-            <div class="text-muted fw-normal" style="font-size: 0.75rem;">20:00-21:30</div>
-            <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-          </td>
-          <td class="py-3 fw-normal text-dark">
-            * Pickleball
-            <div>Gloucestershire</div>
-          </td>
-          <td class="py-3"><span class="badge bg-primary text-white px-2 py-1" style="font-size: 0.7rem;">Graded</span></td>            
-          <td class="py-3"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline">Oxstalls Tennis Centre</a></td>
-          <td class="fw-semibold py-3">£7.00</td>
-          <td class="text-end pe-3 py-3">
-            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please book via PBTable">
-              <button class="btn btn-sm btn-dark px-2 fw-bold pe-none" type="button" style="font-size: 0.8rem;" disabled>Book</button>
-            </span>
-          </td>
-        </tr>
 
-        <!-- Row 5: Friday Social Play (Pickleball Gloucestershire - Clean White Background) -->
-        <tr class="table-light text-dark">
-          <td class="fw-bold text-center py-3">
-            Fri 
-            <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:30</div>
-            <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-          </td>
-          <td class="py-3 fw-normal text-dark">
-            * Pickleball
-            <div>Gloucestershire</div>
-          </td>
-          <td class="py-3"><span class="badge bg-success text-white px-2 py-1" style="font-size: 0.7rem;">Social Play</span></td>              
-          <td class="py-3"><a href="https://google.com" target="_blank" rel="noopener" class="text-decoration-underline">Oxstalls Tennis Centre</a></td>
-          <td class="fw-semibold py-3">£7.00</td>
-          <td class="text-end pe-3 py-3">
-            <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please book via PBTable">
-              <button class="btn btn-sm btn-dark px-2 fw-bold pe-none" type="button" style="font-size: 0.8rem;" disabled>Book</button>
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 <!-- Table Note Context -->
 <div class="mt-2 px-2 text-muted" style="font-size: 0.8rem;">
