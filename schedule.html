@@ -1,20 +1,12 @@
 ---
 layout: default
+title: Regular Play Schedule
 background_image: ""
 ---
 
 <section id="schedule" class="section py-5" style="position: relative;">
   <div class="container text-start text-black">
     
-    <!-- 1. RESPONSIVE HEADER -->
-    <header class="bg-transparent py-4 py-md-5 mt-md-2 w-100 px-3 text-center">
-      <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 border-dark max-w-100">
-        <h1 class="display-4 display-md-1 fw-bold mb-0 text-uppercase text-black lh-sm">
-          REGULAR PLAY SCHEDULE
-        </h1>
-      </div>
-    </header>
-
     <!-- Bootstrap Row for LHS and RHS columns -->
     <div class="row g-4">
       
@@ -37,156 +29,145 @@ background_image: ""
                 </tr>
               </thead>
               
-<!-- Table Body -->
-<tbody>
-<!-- ROW GROUP 1: PICKLEBALL GLOUCESTERSHIRE -->
+              <!-- Table Body -->
+              <tbody>
 
-<!-- TITLE/CATEGORY HEADER ROW: Spans across all 6 columns to create a clean group divider -->
-<!-- ROW GROUP 1: PICKLEBALL GLOUCESTERSHIRE -->
+                <!-- TITLE/CATEGORY HEADER ROW -->
+                <tr class="table-light">
+                  <td colspan="5" class="py-3 ps-3 fw-bold align-middle" style="color: #4a77d4; font-size: 1.1rem; border-bottom: 2px solid #4a77d4;">
+                    PICKLEBALL GLOUCESTERSHIRE
+                  </td>
+                </tr>
 
-<!-- TITLE/CATEGORY HEADER ROW -->
-<tr class="table-light">
-  <td colspan="5" class="py-3 ps-3 fw-bold align-middle" style="color: #4a77d4; font-size: 1.1rem; border-bottom: 2px solid #4a77d4;">
-    PICKLEBALL GLOUCESTERSHIRE
-  </td>
-</tr>
+                <!-- Row 1: Wednesday Graded -->
+                <tr style="background-color: #f1f6ff !important;">
+                  <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
+                    Wed 
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:30</div>
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+                  </td>
 
- <!-- Row 1: Wednesday Graded -->
-      <tr style="background-color: #f1f6ff !important;">
-        <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
-          Wed 
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:30</div>
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-        </td>
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #4a77d4;">Graded</span>
+                  </td>            
+                  
+                  <!-- RESTORED STANDALONE VENUE CELL -->
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a>
+                  </td>
+                  
+                  <!-- COMBINED PRICE & BOOKING BLOCK (2 Rows) -->
+                  <td colspan="2" rowspan="2" class="text-end pe-3 py-3 align-middle" style="background-color: transparent !important;">
+                    <div class="d-flex flex-column align-items-end justify-content-center gap-2">
+                      <!-- TEXT INFO BLOCK -->
+                      <div class="text-muted fw-normal text-start text-wrap mb-1" style="font-size: 0.75rem; max-width: 280px; line-height: 1.3;">
+                        Booking via PBTable using a prepaid wallet.
+                        <br>Sessions go live at 9:00 following the previous day's session.
+                        <br>
+                        <!-- INTERACTIVE HOVER OVER TRIGGER -->
+                        <span class="fw-bold text-decoration-underline" 
+                              data-bs-toggle="tooltip" 
+                              data-bs-html="true" 
+                              data-bs-placement="top" 
+                              title="Players must be registered with PB Gloucestershire to participate. Membership is free; register on Picklebook." 
+                              style="color: #4a77d4; cursor: help;">
+                          Registration info
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
 
-        <td class="py-3" style="background-color: transparent !important;">
-          <span class="badge text-white px-2 py-1" style="font-size: 0.7rem; background-color: #4a77d4;">Graded</span>
-        </td>            
-        
-        <!-- RESTORED STANDALONE VENUE CELL -->
-        <td class="py-3" style="background-color: transparent !important;">
-          <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a>
-        </td>
-        
-        <!-- COMBINED PRICE & BOOKING BLOCK (2 Rows) -->
-<td colspan="2" rowspan="2" class="text-end pe-3 py-3 align-middle" style="background-color: transparent !important;">
-  <div class="d-flex flex-column align-items-end justify-content-center gap-2">
-    <!-- TEXT INFO BLOCK -->
-    <div class="text-muted fw-normal text-start text-wrap mb-1" style="font-size: 0.75rem; max-width: 280px; line-height: 1.3;">
-      Booking via PBTable using a prepaid wallet.
-      <br>Sessions go live at 9:00 following the previous day's session.
-      <br>
-      <!-- INTERACTIVE HOVER OVER TRIGGER -->
-      <span class="fw-bold text-decoration-underline" 
-            data-bs-toggle="tooltip" 
-            data-bs-html="true" 
-            data-bs-placement="top" 
-            title="Players must be registered with PB Gloucestershire to participate. Membership is free; register on Picklebook." 
-            style="color: #4a77d4; cursor: help;">
-        Registration info
-      </span>
-    </div>
-    
-    <!-- REINSTATED COMMENT WRAPPER: Hides the price string and the button from displaying -->
-    <!--
-    <div class="d-flex align-items-center justify-content-end gap-3 text-nowrap">
-      <span class="fw-semibold text-dark" style="font-size: 0.9rem;">£7.00</span>
-      <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" title="Please book via PBTable">
-        <button class="btn btn-sm px-3 fw-bold pe-none text-white" type="button" style="font-size: 0.8rem; background-color: #1a1a1a;" disabled>Book</button>
-      </span>
-    </div>
-    -->
-  </div>
-</td>
-      </tr>
+                <!-- Row 2: Friday Social Play -->
+                <tr style="background-color: #f1f6ff !important;">
+                  <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
+                    Fri 
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:30</div>
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+                  </td>
 
-      <!-- Row 2: Friday Social Play -->
-      <tr style="background-color: #f1f6ff !important;">
-        <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
-          Fri 
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:30</div>
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-        </td>
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <span class="badge text-dark px-2 py-1" style="font-size: 0.7rem; background-color: #e6ee1a; font-weight: 700;">Social Play</span>
+                  </td>              
+                  
+                  <!-- RESTORED STANDALONE VENUE CELL -->
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a>
+                  </td>
+                </tr>
 
-        <td class="py-3" style="background-color: transparent !important;">
-          <span class="badge text-dark px-2 py-1" style="font-size: 0.7rem; background-color: #e6ee1a; font-weight: 700;">Social Play</span>
-        </td>              
-        
-        <!-- RESTORED STANDALONE VENUE CELL -->
-        <td class="py-3" style="background-color: transparent !important;">
-          <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a>
-        </td>
-      </tr>
+                <!-- ========================================== -->
+                <!-- ROW GROUP 2: FREEDOM LEISURE               -->
+                <!-- ========================================== -->
+                
+                <!-- TITLE/CATEGORY HEADER ROW -->
+                <tr class="table-light">
+                  <td colspan="5" class="py-3 ps-3 fw-bold align-middle" style="color: #63256b; font-size: 1.1rem; border-bottom: 2px solid #63256b;">
+                    Freedom Leisure
+                  </td>
+                </tr>
 
-      <!-- ========================================== -->
-      <!-- ROW GROUP 2: FREEDOM LEISURE               -->
-      <!-- ========================================== -->
-      
-      <!-- TITLE/CATEGORY HEADER ROW -->
-      <tr class="table-light">
-        <td colspan="5" class="py-3 ps-3 fw-bold align-middle" style="color: #63256b; font-size: 1.1rem; border-bottom: 2px solid #63256b;">
-          Freedom Leisure
-        </td>
-      </tr>
-<!-- Row 3: Tuesday Beginners -->
-      <tr style="background-color: #fff0f3 !important;">
-        <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
-          Tues 
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">18:00-19:30</div>
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-        </td>     
+                <!-- Row 3: Tuesday Beginners -->
+                <tr style="background-color: #fff0f3 !important;">
+                  <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
+                    Tues 
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">18:00-19:30</div>
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+                  </td>     
 
-        <td class="py-3" style="background-color: transparent !important;">
-          <span class="badge bg-success text-white px-2 py-1" style="font-size: 0.7rem;">Beginners Class</span>
-        </td>              
-        
-        <!-- STANDALONE VENUE CELL -->
-        <td class="py-3" style="background-color: transparent !important;">
-          <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a>
-        </td>
-        
-        <!-- COMBINED NOTE & BOOKING BLOCK: Swapped text to your custom disclaimer note -->
-        <td colspan="2" rowspan="3" class="text-end pe-3 py-3 align-middle" style="background-color: transparent !important;">
-          <div class="d-flex flex-column align-items-end justify-content-center gap-2">
-          <div class="text-muted fw-normal text-start text-wrap mb-1" style="font-size: 0.75rem; max-width: 280px; line-height: 1.4;">
-            Players need to book directly with Freedom Leisure for these sessions.
-          </div>
-            <div class="d-flex align-items-center gap-3 text-nowrap">
-              <a href="https://flgloucester.gladstonego.cloud/book" target="_blank" rel="noopener" class="btn btn-sm text-white px-3 fw-bold" style="font-size: 0.8rem; background-color: #63256b;">Book</a>
-            </div>
-          </div>
-        </td>
-      </tr>
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <span class="badge bg-success text-white px-2 py-1" style="font-size: 0.7rem;">Beginners Class</span>
+                  </td>              
+                  
+                  <!-- STANDALONE VENUE CELL -->
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a>
+                  </td>
+                  
+                  <!-- COMBINED NOTE & BOOKING BLOCK: Spans across all 3 upcoming Freedom Leisure sessions -->
+                  <td colspan="2" rowspan="3" class="text-end pe-3 py-3 align-middle" style="background-color: transparent !important;">
+                    <div class="d-flex flex-column align-items-end justify-content-center gap-2">
+                      <div class="text-muted fw-normal text-start text-wrap mb-1" style="font-size: 0.75rem; max-width: 280px; line-height: 1.4;">
+                        Players need to book directly with Freedom Leisure for these sessions.
+                      </div>
+                      <div class="d-flex align-items-center gap-3 text-nowrap">
+                        <a href="https://flgloucester.gladstonego.cloud/book" target="_blank" rel="noopener" class="btn btn-sm text-white px-3 fw-bold" style="font-size: 0.8rem; background-color: #63256b;">Book</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
 
-      <!-- Row 4: Tuesday Improvers (Completed) -->
-      <tr style="background-color: #fff0f3 !important;">
-        <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
-          Tues 
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:00</div>
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-        </td>     
+                <!-- Row 4: Tuesday Improvers -->
+                <tr style="background-color: #fff0f3 !important;">
+                  <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
+                    Tues 
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">19:30-21:00</div>
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+                  </td>     
 
-        <td class="py-3" style="background-color: transparent !important;">
-          <span class="badge bg-primary text-white px-2 py-1" style="font-size: 0.7rem;">Improvers Class</span>
-        </td>              
-        
-        <!-- STANDALONE VENUE CELL -->
-        <td class="py-3" style="background-color: transparent !important;">
-          <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a>
-        </td>
-      </tr>
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <span class="badge bg-primary text-white px-2 py-1" style="font-size: 0.7rem;">Improvers Class</span>
+                  </td>              
+                  
+                  <!-- STANDALONE VENUE CELL -->
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <a href="https://maps.app.goo.gl/Svie1kg2gNG6yJAb9" target="_blank" rel="noopener" class="text-decoration-underline" style="color: #63256b;">Oxstalls Tennis Centre</a>
+                  </td>
+                </tr>
 
-      <!-- Row 5: Thursday daytime session -->
-      <tr style="background-color: #fff0f3 !important;">
-        <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
-          Thurs 
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">Daytime</div>
-          <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
-        </td>     
+                <!-- Row 5: Thursday Daytime Session -->
+                <tr style="background-color: #fff0f3 !important;">
+                  <td class="fw-bold text-center py-3 text-nowrap" style="background-color: transparent !important;">
+                    Thurs 
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">Daytime</div>
+                    <div class="text-muted fw-normal" style="font-size: 0.75rem;">Weekly</div>
+                  </td>     
 
-        <td class="py-3" style="background-color: transparent !important;">
-          <span class="badge bg-primary text-white px-2 py-1" style="font-size: 0.7rem;">tbc</span>
-        </td>              
+                  <td class="py-3" style="background-color: transparent !important;">
+                    <span class="badge bg-secondary text-white px-2 py-1" style="font-size: 0.7rem;">Social Play</span>
+                  </td>              
+                  
+             
         
         <!-- STANDALONE VENUE CELL -->
         <td class="py-3" style="background-color: transparent !important;">
@@ -213,34 +194,39 @@ background_image: ""
         
       </div> <!-- Closes LHS .col-lg-6 -->
 
-      <!-- RIGHT-HAND SIDE: EVENTS & LINKS BLOCK (50% width on large screens) -->
-      <div class="col-12 col-lg-6">
-        <div class="h-100 d-flex flex-column">
-
-<!-- Elfsight Event Calendar | Pickleball Gloucestershire Calendar -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-373d4a85-75e2-4845-809b-573e851a4f29" data-elfsight-app-lazy></div>
-
-          <!-- Quick Actions / Useful External Navigation Links -->
-          <div class="mt-auto pt-2">
-            <h5 class="fs-6 text-uppercase tracking-wider text-muted mb-2" style="font-size: 0.75rem;">Useful Links</h5>
-            <div class="d-grid gap-2">
-              <!--
-              <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
-                <i class="bi bi-chevron-right me-1"></i> View Live Club Leaderboards
-              </a>
-            -->
-              <a href="https://www.picklebook.org/" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
-                <i class="bi bi-chevron-right me-1"></i> Register on Picklebook
-              </a>
-            </div>
-          </div>
-
+      <!-- RIGHT-HAND SIDE: INTERACTIVE CALENDAR & ACTIONS -->
+      <div class="col-12 col-lg-6 d-flex flex-column h-100">
+        
+        <!-- Interactive Calendar Card Wrapper -->
+        <div class="bg-white rounded-4 shadow p-3 mb-4 flex-grow-1">
+          <h4 class="fs-6 text-uppercase tracking-wider fw-bold text-dark mb-3 border-bottom pb-2">
+            <i class="fa-solid fa-calendar-days me-2" style="color: #63256b;"></i>Club Event Calendar
+          </h4>
+          
+          <!-- Elfsight Event Calendar | Pickleball Gloucestershire Calendar -->
+          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div class="elfsight-app-373d4a85-75e2-4845-809b-573e851a4f29" data-elfsight-app-lazy></div>
         </div>
-      </div> <!-- Closes RHS Column -->
+
+        <!-- Quick Actions / Useful External Navigation Links -->
+        <div class="mt-auto pt-2 bg-white rounded-4 shadow p-3">
+          <h5 class="fs-6 text-uppercase tracking-wider text-muted mb-2" style="font-size: 0.75rem;">Useful Links</h5>
+          <div class="d-grid gap-2">
+            <!--
+            <a href="https://pbtable.com" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
+              <i class="fa-solid fa-chevron-right me-2"></i> View Live Club Leaderboards
+            </a>
+            -->
+            <a href="https://www.picklebook.org/" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg text-start py-3 fw-bold fs-6">
+              <i class="fa-solid fa-chevron-right me-2"></i> Register on Picklebook
+            </a>
+          </div>
+        </div>
+
+      </div> <!-- Closes RHS Column Safely -->
 
     </div> <!-- Closes Row -->
-  </div>
+  </div> <!-- Closes Container -->
 </section>
 
 <!-- Additional Custom CSS Layout Support -->

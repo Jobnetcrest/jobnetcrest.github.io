@@ -27,6 +27,8 @@
         }
     </style>
 
+     <title>{{ page.title }} | Pickleball Gloucestershire</title>
+
     <script src="https://kit.fontawesome.com/e21a7803ec.js" crossorigin="anonymous"></script>
 </head>
 
@@ -153,12 +155,29 @@
     </div> <!-- Closes .container -->
   </nav> <!-- Closes navbar -->
 
-  <!-- Main Content Area -->
-  <main class="flex-grow-1">
-    <div class="container position-relative z-1 py-4">   
-       {{ content }}   
-    </div>
-  </main>
+        <!-- Main Content Area -->
+        <main class="flex-grow-1">
+          <!-- Section 1: Globally Centered Title Container -->
+          <div class="container-fluid px-3 px-md-5 position-relative z-1 pt-4 text-center d-flex flex-column align-items-center">   
+            
+            <!-- Title Wrapper Container (mx-auto centers it horizontally) -->
+            <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 max-w-100" style="border-color: #0072BB !important;">
+              <h1 class="display-4 display-md-2 fw-bold mb-0 text-uppercase lh-sm tracking-wider text-black">
+                {{ page.title }}
+              </h1>
+            </div>
+
+          </div>
+
+          <!-- Section 2: Widescreen Content Container (Allows child rows/columns to align correctly) -->
+          <div class="container-fluid px-3 px-md-5 position-relative z-1 pb-4">
+            
+            <!-- This handles any page text or responsive grid layout blocks -->
+            {{ content }}   
+
+          </div>
+        </main>
+
 
   <!-- Sticky Footer Layout -->
   <footer class="bg-dark text-light py-3 mt-auto position-relative z-1">
