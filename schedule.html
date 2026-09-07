@@ -15,70 +15,100 @@ background_image: ""
     <!-- LEFT-HAND SIDE: PICKLEBALL GLOUCESTERSHIRE (STACKED) -->
     <div class="col-lg-6">
       <div class="border-bottom pb-2 mb-4" style="border-color: #4a77d4 !important;">
-        <h2 class="fw-bold d-flex align-items-center gap-2 mb-1" style="color: #4a77d4; font-size: 1.6rem; letter-spacing: -0.5px;">
-          🏓 Official Club Sessions
-        </h2>
+    <h2 class="fw-bold d-flex align-items-center gap-2 mb-1" style="color: #4a77d4; font-size: 1.6rem; letter-spacing: -0.5px;">
+      <!-- UPDATED: Replaced 🏓 with the official club paddle logo -->
+      <img src="\images\PBGlos Logo.png" alt="Logo" class="me-1 align-middle" style="height: 1.8rem; width: auto;">
+      Official Club Sessions
+    </h2>
         <p class="text-muted mb-0" style="font-size: 0.85rem;">Official club tracks organized directly by Pickleball Gloucestershire.</p>
       </div>
 
       <!-- Vertical Stack of Cards -->
       <div class="d-flex flex-column gap-4">
-        
-        <!-- Session 1: Wednesday Graded -->
-        <div class="card shadow-sm border-2" style="border-color: #4a77d4; border-radius: 12px; background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);">
-          <div class="card-body p-4">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <span class="badge text-white px-2.5 py-1 mb-2 d-inline-block" style="font-size: 0.7rem; background-color: #4a77d4; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;">GRADED PLAY</span>
-                <h3 class="card-title fw-bold m-0" style="color: #1e3a75; font-size: 1.25rem;">Wednesday Evening</h3>
-              </div>
-              <div class="text-end">
-                <div class="fw-bold text-nowrap" style="color: #4a77d4; font-size: 1.15rem;">19:30 - 21:30</div>
-                <small class="text-muted fw-semibold">Weekly</small>
-              </div>
-            </div>
-            
-            <div class="p-3 rounded mb-3" style="background-color: #ffffff; border: 1px dashed rgba(74,119,212,0.25); font-size: 0.85rem;">
-              <div class="mb-1.5"><span class="me-1.5">📍</span><a href="https://goo.gl" target="_blank" rel="noopener" class="fw-semibold text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a></div>
-              <div class="text-muted">Bookings open at <strong>9:00 AM</strong> the day following the previous session via PBTable.</div>
-            </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="text-decoration-underline fw-bold" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Players must be registered with PB Gloucestershire to participate. Membership is free; register on Picklebook." style="color: #4a77d4; cursor: help; font-size: 0.75rem;">
-                ℹ️ Registration info
-              </span>
-              <a href="#" class="btn btn-sm fw-bold px-3 py-1.5 text-white" style="background-color: #4a77d4; border-radius: 6px;">Book via PBTable</a>
-            </div>
-          </div>
-        </div>
+
+        <!-- Session 1: Wednesday Graded (Original Blue Theme with Non-Clickable Hover Tip) -->
+<div class="card shadow-sm border-2" style="border-color: #4a77d4; border-radius: 12px; background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);">
+  <div class="card-body p-4">
+    <div class="d-flex justify-content-between align-items-start mb-3">
+      <div>
+        <span class="badge text-white px-3 py-1 mb-2 d-inline-block" style="font-size: 0.7rem; background-color: #4a77d4; font-weight: bold; border-radius: 4px; letter-spacing: 0.5px;">GRADED PLAY</span>
+        <h3 class="card-title fw-bold m-0" style="color: #1e3a75; font-size: 1.25rem;">Wednesday Evening</h3>
+      </div>
+      <div class="text-end">
+        <div class="fw-bold text-nowrap" style="color: #4a77d4; font-size: 1.15rem;">19:30 - 21:30</div>
+        <small class="text-muted fw-semibold">Weekly</small>
+      </div>
+    </div>
+    
+    <div class="p-3 rounded mb-3" style="background-color: #ffffff; border: 1px dashed rgba(74,119,212,0.25); font-size: 0.85rem;">
+        <div class="mb-2">
+        <img src="\images\PBGlos Logo.png" alt="Logo" class="me-1.5 align-text-top" style="height: 1.2rem; width: auto;">
+        <!-- FIXED: Updated target location destination URL -->
+        <a href="https://maps.app.goo.gl/iea1JXdEGHdFq59V6" target="_blank" rel="noopener" class="fw-semibold text-decoration-underline" style="color: #8c9300;">Oxstalls Tennis Centre</a>
+      </div>
+      <div class="text-muted">Bookings open at <strong>9:00 AM</strong> the day following the previous session via PBTable.</div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="https://www.picklebook.org/c/rjgwvc878" target="_blank" rel="noopener" class="text-decoration-underline fw-bold" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Players must be registered with PB Gloucestershire to participate. Membership is free; register on Picklebook." style="color: #4a77d4; cursor: help; font-size: 0.75rem;">
+        ℹ️ Registration info
+      </a>
+      
+      <!-- FIXED: Tooltip shifts to a span container wrapper so it can still display on disabled sub-elements -->
+      <span data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Reserve your spot using PBTable.">
+        <!-- Disabled link with pointer-events blocked, cursor help, and text decoration stripped -->
+        <a class="text-muted fw-bold disabled" style="pointer-events: none; cursor: help; font-size: 0.75rem; text-decoration: none;">
+          📅 Book via PBTable
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
 
         <!-- Session 2: Friday Social Play -->
-        <div class="card shadow-sm border-2" style="border-color: #e6ee1a; border-radius: 12px; background: linear-gradient(180deg, #fffef5 0%, #ffffff 100%);">
-          <div class="card-body p-4">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <span class="badge text-dark px-2.5 py-1 mb-2 d-inline-block" style="font-size: 0.7rem; background-color: #e6ee1a; font-weight: 800; border-radius: 4px; letter-spacing: 0.5px;">SOCIAL PLAY</span>
-                <h3 class="card-title fw-bold m-0" style="color: #333900; font-size: 1.25rem;">Friday Night Lights</h3>
-              </div>
-              <div class="text-end">
-                <div class="fw-bold text-nowrap" style="color: #8c9300; font-size: 1.15rem;">19:30 - 21:30</div>
-                <small class="text-muted fw-semibold">Weekly</small>
-              </div>
-            </div>
-            
-            <div class="p-3 rounded mb-3" style="background-color: #ffffff; border: 1px dashed rgba(230,238,26,0.35); font-size: 0.85rem;">
-              <div class="mb-1.5"><span class="me-1.5">📍</span><a href="https://goo.gl" target="_blank" rel="noopener" class="fw-semibold text-decoration-underline" style="color: #4a77d4;">Oxstalls Tennis Centre</a></div>
-              <div class="text-muted">Our mixed open-play layout format. Utilises a convenient prepaid digital wallet system.</div>
-            </div>
+<div class="card shadow-sm border-2" style="border-color: #e6ee1a; border-radius: 12px; background: linear-gradient(180deg, #fffef5 0%, #ffffff 100%);">
+  <div class="card-body p-4">
+    <div class="d-flex justify-content-between align-items-start mb-3">
+      <div>
+        <!-- FIXED: px-2.5 changed to standard Bootstrap px-3 -->
+        <span class="badge text-dark px-3 py-1 mb-2 d-inline-block" style="font-size: 0.7rem; background-color: #e6ee1a; font-weight: 800; border-radius: 4px; letter-spacing: 0.5px;">SOCIAL PLAY</span>
+        <h3 class="card-title fw-bold m-0" style="color: #333900; font-size: 1.25rem;">Friday Night Lights</h3>
+      </div>
+      <div class="text-end">
+        <div class="fw-bold text-nowrap" style="color: #8c9300; font-size: 1.15rem;">19:30 - 21:30</div>
+        <small class="text-muted fw-semibold">Weekly</small>
+      </div>
+    </div>
+    
+    <div class="p-3 rounded mb-3" style="background-color: #ffffff; border: 1px dashed rgba(230,238,26,0.35); font-size: 0.85rem;">
+      <!-- FIXED: mb-1.5 changed to mb-2, linked text adjusted to match thematic olive styling -->
+        <div class="mb-2">
+        <img src="\images\PBGlos Logo.png" alt="Logo" class="me-1.5 align-text-top" style="height: 1.2rem; width: auto;">
+        <!-- FIXED: Updated target location destination URL -->
+        <a href="https://maps.app.goo.gl/iea1JXdEGHdFq59V6" target="_blank" rel="noopener" class="fw-semibold text-decoration-underline" style="color: #8c9300;">Oxstalls Tennis Centre</a>
+      </div>
+      <div class="text-muted">Our mixed open-play layout format. Utilises a convenient prepaid digital wallet system.</div>
+    </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <span class="text-decoration-underline fw-bold" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Players must be registered with PB Gloucestershire to participate. Membership is free; register on Picklebook." style="color: #4a77d4; cursor: help; font-size: 0.75rem;">
-                ℹ️ Registration info
-              </span>
-              <a href="#" class="btn btn-sm fw-bold px-3 py-1.5 text-white" style="background-color: #4a77d4; border-radius: 6px;">Book via PBTable</a>
-            </div>
-          </div>
-        </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <!-- FIXED: Turned registration info into an active web link to Picklebook matching theme color -->
+      <a href="https://www.picklebook.org/c/rjgwvc878" target="_blank" rel="noopener" class="text-decoration-underline fw-bold" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Players must be registered with PB Gloucestershire to participate. Membership is free; register on Picklebook." style="color: #8c9300; cursor: help; font-size: 0.75rem;">
+        ℹ️ Registration info
+      </a>
+      
+      <!-- FIXED: Converted button to an unclickable element wrapped with the tooltip -->
+      <span data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Reserve your spot using PBTable.">
+        <a class="text-muted fw-bold disabled" style="pointer-events: none; cursor: help; font-size: 0.75rem; text-decoration: none;">
+          📅 Book via PBTable
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
 
       </div>
     </div>
