@@ -8,112 +8,84 @@ background_image: ""
   The 'position-relative z-index' rule guarantees your elements stack 
   completely above your background flag layer.
 -->
-<div class="container pt-4 position-relative" style="z-index: 2;">
-
+<div class="container pt-4 position-relative hero-container">
 
     <!-- 2. WIDE HERO SUBTEXT -->
     <div class="container-fluid px-3 px-md-4 py-2 text-center">
-      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-4 w-75 mx-auto" style="max-width: 1200px; text-shadow: 0px 0px 10px rgba(255,255,255,0.6);">
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-4 w-75 mx-auto hero-subtext">
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
       </p>
     </div>
 
     <!-- 3. HERO BOOTSTRAP CAROUSEL -->
+    <div class="mx-auto carousel-wrapper"> 
+      <div id="threeSlideCarousel" class="carousel slide" data-bs-ride="carousel">
+        
+        <!-- Slide Indicators (Bottom Dots) -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
 
-<div class="mx-auto" style="max-width: 75%;"> <!-- This makes it 1/4 smaller and centers it -->
-  <div id="threeSlideCarousel" class="carousel slide" data-bs-ride="carousel">    
+        <div class="carousel-inner">
+          
+          <!-- Slide 1 (Active) -->
+          <div class="carousel-item active">
+            <!-- Dark overlay helper wrapper for legibility -->
+            <div class="w-100 h-100 bg-dark position-absolute opacity-25 overlay-layer"></div>
+            <img src="images/alexsaks1.jpg" class="d-block w-100 object-fit-cover carousel-img" alt="Join the Action">
+            <div class="carousel-caption px-3 main-caption">
+              <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white text-shadow-heavy">
+                Join the Action
+              </h5>
+              <p class="fs-6 fs-md-4 mb-0 caption-text text-shadow-heavy">
+                Discover sessions across Gloucester, Cheltenham, and the whole of Gloucestershire.
+              </p>
+            </div>
+          </div>
 
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="w-100 h-100 bg-dark position-absolute opacity-25 overlay-layer"></div>
+            <img src="images/Gallery/gallery7.jpg" class="d-block w-100 object-fit-cover carousel-img" alt="All Ages & Abilities">
+            <div class="carousel-caption px-3 main-caption">
+              <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white text-shadow-heavy">
+                All Ages & Abilities
+              </h5>
+              <p class="fs-6 fs-md-4 mb-0 caption-text text-shadow-heavy">
+                Friendly, low-impact games perfect for beginners and seasoned players alike.
+              </p>
+            </div>
+          </div>
 
-<div id="threeSlideCarousel" class="carousel slide" data-bs-ride="carousel">
-  
-  <!-- Slide Indicators (Bottom Dots) -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#threeSlideCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="w-100 h-100 bg-dark position-absolute opacity-25 overlay-layer"></div>
+            <img src="images/Gallery/gallery10.jpg" class="d-block w-100 object-fit-cover carousel-img" alt="Learn & Socialise">
+            <div class="carousel-caption px-3 main-caption">
+              <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white text-shadow-heavy">
+                Learn & Socialise
+              </h5>
+              <p class="fs-6 fs-md-4 mb-0 caption-text text-shadow-heavy">
+                Join our community and improve your skills while making new friends.
+              </p>
+            </div>
+          </div>
 
-  <div class="carousel-inner">
-    
-    <!-- Slide 1 (Active) -->
-    <div class="carousel-item active" style="position: relative;">
-      <!-- Dark overlay helper wrapper for legibility -->
-      <div class="w-100 h-100 bg-dark position-absolute opacity-25" style="z-index: 1; top: 0; left: 0;"></div>
-      <img src="images/alexsaks1.jpg" class="d-block w-100 object-fit-cover" alt="Join the Action" style="max-height: 500px;">
-      <div class="carousel-caption px-3" style="top: 15%; z-index: 2;">
-        <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85);">
-          Join the Action
-        </h5>
-        <p class="fs-6 fs-md-4 mb-0" style="color: #FBF7EA; text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.85);">
-          Discover sessions across Gloucester, Cheltenham, and the whole of Gloucestershire.
-        </p>
+        </div>
+
+        <!-- Left/Right Arrow Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#threeSlideCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#threeSlideCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        
       </div>
     </div>
 
-    <!-- Slide 2 -->
-    <div class="carousel-item" style="position: relative;">
-      <div class="w-100 h-100 bg-dark position-absolute opacity-25" style="z-index: 1; top: 0; left: 0;"></div>
-      <img src="images/Gallery/gallery7.jpg" class="d-block w-100 object-fit-cover" alt="All Ages & Abilities" style="max-height: 500px;">
-      <div class="carousel-caption px-3" style="top: 15%; z-index: 2;">
-        <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85);">
-          All Ages & Abilities
-        </h5>
-        <p class="fs-6 fs-md-4 mb-0" style="color: #FBF7EA; text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.85);">
-          Friendly, low-impact games perfect for beginners and seasoned players alike.
-        </p>
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="carousel-item" style="position: relative;">
-      <div class="w-100 h-100 bg-dark position-absolute opacity-25" style="z-index: 1; top: 0; left: 0;"></div>
-      <img src="images/Gallery/gallery3.jpg" class="d-block w-100 object-fit-cover" alt="Learn & Socialise" style="max-height: 500px;">
-      <div class="carousel-caption px-3" style="top: 15%; z-index: 2;">
-        <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85);">
-          Learn & Socialise
-        </h5>
-        <p class="fs-6 fs-md-4 mb-0" style="color: #FBF7EA; text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.85);">
-          Join our community and improve your skills while making new friends.
-        </p>
-      </div>
-    </div>
-
-
-  </div>
-
-  <!-- Left/Right Arrow Controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#threeSlideCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true">
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#threeSlideCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true">
-    <span class="visually-hidden">Next</span>
-  </button>
-  
 </div>
-
-</div>
-
-
-<!-- Text shadow ensures legibility on any image background -->
-<style>
-  .text-shadow {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
-  }
-</style>
-
-
-
-
-</div>
-
-
-  
-
-
-
-
-
-
-

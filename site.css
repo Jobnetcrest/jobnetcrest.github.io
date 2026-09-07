@@ -1,15 +1,10 @@
-/* General Styles */
+/* ==========================================================================
+   1. GLOBAL STYLES & LAYOUT
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-/* Highlights the link corresponding to the current active Jekyll page */
-.navbar-nav .nav-link.active {
-    color: #234b58 !important;       /* Themes matching your dark slate blue */
-    font-weight: bold;               /* Emphasises the current active tab */
-    background-color: #f4f4f4;       /* Adds a clean, light grey contrast block */
-    border-radius: 4px;              
 }
 
 body {
@@ -18,36 +13,11 @@ body {
     padding-top: 85px; /* Matches the exact height of your fixed Bootstrap navbar */
 }
 
-/* 
-   FIX: Changed background-color to transparent on .custom-flag-bg wrapper layers.
-   This prevents your previous body rule from painting a solid white background block 
-   over the top of the flag graphics.
-*/
-.custom-flag-bg {
-    top: 85px !important;
-    height: calc(100vh - 85px) !important;
-}
-
 .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
-.disabled-wrapper {
-  cursor: not-allowed;      /* Shows the "no" sign on hover */
-}
-
-.disabled-nav {
-  color: #94a3b8;           
-  pointer-events: none;     /* Stops the link itself from being clickable */
-  opacity: 0.6;             
-  text-decoration: none;    
-}
-/* 
-   NOTE: Custom legacy header & nav rules are removed or ignored 
-   since Bootstrap 5 classes (.navbar, .navbar-expand-lg, .fixed-top) 
-   now completely handle the desktop and mobile navigation layouts.
-*/
 
 .section {
     padding: 60px 0;
@@ -65,10 +35,120 @@ p {
     margin: 0 auto 20px;
 }
 
+.version {
+    font-size: 8px;
+}
 
+/* ==========================================================================
+   2. FIXED BACKGROUNDS & DIVIDERS
+   ========================================================================== */
+/* FIX: Changed background-color to transparent on .custom-flag-bg wrapper layers.
+   Prevents previous body rule from painting a solid white background block over graphics. */
+.custom-flag-bg {
+    top: 85px !important;
+    height: calc(100vh - 85px) !important;
+}
 
+/* Full viewport section divider bar */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #234b58; /* Themes matching dark slate blue */
+    color: #fffdfd; 
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 100vw; /* Stretches across the full screen width */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 15px 0; /* Vertically spaces the bar */
+}
 
-/* Schedule Table Overrides */
+.divider span {
+    width: 100%; /* Centres text horizontally inside the bar */
+}
+
+/* ==========================================================================
+   3. NAVIGATION UTILITIES
+   ========================================================================== */
+/* Highlights the link corresponding to the current active Jekyll page */
+.navbar-nav .nav-link.active {
+    color: #234b58 !important;       /* Themes matching dark slate blue */
+    font-weight: bold;               /* Emphasises the current active tab */
+    background-color: #f4f4f4;       /* Adds a clean, light grey contrast block */
+    border-radius: 4px;              
+}
+
+.disabled-wrapper {
+    cursor: not-allowed;      /* Shows the "no" sign on hover */
+}
+
+.disabled-nav {
+    color: #94a3b8;           
+    pointer-events: none;     /* Stops the link itself from being clickable */
+    opacity: 0.6;             
+    text-decoration: none;    
+}
+
+/* ==========================================================================
+   4. HOME HERO & CAROUSEL EXTENSION
+   ========================================================================== */
+.hero-container {
+    z-index: 2;
+}
+
+.hero-subtext {
+    max-width: 1200px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
+
+.carousel-wrapper {
+    max-width: 75%; /* Shrinks layout down to 75% on large screens */
+    transition: max-width 0.3s ease-in-out;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.overlay-layer {
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.carousel-img {
+    max-height: 500px;
+}
+
+.main-caption {
+    z-index: 2;
+}
+
+.caption-text {
+    color: #FBF7EA;
+}
+
+#threeSlideCarousel .carousel-caption {
+    top: 1%;       /* Pushes header details higher from the top bounds */
+    bottom: auto;  /* Clears Bootstrap's default bottom layout positioning */
+}
+
+/* Custom Text Shadows */
+.text-shadow {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
+}
+
+.text-shadow-heavy {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+/* ==========================================================================
+   5. TABLES
+   ========================================================================== */
 table {
     width: 100%;
     max-width: 800px;
@@ -91,7 +171,9 @@ td {
     background: #f4f4f4;
 }
 
-/* Legacy Gallery Grid */
+/* ==========================================================================
+   6. LEGACY & MODERN GALLERIES
+   ========================================================================== */
 .gallery-container {
     display: flex;
     flex-wrap: wrap;
@@ -138,7 +220,7 @@ td {
     opacity: 1;
 }
 
-/* Bootstrap-Ready Premium Gallery Hover Smoothness Utilities */
+/* Premium Hover Utilities */
 .gallery-hover-wrapper {
     position: relative;
     overflow: hidden;
@@ -162,14 +244,37 @@ td {
     opacity: 1 !important;
 }
 
-/* Responsive Structural Refinements */
+/* Modern Layout Additions to Section 6 */
+.gallery-hover-wrapper {
+  cursor: pointer;
+}
+
+.gallery-thumb {
+  height: 300px;
+}
+
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS & MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: 1200px) {
     .content-wrapper {
         padding: 0 15px;
     }
 }
 
+@media (max-width: 992px) {
+    /* Expanded carousel real estate for tablet viewports */
+    .carousel-wrapper {
+        max-width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Full-screen width extension on mobile devices */
+    .carousel-wrapper {
+        max-width: 100%;
+    }
     .gallery-item, .bio {
         width: calc(50% - 10px);
     }
@@ -188,34 +293,345 @@ td {
     h1 { font-size: 24px; }
     h2 { font-size: 20px; }
 }
-
-#threeSlideCarousel .carousel-caption {
-  top: 1%;       /* Adjust this percentage to push it higher or lower from the top */
-  bottom: auto;  /* Clears Bootstrap's default bottom positioning */
+/* ==========================================================================
+   8. CLUB INFORMATION & TEAM LAYOUT
+   ========================================================================== */
+.info-team-section {
+  background-color: #ffffff;
+  font-family: sans-serif;
 }
 
-.version{
-    font-size:8px;
+/* Brand Theme Accent Elements */
+.accent-blue {
+  color: #0072BB;
 }
 
-/*section divider*/
-.divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: #234b58; /* var(--bs-border-color);  Dark grey bar background */
-    color: #fffdfd; /* var(--bs-body-color);Grey text colour */
-    font-weight: bold;
-    letter-spacing: 2px;
-    width: 100vw; /* Stretches across the full screen width */
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    padding: 15px 0; /* Vertically spaces the bar */
+.accent-green {
+  color: #69C071;
 }
 
-    .divider span {
-        width: 100%; /* Centres text horizontally inside the bar */
-    }
+.accent-yellow {
+  color: #E6C619;
+}
+
+.blue-heading-border {
+  border-color: #0072BB !important;
+}
+
+/* Left-Side Cards configuration */
+.info-card {
+  background-color: #FBF7EA;
+  border-color: #69C071 !important;
+}
+
+/* Right-Side Bios layout */
+.team-card {
+  border-color: #0072BB !important;
+}
+
+.team-avatar {
+  border-color: #69C071 !important;
+}
+
+.bio-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   9. SCHEDULE & SESSION STYLES
+   ========================================================================== */
+.schedule-section {
+  position: relative;
+}
+
+.calendar-container {
+  min-height: 400px;
+  border: 1px solid #e9e6ec;
+}
+
+/* Header Utilities */
+.schedule-header-border {
+  border-color: #4a77d4 !important;
+}
+
+.schedule-main-title {
+  color: #4a77d4;
+  font-size: 1.6rem;
+  letter-spacing: -0.5px;
+}
+
+.sub-text-sm {
+  font-size: 0.85rem;
+}
+
+.logo-icon-main {
+  height: 1.8rem;
+  width: auto;
+}
+
+.logo-icon-sm {
+  height: 1.2rem;
+  width: auto;
+}
+
+/* Card Foundations */
+.session-card {
+  border-radius: 12px;
+}
+
+.venue-box {
+  background-color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.info-link {
+  cursor: help;
+  font-size: 0.75rem;
+}
+
+.disabled-booking-link {
+  pointer-events: none;
+  cursor: help;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+/* Color Theming: Wednesday Blue Track */
+.session-card-blue {
+  border-color: #4a77d4 !important;
+  background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+}
+
+.badge-blue {
+  font-size: 0.7rem;
+  background-color: #4a77d4;
+  font-weight: bold;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.title-blue {
+  color: #1e3a75;
+  font-size: 1.25rem;
+}
+
+.time-text-blue {
+  color: #4a77d4;
+  font-size: 1.15rem;
+}
+
+.venue-box-blue {
+  border: 1px dashed rgba(74, 119, 212, 0.25);
+}
+
+.info-link-blue {
+  color: #4a77d4;
+}
+
+/* Color Theming: Friday Lime Track */
+.session-card-lime {
+  border-color: #e6ee1a !important;
+  background: linear-gradient(180deg, #fffef5 0%, #ffffff 100%);
+}
+
+.badge-lime {
+  font-size: 0.7rem;
+  background-color: #e6ee1a;
+  font-weight: 800;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.title-dark-lime {
+  color: #333900;
+  font-size: 1.25rem;
+}
+
+.time-text-olive {
+  color: #8c9300;
+  font-size: 1.15rem;
+}
+
+.venue-box-lime {
+  border: 1px dashed rgba(230, 238, 26, 0.35);
+}
+
+.link-olive {
+  color: #8c9300;
+}
+
+.info-link-olive {
+  color: #8c9300;
+}
+
+/* ==========================================================================
+   10. PARTNER CLASSES TABLE & UTILITY OVERRIDES
+   ========================================================================== */
+.partner-container {
+  padding: 1.25rem; /* Replaces p-3.5 with semantic spacing */
+  background-color: #faf9fb !important; 
+  border: 1px solid #eae7ec !important;
+}
+
+.partner-title {
+  color: #7b6d7d; 
+  font-size: 1rem;
+}
+
+.partner-desc {
+  font-size: 0.8rem;
+}
+
+/* Table Column Widths & Typography */
+.partner-table {
+  font-size: 0.8rem;
+}
+
+.partner-header-row {
+  border-bottom: 1px solid #eae7ec;
+}
+
+.col-schedule { width: 20%; }
+.col-class { width: 25%; }
+.col-location { width: 35%; }
+.col-link { width: 20%; }
+
+.time-subtext {
+  font-size: 0.75rem;
+}
+
+.track-badge {
+  font-size: 0.65rem;
+  background-color: #8c828e;
+}
+
+/* Row Borders & Merged Layouts */
+.partner-dashed-row {
+  border-bottom: 1px dashed #f0edf2;
+}
+
+.partner-cell-merge {
+  border-bottom: 1px dashed #f0edf2;
+}
+
+.partner-btn {
+  font-size: 0.7rem; 
+  opacity: 0.8;
+  padding: 0.2rem 0.5rem; /* Replaces py-0.5 px-2 custom tokens safely */
+}
+
+.coming-soon-text {
+  font-size: 0.7rem; 
+  opacity: 0.8; 
+  font-style: italic;
+}
+
+/* ==========================================================================
+   11. GLOBAL TEXT WEIGHT & ANIMATION UTILITIES
+   ========================================================================== */
+.fw-black { font-weight: 900; }
+.fw-extrabold { font-weight: 800; }
+.tracking-wide { letter-spacing: 0.05em; }
+.tracking-wider { letter-spacing: 0.1em; }
+
+@keyframes flash {
+  0%, 100% { background-color: #dc3545; }
+  50% { background-color: #b91c1c; }
+}
+
+.animate-flash {
+  animation: flash 1.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   12. CONTACT PAGE, INTERACTIVE MAPS & TABS
+   ========================================================================== */
+/* Fixes Bootstrap tabs using flexbox utilities to hide correctly when inactive */
+.tab-pane.d-flex:not(.active) {
+  display: none !important;
+}
+
+/* Custom Table Variables */
+.contact-table-override {
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.04);
+}
+
+.section-table-header {
+  font-size: 0.9rem;
+}
+
+.col-half {
+  width: 50%;
+}
+
+/* Map Containers & Viewport Scaling */
+.responsive-map-body {
+  height: 220px; /* Mobile layout default */
+}
+
+.map-iframe-absolute {
+  border: 0; 
+  position: absolute; 
+  top: 0; 
+  left: 0;
+}
+
+/* Navigation Tab Typography and State Coloring */
+.nav-tabs .nav-link {
+  color: #212529 !important; /* Forces dark slate color for inactive states */
+  font-weight: 600;
+  font-size: 0.85rem;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6 !important;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #212529 !important;
+  color: #ffffff !important; /* Clean contrasting text on active tabs */
+  border-color: #212529 !important;
+}
+
+/* Desktop Media Query Enhancements */
+@media (min-width: 992px) {
+  .responsive-map-body {
+    height: 100%; 
+    min-height: 320px; /* Aligns map heights evenly with left table margins */
+  }
+}
+
+/* ==========================================================================
+   13. NEWS & UPDATES (SOCIAL FEEDS & BLOG IFRAMES)
+   ========================================================================== */
+.blog-frame-card {
+  background-color: #ffffff;
+}
+
+.blog-iframe-fluid {
+  border: none; 
+  display: block;
+  height: 500px; /* Highly optimized height baseline for mobile viewports */
+  transition: height 0.3s ease-in-out;
+}
+
+/* Desktop Media Query Enhancements */
+@media (min-width: 992px) {
+  .blog-iframe-fluid {
+    height: 700px; /* Extended vertical real-estate to perfectly match social grids */
+  }
+}
+
+/* ==========================================================================
+   14. PICKLEBALL RESOURCES (VIDEO EMBEDS & EXTERNAL LISTINGS)
+   ========================================================================== */
+.resource-header-border {
+  border-color: var(--bs-border-color) !important;
+}
+
+/* Ensure absolute fallback scaling for responsive media embeds */
+.ratio iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
