@@ -32,8 +32,13 @@
     <script src="https://kit.fontawesome.com/e21a7803ec.js" crossorigin="anonymous"></script>
 </head>
 
+<!-- The body tag is set to be a minimum of the viewport height, use flexbox for layout, and have a dark text color. The data attributes are used for Bootstrap's scrollspy feature, which highlights navigation links based on scroll position.
+<body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"> !-- removed p-0 -->
 
-<body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"> <!-- removed p-0 -->
+  <body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark" 
+      data-bs-spy="scroll" 
+      data-bs-target="#navbarSupportedContent" 
+      data-bs-root-margin="0px 0px -40%">
 
   {% if page.background_image %}
     <!-- Flag Background Layer -->
