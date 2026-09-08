@@ -635,3 +635,92 @@ td {
   height: 100%;
   border: 0;
 }
+
+/* ==========================================================================
+   15. POLICY PAGES)
+   ========================================================================== */
+   /* --- YOUR EXISTING STYLES --- */
+:root {
+  /* Your site's existing design variables might be here... */
+  --main-brand-color: #007bff;
+  
+  /* 🍪 Add the Cookie Consent structural variables right here */
+  --cc-primary: #1a1a1a;
+  --cc-text-muted: #595959;
+  --cc-bg-light: #f8f9fa;
+  --cc-border: #e4e7eb;
+  --cc-radius: 8px;
+  --cc-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- PASTE THE REST OF THE COMPONENT STYLES BELOW --- */
+.cc-policy-section {
+  font-family: var(--cc-font);
+  margin-bottom: 2.5rem;
+}
+
+.cc-policy-header {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cc-primary);
+}
+
+.cc-policy-desc {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--cc-text-muted);
+}
+
+.cc-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--cc-border);
+  border-radius: var(--cc-radius);
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.cc-styled-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.cc-styled-table th {
+  background: var(--cc-bg-light);
+  color: var(--cc-primary);
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--cc-border);
+}
+
+.cc-styled-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--cc-border);
+  color: #333333;
+  vertical-align: middle;
+}
+
+.cc-styled-table tbody tr:hover td {
+  background-color: rgba(248, 249, 250, 0.75);
+  transition: background-color 0.15s ease;
+}
+
+.cc-styled-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cc-badge-code {
+  background: var(--cc-bg-light);
+  border: 1px solid var(--cc-border);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85em;
+  color: #d63384;
+}

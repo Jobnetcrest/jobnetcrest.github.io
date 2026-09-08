@@ -1,105 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- CookieConsent CSS -->
-<!-- 1. Use the local self-hosted files we just downloaded -->
-<link rel="stylesheet" href="/vendor/cookieconsent.css">
-<script src="/vendor/cookieconsent.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Engine</title>
 
-<!-- 2. Non-blocking engine wrapper -->
-<script>
-async function initCompliantBanner() {
-    let cookieDb = { necessary: [], analytics: [], marketing: [] };
 
-    // ✨ FIX 1: Try multiple potential routes to handle the local 404 pathing matrix
-    const possiblePaths = ['/cookie-database.json', '/public/cookie-database.json'];
-    
-    for (const path of possiblePaths) {
-        try {
-            const response = await fetch(path);
-            if (response.ok) {
-                cookieDb = await response.json();
-                console.log(`✅ Database parsed successfully via endpoint: ${path}`);
-                break;
+ <!-- 1. Local Core Layout Stylesheet -->
+<link rel="stylesheet" href="assets/css/cookieconsent.css">
+
+<!-- 2. Local JavaScript Bundle -->
+<script src="assets/js/cookieconsent.js"></script>
+
+
+
+    <!-- 3. Execution Engine Wrapper -->
+    <script>
+    async function initCompliantBanner() {
+        // Explicit single database file route with zero alternative paths
+        const response = await fetch('/assets/cookie-database.json');
+        const cookieDb = await response.json();
+
+        const generateTableRows = (items) => {
+            if (!items || items.length === 0) {
+                return '<tr><td colspan="3" style="text-align:center; padding:10px; color:#888;">No cookies detected by automated audit.</td></tr>';
             }
-        } catch (e) {
-            // Keep looping to the next path fallback if this one throws
-        }
-    }
+            return items.map(item => `
+                <tr>
+                    <td><strong>${item.name || 'Unknown'}</strong></td>
+                    <td>${item.domain || 'Internal'}</td>
+                    <td>${item.expiry || 'Session'}</td>
+                </tr>
+            `).join('');
+        };
 
-    const generateTableRows = (items) => {
-        if (!items || items.length === 0) {
-            return '<tr><td colspan="3" style="text-align:center; padding:10px; color:#888;">No cookies detected by automated audit.</td></tr>';
-        }
-        return items.map(item => `
-            <tr>
-                <td><strong>${item.name || 'Unknown'}</strong></td>
-                <td>${item.domain || 'Internal'}</td>
-                <td>${item.expiry || 'Session'}</td>
-            </tr>
-        `).join('');
-    };
+        const consentEngine = window.CookieConsent;
 
-    // ✨ FIX 2: Check standard window assignment mappings directly
-    const consentEngine = window.CookieConsent;
-
-    if (consentEngine) {
-        consentEngine.run({
-            categories: {
-                necessary: { enabled: true, readOnly: true },
-                analytics: { enabled: false },
-                marketing: { enabled: false }
-            },
-            language: {
-                default: 'en',
-                translations: {
-                    en: {
-                        consentModal: {
-                            title: 'We value your privacy',
-                            description: 'We use a self-hosted pipeline to monitor tracking code loops transparently.',
-                            acceptAllBtn: 'Accept all',
-                            acceptNecessaryBtn: 'Reject all',
-                            showPreferencesBtn: 'Manage individual settings'
-                        },
-                        preferencesModal: {
-                            title: 'Privacy Preference Centre',
-                            sections: [
-                                {
-                                    title: 'Analytics Cookies',
-                                    description: `These files allow us to audit traffic metrics dynamically without tracking identities.`,
-                                    linkedCategory: 'analytics',
-                                    cookieTable: {
-                                        headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
-                                        body: generateTableRows(cookieDb.analytics)
+        if (consentEngine) {
+            consentEngine.run({
+                categories: {
+                    necessary: { enabled: true, readOnly: true },
+                    analytics: { enabled: false },
+                    marketing: { enabled: false }
+                },
+                language: {
+                    default: 'en',
+                    translations: {
+                        en: {
+                            consentModal: {
+                                title: 'We value your privacy',
+                                description: 'We use a self-hosted pipeline to monitor tracking code loops transparently.',
+                                acceptAllBtn: 'Accept all',
+                                acceptNecessaryBtn: 'Reject all',
+                                showPreferencesBtn: 'Manage individual settings'
+                            },
+                            preferencesModal: {
+                                title: 'Privacy Preference Centre',
+                                sections: [
+                                    {
+                                        title: 'Analytics Cookies',
+                                        description: `These files allow us to audit traffic metrics dynamically without tracking identities.`,
+                                        linkedCategory: 'analytics',
+                                        cookieTable: {
+                                            headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
+                                            body: generateTableRows(cookieDb.analytics)
+                                        }
+                                    },
+                                    {
+                                        title: 'Marketing Cookies',
+                                        description: `Used to measure targeted cross-site conversions.`,
+                                        linkedCategory: 'marketing',
+                                        cookieTable: {
+                                            headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
+                                            body: generateTableRows(cookieDb.marketing)
+                                        }
                                     }
-                                },
-                                {
-                                    title: 'Marketing Cookies',
-                                    description: `Used to measure targeted cross-site conversions.`,
-                                    linkedCategory: 'marketing',
-                                    cookieTable: {
-                                        headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
-                                        body: generateTableRows(cookieDb.marketing)
-                                    }
-                                }
-                            ]
+                                ]
+                            }
                         }
                     }
                 }
-            }
-        });
-    } else {
-        console.error('❌ Critical: The locally hosted /vendor/cookieconsent.js layout asset failed to run.');
+            });
+        } else {
+            console.error('❌ Critical: The cdnjs library hook failed to compile into window namespace memory.');
+        }
     }
-}
 
-// Fire safely once DOM structure updates
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCompliantBanner);
-} else {
-    initCompliantBanner();
-}
-</script>
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCompliantBanner);
+    } else {
+        initCompliantBanner();
+    }
+    </script>
 
 
 
