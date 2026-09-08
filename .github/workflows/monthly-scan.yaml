@@ -1,0 +1,36 @@
+name: Monthly Automated Cookie Scan
+
+on:
+  schedule:
+    # Runs at 00:00 on day 1 of every calendar month
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allows you to manually trigger a test scan via GitHub dashboard
+
+jobs:
+  scan-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Puppeteer Dependencies
+        run: |
+          npm install puppeteer
+
+      - name: Run Web Scraper Rescan
+        run: node scan.js
+
+      - name: Commit and Push Updated cookies.json
+        run: |
+          git config --global user.name "CookieBot-Alternative-Bot"
+          git config --global user.email "bot@github.com"
+          git add cookies.json
+          # Only commit changes if files have actually changed to avoid pipeline clutter
+          git diff-index --quiet HEAD || git commit -m "chore: automated monthly cookie rescan updates [skip ci]"
+          git push
+ 
