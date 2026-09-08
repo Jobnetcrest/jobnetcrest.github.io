@@ -8,20 +8,26 @@ on:
 jobs:
   audit-and-map:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Codebase
-        uses: actions/checkout@v4
+    
+    permissions:
+      contents: write
 
+    steps:
+      # Fix: Bumped from @v4 to @v6 to run natively on Node 24
+      - name: Checkout Codebase
+        uses: actions/checkout@v6
+
+      # Fix: Bumped from @v4 to @v6 to run natively on Node 24
       - name: Setup Node.js Runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '24'
+          node-version: '24' # Updated your execution environment to 24 as well
           cache: 'npm'
 
       - name: Install Dependencies
         run: |
           npm install playwright
-          npx playwright install chromium
+          npx playwright install --with-deps chromium
 
       - name: Run Headless Audit
         run: node scan.js
@@ -37,3 +43,4 @@ jobs:
           else
             echo "No changes found in cookie profiles."
           fi
+
