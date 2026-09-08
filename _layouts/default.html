@@ -2,77 +2,107 @@
 <html lang="en">
 <head>
 <!-- CookieConsent CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@1.3.0/dist/cookieconsent.min.css">
-<script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@1.3.0/dist/cookieconsent.min.js"></script>
+<!-- 1. Use the local self-hosted files we just downloaded -->
+<link rel="stylesheet" href="/vendor/cookieconsent.css">
+<script src="/vendor/cookieconsent.js"></script>
+
+<!-- 2. Non-blocking engine wrapper -->
 <script>
 async function initCompliantBanner() {
-    // 1. Grab your free dynamic file from your server or GitHub Pages raw endpoint
-    const response = await fetch('/public/cookie-database.json');
-    const cookieDb = await response.json();
+    let cookieDb = { necessary: [], analytics: [], marketing: [] };
 
-    // Helper to structure cookie data arrays into HTML rows
+    // ✨ FIX 1: Try multiple potential routes to handle the local 404 pathing matrix
+    const possiblePaths = ['/cookie-database.json', '/public/cookie-database.json'];
+    
+    for (const path of possiblePaths) {
+        try {
+            const response = await fetch(path);
+            if (response.ok) {
+                cookieDb = await response.json();
+                console.log(`✅ Database parsed successfully via endpoint: ${path}`);
+                break;
+            }
+        } catch (e) {
+            // Keep looping to the next path fallback if this one throws
+        }
+    }
+
     const generateTableRows = (items) => {
-        if (!items || items.length === 0) return '<tr><td colspan="3">None detected.</td></tr>';
+        if (!items || items.length === 0) {
+            return '<tr><td colspan="3" style="text-align:center; padding:10px; color:#888;">No cookies detected by automated audit.</td></tr>';
+        }
         return items.map(item => `
             <tr>
-                <td><strong>${item.name}</strong></td>
-                <td>${item.domain}</td>
-                <td>${item.expiry}</td>
+                <td><strong>${item.name || 'Unknown'}</strong></td>
+                <td>${item.domain || 'Internal'}</td>
+                <td>${item.expiry || 'Session'}</td>
             </tr>
         `).join('');
     };
 
-    // 2. Instantiate Vanilla JS CookieConsent
-    run({
-        categories: {
-            necessary: { enabled: true, readOnly: true },
-            analytics: { enabled: false },
-            marketing: { enabled: false }
-        },
-        language: {
-            default: 'en',
-            translations: {
-                en: {
-                    consentModal: {
-                        title: 'We value your privacy',
-                        description: 'We use a self-hosted pipeline to monitor tracking code loops transparently.',
-                        acceptAllBtn: 'Accept all',
-                        acceptNecessaryBtn: 'Reject all',
-                        showPreferencesBtn: 'Manage individual settings'
-                    },
-                    preferencesModal: {
-                        title: 'Privacy Preference Centre',
-                        sections: [
-                            {
-                                title: 'Analytics Cookies',
-                                description: `These files allow us to audit traffic metrics dynamically without tracking identities.`,
-                                linkedCategory: 'analytics',
-                                cookieTable: {
-                                    headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
-                                    body: generateTableRows(cookieDb.analytics)
+    // ✨ FIX 2: Check standard window assignment mappings directly
+    const consentEngine = window.CookieConsent;
+
+    if (consentEngine) {
+        consentEngine.run({
+            categories: {
+                necessary: { enabled: true, readOnly: true },
+                analytics: { enabled: false },
+                marketing: { enabled: false }
+            },
+            language: {
+                default: 'en',
+                translations: {
+                    en: {
+                        consentModal: {
+                            title: 'We value your privacy',
+                            description: 'We use a self-hosted pipeline to monitor tracking code loops transparently.',
+                            acceptAllBtn: 'Accept all',
+                            acceptNecessaryBtn: 'Reject all',
+                            showPreferencesBtn: 'Manage individual settings'
+                        },
+                        preferencesModal: {
+                            title: 'Privacy Preference Centre',
+                            sections: [
+                                {
+                                    title: 'Analytics Cookies',
+                                    description: `These files allow us to audit traffic metrics dynamically without tracking identities.`,
+                                    linkedCategory: 'analytics',
+                                    cookieTable: {
+                                        headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
+                                        body: generateTableRows(cookieDb.analytics)
+                                    }
+                                },
+                                {
+                                    title: 'Marketing Cookies',
+                                    description: `Used to measure targeted cross-site conversions.`,
+                                    linkedCategory: 'marketing',
+                                    cookieTable: {
+                                        headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
+                                        body: generateTableRows(cookieDb.marketing)
+                                    }
                                 }
-                            },
-                            {
-                                title: 'Marketing Cookies',
-                                description: `Used to measure targeted cross-site conversions.`,
-                                linkedCategory: 'marketing',
-                                cookieTable: {
-                                    headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
-                                    body: generateTableRows(cookieDb.marketing)
-                                }
-                            }
-                        ]
+                            ]
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    } else {
+        console.error('❌ Critical: The locally hosted /vendor/cookieconsent.js layout asset failed to run.');
+    }
 }
 
-// Fire initialization on mount
-initCompliantBanner();
-
+// Fire safely once DOM structure updates
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCompliantBanner);
+} else {
+    initCompliantBanner();
+}
 </script>
+
+
+
 
 
 
