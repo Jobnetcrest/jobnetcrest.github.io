@@ -2,7 +2,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-const TARGET_URL = 'https://yourwebsite.com'; // <-- Swap out for your live site URL
+const TARGET_URL = 'https://jobnetcrest.github.io'; // <-- Swap out for your live site URL
 
 (async () => {
     const browser = await puppeteer.launch({ headless: true });
