@@ -6,93 +6,79 @@
     <title>Privacy Engine</title>
 
 
- <!-- 1. Local Core Layout Stylesheet -->
-<link rel="stylesheet" href="/assets/cookieconsent.css">
-
-<!-- 2. Local JavaScript Bundle -->
-<script src="/assets/cookieconsent.js"></script>
-
+        <!-- 1. CRITICAL: Link the local CSS file so it displays as a window instead of raw text -->
+    <link rel="stylesheet" href="cookieconsent.css">
+</head>
+<body>
 
 
-    <!-- 3. Execution Engine Wrapper -->
+    <!-- 2. Load the local UMD JavaScript file -->
+    <script src="cookieconsent.umd.js"></script>
+    
+    <!-- 3. CRITICAL: Run the initialization script to generate the window -->
     <script>
-    async function initCompliantBanner() {
-        // Explicit single database file route with zero alternative paths
-        const response = await fetch('/assets/cookie-database.json');
-        const cookieDb = await response.json();
-
-        const generateTableRows = (items) => {
-            if (!items || items.length === 0) {
-                return '<tr><td colspan="3" style="text-align:center; padding:10px; color:#888;">No cookies detected by automated audit.</td></tr>';
-            }
-            return items.map(item => `
-                <tr>
-                    <td><strong>${item.name || 'Unknown'}</strong></td>
-                    <td>${item.domain || 'Internal'}</td>
-                    <td>${item.expiry || 'Session'}</td>
-                </tr>
-            `).join('');
-        };
-
-        const consentEngine = window.CookieConsent;
-
-        if (consentEngine) {
-            consentEngine.run({
-                categories: {
-                    necessary: { enabled: true, readOnly: true },
-                    analytics: { enabled: false },
-                    marketing: { enabled: false }
+        // Start the cookie consent plugin
+        CookieConsent.run({
+            guiOptions: {
+                consentModal: {
+                    layout: "box",
+                    position: "bottom right",
+                    equalWeightButtons: true,
+                    flipButtons: false
                 },
-                language: {
-                    default: 'en',
-                    translations: {
-                        en: {
-                            consentModal: {
-                                title: 'We value your privacy',
-                                description: 'We use a self-hosted pipeline to monitor tracking code loops transparently.',
-                                acceptAllBtn: 'Accept all',
-                                acceptNecessaryBtn: 'Reject all',
-                                showPreferencesBtn: 'Manage individual settings'
-                            },
-                            preferencesModal: {
-                                title: 'Privacy Preference Centre',
-                                sections: [
-                                    {
-                                        title: 'Analytics Cookies',
-                                        description: `These files allow us to audit traffic metrics dynamically without tracking identities.`,
-                                        linkedCategory: 'analytics',
-                                        cookieTable: {
-                                            headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
-                                            body: generateTableRows(cookieDb.analytics)
-                                        }
-                                    },
-                                    {
-                                        title: 'Marketing Cookies',
-                                        description: `Used to measure targeted cross-site conversions.`,
-                                        linkedCategory: 'marketing',
-                                        cookieTable: {
-                                            headers: { name: 'Cookie Name', domain: 'Source Domain', expiration: 'Lifespan' },
-                                            body: generateTableRows(cookieDb.marketing)
-                                        }
-                                    }
-                                ]
-                            }
+                preferencesModal: {
+                    layout: "box",
+                    position: "right",
+                    equalWeightButtons: true,
+                    flipButtons: false
+                }
+            },
+            categories: {
+                necessary: {
+                    readOnly: true
+                },
+                analytics: {}
+            },
+            language: {
+                default: "en",
+                autoDetect: "browser",
+                translations: {
+                    en: {
+                        consentModal: {
+                            title: "We use cookies!",
+                            description: "Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it.",
+                            acceptAllBtn: "Accept all",
+                            acceptNecessaryBtn: "Reject all",
+                            showPreferencesBtn: "Manage preferences"
+                        },
+                        preferencesModal: {
+                            title: "Consent Preferences",
+                            acceptAllBtn: "Accept all",
+                            acceptNecessaryBtn: "Reject all",
+                            savePreferencesBtn: "Save preferences",
+                            closeIconLabel: "Close modal",
+                            sections: [
+                                {
+                                    title: "Cookie Usage",
+                                    description: "I use cookies to ensure the basic functionalities of the website and to enhance your online experience."
+                                },
+                                {
+                                    title: "Strictly Necessary Cookies",
+                                    description: "These cookies are essential for the proper functioning of my website.",
+                                    linkedCategory: "necessary"
+                                },
+                                {
+                                    title: "Performance and Analytics Cookies",
+                                    description: "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.",
+                                    linkedCategory: "analytics"
+                                }
+                            ]
                         }
                     }
                 }
-            });
-        } else {
-            console.error('❌ Critical: The cdnjs library hook failed to compile into window namespace memory.');
-        }
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCompliantBanner);
-    } else {
-        initCompliantBanner();
-    }
+            }
+        });
     </script>
-
 
 
 

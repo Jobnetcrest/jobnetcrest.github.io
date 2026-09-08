@@ -1,10 +1,11 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { chromium } from 'playwright';
 
 // Configuration
-const TARGET_URL = 'https://jobnetcrest.github.io';
-const OUTPUT_FILE = './public/cookie-database.json';
+//const TARGET_URL = 'https://jobnetcrest.github.io';
+const TARGET_URL = 'http://localhost:4000';
+const OUTPUT_FILE = 'cookie-database.json';
 
 async function scanCookies() {
     console.log(`🕵️ Scanning ${TARGET_URL}...`);
@@ -48,11 +49,11 @@ async function scanCookies() {
         }
     }
     
-    // Ensure target folder exists and write JSON asynchronously
+    // Ensure target folder exists and write JSON using async fs/promises
     const dir = path.dirname(OUTPUT_FILE);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    await fs.mkdir(dir, { recursive: true });
     
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(categorised, null, 2));
+    await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf8');
     console.log(`💾 Fresh audit database deployed to ${OUTPUT_FILE}!`);
 }
 
@@ -60,3 +61,4 @@ scanCookies().catch(err => {
     console.error('❌ Scan failed:', err);
     process.exit(1);
 });
+
