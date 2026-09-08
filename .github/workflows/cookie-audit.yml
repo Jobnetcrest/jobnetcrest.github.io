@@ -1,0 +1,39 @@
+name: Automated Cookie Scanner Loop
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at midnight
+  workflow_dispatch: # Allows manual button-trigger from GitHub UI
+
+jobs:
+  audit-and-map:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: |
+          npm install playwright
+          npx playwright install chromium
+
+      - name: Run Headless Audit
+        run: node scan.js
+
+      - name: Push Data Back to Git
+        run: |
+          git config --global user.name "CookieScannerBot"
+          git config --global user.email "bot@github.com"
+          git add public/cookie-database.json
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: auto-updated active cookie catalog [skip ci]"
+            git push
+          else
+            echo "No changes found in cookie profiles."
+          fi
