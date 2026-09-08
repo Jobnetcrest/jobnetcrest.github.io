@@ -3,106 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Engine</title>
+    <title>{{ page.title }} | Pickleball Gloucestershire</title>
 
 
-        <!-- 1. CRITICAL: Link the local CSS file so it displays as a window instead of raw text -->
-    <link rel="stylesheet" href="cookieconsent.css">
-</head>
-<body>
+    <!-- 1. CRITICAL: Link the local CSS file so it displays as a window instead of raw text -->
+    <!--<link rel="stylesheet" href="cookieconsent.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.1.0/dist/cookieconsent.min.css">
 
 
-    <!-- 2. Load the local UMD JavaScript file -->
-    <script src="cookieconsent.umd.js"></script>
-    
-    <!-- 3. CRITICAL: Run the initialization script to generate the window -->
-    <script>
-        // Start the cookie consent plugin
-        CookieConsent.run({
-            guiOptions: {
-                consentModal: {
-                    layout: "box",
-                    position: "bottom right",
-                    equalWeightButtons: true,
-                    flipButtons: false
-                },
-                preferencesModal: {
-                    layout: "box",
-                    position: "right",
-                    equalWeightButtons: true,
-                    flipButtons: false
-                }
-            },
-            categories: {
-                necessary: {
-                    readOnly: true
-                },
-                analytics: {}
-            },
-            language: {
-                default: "en",
-                autoDetect: "browser",
-                translations: {
-                    en: {
-                        consentModal: {
-                            title: "We use cookies!",
-                            description: "Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it.",
-                            acceptAllBtn: "Accept all",
-                            acceptNecessaryBtn: "Reject all",
-                            showPreferencesBtn: "Manage preferences"
-                        },
-                        preferencesModal: {
-                            title: "Consent Preferences",
-                            acceptAllBtn: "Accept all",
-                            acceptNecessaryBtn: "Reject all",
-                            savePreferencesBtn: "Save preferences",
-                            closeIconLabel: "Close modal",
-                            sections: [
-                                {
-                                    title: "Cookie Usage",
-                                    description: "I use cookies to ensure the basic functionalities of the website and to enhance your online experience."
-                                },
-                                {
-                                    title: "Strictly Necessary Cookies",
-                                    description: "These cookies are essential for the proper functioning of my website.",
-                                    linkedCategory: "necessary"
-                                },
-                                {
-                                    title: "Performance and Analytics Cookies",
-                                    description: "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.",
-                                    linkedCategory: "analytics"
-                                }
-                            ]
-                        }
-                    }
-                }
-            }
-        });
-    </script>
-
-
-
-
-
-
-  <!-- Cookie BOT - free version doesn't have monthly rescans 
-  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="b98fe652-ec1b-47d5-994c-1dd2509fc083" data-blockingmode="auto" type="text/javascript"></script>
-   -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- For better SEO:
         <meta name="description" content="Official website for Gloucestershire Pickleball club. Join us for regular play, tournaments, and coaching.">
      -->
-        
-  
-
     <!-- ALLOWS FACEBOOK TO SEND IMAGES SECURELY TO YOUR SITE -->
     <meta name="referrer" content="no-referrer-when-downgrade">
-    
+
     <!-- Added Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  
-    <link rel="stylesheet" href="site.css"> 
+
+    <link rel="stylesheet" href="site.css">
     <link class="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -110,197 +30,269 @@
     <style>
         /* Adds spacing so your fixed top navbar doesn't cut off the top of your page content */
         body {
-            padding-top: 85px; 
+            padding-top: 85px;
         }
     </style>
-
-     <title>{{ page.title }} | Pickleball Gloucestershire</title>
-
-    <script src="https://kit.fontawesome.com/e21a7803ec.js" crossorigin="anonymous"></script>
 </head>
 
 <!-- The body tag is set to be a minimum of the viewport height, use flexbox for layout, and have a dark text color. The data attributes are used for Bootstrap's scrollspy feature, which highlights navigation links based on scroll position.
 <body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"> !-- removed p-0 -->
 
-  <body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark" 
-      data-bs-spy="scroll" 
-      data-bs-target="#navbarSupportedContent" 
+<body class="min-vh-100 d-flex flex-column position-relative m-0 text-dark"
+      data-bs-spy="scroll"
+      data-bs-target="#navbarSupportedContent"
       data-bs-root-margin="0px 0px -40%">
 
-  {% if page.background_image %}
+    {% if page.background_image %}
     <!-- Flag Background Layer -->
-    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1" 
-         style="background-image: url('{{ page.background_image | relative_url }}'); 
-                background-size: cover; 
-                background-position: center; 
+    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1"
+         style="background-image: url('{{ page.background_image | relative_url }}');
+                background-size: cover;
+                background-position: center;
                 background-repeat: no-repeat;">
     </div>
-    
+
     <!-- Modern Soft Glassmorphism Overlay (Ensures Text Readability) -->
-    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1 bg-white bg-opacity-75" 
+    <div class="position-fixed top-0 start-0 w-100 h-100 z-n1 bg-white bg-opacity-75"
          style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
     </div>
-  {% endif %}
+    {% endif %}
 
-  <!-- Main Navigation Header -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="images/Pickleball Glos.png" alt="Logo" width="90" height="60">
-      </a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left side links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}" 
-               {% if page.url == '/' or page.url == '/index.html' %}aria-current="page"{% endif %} 
-               href="{{ '/' | relative_url }}">Home</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/about' %}active{% endif %}" 
-               {% if page.url contains '/about' %}aria-current="page"{% endif %} 
-               href="{{ '/about.html' | relative_url }}">About Us</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/schedule' %}active{% endif %}" 
-               {% if page.url contains '/schedule' %}aria-current="page"{% endif %} 
-               href="{{ '/schedule.html' | relative_url }}">Schedule</a>
-          </li>
-          
-          
-          <!-- Disabled Item with Native Tooltip -->
-          <li class="nav-item d-flex align-items-center">  
-            <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
-              <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
-                Coaching
-              </a>
-            </span>
-          </li>
-          
-          <!-- Disabled Item with Native Tooltip -->
-          <li class="nav-item d-flex align-items-center">  
-            <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
-              <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
-                Training
-              </a>
-            </span>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/gallery' %}active{% endif %}" 
-               {% if page.url contains '/gallery' %}aria-current="page"{% endif %} 
-               href="{{ '/gallery.html' | relative_url }}">Gallery</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/festival' or page.url contains '/Evengallery' %}active{% endif %}" 
-               {% if page.url contains '/festival' or page.url contains '/Evengallery' %}aria-current="page"{% endif %} 
-               href="{{ '/festival.html' | relative_url }}">Festival</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" 
-               {% if page.url contains '/contact' %}aria-current="page"{% endif %} 
-               href="{{ '/contact.html' | relative_url }}">Contact</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/news' %}active{% endif %}" 
-               {% if page.url contains '/news' %}aria-current="page"{% endif %} 
-               href="{{ '/news.html' | relative_url }}">News</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}" 
-               {% if page.url contains '/pickle' %}aria-current="page"{% endif %} 
-               href="{{ '/pickle-resources.html' | relative_url }}">Pickleball Resources</a>
-          </li>
-        </ul>
-
-        <!-- Right side social icons -->
-        <ul class="navbar-nav d-flex flex-row gap-3">
-          <li class="nav-item">
-            <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank" rel="noopener">
-              <i class="fa-brands fa-facebook" style="font-size:32px; color:#1877F2;"></i>
+    <!-- Main Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 1050;">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/Pickleball Glos.png" alt="Logo" width="90" height="60">
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
-              <i class="fa-brands fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="mailto:glospickle@gmail.com"> 
-              <i class="fa-solid fa-envelope" style="font-size:32px; color:#EA4335;"></i>
-            </a>
-          </li>
-        </ul>
-        
-      </div> <!-- Closes #navbarSupportedContent -->
-    </div> <!-- Closes .container -->
-  </nav> <!-- Closes navbar -->
 
-        <!-- Main Content Area -->
-        <main class="flex-grow-1">
-          <!-- Section 1: Globally Centered Title Container -->
-          <div class="container-fluid px-3 px-md-5 position-relative z-1 pt-4 text-center d-flex flex-column align-items-center">   
-            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left side links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}
+                           {% if page.url=='/' or page.url=='/index.html' %}aria-current='page' {% endif %}"
+                           href="{{ '/' | relative_url }}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/about' %}active{% endif %}
+                           {% if page.url contains '/about' %}aria-current='page' {% endif %}"
+                           href="{{ '/about.html' | relative_url }}">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/schedule' %}active{% endif %}
+                           {% if page.url contains '/schedule' %}aria-current='page' {% endif %}"
+                           href="{{ '/schedule.html' | relative_url }}">Schedule</a>
+                    </li>
+
+
+                    <!-- Disabled Item with Native Tooltip -->
+                    <li class="nav-item d-flex align-items-center">
+                        <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
+                            <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
+                                Coaching
+                            </a>
+                        </span>
+                    </li>
+
+                    <!-- Disabled Item with Native Tooltip -->
+                    <li class="nav-item d-flex align-items-center">
+                        <span class="disabled-wrapper d-inline-block" title="This exciting content is launching soon!">
+                            <a href="#" class="nav-link disabled text-white-50" aria-disabled="true" tabindex="-1">
+                                Training
+                            </a>
+                        </span>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/gallery' %}active{% endif %}"
+                           {% if page.url contains '/gallery' %}aria-current='page' {% endif %}
+                           href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/festival' or page.url contains '/Evengallery' %}active{% endif %}
+                           {% if page.url contains '/festival' or page.url contains '/Evengallery' %}aria-current='page' {% endif %}"
+                           href="{{ '/festival.html' | relative_url }}">Festival</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}
+                           {% if page.url contains '/contact' %}aria-current='page' {% endif %}"
+                           href="{{ '/contact.html' | relative_url }}">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/news' %}active{% endif %}
+                           {% if page.url contains '/news' %}aria-current='page' {% endif %}"
+                           href="{{ '/news.html' | relative_url }}">News</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}
+                           {% if page.url contains '/pickle' %}aria-current='page' {% endif %}"
+                           href="{{ '/pickle-resources.html' | relative_url }}">Pickleball Resources</a>
+                    </li>
+                </ul>
+
+                <!-- Right side social icons -->
+                <ul class="navbar-nav d-flex flex-row gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.facebook.com/groups/8687603144677202?locale=en_GB" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-facebook" style="font-size:32px; color:#1877F2;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://wa.me/+447831100939" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+                            <i class="fa-brands fa-whatsapp" style="font-size:32px; color:#25D366;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mailto:glospickle@gmail.com">
+                            <i class="fa-solid fa-envelope" style="font-size:32px; color:#EA4335;"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div> <!-- Closes #navbarSupportedContent -->
+        </div> <!-- Closes .container -->
+    </nav> <!-- Closes navbar -->
+    <!-- Main Content Area -->
+    <main class="flex-grow-1">
+        <!-- Section 1: Globally Centered Title Container -->
+        <div class="container-fluid px-3 px-md-5 position-relative z-1 pt-4 text-center d-flex flex-column align-items-center">
+
             <!-- Title Wrapper Container (mx-auto centers it horizontally) -->
             <div class="mx-auto d-inline-block pb-2 pb-md-3 border-bottom border-4 max-w-100" style="border-color: #0072BB !important;">
-              <h1 class="display-4 display-md-2 fw-bold mb-0 text-uppercase lh-sm tracking-wider text-black">
-                {{ page.title }}
-              </h1>
+                <h1 class="display-4 display-md-2 fw-bold mb-0 text-uppercase lh-sm tracking-wider text-black">
+                    {{ page.title }}
+                </h1>
             </div>
 
-          </div>
+        </div>
 
-          <!-- Section 2: Widescreen Content Container (Allows child rows/columns to align correctly) -->
-          <div class="container-fluid px-3 px-md-5 position-relative z-1 pb-4">
-            
+        <!-- Section 2: Widescreen Content Container (Allows child rows/columns to align correctly) -->
+        <div class="container-fluid px-3 px-md-5 position-relative z-1 pb-4">
+
             <!-- This handles any page text or responsive grid layout blocks -->
-            {{ content }}   
+            {{ content }}
 
-          </div>
-        </main>
+        </div>
+    </main>
 
 
-  <!-- Sticky Footer Layout -->
-  <footer class="bg-dark text-light py-3 mt-auto position-relative z-1">
-      <div class="container text-center">
-          <p class="mb-1">&copy; 2026 Pickleball Gloucestershire. All rights reserved.</p>
-          <p class="mb-0"><a href="policy.html" class="text-decoration-none text-info">Our Policies</a></p>
-      </div>
-      <div class="version text-center text-muted small mt-2">
-          Version: {{ site.time | date: "%Y%m%d%H%M%S" }}
-      </div>
-  </footer>
-
-  <!-- Smooth Anchor Scrolling Script -->
-  <script>
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function(e) {
-              const targetId = this.getAttribute('href');
-              if (targetId !== '#') {
-                  e.preventDefault();
-                  const targetElement = document.querySelector(targetId);
-                  if (targetElement) {
-                      targetElement.scrollIntoView({
-                          behavior: 'smooth'
-                      });
-                  }
-              }
-          });
-      });
-  </script>
-
-  <!-- Added Bootstrap Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- Sticky Footer Layout -->
+    <footer class="bg-dark text-light py-3 mt-auto position-relative z-1">
+        <div class="container text-center">
+            <p class="mb-1">&copy; 2026 Pickleball Gloucestershire. All rights reserved.</p>
+            <p class="mb-0"><a href="policy.html" class="text-decoration-none text-info">Our Policies</a></p>
+        </div>
+        <div class="version text-center text-muted small mt-2">
+            Version: {{ site.time | date: "%Y%m%d%H%M%S" }}
+        </div>
+    </footer>
 </body>
 </html>
+
+<!-- Added Bootstrap Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/e21a7803ec.js" crossorigin="anonymous"></script>
+
+<!-- 2. Load the local UMD JavaScript file -->
+<!--<script src="cookieconsent.umd.js"></script>-->
+
+<!-- 2. Load the CDN UMD JavaScript file -->
+<script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.1.0/dist/cookieconsent.umd.min.js"></script>
+
+
+<!-- 3. CRITICAL: Run the initialization script to generate the window -->
+<script>
+    // Start the cookie consent plugin
+    CookieConsent.run({
+        guiOptions: {
+            consentModal: {
+                layout: "box",
+                position: "bottom right",
+                equalWeightButtons: true,
+                flipButtons: false
+            },
+            preferencesModal: {
+                layout: "box",
+                position: "right",
+                equalWeightButtons: true,
+                flipButtons: false
+            }
+        },
+        categories: {
+            necessary: {
+                readOnly: true
+            },
+            analytics: {}
+        },
+        language: {
+            default: "en",
+            autoDetect: "browser",
+            translations: {
+                en: {
+                    consentModal: {
+                        title: "We use cookies!",
+                        description: "Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it.",
+                        acceptAllBtn: "Accept all",
+                        acceptNecessaryBtn: "Reject all",
+                        showPreferencesBtn: "Manage preferences"
+                    },
+                    preferencesModal: {
+                        title: "Consent Preferences",
+                        acceptAllBtn: "Accept all",
+                        acceptNecessaryBtn: "Reject all",
+                        savePreferencesBtn: "Save preferences",
+                        closeIconLabel: "Close modal",
+                        sections: [
+                            {
+                                title: "Cookie Usage",
+                                description: "I use cookies to ensure the basic functionalities of the website and to enhance your online experience."
+                            },
+                            {
+                                title: "Strictly Necessary Cookies",
+                                description: "These cookies are essential for the proper functioning of my website.",
+                                linkedCategory: "necessary"
+                            },
+                            {
+                                title: "Performance and Analytics Cookies",
+                                description: "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.",
+                                linkedCategory: "analytics"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Cookie BOT - free version doesn't have monthly rescans
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="b98fe652-ec1b-47d5-994c-1dd2509fc083" data-blockingmode="auto" type="text/javascript"></script>
+ -->
+<!-- Smooth Anchor Scrolling Script -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId !== '#') {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+</script>
