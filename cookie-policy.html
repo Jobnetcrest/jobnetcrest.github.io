@@ -7,10 +7,14 @@ background_image: ""
 <head>
     <!-- Your standard site links -->
     <link rel="stylesheet" href="site.css"><!-- Your main stylesheet -->
+
+            <!-- 1. CRITICAL: Link the local CSS file so it displays as a window instead of raw text -->
+    <link rel="stylesheet" href="cookieconsent.css">
+<
+    <!-- 2. Load the local UMD JavaScript file -->
+    <script src="cookieconsent.umd.js"></script>
     
-    <!-- ✨ FIX 1: Restored the official, verified Version 3 library links from the author -->
-    <link rel="stylesheet" href="https://jsdelivr.net">
-    <script src="https://jsdelivr.net"></script>
+    
 </head>
 
 <p>You can change or withdraw your consent at any time by clicking our 
@@ -30,7 +34,7 @@ async function renderPolicyTables() {
 
     try {
         // Direct single target path matching your root public distribution asset
-        const response = await fetch('/public/cookie-database.json');
+        const response = await fetch('cookie-database.json');
         if (!response.ok) throw new Error('Database path mismatch');
         const cookieDb = await response.json();
 
