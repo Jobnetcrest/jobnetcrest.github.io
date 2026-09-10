@@ -184,8 +184,7 @@ td {
 .gallery-item {
     position: relative;
     width: calc(33.333% - 10px);
-    height: 300px;
-    background: #000;
+    background: transparent;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -208,16 +207,33 @@ td {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
+    /* 🌟 UPDATED: Deep, rich brand-green overlay mask (85% opacity) */
+    background: rgba(18, 102, 49, 0.85); 
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .gallery-item:hover .gallery-overlay {
     opacity: 1;
+}
+
+/* 🌟 ADD ONLY THIS TO THE BOTTOM OF SECTION 6 */
+.gallery-item {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 /* Premium Hover Utilities */
@@ -249,9 +265,46 @@ td {
   cursor: pointer;
 }
 
-.gallery-thumb {
-  height: 300px;
+/* ==========================================================================
+   6. LEGACY & MODERN GALLERIES
+   ========================================================================== */
+.gallery-hover-wrapper { 
+    cursor: pointer; 
 }
+
+.transition-img { 
+    transition: transform 0.4s ease-in-out; 
+}
+
+.transition-overlay { 
+    background: rgba(18, 102, 49, 0.85); /* Club Brand Green */
+    transition: opacity 0.3s ease-in-out; 
+    z-index: 2; 
+}
+
+.gallery-hover-wrapper:hover .transition-overlay { 
+    opacity: 1 !important; 
+}
+
+.gallery-hover-wrapper:hover .transition-img { 
+    transform: scale(1.06); 
+}
+
+.gallery-item {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Lightbox Max-Height Guard: stops vertical pop-up spillages on small laptop views */
+#lightbox-img {
+    max-height: 70vh;
+    object-fit: contain;
+}
+
 
 
 /* ==========================================================================

@@ -73,23 +73,44 @@
                 <!-- Left side links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}
-                           {% if page.url=='/' or page.url=='/index.html' %}aria-current='page' {% endif %}"
-                           href="{{ '/' | relative_url }}">Home</a>
+                        <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}"
+                        {% if page.url == '/' or page.url == '/index.html' %}aria-current="page"{% endif %}
+                        href="{{ '/' | relative_url }}">Home</a>
                     </li>
+
+        <!-- About Us Dropdown Menu -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if page.url contains '/about' or page.url contains '/merchandise' %}active{% endif %}"
+            href="#" 
+            id="aboutDropdown" 
+            role="button" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false"
+            {% if page.url contains '/about' or page.url contains '/merchandise' %}aria-current="page"{% endif %}>
+                About Us
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="aboutDropdown">
+                <li>
+                    <a class="dropdown-item {% if page.url contains '/about' %}active{% endif %}" 
+                    href="{{ '/about.html' | relative_url }}">
+                        About Our Club
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <a class="dropdown-item {% if page.url contains '/merchandise' %}active{% endif %}" 
+                    href="{{ '/merchandise.html' | relative_url }}">
+                        Merchandise
+                    </a>
+                </li>
+            </ul>
+        </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if page.url contains '/about' %}active{% endif %}
-                           {% if page.url contains '/about' %}aria-current='page' {% endif %}"
-                           href="{{ '/about.html' | relative_url }}">About Us</a>
+                        <a class="nav-link {% if page.url contains '/schedule' %}active{% endif %}"
+                        {% if page.url contains '/schedule' %}aria-current="page"{% endif %}
+                        href="{{ '/schedule.html' | relative_url }}">Schedule</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if page.url contains '/schedule' %}active{% endif %}
-                           {% if page.url contains '/schedule' %}aria-current='page' {% endif %}"
-                           href="{{ '/schedule.html' | relative_url }}">Schedule</a>
-                    </li>
-
 
                     <!-- Disabled Item with Native Tooltip -->
                     <li class="nav-item d-flex align-items-center">
@@ -111,32 +132,54 @@
 
                     <li class="nav-item">
                         <a class="nav-link {% if page.url contains '/gallery' %}active{% endif %}"
-                           {% if page.url contains '/gallery' %}aria-current='page' {% endif %}
-                           href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+                        {% if page.url contains '/gallery' %}aria-current="page"{% endif %}
+                        href="{{ '/gallery.html' | relative_url }}">Gallery</a>
+                    </li>
+
+<!-- Events Dropdown Menu -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle {% if page.url contains '/festival' or page.url contains '/Evengallery' or page.url contains '/league' %}active{% endif %}"
+       href="#" 
+       id="eventsDropdown" 
+       role="button" 
+       data-bs-toggle="dropdown" 
+       aria-expanded="false"
+       {% if page.url contains '/festival' or page.url contains '/Evengallery' or page.url contains '/league' %}aria-current="page"{% endif %}>
+        Events
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="eventsDropdown">
+        <li>
+            <a class="dropdown-item {% if page.url contains '/festival' or page.url contains '/Evengallery' %}active{% endif %}" 
+               href="{{ '/festival.html' | relative_url }}">
+                Festival
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item {% if page.url contains '/league' %}active{% endif %}" 
+               href="{{ '/league.html' | relative_url }}">
+                League
+            </a>
+        </li>
+    </ul>
+</li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}"
+                        {% if page.url contains '/contact' %}aria-current="page"{% endif %}
+                        href="{{ '/contact.html' | relative_url }}">Contact</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if page.url contains '/festival' or page.url contains '/Evengallery' %}active{% endif %}
-                           {% if page.url contains '/festival' or page.url contains '/Evengallery' %}aria-current='page' {% endif %}"
-                           href="{{ '/festival.html' | relative_url }}">Festival</a>
+                        <a class="nav-link {% if page.url contains '/news' %}active{% endif %}"
+                        {% if page.url contains '/news' %}aria-current="page"{% endif %}
+                        href="{{ '/news.html' | relative_url }}">News</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}
-                           {% if page.url contains '/contact' %}aria-current='page' {% endif %}"
-                           href="{{ '/contact.html' | relative_url }}">Contact</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if page.url contains '/news' %}active{% endif %}
-                           {% if page.url contains '/news' %}aria-current='page' {% endif %}"
-                           href="{{ '/news.html' | relative_url }}">News</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}
-                           {% if page.url contains '/pickle' %}aria-current='page' {% endif %}"
-                           href="{{ '/pickle-resources.html' | relative_url }}">Pickleball Resources</a>
+                        <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}"
+                        {% if page.url contains '/pickle' %}aria-current="page"{% endif %}
+                        href="{{ '/pickle-resources.html' | relative_url }}">Pickleball Resources</a>
                     </li>
                 </ul>
 
@@ -162,6 +205,7 @@
             </div> <!-- Closes #navbarSupportedContent -->
         </div> <!-- Closes .container -->
     </nav> <!-- Closes navbar -->
+
     <!-- Main Content Area -->
     <main class="flex-grow-1">
         <!-- Section 1: Globally Centered Title Container -->
@@ -196,12 +240,37 @@
             Version: {{ site.time | date: "%Y%m%d%H%M%S" }}
         </div>
     </footer>
+
+<script>
+    window.addEventListener('pageshow', function (event) {
+        // Check if the page was loaded from the browser's back/forward cache
+        if (event.persisted) {
+            var navbarCollapse = document.getElementById('navbarSupportedContent');
+            var navbarToggler = document.querySelector('.navbar-toggler');
+            
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                // Remove Bootstrap classes that keep the menu open
+                navbarCollapse.classList.remove('show');
+                
+                // Reset the toggle button's state for accessibility
+                if (navbarToggler) {
+                    navbarToggler.classList.add('collapsed');
+                    navbarToggler.setAttribute('aria-expanded', 'false');
+                }
+            }
+        }
+    });
+</script>
+<!-- Added Bootstrap Scripts - MOVED TO HERE ON ADVICE OF AI - cos couldn't close zoom window-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
 
-<!-- Added Bootstrap Scripts -->
+<!-- Added Bootstrap Scripts --><!--
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+-->
 <script src="https://kit.fontawesome.com/e21a7803ec.js" crossorigin="anonymous"></script>
 
 <!-- 2. Load the local UMD JavaScript file -->

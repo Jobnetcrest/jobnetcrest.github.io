@@ -1,50 +1,182 @@
 ---
 layout: default
-background_image: "/images/glos flag.png"
+title: Club League
 ---
 
-<section id="league" class="section py-4 py-md-5">
-  <div class="container text-center text-black">
-    
-    <!-- Section Title -->
-    <div class="d-inline-block pb-2 mb-4 mb-md-5 border-bottom border-4 border-dark">
-      <h2 class="display-4 display-md-2 fw-bold mb-0 text-uppercase">
-        League Details
-      </h2>
+<div class="container my-5 pt-5">
+    <!-- Header Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-12">
+            <h1 class="display-4 fw-bold text-dark mb-3">Gloucestershire Pickleball League</h1>
+            <p class="lead text-muted">Track team fixtures, view competitive standings, and see previous season champions.</p>
+            <div class="mx-auto" style="width: 60px; height: 4px; background-color: #25D366;"></div>
+        </div>
     </div>
 
-    <!-- FIXED: Turned into a high-visibility glowing yellow/gold announcement container -->
-    <div class="w-100 w-lg-75 mx-auto py-5 px-4 border border-2 border-warning rounded-4 shadow-sm" 
-         style="background: linear-gradient(145deg, #fffbeb, #fef08a); position: relative; overflow: hidden;">
-      
-      <!-- Subtle Decorative Background Star Graphics -->
-      <div class="text-warning opacity-25 position-absolute" style="top: -20px; left: -20px; font-size: 90px; pointer-events: none;">
-        <i class="fa fa-star"></i>
-      </div>
-      <div class="text-warning opacity-25 position-absolute" style="bottom: -20px; right: -20px; font-size: 90px; pointer-events: none;">
-        <i class="fa fa-star"></i>
-      </div>
-
-      <!-- Main Focal Yellow Star Icon -->
-      <div class="mb-3 text-warning drop-shadow" style="font-size: 48px;">
-        <i class="fa fa-star animate-pulse"></i>
-      </div>
-      
-      <!-- Main text block -->
-      <h3 class="display-5 fw-extrabold text-uppercase text-dark mb-2 tracking-wide">
-        Watch This Space
-      </h3>
-      <p class="fs-5 text-dark mb-0 mx-auto fw-medium" style="max-width: 600px; line-height: 1.6;">
-        Discussions and planning are currently taking place regarding the next instalment of the Gloucestershire Pickleball League. Check back soon or join our announcement groups to be the first to know!
-      </p>
+    <!-- Active Placeholder: Next Season Announcement -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-12 col-lg-10">
+            <div class="card border-0 shadow bg-dark text-white position-relative overflow-hidden">
+                <!-- Decorative subtle backdrop glow matching the whatsapp green aesthetic -->
+                <div class="position-absolute translate-middle-x rounded-circle" style="top: -150px; left: 50%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(37,211,102,0.15) 0%, rgba(0,0,0,0) 70%); pointer-events: none;"></div>
+                
+                <div class="card-body p-4 p-md-5 text-center position-relative" style="z-index: 2;">
+                    <span class="badge bg-success text-uppercase fw-bold px-3 py-2 mb-3 tracking-wider" style="letter-spacing: 1px;">
+                        Coming Soon
+                    </span>
+                    <h2 class="h1 fw-bold mb-3 text-white">Autumn / Winter 2026 Season</h2>
+                    <p class="lead text-white-50 mx-auto mb-4" style="max-width: 700px;">
+                        Preparations for our next competitive team league cycle are underway! Fixtures, division assignments, and official match rules will be released shortly.
+                    </p>
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                        <a href="https://wa.me." target="_blank" class="btn btn-success btn-lg px-4 fw-semibold text-white">
+                            Register a Team via WhatsApp
+                        </a>
+                        <a href="mailto:glospickle@://gmail.com" class="btn btn-outline-light btn-lg px-4">
+                            Email League Secretary
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-  </div>
-</section>
+    <!-- Historical Archive Section -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+            <h3 class="fw-bold mb-4 text-dark d-flex align-items-center gap-2">
+                <i class="fa-solid fa-trophy text-warning"></i> Previous Season Standings
+            </h3>
 
-<!-- Optional helper styles to make the yellow element pop -->
-<style>
-  .fw-extrabold { font-weight: 800; }
-  .tracking-wide { letter-spacing: 0.05em; }
-  .drop-shadow { filter: drop-shadow(0px 2px 4px rgba(217, 119, 6, 0.4)); }
-</style>
+            <!-- Bootstrap Accordion for Seasons Structure -->
+            <div class="accordion shadow-sm" id="leagueArchiveAccordion">
+                
+                <!-- Season 2: Summer 2026 -->
+                <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
+                    <h2 class="accordion-header" id="headingSummer26">
+                        <button class="accordion-button fw-semibold text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSummer26" aria-expanded="true" aria-controls="collapseSummer26">
+                            Summer Season 2026 &nbsp;<span class="text-muted small font-normal">(May - August)</span>
+                        </button>
+                    </h2>
+                    <div id="collapseSummer26" class="accordion-collapse collapse show" aria-labelledby="headingSummer26" data-bs-parent="#leagueArchiveAccordion">
+                        <div class="accordion-body bg-white p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0 text-center">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" class="text-start ps-4">Pos</th>
+                                            <th scope="col" class="text-start">Team Name</th>
+                                            <th scope="col">Played</th>
+                                            <th scope="col">Won</th>
+                                            <th scope="col">Lost</th>
+                                            <th scope="col">Set Diff</th>
+                                            <th scope="col" class="pe-4">Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-success-subtle">
+                                            <th scope="row" class="text-start ps-4 fw-bold">1 🏆</th>
+                                            <td class="text-start fw-bold">Cotswold Smashers</td>
+                                            <td>10</td>
+                                            <td>9</td>
+                                            <td>1</td>
+                                            <td class="text-success fw-semibold">+24</td>
+                                            <td class="fw-bold pe-4 text-success">27</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">2</th>
+                                            <td class="text-start">Gloucester Dinks</td>
+                                            <td>10</td>
+                                            <td>7</td>
+                                            <td>3</td>
+                                            <td class="text-success fw-semibold">+12</td>
+                                            <td class="fw-bold pe-4">21</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">3</th>
+                                            <td class="text-start">Severn Side Spinners</td>
+                                            <td>10</td>
+                                            <td>4</td>
+                                            <td>6</td>
+                                            <td class="text-danger fw-semibold">-8</td>
+                                            <td class="fw-bold pe-4">12</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">4</th>
+                                            <td class="text-start">Cheltenham Kitchen Club</td>
+                                            <td>10</td>
+                                            <td>0</td>
+                                            <td>10</td>
+                                            <td class="text-danger fw-semibold">-28</td>
+                                            <td class="fw-bold pe-4">0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Season 1: Winter/Spring 2026 -->
+                <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
+                    <h2 class="accordion-header" id="headingWinter26">
+                        <button class="accordion-button collapsed fw-semibold text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWinter26" aria-expanded="false" aria-controls="collapseWinter26">
+                            Winter / Spring Season 2026 &nbsp;<span class="text-muted small">(January - April)</span>
+                        </button>
+                    </h2>
+                    <div id="collapseWinter26" class="accordion-collapse collapse" aria-labelledby="headingWinter26" data-bs-parent="#leagueArchiveAccordion">
+                        <div class="accordion-body bg-white p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0 text-center">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col" class="text-start ps-4">Pos</th>
+                                            <th scope="col" class="text-start">Team Name</th>
+                                            <th scope="col">Played</th>
+                                            <th scope="col">Won</th>
+                                            <th scope="col">Lost</th>
+                                            <th scope="col">Set Diff</th>
+                                            <th scope="col" class="pe-4">Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-success-subtle">
+                                            <th scope="row" class="text-start ps-4 fw-bold">1 🏆</th>
+                                            <td class="text-start fw-bold">Gloucester Dinks</td>
+                                            <td>12</td>
+                                            <td>11</td>
+                                            <td>1</td>
+                                            <td class="text-success fw-semibold">+30</td>
+                                            <td class="fw-bold pe-4 text-success">33</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">2</th>
+                                            <td class="text-start">Cotswold Smashers</td>
+                                            <td>12</td>
+                                            <td>9</td>
+                                            <td>3</td>
+                                            <td class="text-success fw-semibold">+18</td>
+                                            <td class="fw-bold pe-4">27</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">3</th>
+                                            <td class="text-start">Stroud Volleys</td>
+                                            <td>12</td>
+                                            <td>4</td>
+                                            <td>8</td>
+                                            <td class="text-danger fw-semibold">-14</td>
+                                            <td class="fw-bold pe-4">12</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Closes Accordion (#leagueArchiveAccordion) -->
+        </div> <!-- Closes col-12 col-lg-10 -->
+    </div> <!-- Closes Archive Row -->
+</div> <!-- Closes main .container -->
+
+               
