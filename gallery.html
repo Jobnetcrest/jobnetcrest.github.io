@@ -23,31 +23,32 @@ background_image: ""
     <!-- Responsive Dynamic Bootstrap Grid System -->
     <div class="row g-4 justify-content-center" id="gallery-grid">
       
-      {% for item in site.data.gallery %}
-      <!-- Dynamic Photo Card -->
-      <div class="col-12 col-md-6 col-lg-4 gallery-item" data-category="{{ item.category }}">
-        <div class="position-relative overflow-hidden rounded gallery-hover-wrapper shadow-sm" 
-             data-bs-toggle="modal" 
-             data-bs-target="#lightboxModal" 
-             data-img-src="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
-             data-img-caption="{{ item.caption }}">
-          
-          <!-- Proportional Box -->
-          <div class="ratio ratio-4x3">
-            <img src="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
-                 alt="{{ item.alt }}" 
-                 class="card-img-top object-fit-cover transition-img gallery-thumb"
-                 loading="lazy">
-          </div>
+{% for item in site.data.gallery %}
+<!-- Dynamic Photo Card -->
+<div class="col-12 col-md-6 col-lg-4 gallery-item" data-category="{{ item.category }}">
+  
+  <!-- Swapped div to anchor tag, keeping your original classes -->
+  <a href="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
+     target="_blank" 
+     rel="noopener"
+     class="d-block position-relative overflow-hidden rounded gallery-hover-wrapper shadow-sm text-decoration-none">
+    
+    <!-- Proportional Box (Unchanged) -->
+    <div class="ratio ratio-4x3">
+      <img src="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
+           alt="{{ item.alt }}" 
+           class="card-img-top object-fit-cover transition-img gallery-thumb"
+           loading="lazy">
+    </div>
 
-          <!-- Hover Overlay Mask -->
-          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 transition-overlay p-3">
-            <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wide text-center">{{ item.caption }}</p>
-          </div>
+    <!-- Hover Overlay Mask (Keeps your exact original caption styling) -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 transition-overlay p-3">
+      <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wide text-center">{{ item.caption }}</p>
+    </div>
 
-        </div>
-      </div>
-      {% endfor %}
+  </a>
+</div>
+{% endfor %}
 
     </div> <!-- Closes #gallery-grid -->
   </div> <!-- Closes .container -->
