@@ -4,58 +4,159 @@ title: Contact Us
 ---
 
 <section id="contact" class="section py-5">
-  <div class="container text-center text-black">
+  <div class="container text-black">
     
-    <!-- Layout Wrapper & Subtitle -->
-    <div class="w-100 mx-auto">
-      <h3 class="fs-4 fw-normal mb-5 text-muted">
-        For more information, we can be found at:
+    
+    <!-- Title & Subtitle -->
+    <div class="w-100 mx-auto text-center mb-5">
+      <h3 class="fs-4 fw-normal text-muted">
+        Find out more about playing pickleball with us across Gloucestershire.
       </h3>
+    </div>
 
-      <!-- 2-COLUMN RESPONSIVE LAYOUT GRID -->
-      <div class="row g-4 text-start">
+    <!-- 2-COLUMN RESPONSIVE LAYOUT GRID -->
+    <div class="row g-4 text-start">
+      
+      <!-- LEFT COLUMN: FREQUENTLY ASKED QUESTIONS ACCORDION -->
+      <div class="col-12 col-lg-6">
+        <div class="mb-4">
+          <h4 class="fw-bold text-dark mb-2">Frequently Asked Questions</h4>
+        </div>
+
+        <div class="accordion accordion-flush shadow rounded-4 overflow-hidden border" id="clubFAQAccordion">
+          
+          <!-- QUESTION 1: MEMBERSHIP & INSURANCE -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="faq-heading-1">
+              <button class="accordion-button fw-bold py-3 fs-5 collapsed text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="false" aria-controls="faq-collapse-1">
+                Do I need to be a member or have insurance to play?
+              </button>
+            </h2>
+            <div id="faq-collapse-1" class="accordion-collapse collapse" aria-labelledby="faq-heading-1" data-bs-parent="#clubFAQAccordion">
+              <div class="accordion-body text-muted fs-6 py-4 bg-white">
+                <strong>Yes, player insurance is mandatory.</strong> For safety and liability purposes, all players must be registered members of <strong>Pickleball Gloucestershire</strong> via <strong>Pickleball England</strong> before stepping onto the court. You can easily complete your registration online through our official <a href="https://picklebook.org" target="_blank" rel="noopener" class="text-decoration-underline text-primary fw-bold">PickleBook Club Link</a>.
+              </div>
+            </div>
+          </div>
+
+          <!-- QUESTION 2: SOCIALS & CANCELLATIONS -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="faq-heading-2">
+              <button class="accordion-button fw-bold py-3 fs-5 collapsed text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2">
+                How can I chat with other members and check for cancellations?
+              </button>
+            </h2>
+            <div id="faq-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#clubFAQAccordion">
+              <div class="accordion-body text-muted fs-6 py-4 bg-white">
+                We have vibrant online spaces to keep you connected! You can join our active <strong>WhatsApp group</strong> to chat with players, coordinate games, and receive real-time updates regarding court changes or weather cancellations. You can also join our community on <strong>Facebook</strong> to catch up on club news and photos. Contact an organizer at a session or message us using the contact links to get invite links to our groups!
+              </div>
+            </div>
+          </div>
+
+          <!-- QUESTION 3: EQUIPMENT -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="faq-heading-3">
+              <button class="accordion-button fw-bold py-3 fs-5 collapsed text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3">
+                Do I need to bring my own paddle and balls?
+              </button>
+            </h2>
+            <div id="faq-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#clubFAQAccordion">
+              <div class="accordion-body text-muted fs-6 py-4 bg-white">
+                <strong>No equipment required to start!</strong> We provide club paddles and high-quality pickleballs for all players during our standard club sessions. If you choose to invest in your own paddle later, our organizers are happy to give you gear recommendations.
+              </div>
+            </div>
+          </div>
+
+          <!-- QUESTION 4: BEGINNERS -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="faq-heading-4">
+              <button class="accordion-button fw-bold py-3 fs-5 collapsed text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-4" aria-expanded="false" aria-controls="faq-collapse-4">
+                I've never played pickleball before. Can I still join?
+              </button>
+            </h2>
+            <div id="faq-collapse-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4" data-bs-parent="#clubFAQAccordion">
+              <div class="accordion-body text-muted fs-6 py-4 bg-white">
+                <strong>Absolutely!</strong> Pickleball is incredibly beginner-friendly and easy to pick up. We regularly welcome new players and offer basic introductory coaching during our sessions to get you serving, rallying, and scoring in no time.
+              </div>
+            </div>
+          </div>
+
+          <!-- QUESTION 5: BOOKINGS & WALLET -->
+          <div class="accordion-item border-bottom">
+            <h2 class="accordion-header" id="faq-heading-5">
+              <button class="accordion-button fw-bold py-3 fs-5 collapsed text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-5" aria-expanded="false" aria-controls="faq-collapse-5">
+                How do I book a slot and see session times?
+              </button>
+            </h2>
+            <div id="faq-collapse-5" class="accordion-collapse collapse" aria-labelledby="faq-heading-5" data-bs-parent="#clubFAQAccordion">
+              <div class="accordion-body text-muted fs-6 py-4 bg-white">
+                Once you have joined the club, you will be given access to <strong>PBTable</strong> where you will be able to book and pay for your sessions. Please note that a session <strong>cannot be booked if there is no money available in your wallet</strong>, so make sure your account is topped up before trying to reserve a court slot.
+              </div>
+            </div>
+          </div>
+
+          <!-- QUESTION 6: WEATHER -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq-heading-6">
+              <button class="accordion-button fw-bold py-3 fs-5 collapsed text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-6" aria-expanded="false" aria-controls="faq-collapse-6">
+                What happens if it rains during outdoor sessions?
+              </button>
+            </h2>
+            <div id="faq-collapse-6" class="accordion-collapse collapse" aria-labelledby="faq-heading-6" data-bs-parent="#clubFAQAccordion">
+              <div class="accordion-body text-muted fs-6 py-4 bg-white">
+                Indoor sessions at venues like <strong>Oxstalls Tennis Centre</strong> always run regardless of the weather. For outdoor recreational sessions, we monitor weather updates closely. If a session is cancelled due to rain, all registered players will be notified immediately via our WhatsApp group.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      
+
+       <!-- RIGHT COLUMN: CONTACT METHODS & MAP LOCATOR -->
+      <div class="col-12 col-lg-6 d-flex flex-column g-4">
+
+                <!-- Matching Structural Header Block for Alignment -->
+        <div class="mb-4">
+          <h4 class="fw-bold text-dark mb-2">Get in Touch</h4>
+        </div>
         
-        <!-- LEFT COLUMN: PRIMARY CONTACT METHODS TABLE -->
-        <div class="col-12 col-lg-6">
-          <div class="w-100 rounded-4 overflow-hidden shadow">
-            <div class="table-responsive">
-              <table class="table table-hover align-middle fs-5 mb-0 table-light text-dark contact-table-override">
-                
-                <thead class="table-dark text-white text-uppercase tracking-wide section-table-header">
-                  <tr>
-                    <th scope="col" class="py-3 ps-3 col-half">Method</th>
-                    <th scope="col" class="py-3 col-half">Link</th>
-                  </tr>
-                </thead>
-                
-                <tbody>
-                  <tr>
-                    <td class="py-4 fw-bold ps-3">Email</td>
-                    <td class="py-4">
+        <!-- TOP RIGHT: PRIMARY CONTACT METHODS TABLE -->
+        <div class="w-100 rounded-4 overflow-hidden shadow mb-4">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle fs-5 mb-0 table-light text-dark contact-table-override">
+              <thead class="table-dark text-white text-uppercase tracking-wide section-table-header">
+                <tr>
+                  <th scope="col" class="py-3 ps-3 col-half">Method</th>
+                  <th scope="col" class="py-3 col-half">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-4 fw-bold ps-3">Email</td>
+                  <td class="py-4">
                       <a href="mailto:glospickle@gmail.com" class="text-decoration-underline text-primary fw-bold">
                         glospickle@gmail.com
                       </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="py-4 fw-bold ps-3">WhatsApp</td>
-                    <td class="py-4">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 fw-bold ps-3">WhatsApp</td>
+                  <td class="py-4">
                       <a href="https://wa.me/+447831100939" target="_blank" rel="noopener" class="text-decoration-underline text-primary fw-bold">
                         Chat with us on WhatsApp
                       </a>
-                    </td>
-                  </tr>
-                </tbody>
-
-              </table>
-            </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: INTERACTIVE VENUE MAP FINDER WITH ACTIVE TABS -->
-        <div class="col-12 col-lg-6">
-          <div class="card h-100 rounded-4 overflow-hidden shadow border-0 table-light text-dark">
-            
+        <!-- BOTTOM RIGHT: INTERACTIVE VENUE MAP FINDER -->
+        <div class="card flex-grow-1 rounded-4 overflow-hidden shadow border-0 table-light text-dark shadow">
+          
             <!-- Tabbed Venue Navigation Bar Header -->
             <div class="card-header bg-dark p-2">
               <ul class="nav nav-tabs card-header-tabs border-0" id="venueMapTabs" role="tablist">
@@ -134,12 +235,20 @@ title: Contact Us
 
             </div>
           </div>
+
+
+
+
+
+
         </div>
 
-      </div>
-    </div>
+     </div> <!-- Close row g-4 text-start -->
+
   </div>
 </section>
+
+
 
 
 <!-- JAVASCRIPT REFRESH SCRIPT -->
