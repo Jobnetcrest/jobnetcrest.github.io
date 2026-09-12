@@ -8,11 +8,14 @@ background_image: ""
   The 'position-relative z-index' rule guarantees your elements stack 
   completely above your background flag layer.
 -->
-<div class="container pt-4 position-relative hero-container">
+<!-- 🟢 CHANGE 1: Reduced padding-top from 'pt-4' to 'pt-1' or 'pt-0' -->
+<div class="container pt-1 position-relative hero-container">
 
     <!-- 2. WIDE HERO SUBTEXT -->
     <div class="container-fluid px-3 px-md-4 py-2 text-center">
-      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mt-md-4 w-75 mx-auto hero-subtext">
+      <!-- 🟢 CHANGE 2: Removed top margins ('mt-0') to pull text straight up -->
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-0 w-75 mx-auto hero-subtext">
+
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
       </p>
     </div>
@@ -88,9 +91,13 @@ background_image: ""
       </div>
     </div>
 
+    </div> <!-- 🟢 EXACT CHANGE 1: Closes .carousel-wrapper -->
+</div> <!-- 🟢 EXACT CHANGE 2: Closes .hero-container -->
 
 
-<div class="club-ticker-container" id="ticker-box">
+
+<!-- 🟢 EXACT CHANGE 3: Added 'mt-4' for standard Bootstrap vertical spacing -->
+<div class="club-ticker-container mt-4" id="ticker-box">
   <div class="club-ticker-label">📌 CLUB NEWS</div>
   <div class="club-ticker-wrap">
     <div class="club-ticker-content" id="club-ticker">
