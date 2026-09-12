@@ -88,4 +88,105 @@ background_image: ""
       </div>
     </div>
 
+
+
+<div class="club-ticker-container" id="ticker-box">
+  <div class="club-ticker-label">📌 CLUB NEWS</div>
+  <div class="club-ticker-wrap">
+    <div class="club-ticker-content" id="club-ticker">
+      <!-- FALLBACK TEXT (Shows if feed fails, or if posts are older than 7 days) -->
+      <span class="ticker-item">🏓 Welcome to Pickleball Gloucestershire! Join the fastest-growing sport.</span>
+      <span class="ticker-item">⚡ Master the dink and stay out of the kitchen! Check our posts for court schedules.</span>
+    </div>
+  </div>
 </div>
+
+<script>
+  function loadLiveTicker() {
+    const blogDomain = "pickleball-gloucestershire.blogspot.com";
+    const script = document.createElement('script');
+    script.src = "https://pickleball-gloucestershire.blogspot.com/feeds/posts/default?alt=json-in-script&callback=processLiveTicker&max-results=3";
+    
+    script.onerror = function() { 
+      console.log("Blogger feed unreachable. Using fallback text."); 
+      resetStaticLoop();
+    };
+    document.body.appendChild(script);
+  }
+
+  function processLiveTicker(json) {
+    // Robust structural sanity checks to prevent 'undefined' crashes
+    if (!json?.feed?.entry || json.feed.entry.length === 0) {
+      resetStaticLoop();
+      return;
+    }
+    
+    try {
+      let entries = json.feed.entry;
+      
+      // Target the date of the single newest entry safely
+      let dateString = entries[0]?.published?.$t || entries[0]?.updated?.$t;
+      if (!dateString) {
+        resetStaticLoop();
+        return;
+      }
+
+      let newestPostDate = new Date(dateString);
+      let currentDate = new Date();
+      let timeDifference = currentDate.getTime() - newestPostDate.getTime();
+      let daysDifference = timeDifference / (1000 * 3600 * 24);
+      
+      // If the latest post is older than 7 days, fallback to the hardcoded loop
+      if (daysDifference > 7) {
+        resetStaticLoop();
+        return;
+      }
+      
+      let tickerHTML = "";
+      for (let i = 0; i < entries.length; i++) {
+        let entry = entries[i];
+        let title = entry?.title?.$t || "Latest Update";
+        
+        // Find alternate browser link item safely
+        let linkObj = entry?.link?.find(l => l.rel === 'alternate');
+        let link = linkObj ? linkObj.href : `https://pickleball-gloucestershire.blogspot.com`;
+        
+        // Handle dates safely
+        let rawDate = entry?.published?.$t;
+        let formattedDate = "";
+        if (rawDate) {
+          let publishedDate = new Date(rawDate);
+          let day = publishedDate.getDate();
+          let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          let month = months[publishedDate.getMonth()];
+          formattedDate = ` <span class="ticker-date">[${day} ${month}]</span>`;
+        }
+        
+    
+        tickerHTML += `<a href="${link}" class="ticker-item" target="_blank" rel="noopener"><img src="images/PBGlos Logo.png" alt="PBGlos Logo" class="ticker-logo"> ${title}${formattedDate}</a>`;
+
+        
+      }
+      
+      const tickerContainer = document.getElementById('club-ticker');
+      tickerContainer.innerHTML = tickerHTML + tickerHTML;
+      
+    } catch (error) {
+      console.error("Ticker processing encountered a structural error: ", error);
+      resetStaticLoop();
+    }
+  }
+
+  function resetStaticLoop() {
+    const container = document.getElementById('club-ticker');
+    if (container) {
+      container.innerHTML = container.innerHTML + container.innerHTML;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadLiveTicker);
+  } else {
+    loadLiveTicker();
+  }
+</script>
