@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Club League
+title: Gloucestershire Pickleball League
 ---
 
     <!-- 2. WIDE HERO SUBTEXT -->
@@ -8,52 +8,96 @@ title: Club League
       <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mb-2 mt-md-4 w-75 mx-auto hero-subtext">
         Track team fixtures, view competitive standings, and see previous season champions. 
       </p>
-      <div class="mx-auto" style="width: 120px; height: 4px; background-color: #25D366;"></div>
+      <div class="mx-auto" style="width: 120px; height: 4px; background-color: #7BC143;"></div>
     </div>
 
 
 <!-- Active Placeholder: Next Season Announcement -->
 <div class="row mb-5 justify-content-center">
     <div class="col-12 col-lg-10">
-        <div class="card border-0 shadow bg-dark text-white position-relative overflow-hidden">
-            <!-- Decorative subtle backdrop glow matching the whatsapp green aesthetic -->
-            <div class="position-absolute translate-middle-x rounded-circle" style="top: -150px; left: 50%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(37,211,102,0.15) 0%, rgba(0,0,0,0) 70%); pointer-events: none;"></div>
+        <div class="card shadow position-relative overflow-hidden" style="background-color: #FFF200; border: 3px solid #0072BB; border-radius: 12px;">
+            <!-- Decorative subtle white backdrop glow -->
+            <div class="position-absolute translate-middle-x rounded-circle" style="top: -150px; left: 50%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0) 70%); pointer-events: none;"></div>
             
+            <!-- 🟢 FIX: Row added inside card body to let flanking logos span the entire height across the rows -->
             <div class="card-body p-4 p-md-5 text-center position-relative" style="z-index: 2;">
-                <span class="badge bg-success text-uppercase fw-bold px-3 py-2 mb-3 tracking-wider" style="letter-spacing: 1px;">
-                    Registration Opens October
-                </span>
-                <h2 class="h1 fw-bold mb-2 text-white">3rd Gloucestershire Pickleball League</h2>
-                <p class="lead text-white-50 mx-auto mb-4" style="max-width: 750px;">
-                    Preparations for the next cycle are underway! Limited to a <strong class="text-white">maximum of 20 teams</strong>, with priority given to second edition teams.
-                </p>
+                <div class="row align-items-center justify-content-center">
+                    
+                    <!-- 🟢 FIX: Clickable Left Flanking Logo pointing to Club Constitution -->
+                    <div class="col-lg-2 d-none d-lg-block text-center">
+                        <a href="docs/Club-Solutions-Club-Constitution-Template.docx" target="_blank" rel="noopener" title="View Club Constitution Document" style="transition: opacity 0.2s ease-in-out; display: inline-block;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1.0'">
+                            <img src="images/League/GlosLogo/PBGlosLeagueLogo.jpg" alt="Gloucestershire Pickleball League Logo - View Constitution" class="img-fluid" style="max-height: 160px; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.15));">
+                        </a>
+                    </div>
 
-                <!-- Compact Match Dates Grid (Keeps vertical space minimal) -->
-                <div class="row g-3 justify-content-center mb-4 text-start mx-auto" style="max-width: 700px;">
-                    <div class="col-12 col-sm-4">
-                        <div class="p-2 rounded bg-secondary bg-opacity-25 border border-secondary border-opacity-25 h-100">
-                            <small class="text-success text-uppercase fw-bold d-block mb-1">January 2027</small>
-                            <span class="fw-semibold">3rd, 17th, 31st</span>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4">
-                        <div class="p-2 rounded bg-secondary bg-opacity-25 border border-secondary border-opacity-25 h-100">
-                            <small class="text-success text-uppercase fw-bold d-block mb-1">February 2027</small>
-                            <span class="fw-semibold">14th, 21st, 28th</span>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4">
-                        <div class="p-2 rounded bg-secondary bg-opacity-25 border border-secondary border-opacity-25 h-100">
-                            <small class="text-success text-uppercase fw-bold d-block mb-1">March 2027</small>
-                            <span class="fw-semibold">7th</span>
-                        </div>
-                    </div>
-                </div>
+                    <!-- CENTER CONTENT COLUMN -->
+                    <div class="col-12 col-lg-8">
+                        
+                        <!-- 🟢 FIX: Removed top logo and made the Registration badge significantly larger (fs-4 and padding increased) -->
+                        <span class="badge text-uppercase fw-extrabold px-4 py-3 mb-4 tracking-wider text-white fs-5 fs-md-4 shadow-sm" style="letter-spacing: 1.5px; background-color: #0072BB; border-radius: 8px;">
+                            🚀 Registration Opens October
+                        </span>
+                        
+                        <h2 class="h1 fw-bold mb-2 text-dark" style="color: #111111 !important;">Third Edition</h2>
+                        
+                        <p class="lead fw-semibold mx-auto mb-4" style="max-width: 750px; color: #222222;">
+                            Preparations for the next cycle are underway! Limited to a <strong style="color: #0072BB;">maximum of 20 teams</strong>, with priority given to second edition teams.
+                        </p>
 
-                <div class="d-flex justify-content-center">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0r6z0JmWq6CmPhGbQqplIm5BMflqjLXlxB9UjJWonEZWMZQ/viewform?usp=sharing&ouid=101123688940885360569" target="_blank" class="btn btn-success btn-lg px-5 fw-semibold text-white">
-                        Register and Pay Now
-                    </a>
+                        <!-- Compact Match Dates Grid (Boxes remain green) -->
+                        <div class="row g-3 justify-content-center text-start mx-auto mb-4" style="max-width: 700px;">
+                            
+                            <!-- Green date card 1 -->
+                            <div class="col-12 col-sm-4">
+                                <div class="p-2 rounded border border-dark border-opacity-10 h-100 shadow-sm" style="background-color: #7BC143;">
+                                    <small class="text-uppercase fw-extrabold d-block mb-1 text-white" style="letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">January 2027</small>
+                                    <span class="fw-bold bg-white d-inline-block px-2 py-0.5 rounded text-dark small w-100 text-center shadow-inner">3rd, 17th, 31st</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Green date card 2 -->
+                            <div class="col-12 col-sm-4">
+                                <div class="p-2 rounded border border-dark border-opacity-10 h-100 shadow-sm" style="background-color: #7BC143;">
+                                    <small class="text-uppercase fw-extrabold d-block mb-1 text-white" style="letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">February 2027</small>
+                                    <span class="fw-bold bg-white d-inline-block px-2 py-0.5 rounded text-dark small w-100 text-center shadow-inner">14th, 21st, 28th</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Green date card 3 -->
+                            <div class="col-12 col-sm-4">
+                                <div class="p-2 rounded border border-dark border-opacity-10 h-100 shadow-sm" style="background-color: #7BC143;">
+                                    <small class="text-uppercase fw-extrabold d-block mb-1 text-white" style="letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">March 2027</small>
+                                    <span class="fw-bold bg-white d-inline-block px-2 py-0.5 rounded text-dark small w-100 text-center shadow-inner">7th</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+<!--  Disabled until registration opens in October
+                        <div class="d-flex justify-content-center">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0r6z0JmWq6CmPhGbQqplIm5BMflqjLXlxB9UjJWonEZWMZQ/viewform?usp=sharing&ouid=101123688940885360569" target="_blank" class="btn btn-lg px-5 fw-bold text-white transition-all" style="background-color: #111111; border-color: #111111; box-shadow: 0 4px 14px rgba(0,0,0,0.2);">
+                                Register and Pay Now
+                            </a>
+                        </div>
+                    -->
+                                                <!-- 🟢 FIX: Button is now colored League Blue (#0072BB), disabled natively via Bootstrap, and has a custom 'no-entry' cursor applied -->
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-lg px-5 fw-bold text-white disabled" 
+                                    style="background-color: #0072BB; border-color: #0072BB; opacity: 0.65; cursor: not-allowed; pointer-events: auto;"
+                                    title="Registration opens in October 2026. Please check back then!">
+                                Register and Pay Now
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 🟢 FIX: Clickable Right Flanking Logo pointing to Club Constitution -->
+                    <div class="col-lg-2 d-none d-lg-block text-center">
+                        <a href="docs/Club-Solutions-Club-Constitution-Template.docx target="_blank" rel="noopener" title="View Club Constitution Document" style="transition: opacity 0.2s ease-in-out; display: inline-block;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1.0'">
+                            <img src="images/League/GlosLogo/PBGlosLeagueLogo.jpg" alt="Gloucestershire Pickleball League Logo - View Constitution" class="img-fluid" style="max-height: 160px; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.15));">
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -61,11 +105,13 @@ title: Club League
 </div>
 
 
-    <!-- Historical Archive Section -->
+
+     <!-- Historical Archive Section -->
     <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
+            <!-- 🟢 FIX: Trophy icon matched to the precise brand yellow hex code -->
             <h3 class="fw-bold mb-4 text-dark d-flex align-items-center gap-2">
-                <i class="fa-solid fa-trophy text-warning"></i> Previous Season Standings
+                <i class="fa-solid fa-trophy" style="color: #FFF200; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.15));"></i> Previous Season Standings
             </h3>
 
             <!-- Bootstrap Accordion for Seasons Structure -->
@@ -74,7 +120,8 @@ title: Club League
                 <!-- Season 2: Summer 2026 -->
                 <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
                     <h2 class="accordion-header" id="headingSummer26">
-                        <button class="accordion-button fw-semibold text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSummer26" aria-expanded="true" aria-controls="collapseSummer26">
+                        <!-- 🟢 FIX: Cleaned header background and added left-hand brand blue accent stripe -->
+                        <button class="accordion-button fw-semibold text-dark bg-white border-start border-4" style="border-color: #0072BB !important;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSummer26" aria-expanded="true" aria-controls="collapseSummer26">
                             Summer Season 2026 &nbsp;<span class="text-muted small font-normal">(May - August)</span>
                         </button>
                     </h2>
@@ -82,7 +129,7 @@ title: Club League
                         <div class="accordion-body bg-white p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover align-middle mb-0 text-center">
-                                    <thead class="table-dark">
+                                    <thead style="background-color: #0072BB; color: white;">
                                         <tr>
                                             <th scope="col" class="text-start ps-4">Pos</th>
                                             <th scope="col" class="text-start">Team Name</th>
@@ -94,14 +141,15 @@ title: Club League
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="table-success-subtle">
-                                            <th scope="row" class="text-start ps-4 fw-bold">1 🏆</th>
+                                        <!-- 🟢 FIX: Champion highlighted text color matched to official logo green -->
+                                        <tr style="background-color: rgba(123, 193, 67, 0.12);">
+                                            <th scope="row" class="text-start ps-4 fw-bold" style="color: #0072BB;">1 🏆</th>
                                             <td class="text-start fw-bold">Cotswold Smashers</td>
                                             <td>10</td>
                                             <td>9</td>
                                             <td>1</td>
-                                            <td class="text-success fw-semibold">+24</td>
-                                            <td class="fw-bold pe-4 text-success">27</td>
+                                            <td class="fw-bold" style="color: #7BC143;">+24</td>
+                                            <td class="fw-bold pe-4" style="color: #0072BB;">27</td>
                                         </tr>
                                         <tr>
                                             <th scope="row" class="text-start ps-4">2</th>
@@ -121,7 +169,6 @@ title: Club League
                                             <td class="text-danger fw-semibold">-8</td>
                                             <td class="fw-bold pe-4">12</td>
                                         </tr>
-<!-- Completed 4th row with structural repairs and calculated metric updates -->
                                         <tr>
                                             <th scope="row" class="text-start ps-4">4</th>
                                             <td class="text-start">Cheltenham Kitchen Club</td>
@@ -131,15 +178,72 @@ title: Club League
                                             <td class="text-danger fw-semibold">-28</td>
                                             <td class="fw-bold pe-4">0</td>
                                         </tr>
-                                    </tbody> <!-- Closes: <tbody> -->
-                                </table> <!-- Closes: <table class="table ..."> -->
-                            </div> <!-- Closes: <div class="table-responsive"> -->
-                        </div> <!-- Closes: <div class="accordion-body bg-white p-0"> -->
-                    </div> <!-- Closes: <div id="collapseSummer26" class="accordion-collapse ..."> -->
-                </div> <!-- Closes: <div class="accordion-item border-0 mb-3 ..."> -->
-                
-            </div> <!-- Closes: <div class="accordion shadow-sm" id="leagueArchiveAccordion"> -->
-        </div> <!-- Closes: <div class="col-12 col-lg-10"> (Historical Archive Layout Column) -->
-    </div> <!-- Closes: <div class="row justify-content-center"> (Historical Archive Layout Row) -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-               
+                <!-- Season 1: Winter 2026 -->
+                <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
+                    <h2 class="accordion-header" id="headingWinter26">
+                        <!-- 🟢 FIX: Added left-hand brand blue accent stripe to match -->
+                        <button class="accordion-button fw-semibold text-dark bg-white collapsed border-start border-4" style="border-color: #0072BB !important;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWinter26" aria-expanded="false" aria-controls="collapseWinter26">
+                            Winter Season 2026 &nbsp;<span class="text-muted small font-normal">(January - April)</span>
+                        </button>
+                    </h2>
+                    <div id="collapseWinter26" class="accordion-collapse collapse" aria-labelledby="headingWinter26" data-bs-parent="#leagueArchiveAccordion">
+                        <div class="accordion-body bg-white p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle mb-0 text-center">
+                                    <thead style="background-color: #0072BB; color: white;">
+                                        <tr>
+                                            <th scope="col" class="text-start ps-4">Pos</th>
+                                            <th scope="col" class="text-start">Team Name</th>
+                                            <th scope="col">Played</th>
+                                            <th scope="col">Won</th>
+                                            <th scope="col">Lost</th>
+                                            <th scope="col">Set Diff</th>
+                                            <th scope="col" class="pe-4">Points</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 🟢 FIX: Champion highlighted text color matched to official logo green -->
+                                        <tr style="background-color: rgba(123, 193, 67, 0.12);">
+                                            <th scope="row" class="text-start ps-4 fw-bold" style="color: #0072BB;">1 🏆</th>
+                                            <td class="text-start fw-bold">Gloucester Dinks</td>
+                                            <td>12</td>
+                                            <td>11</td>
+                                            <td>1</td>
+                                            <td class="fw-bold" style="color: #7BC143;">+30</td>
+                                            <td class="fw-bold pe-4" style="color: #0072BB;">33</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">2</th>
+                                            <td class="text-start">Cotswold Smashers</td>
+                                            <td>12</td>
+                                            <td>9</td>
+                                            <td>3</td>
+                                            <td class="text-success fw-semibold">+18</td>
+                                            <td class="fw-bold pe-4">27</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-start ps-4">3</th>
+                                            <td class="text-start">Stroud Volleys</td>
+                                            <td>12</td>
+                                            <td>4</td>
+                                            <td>8</td>
+                                            <td class="text-danger fw-semibold">-14</td>
+                                            <td class="fw-bold pe-4">12</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- Closes Accordion (#leagueArchiveAccordion) -->
+        </div> <!-- Closes Column Layout wrapper (.col-lg-10) -->
+    </div> <!-- Closes Main Row Layout wrapper (.row) -->
