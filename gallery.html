@@ -56,7 +56,7 @@ background_image: ""
 
 
 
-<!-- Inline JavaScript for Filtering AND Lightbox Injection Logic -->
+<!-- Inline JavaScript for Filtering Only -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // --- 1. FILTERING SYSTEM ---
@@ -75,7 +75,8 @@ background_image: ""
         const filterValue = this.getAttribute('data-filter');
         
         items.forEach(item => {
-          if (filterValue === 'all' || item.querySelector('.gallery-hover-wrapper').getAttribute('data-category') === filterValue || item.getAttribute('data-category') === filterValue) {
+          const itemCategory = item.getAttribute('data-category');
+          if (filterValue === 'all' || itemCategory === filterValue) {
             item.style.display = 'block';
           } else {
             item.style.display = 'none';
@@ -83,11 +84,5 @@ background_image: ""
         });
       });
     });
-
-
-    });
-  
+  });
 </script>
-
-
-
