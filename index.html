@@ -8,16 +8,16 @@ background_image: ""
   The 'position-relative z-index' rule guarantees your elements stack 
   completely above your background flag layer.
 -->
-<!-- 🟢 CHANGE 1: Reduced padding-top from 'pt-4' to 'pt-1' or 'pt-0' -->
-<div class="container pt-1 position-relative hero-container">
+<!-- 🟢 MATCHED STEP 1: Top spacing container that keeps layout uniform -->
+<div class="pt-1 position-relative hero-container">
 
-    <!-- 2. WIDE HERO SUBTEXT -->
+    <!-- 🟢 MATCHED STEP 2: Identical wrapper block copied from the League page structure -->
     <div class="container-fluid px-3 px-md-4 py-2 text-center">
-      <!-- 🟢 CHANGE 2: Removed top margins ('mt-0') to pull text straight up -->
-      <p class="fs-5 fs-md-4 text-black fw-bold mt-0 w-75 mx-auto hero-subtext">
-
+      <p class="fs-5 fs-md-4 text-black fw-bold mt-2 mb-2 mt-md-4 w-75 mx-auto hero-subtext">
         Pickleball Gloucestershire is the county's friendly hub for the nation's fastest-growing racket sport. 
       </p>
+      <!-- Green decorative accent divider to keep pages looking uniform -->
+      <div class="mx-auto" style="width: 120px; height: 4px; background-color: #25D366;"></div>
     </div>
 
     <!-- 3. HERO BOOTSTRAP CAROUSEL -->
