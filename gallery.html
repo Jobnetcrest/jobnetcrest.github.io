@@ -4,82 +4,181 @@ title: Gallery
 background_image: ""
 ---
 
+<!-- Premium Gallery Custom Styling Override -->
+<style>
+  /* 1. Minimalist Underlined Filtering Navigation across Top */
+  .filter-pill-top {
+    background: transparent;
+    border: none;
+    color: #6c757d;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px 12px;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .filter-pill-top:hover,
+  .filter-pill-top.active {
+    color: #126631; /* Club Brand Green Accent */
+  }
+
+  /* Kinetic Underline Tracker */
+  .filter-pill-top::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    width: calc(100% - 24px);
+    height: 2px;
+    background-color: #126631;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .filter-pill-top.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* 2. Premium Image Grid Card Extensions */
+  .gallery-card-premium {
+    position: relative;
+    border-radius: 16px !important; /* Softer modern frame corners */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+
+  .gallery-card-premium:hover {
+    transform: translateY(-6px); /* Gentle micro-elevation lift */
+    box-shadow: 0 20px 40px rgba(18, 102, 49, 0.15); /* Soft ambient green under-glow */
+  }
+
+  /* Smooth Zoom Transition Engine */
+  .gallery-zoom-thumb {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .gallery-card-premium:hover .gallery-zoom-thumb {
+    transform: scale(1.06);
+  }
+
+  /* 3. Floating Glass-Blur Brand Green Text Overlay */
+  .gallery-premium-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Gradient transition down to club green */
+    background: linear-gradient(to top, rgba(11, 64, 31, 0.98) 0%, rgba(18, 102, 49, 0.5) 65%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2;
+  }
+
+  .gallery-card-premium:hover .gallery-premium-overlay {
+    opacity: 1 !important;
+    transform: translateY(0);
+  }
+
+  /* 4. Smooth Cascade Grid Filtering Mechanics */
+  .gallery-item {
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.4s ease;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .gallery-item.is-hidden {
+    opacity: 0 !important;
+    transform: scale(0.85) translateY(20px) !important;
+    display: none !important;
+  }
+</style>
+
 <section id="gallery" class="section py-5 mt-3">
   <div class="container text-center text-black">
-    
 
-    <!-- Filter Buttons Bar -->
-    <div class="row mb-5">
-        <div class="col-12 d-flex flex-wrap justify-content-center gap-2">
-            <button class="btn btn-dark filter-btn active" data-filter="all">All Photos</button>
-            <button class="btn btn-outline-dark filter-btn" data-filter="main">Main Highlights</button>
-            <button class="btn btn-outline-dark filter-btn" data-filter="league">Leagues</button>
-            <button class="btn btn-outline-dark filter-btn" data-filter="festival">Festivals</button>
-            <button class="btn btn-outline-dark filter-btn" data-filter="socials">Socials</button>
-            <button class="btn btn-outline-dark filter-btn" data-filter="graded-play">Graded Play</button>
-        </div>
+    <!-- Top-Aligned Minimalist Filter Navigation -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 gap-md-4 mb-5 pb-2">
+        <button class="filter-pill-top active" data-filter="all">All Photos</button>
+        <button class="filter-pill-top" data-filter="main">Main Highlights</button>
+        <button class="filter-pill-top" data-filter="league">Leagues</button>
+        <button class="filter-pill-top" data-filter="festival">Festivals</button>
+        <button class="filter-pill-top" data-filter="socials">Socials</button>
+        <button class="filter-pill-top" data-filter="graded-play">Graded Play</button>
     </div>
     
-    <!-- Responsive Dynamic Bootstrap Grid System -->
+    <!-- Responsive Bootstrap Grid System Layout -->
     <div class="row g-4 justify-content-center" id="gallery-grid">
       
-{% for item in site.data.gallery %}
-<!-- Dynamic Photo Card -->
-<div class="col-12 col-md-6 col-lg-4 gallery-item" data-category="{{ item.category }}">
-  
-  <!-- Swapped div to anchor tag, keeping your original classes -->
-  <a href="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
-     target="_blank" 
-     rel="noopener"
-     class="d-block position-relative overflow-hidden rounded gallery-hover-wrapper shadow-sm text-decoration-none">
-    
-    <!-- Proportional Box (Unchanged) -->
-    <div class="ratio ratio-4x3">
-      <img src="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
-           alt="{{ item.alt }}" 
-           class="card-img-top object-fit-cover transition-img gallery-thumb"
-           loading="lazy">
-    </div>
+      {% for item in site.data.gallery %}
+      <!-- Dynamic Photo Card -->
+      <div class="col-12 col-md-6 col-lg-4 gallery-item" data-category="{{ item.category }}">
+        <div class="gallery-card-premium">
+          
+          <a href="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
+             target="_blank" 
+             rel="noopener"
+             class="d-block w-100 h-100 position-relative text-decoration-none">
+            
+            <!-- Proportional Grid Box Ratios -->
+            <div class="ratio ratio-4x3 overflow-hidden">
+              <img src="{{ '/images/Gallery/' | append: item.image | relative_url }}" 
+                   alt="{{ item.alt }}" 
+                   class="card-img-top object-fit-cover gallery-zoom-thumb"
+                   loading="lazy">
+            </div>
 
-    <!-- Hover Overlay Mask (Keeps your exact original caption styling) -->
-    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 transition-overlay p-3">
-      <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wide text-center">{{ item.caption }}</p>
-    </div>
+            <!-- Sliding Premium Brand Green Captions Overlay -->
+            <div class="gallery-premium-overlay p-4 text-start">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="text-white fw-semibold mb-0 text-uppercase fs-6 tracking-wider" style="letter-spacing: 1px;">
+                  {{ item.caption }}
+                </p>
+                <span class="text-white fs-5 opacity-75">→</span>
+              </div>
+            </div>
 
-  </a>
-</div>
-{% endfor %}
+          </a>
+          
+        </div>
+      </div>
+      {% endfor %}
 
     </div> <!-- Closes #gallery-grid -->
   </div> <!-- Closes .container -->
 </section>
 
-
-
-<!-- Inline JavaScript for Filtering Only -->
+<!-- Inline High-Speed Vanilla JS Filter Engine -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // --- 1. FILTERING SYSTEM ---
-    const buttons = document.querySelectorAll('.filter-btn');
+    const buttons = document.querySelectorAll('.filter-pill-top');
     const items = document.querySelectorAll('.gallery-item');
 
     buttons.forEach(button => {
       button.addEventListener('click', function () {
-        buttons.forEach(btn => {
-          btn.classList.remove('btn-dark', 'active');
-          btn.classList.add('btn-outline-dark');
-        });
-        this.classList.remove('btn-outline-dark');
-        this.classList.add('btn-dark', 'active');
+        // Handle filter active link indicator changes
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
 
         const filterValue = this.getAttribute('data-filter');
         
+        // Execute grid display alterations
         items.forEach(item => {
           const itemCategory = item.getAttribute('data-category');
+          
           if (filterValue === 'all' || itemCategory === filterValue) {
-            item.style.display = 'block';
+            item.classList.remove('is-hidden');
           } else {
-            item.style.display = 'none';
+            item.classList.add('is-hidden');
           }
         });
       });
