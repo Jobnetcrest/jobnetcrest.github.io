@@ -793,17 +793,22 @@ td {
    ========================================================================== */
 
 
-  .club-ticker-container {
+/* ==========================================================================
+   9. BRANDED CLUB NEWS TICKER
+   ========================================================================== */
+.club-ticker-container {
     display: flex;
     align-items: center;
-    background: #ff0000; /* Your club's main primary color */
+    background: #234b58; /* UPDATED: Dark Slate Blue from your navbar/divider theme */
     overflow: hidden;
     font-family: Arial, sans-serif;
     height: 40px;
-  }
-  .club-ticker-label {
-    background: #111111; /* Contrasting background for label */
-    color: #ffffff;
+    border-bottom: 2px solid #126631; /* ADDED: Subtle Club Green underline anchor */
+}
+
+.club-ticker-label {
+    background: #E5F91e; /* UPDATED: Bright Pickleball Yellow from the logo's ball */
+    color: #234b58;      /* UPDATED: Dark Slate Blue text for high-contrast legibility */
     padding: 0 15px;
     font-weight: bold;
     height: 100%;
@@ -812,50 +817,56 @@ td {
     z-index: 2;
     white-space: nowrap;
     box-shadow: 3px 0 5px rgba(0,0,0,0.3);
-  }
-  .club-ticker-wrap {
+}
+
+.club-ticker-wrap {
     overflow: hidden;
     width: 100%;
     z-index: 1;
-  }
-  .club-ticker-content {
+}
+
+.club-ticker-content {
     display: flex;
     white-space: nowrap;
     animation: tickerLoop 25s linear infinite;
-  }
-  .ticker-item {
+}
+
+/* MERGED: Combined both .ticker-item definitions into one clean block */
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
     color: #ffffff !important;
     text-decoration: none !important;
     font-weight: bold;
     padding-right: 100px;
-    display: inline-block;
-  }
-  .ticker-date {
+    gap: 8px; /* Adds space between the logo image and the text */
+}
+
+.ticker-logo {
+    height: 20px;      /* Restricts the height to match your text size */
+    width: auto;       /* Keeps the original aspect ratio of your logo */
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.ticker-date {
     font-weight: normal;
     font-size: 0.9em;
     opacity: 0.85;
     margin-left: 5px;
-  }
-  .ticker-item:hover {
-    text-decoration: underline !important;
-  }
-  .club-ticker-content:hover {
-    animation-play-state: paused;
-  }
-  @keyframes tickerLoop {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-  }
-.ticker-item {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  gap: 8px; /* Adds space between the logo and the text */
 }
 
-.ticker-logo {
-  height: 20px;      /* Restricts the height to match your text size */
-  width: auto;       /* Keeps the original aspect ratio of your logo */
-  object-fit: contain;
-  vertical-align: middle;
+.ticker-item:hover {
+    text-decoration: underline !important;
+    color: #E5F91e !important; /* ADDED: Turns yellow on hover for interactive feedback */
 }
+
+.club-ticker-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes tickerLoop {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
