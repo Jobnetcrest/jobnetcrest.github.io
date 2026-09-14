@@ -16,9 +16,9 @@ background_image: ""
     <div class="col-lg-8 d-flex flex-column">
         <!-- Elfsight Render Container -->
         <div class="flex-grow-1 p-3 bg-light rounded-3 shadow-sm mb-4 calendar-container">
-          <!-- Elfsight Event Calendar | Pickleball Gloucestershire Calendar -->
-          <script src="https://elfsightcdn.com/platform.js" async></script>
-          <div class="elfsight-app-373d4a85-75e2-4845-809b-573e851a4f29" data-elfsight-app-lazy></div>
+               <!-- The calendar attaches itself directly inside this element -->
+              <div id="adaptive-calendar-root"></div>
+
         </div>
     </div>
 
@@ -182,5 +182,39 @@ background_image: ""
     animation: flash 1.5s infinite ease-in-out;
   }
 </style>
+
+
+<script>
+(function() {
+  // 1. Correctly assigned your unique alphanumeric Elfsight widget ID
+  const WIDGET_ID = "373d4a85-75e2-4845-809b-573e851a4f29"; 
+  
+  // 2. Define your desktop screen breakpoint (in pixels)
+  const isMobile = window.innerWidth < 1024;
+  
+  // 3. Construct the application container markup dynamically
+  const widgetDiv = document.createElement("div");
+  widgetDiv.className = `elfsight-app-${WIDGET_ID}`;
+  widgetDiv.setAttribute("data-elfsight-app-lazy", "");
+  
+  // 4. Assign layouts dynamically based on device width
+  if (isMobile) {
+    // Forces the Grid layout configuration setup on mobile systems
+    widgetDiv.setAttribute("data-elfsight-app-layout", "grid");
+  } else {
+    // Forces the native Month layout configuration setup on desktop systems
+    widgetDiv.setAttribute("data-elfsight-app-layout", "month");
+  }
+  
+  // Bind structural components together
+  document.getElementById("adaptive-calendar-root").appendChild(widgetDiv);
+  
+  // 5. Fixed the platform loader endpoint destination path
+  const script = document.createElement("script");
+  script.src = "https://elfsightcdn.com/platform.js";
+  script.async = true;
+  document.head.appendChild(script);
+})();
+</script>
 
 
