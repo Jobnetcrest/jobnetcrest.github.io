@@ -186,35 +186,57 @@ background_image: ""
 
 <script>
 (function() {
-  // 1. Correctly assigned your unique alphanumeric Elfsight widget ID
   const WIDGET_ID = "373d4a85-75e2-4845-809b-573e851a4f29"; 
-  
-  // 2. Define your desktop screen breakpoint (in pixels)
-  const isMobile = window.innerWidth < 1024;
-  
-  // 3. Construct the application container markup dynamically
-  const widgetDiv = document.createElement("div");
-  widgetDiv.className = `elfsight-app-${WIDGET_ID}`;
-  widgetDiv.setAttribute("data-elfsight-app-lazy", "");
-  
-  // 4. Assign layouts dynamically based on device width
-  if (isMobile) {
-    // Forces the Grid layout configuration setup on mobile systems
-    widgetDiv.setAttribute("data-elfsight-app-layout", "grid");
-  } else {
-    // Forces the native Month layout configuration setup on desktop systems
-    widgetDiv.setAttribute("data-elfsight-app-layout", "month");
+  const root = document.getElementById("adaptive-calendar-root");
+  let currentLayout = null;
+
+  function renderCalendar() {
+    const isMobile = window.innerWidth < 1024;
+    const targetLayout = isMobile ? "grid" : "month";
+
+    // Only rebuild the widget if the layout breakpoint actually changes
+    if (currentLayout !== targetLayout) {
+      currentLayout = targetLayout;
+      
+      // Clear previous instance
+      root.innerHTML = "";
+
+      // Create new widget container with the updated layout target
+      const widgetDiv = document.createElement("div");
+      widgetDiv.className = `elfsight-app-${WIDGET_ID}`;
+      widgetDiv.setAttribute("data-elfsight-app-lazy", "");
+      widgetDiv.setAttribute("data-elfsight-app-layout", targetLayout);
+      
+      root.appendChild(widgetDiv);
+
+      // Re-trigger Elfsight's global initialization script if it already exists
+      if (window.ElfsightApps) {
+        window.ElfsightApps.init();
+      }
+    }
   }
-  
-  // Bind structural components together
-  document.getElementById("adaptive-calendar-root").appendChild(widgetDiv);
-  
-  // 5. Fixed the platform loader endpoint destination path
-  const script = document.createElement("script");
-  script.src = "https://elfsightcdn.com/platform.js";
-  script.async = true;
-  document.head.appendChild(script);
+
+  // Initial load execution
+  renderCalendar();
+
+  // Listen for window resizing and adjust layout dynamically
+  let resizeTimeout;
+  window.addEventListener("resize", function() {
+    clearTimeout(resizeTimeout);
+    // Debounce the resize event slightly so it doesn't stutter while dragging
+    resizeTimeout = setTimeout(renderCalendar, 150);
+  });
+
+  // Inject the platform script loader if it hasn't been added yet
+  if (!document.querySelector('script[src*="elfsightcdn.com"]')) {
+    const script = document.createElement("script");
+    script.src = "https://elfsightcdn.com/platform.js";
+    script.async = true;
+    document.head.appendChild(script);
+  }
 })();
 </script>
+
+
 
 
