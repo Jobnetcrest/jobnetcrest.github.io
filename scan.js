@@ -13,6 +13,9 @@ async function scanCookies() {
     const browser = await chromium.launch({ headless: true });
     const context = await browser.newContext();
     const page = await context.newPage();
+
+    // Set a strict 30-second timeout to prevent the GitHub action from hanging forever
+    page.setDefaultTimeout(30000);
     
     // Navigate and wait until network requests settle down
     await page.goto(TARGET_URL, { waitUntil: 'networkidle' });

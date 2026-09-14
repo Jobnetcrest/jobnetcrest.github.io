@@ -32,7 +32,8 @@ jobs:
 
       - name: Install Playwright & System Binaries
         run: |
-          npm install playwright
+          # Only install playwright if it's missing from package.json
+          npm list playwright || npm install playwright
           npx playwright install --with-deps chromium
 
       - name: Run Headless Audit
@@ -44,10 +45,12 @@ jobs:
           git config --global user.email "bot@github.com"
           
           # Force add if the folder structure was just generated
-          git add public/cookie-database.json
+          git add cookie-database.json
           
-          if ! git diff-index --quiet HEAD; then
+          # Check for changes across both staged and untracked files reliably
+          if [ -n "$(git status --porcelain cookie-database.json)" ]; then
             git commit -m "chore: auto-updated active cookie catalog [skip ci]"
+            git pull --rebase origin main
             git push
           else
             echo "No changes found in cookie profiles."
