@@ -1,7 +1,5 @@
 {
-  "necessary": [],
-  "analytics": [],
-  "marketing": [
+  "necessary": [
     {
       "name": "_cfuvid",
       "domain": ".elfsight.com",
@@ -9,9 +7,18 @@
       "description": "Elfsight security and request validation rate-limiter managed through the Cloudflare network proxy framework."
     },
     {
+      "name": "__Secure-ROLLOUT_TOKEN",
+      "domain": ".youtube.com",
+      "expiry": "Sun, 14 Mar 2027 15:34:38 GMT",
+      "description": "Secure tracking token deployed by YouTube to optimize infrastructure rollouts on embedded players."
+    }
+  ],
+  "analytics": [],
+  "marketing": [
+    {
       "name": "__Secure-YNID",
       "domain": ".youtube.com",
-      "expiry": "Sun, 14 Mar 2027 15:19:35 GMT",
+      "expiry": "Sun, 14 Mar 2027 15:34:38 GMT",
       "description": "Secure security and profile preference handler managed by embedded YouTube integrations."
     },
     {
@@ -21,27 +28,21 @@
       "description": "YouTube tracking identifier embedded to register video player interaction history."
     },
     {
-      "name": "__Secure-ROLLOUT_TOKEN",
-      "domain": ".youtube.com",
-      "expiry": "Sun, 14 Mar 2027 15:19:35 GMT",
-      "description": "Secure tracking token deployed by YouTube to optimize infrastructure rollouts on embedded players."
-    },
-    {
       "name": "VISITOR_INFO1_LIVE",
       "domain": ".youtube.com",
-      "expiry": "Sun, 14 Mar 2027 15:19:35 GMT",
+      "expiry": "Sun, 14 Mar 2027 15:34:38 GMT",
       "description": "YouTube bandwidth metrics tracker used to measure stream quality across embedded frames."
     },
     {
       "name": "VISITOR_PRIVACY_METADATA",
       "domain": ".youtube.com",
-      "expiry": "Sun, 14 Mar 2027 15:19:35 GMT",
+      "expiry": "Sun, 14 Mar 2027 15:34:38 GMT",
       "description": "YouTube compliance tracking state used to store user privacy choices regarding embedded video playback."
     },
     {
       "name": "NID",
       "domain": ".google.com",
-      "expiry": "Wed, 17 Mar 2027 15:20:02 GMT",
+      "expiry": "Wed, 17 Mar 2027 15:35:05 GMT",
       "description": "Google user profiling cookie utilized to customize advertisement delivery across integrated web structures."
     }
   ]
