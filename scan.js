@@ -107,25 +107,54 @@ async function scanCookies() {
     const cookies = await context.cookies();
     await browser.close();
     
+    // Dictionary mapping specific cookie patterns to compliance descriptions
+    const COOKIE_DICTIONARY = {
+        '_ga': 'Google Analytics persistent identifier used to distinguish unique site users.',
+        '_gid': 'Google Analytics session identifier used to track daily user journey habits.',
+        '_gat': 'Google Analytics throttle wrapper used to regulate high-volume tracking requests.',
+        'ysc': 'YouTube tracking identifier embedded to register video player interaction history.',
+        'visitor_info1_live': 'YouTube bandwidth metrics tracker used to measure stream quality across embedded frames.',
+        'visitor_privacy_metadata': 'YouTube compliance tracking state used to store user privacy choices regarding embedded video playback.',
+        '__secure-ynid': 'Secure security and profile preference handler managed by embedded YouTube integrations.',
+        '__secure-rollout_token': 'Secure tracking token deployed by YouTube to optimize infrastructure rollouts on embedded players.',
+        'nid': 'Google user profiling cookie utilized to customize advertisement delivery across integrated web structures.',
+        '_cfuvid': 'Elfsight security and request validation rate-limiter managed through the Cloudflare network proxy framework.'
+    };
+
     const categorised = { necessary: [], analytics: [], marketing: [] };
     
     for (const c of cookies) {
+        const name = c.name.toLowerCase();
+        const domain = c.domain.toLowerCase();
+
+        // Check if we have an explicit dictionary entry, otherwise use a professional fallback description
+        let matchedDescription = 'Auto-detected during deployment multi-page audit loop.';
+        for (const [key, desc] of Object.entries(COOKIE_DICTIONARY)) {
+            if (name.includes(key)) {
+                matchedDescription = desc;
+                break;
+            }
+        }
+
         const cookieData = {
             name: c.name,
             domain: c.domain,
             expiry: c.expires ? new Date(c.expires * 1000).toUTCString() : 'Session',
-            description: 'Auto-detected during scalable deployment audit.'
+            description: matchedDescription
         };
         
-        const name = c.name.toLowerCase();
+        // Accurate routing based on legal compliance definitions
         if (['_ga', '_gid', '_gat', 'pk_'].some(x => name.includes(x))) {
             categorised.analytics.push(cookieData);
-        } else if (['_fbp', 'ads', 'fbsr', 'uuid', 'pixel'].some(x => name.includes(x))) {
+        } else if (['nid', 'ysc', 'visitor_info1_live', 'visitor_privacy_metadata', '__secure', 'pixel', 'ads', '_fbp'].some(x => name.includes(x)) || 
+                   domain.includes('youtube') || 
+                   domain.includes('elfsight')) {
             categorised.marketing.push(cookieData);
         } else {
             categorised.necessary.push(cookieData);
         }
     }
+
 
     console.log(`📊 Scanned Consolidated Count: ${cookies.length} cookies found.`);
     console.log(`   └─ Necessary: ${categorised.necessary.length} | Analytics: ${categorised.analytics.length} | Marketing: ${categorised.marketing.length}`);
