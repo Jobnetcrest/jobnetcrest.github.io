@@ -1,111 +1,75 @@
-import fs from 'fs/promises';
-import path from 'path';
-import { chromium } from 'playwright';
+name: Automated Cookie Scanner Loop
 
-const TARGET_URL = 'https://github.io';
-const OUTPUT_FILE = 'cookie-database.json';
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at midnight
+  workflow_dispatch: # Allows manual button-trigger from GitHub UI
 
-async function scanCookies() {
-    console.log(`🕵️ Starting Multi-Page Scan for ${TARGET_URL}...`);
+jobs:
+  audit-and-map:
+    runs-on: ubuntu-latest
     
-    const browser = await chromium.launch({ headless: true });
-    const context = await browser.newContext({
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-        viewport: { width: 1920, height: 1080 },
-        deviceScaleFactor: 1
-    });
-    
-    await context.clearCookies();
-    const page = await context.newPage();
-    page.setDefaultTimeout(30000);
+    permissions:
+      contents: write
 
-    // 1. Discover all internal pages from the home page
-    console.log("🕸️ Discovering internal pages...");
-    await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
-    
-    // Inject consent immediately on the home page so discovery is clean
-    await page.evaluate(() => {
-        const mockPayload = {
-            categories: ["necessary", "analytics", "marketing"],
-            revision: 0,
-            data: null,
-            consentTimestamp: new Date().toISOString(),
-            consentId: "ff177da1-f350-43d8-af09-b9e56758585f",
-            services: { necessary: [], analytics: [], marketing: [] },
-            languageCode: "en"
-        };
-        localStorage.setItem('cc_cookie', JSON.stringify(mockPayload));
-        localStorage.setItem('klaro', JSON.stringify(mockPayload));
-    });
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v5
 
-    // Extract all local links pointing to the same website
-    const links = await page.evaluate((baseUrl) => {
-        return Array.from(document.querySelectorAll('a[href]'))
-            .map(a => new URL(a.href, window.location.href).href)
-            .filter(href => href.startsWith(baseUrl) && !href.includes('#'));
-    }, TARGET_URL);
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: 'npm'
 
-    // Keep unique pages only, ensuring the home page is included
-    const pagesToScan = Array.from(new Set([TARGET_URL, ...links]));
-    console.log(`📝 Found ${pagesToScan.length} unique pages to audit.`);
+      - name: Install Project Dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
-    // 2. Crawl every discovered page sequentially
-    for (let i = 0; i < pagesToScan.length; i++) {
-        const currentUrl = pagesToScan[i];
-        console.log(`📄 Scanning [${i + 1}/${pagesToScan.length}]: ${currentUrl}`);
-        
-        try {
-            await page.goto(currentUrl, { waitUntil: 'networkidle' });
+      - name: Install Playwright & System Binaries
+        run: |
+          npm list playwright || npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Run Headless Audit
+        run: node scan.js
+
+      - name: Push Data and Detect Changes
+        id: git-push
+        run: |
+          git config --global user.name "CookieScannerBot"
+          git config --global user.email "bot@github.com"
+          
+          git add cookie-database.json
+          
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto-updated active cookie catalog [skip ci]"
+            git pull --rebase origin main
+            git push
+            echo "NEW_COOKIES_FOUND=true" >> $GITHUB_OUTPUT
+            echo "Changes committed and pushed successfully."
+          else
+            echo "NEW_COOKIES_FOUND=false" >> $GITHUB_OUTPUT
+            echo "No changes found in cookie profiles."
+          fi
+
+      - name: Email Notification - Success Alert
+        if: success()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "✅ Cookie Scanner Completed Successfully"
+          to: ${{ secrets.RECEIVER_EMAIL }}
+          from: "Cookie Scanner Bot <bot@github.com>"
+          body: |
+            The Automated Cookie Scanner completed its multi-page run successfully.
+            New Cookies Detected and Logged: ${{ steps.git-push.outputs.NEW_COOKIES_FOUND }}
             
-            // Re-apply LocalStorage consent token in case the page context shifts subdomains
-            await page.evaluate(() => {
-                const mockPayload = { categories: ["necessary", "analytics", "marketing"] };
-                localStorage.setItem('cc_cookie', JSON.stringify(mockPayload));
-            });
-
-            // Scroll to trigger lazy-loaded trackers/pixels on this subpage
-            await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-            await page.waitForTimeout(2000);
-        } catch (pageError) {
-            console.log(`⚠️ Could not fully load page ${currentUrl}: ${pageError.message}`);
-        }
-    }
-
-    // 3. Retrieve all aggregated cookies dropped during the whole journey
-    const cookies = await context.cookies();
-    await browser.close();
-    
-    console.log(`📋 Total Unfiltered Browser Cookies Found Across All Pages: ${cookies.length}`);
-    
-    const categorised = { necessary: [], analytics: [], marketing: [] };
-    
-    for (const c of cookies) {
-        const cookieData = {
-            name: c.name,
-            domain: c.domain,
-            expiry: c.expires ? new Date(c.expires * 1000).toUTCString() : 'Session',
-            description: 'Auto-detected during deployment audit.'
-        };
-        
-        const name = c.name.toLowerCase();
-        if (['_ga', '_gid', '_gat', 'pk_'].some(x => name.includes(x))) {
-            categorised.analytics.push(cookieData);
-        } else if (['_fbp', 'ads', 'fbsr', 'uuid', 'pixel'].some(x => name.includes(x))) {
-            categorised.marketing.push(cookieData);
-        } else {
-            categorised.necessary.push(cookieData);
-        }
-    }
-
-    console.log(`📊 Final Global Counts: Necessary: ${categorised.necessary.length} | Analytics: ${categorised.analytics.length} | Marketing: ${categorised.marketing.length}`);
-
-    const dir = path.dirname(OUTPUT_FILE);
-    await fs.mkdir(dir, { recursive: true });
-    await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf8');
-    console.log(`💾 Full site database deployed to ${OUTPUT_FILE}!`);
-}
-
-scanCookies().catch(err => {
-    console.error('❌ Multi-page scan failed:', err);
-    process.exit(1);
-});
+            Check your repository file `cookie-database.json` to review details.
