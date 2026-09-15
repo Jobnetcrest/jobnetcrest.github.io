@@ -9,67 +9,63 @@ const OUTPUT_FILE = 'cookie-database.json';
 async function scanCookies() {
     console.log(`🕵️ Scanning ${TARGET_URL}...`);
     
-    // Launch headless browser
- //   const browser = await chromium.launch({ headless: true });
- //   const context = await browser.newContext();
- //   const page = await context.newPage();
-
-    // Launch headless browser with realistic desktop metrics
     const browser = await chromium.launch({ headless: true });
+    
+    // Clear out standard context constraints to isolate the run completely
     const context = await browser.newContext({
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
         viewport: { width: 1920, height: 1080 },
         deviceScaleFactor: 1
     });
+    
+    // Explicitly wipe the browser state clean to prevent shared cookie pollution
+    await context.clearCookies();
     const page = await context.newPage();
 
+    // Give the network elements up to 45 seconds to settle on virtual environments
+    page.setDefaultTimeout(45000);
 
-    // Set a strict 30-second timeout to prevent the GitHub action from hanging forever
-    page.setDefaultTimeout(30000);
-
-       // 1. Navigate to the landing frame
+    // 1. Navigate to target URL
     await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
     
-    // 2. Wait explicitly for the CookieConsent banner to pop up
+    // 2. Wait explicitly for the CookieConsent banner to render
     try {
         const consentButton = page.locator([
             'button[data-cc="accept-all"]',
             'button:has-text("Accept All")',
             'button:has-text("Accept all")',
             'button:has-text("Allow All")',
+            'button:has-text("Allow all cookies")',
             '#consent-accept'
         ].join(', ')).first();
 
         console.log("⏳ Waiting for cookie banner to render...");
-        // Wait up to 5 seconds for the banner to physically appear in the DOM
-        await consentButton.waitFor({ state: 'visible', timeout: 5000 });
+        
+        // Extended safety margin for CI server latency
+        await consentButton.waitFor({ state: 'visible', timeout: 15000 });
         
         console.log("👆 Cookie consent banner detected. Clicking 'Accept all'...");
         await consentButton.click();
         
-        // Give external tracking scripts time to download and drop their cookies
+        // Give external tracking scripts time to execute and write cookies
         await page.waitForTimeout(5000); 
     } catch (consentError) {
-        // If it times out, it just means the banner didn't appear (e.g., already accepted or hidden)
-        console.log("ℹ️ No cookie banner appeared within 5 seconds, skipping click step.");
+        console.log("ℹ️ No cookie banner appeared within 15 seconds. Proceeding with backup evaluation...");
     }
-
     
-    // Navigate and wait until network requests settle down
-   // await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
-    
-    // Simulate user behavior (scroll to trigger lazy-loaded trackers/pixels)
+    // 3. Force scroll interaction to trigger tracking scripts
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(3000); 
 
-    // Retrieve all cookies dropped into the browser session
+    // 4. Retrieve all cookies dropped into the browser session
     const cookies = await context.cookies();
-    // Add this line temporarily to verify that Git detects changes
-
-    // added  Force a Fake Cookie to Test the Workflow Pipeline
-   // cookies.push({ name: '_ga_TEST_COOKIE', domain: '.github.io', expires: Math.floor(Date.now() / 1000) + 3600 });
-
     await browser.close();
+    
+    // Print out raw data before classification to ensure nothing gets filtered out
+    console.log(`📋 Total Unfiltered Browser Cookies Found: ${cookies.length}`);
+    if (cookies.length > 0) {
+        console.log("🍪 Raw Cookie Names Found:", cookies.map(c => c.name));
+    }
     
     // Categorisation bucket structure
     const categorised = { necessary: [], analytics: [], marketing: [] };
@@ -93,7 +89,6 @@ async function scanCookies() {
             categorised.necessary.push(cookieData);
         }
     }
-    
 
     // Print Visual Progress to Workflow Logs
     console.log(`📊 Scanned Raw Count: ${cookies.length} cookies found.`);
@@ -107,9 +102,7 @@ async function scanCookies() {
     console.log(`💾 Fresh audit database deployed to ${OUTPUT_FILE}!`);
 }
 
-
 scanCookies().catch(err => {
     console.error('❌ Scan failed:', err);
     process.exit(1);
 });
-
