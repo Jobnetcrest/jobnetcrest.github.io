@@ -66,6 +66,11 @@ async function scanCookies() {
         }
     }
     
+
+    // Print Visual Progress to Workflow Logs
+    console.log(`📊 Scanned Raw Count: ${cookies.length} cookies found.`);
+    console.log(`   └─ Necessary: ${categorised.necessary.length} | Analytics: ${categorised.analytics.length} | Marketing: ${categorised.marketing.length}`);
+
     // Ensure target folder exists and write JSON using async fs/promises
     const dir = path.dirname(OUTPUT_FILE);
     await fs.mkdir(dir, { recursive: true });
@@ -73,9 +78,7 @@ async function scanCookies() {
     await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf8');
     console.log(`💾 Fresh audit database deployed to ${OUTPUT_FILE}!`);
 }
-// Print Visual Progress to Workflow Logs
-console.log(`📊 Scanned Raw Count: ${cookies.length} cookies found.`);
-console.log(`   └─ Necessary: ${categorised.necessary.length} | Analytics: ${categorised.analytics.length} | Marketing: ${categorised.marketing.length}`);
+
 
 scanCookies().catch(err => {
     console.error('❌ Scan failed:', err);
