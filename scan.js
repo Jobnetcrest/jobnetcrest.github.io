@@ -51,6 +51,12 @@ async function scanCookies() {
         await page.waitForTimeout(5000); 
     } catch (consentError) {
         console.log("ℹ️ No cookie banner appeared within 15 seconds. Proceeding with backup evaluation...");
+
+        // 🚨 NEW LOGGING TOOL: Print out the first 1000 characters of the live DOM
+        const bodyHTML = await page.evaluate(() => document.body.innerHTML);
+        console.log("📝 --- LIVE WORKSPACE RUNNER SNAPSHOT ---");
+        console.log(bodyHTML.substring(0, 1000)); 
+        console.log("📝 ---------------------------------------");
     }
     
     // 3. Force scroll interaction to trigger tracking scripts
