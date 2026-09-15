@@ -26,6 +26,11 @@ async function scanCookies() {
 
     // Retrieve all cookies dropped into the browser session
     const cookies = await context.cookies();
+    // Add this line temporarily to verify that Git detects changes
+
+    // added  Force a Fake Cookie to Test the Workflow Pipeline
+    cookies.push({ name: '_ga_TEST_COOKIE', domain: '.github.io', expires: Math.floor(Date.now() / 1000) + 3600 });
+
     await browser.close();
     
     // Categorisation bucket structure
