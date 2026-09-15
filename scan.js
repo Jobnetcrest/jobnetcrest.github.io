@@ -27,37 +27,33 @@ async function scanCookies() {
     // Set a strict 30-second timeout to prevent the GitHub action from hanging forever
     page.setDefaultTimeout(30000);
 
-        // 1. Navigate to the landing frame
+       // 1. Navigate to the landing frame
     await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
     
-    // 2. Clear out common consent banners by hunting for standard button identifiers
+    // 2. Wait explicitly for the CookieConsent banner to pop up
     try {
-        // Broad locator that matches almost all standard consent framework buttons
         const consentButton = page.locator([
             'button[data-cc="accept-all"]',
             'button:has-text("Accept All")',
             'button:has-text("Accept all")',
             'button:has-text("Allow All")',
-            'button:has-text("Allow all cookies")',
-            'button:has-text("Agree")',
-            '#consent-accept',
-            '.cookie-banner-accept'
-        ].join(', '));
+            '#consent-accept'
+        ].join(', ')).first();
 
-        // If a matching banner element is found on screen, click it
-        if (await consentButton.first().isVisible()) {
-            console.log("👆 Found cookie consent banner. Clicking 'Accept All'...");
-            await consentButton.first().click();
-            
-            // CRITICAL: Give external third-party tracking scripts time to execute 
-            // and drop their cookies after the click event happens.
-            await page.waitForTimeout(5000); 
-        } else {
-            console.log("ℹ️ No visible cookie banner detected matching standard selectors.");
-        }
+        console.log("⏳ Waiting for cookie banner to render...");
+        // Wait up to 5 seconds for the banner to physically appear in the DOM
+        await consentButton.waitFor({ state: 'visible', timeout: 5000 });
+        
+        console.log("👆 Cookie consent banner detected. Clicking 'Accept all'...");
+        await consentButton.click();
+        
+        // Give external tracking scripts time to download and drop their cookies
+        await page.waitForTimeout(5000); 
     } catch (consentError) {
-        console.log("⚠️ Failed while attempting to click consent button:", consentError.message);
+        // If it times out, it just means the banner didn't appear (e.g., already accepted or hidden)
+        console.log("ℹ️ No cookie banner appeared within 5 seconds, skipping click step.");
     }
+
     
     // Navigate and wait until network requests settle down
    // await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
