@@ -26,20 +26,52 @@ async function scanCookies() {
 
     // Set a strict 30-second timeout to prevent the GitHub action from hanging forever
     page.setDefaultTimeout(30000);
+
+        // 1. Navigate to the landing frame
+    await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
+    
+    // 2. Clear out common consent banners by hunting for standard button identifiers
+    try {
+        // Broad locator that matches almost all standard consent framework buttons
+        const consentButton = page.locator([
+            'button[data-cc="accept-all"]',
+            'button:has-text("Accept All")',
+            'button:has-text("Accept all")',
+            'button:has-text("Allow All")',
+            'button:has-text("Allow all cookies")',
+            'button:has-text("Agree")',
+            '#consent-accept',
+            '.cookie-banner-accept'
+        ].join(', '));
+
+        // If a matching banner element is found on screen, click it
+        if (await consentButton.first().isVisible()) {
+            console.log("👆 Found cookie consent banner. Clicking 'Accept All'...");
+            await consentButton.first().click();
+            
+            // CRITICAL: Give external third-party tracking scripts time to execute 
+            // and drop their cookies after the click event happens.
+            await page.waitForTimeout(5000); 
+        } else {
+            console.log("ℹ️ No visible cookie banner detected matching standard selectors.");
+        }
+    } catch (consentError) {
+        console.log("⚠️ Failed while attempting to click consent button:", consentError.message);
+    }
     
     // Navigate and wait until network requests settle down
-    await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
+   // await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
     
     // Simulate user behavior (scroll to trigger lazy-loaded trackers/pixels)
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await new Promise(resolve => setTimeout(resolve, 3000)); 
+    await page.waitForTimeout(3000); 
 
     // Retrieve all cookies dropped into the browser session
     const cookies = await context.cookies();
     // Add this line temporarily to verify that Git detects changes
 
     // added  Force a Fake Cookie to Test the Workflow Pipeline
-    cookies.push({ name: '_ga_TEST_COOKIE', domain: '.github.io', expires: Math.floor(Date.now() / 1000) + 3600 });
+   // cookies.push({ name: '_ga_TEST_COOKIE', domain: '.github.io', expires: Math.floor(Date.now() / 1000) + 3600 });
 
     await browser.close();
     
