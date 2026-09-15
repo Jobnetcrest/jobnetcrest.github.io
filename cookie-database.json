@@ -1,5 +1,48 @@
 {
-  "necessary": [],
+  "necessary": [
+    {
+      "name": "_cfuvid",
+      "domain": ".elfsight.com",
+      "expiry": "Wed, 31 Dec 1969 23:59:59 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    },
+    {
+      "name": "__Secure-YNID",
+      "domain": ".youtube.com",
+      "expiry": "Sun, 14 Mar 2027 14:59:10 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    },
+    {
+      "name": "YSC",
+      "domain": ".youtube.com",
+      "expiry": "Wed, 31 Dec 1969 23:59:59 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    },
+    {
+      "name": "VISITOR_INFO1_LIVE",
+      "domain": ".youtube.com",
+      "expiry": "Sun, 14 Mar 2027 14:59:10 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    },
+    {
+      "name": "VISITOR_PRIVACY_METADATA",
+      "domain": ".youtube.com",
+      "expiry": "Sun, 14 Mar 2027 14:59:10 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    },
+    {
+      "name": "__Secure-ROLLOUT_TOKEN",
+      "domain": ".youtube.com",
+      "expiry": "Sun, 14 Mar 2027 14:59:10 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    },
+    {
+      "name": "NID",
+      "domain": ".google.com",
+      "expiry": "Wed, 17 Mar 2027 14:59:37 GMT",
+      "description": "Auto-detected during scalable deployment audit."
+    }
+  ],
   "analytics": [],
   "marketing": []
 }
