@@ -38,8 +38,7 @@ jobs:
       - name: Run Headless Audit
         run: node scan.js
 
-      - name: Push Data and Detect Changes
-        id: git-push
+      - name: Push Data back to Git
         run: |
           git config --global user.name "CookieScannerBot"
           git config --global user.email "bot@github.com"
@@ -50,26 +49,7 @@ jobs:
             git commit -m "chore: auto-updated active cookie catalog [skip ci]"
             git pull --rebase origin main
             git push
-            echo "NEW_COOKIES_FOUND=true" >> $GITHUB_OUTPUT
             echo "Changes committed and pushed successfully."
           else
-            echo "NEW_COOKIES_FOUND=false" >> $GITHUB_OUTPUT
             echo "No changes found in cookie profiles."
           fi
-
-      - name: Email Notification - Success Alert
-        if: success()
-        uses: dawidd6/action-send-mail@v4
-        with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "✅ Cookie Scanner Completed Successfully"
-          to: ${{ secrets.RECEIVER_EMAIL }}
-          from: "Cookie Scanner Bot <bot@github.com>"
-          body: |
-            The Automated Cookie Scanner completed its multi-page run successfully.
-            New Cookies Detected and Logged: ${{ steps.git-push.outputs.NEW_COOKIES_FOUND }}
-            
-            Check your repository file `cookie-database.json` to review details.
