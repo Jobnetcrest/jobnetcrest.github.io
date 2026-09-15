@@ -143,16 +143,21 @@ async function scanCookies() {
             description: matchedDescription
         };
         
-        // Accurate routing based on legal compliance definitions
+        // Accurate routing based on true legal compliance definitions
         if (['_ga', '_gid', '_gat', 'pk_'].some(x => name.includes(x))) {
             categorised.analytics.push(cookieData);
+        } else if (['_cfuvid', 'rollout_token'].some(x => name.includes(x))) {
+            // Strictly routes infrastructure & fraud mitigation cookies to Necessary
+            categorised.necessary.push(cookieData);
         } else if (['nid', 'ysc', 'visitor_info1_live', 'visitor_privacy_metadata', '__secure', 'pixel', 'ads', '_fbp'].some(x => name.includes(x)) || 
                    domain.includes('youtube') || 
                    domain.includes('elfsight')) {
+            // Keeps true user trackers and advertising profile identifiers in Marketing
             categorised.marketing.push(cookieData);
         } else {
             categorised.necessary.push(cookieData);
         }
+
     }
 
 
