@@ -46,12 +46,28 @@ async function scanCookies() {
     async function auditPage(url) {
         if (visitedUrls.has(url)) return [];
         visitedUrls.add(url);
+
+        // Optimization: Immediately skip scraping asset footprints or broken template URLs
+        const lowCaseUrl = url.toLowerCase();
+        if (
+            lowCaseUrl.endsWith('.docx') || 
+            lowCaseUrl.endsWith('.pdf') || 
+            lowCaseUrl.endsWith('.jpg') || 
+            lowCaseUrl.endsWith('.jpeg') || 
+            lowCaseUrl.endsWith('.png') ||
+            lowCaseUrl.includes('target=')
+        ) {
+            return [];
+        }
         
         console.log(`🚗 Auditing: ${url}`);
         const page = await context.newPage();
         page.setDefaultTimeout(20000);
         
         try {
+            // Speed up tracking pixel loads by blocking large graphic binary downloads
+            await page.route('**/*.{png,jpg,jpeg,gif,webp,svg,mp4,webm}', route => route.abort());
+
             await page.goto(url, { waitUntil: 'networkidle' });
             
             // Wake up tracking pixels
@@ -61,8 +77,14 @@ async function scanCookies() {
             // Extract all internal links found on this subpage
             const discoveredLinks = await page.evaluate((baseUrl) => {
                 return Array.from(document.querySelectorAll('a[href]'))
-                    .map(a => new URL(a.href, window.location.href).href.split('#')[0]) // Strip hashes
-                    .filter(href => href.startsWith(baseUrl));
+                    .map(a => {
+                        try {
+                            return new URL(a.getAttribute('href'), window.location.href).href.split('#')[0];
+                        } catch {
+                            return null;
+                        }
+                    })
+                    .filter(href => href && href.startsWith(baseUrl));
             }, TARGET_URL);
 
             await page.close();
@@ -121,89 +143,85 @@ async function scanCookies() {
         '_cfuvid': 'Elfsight security and request validation rate-limiter managed through the Cloudflare network proxy framework.'
     };
 
-    const categorised = { necessary: [], analytics: [], marketing: [] };
+    // Ensure ALL possible target arrays are initialized first
+    const categorised = {
+        necessary: [],
+        analytics: [],
+        preferences: [],
+        marketing: []
+    };
     
     for (const c of cookies) {
-    const name = c.name.toLowerCase();
-    const domain = c.domain.toLowerCase();
+        const name = c.name.toLowerCase();
+        const domain = c.domain.toLowerCase();
 
-    // Check if we have an explicit dictionary entry, otherwise use a professional fallback description
-    let matchedDescription = 'Auto-detected during deployment multi-page audit loop.';
-    for (const [key, desc] of Object.entries(COOKIE_DICTIONARY)) {
-        if (name.includes(key)) {
-            matchedDescription = desc;
-            break;
+        // Check if we have an explicit dictionary entry, otherwise use a professional fallback description
+        let matchedDescription = 'Auto-detected during deployment multi-page audit loop.';
+        for (const [key, desc] of Object.entries(COOKIE_DICTIONARY)) {
+            if (name.includes(key)) {
+                matchedDescription = desc;
+                break;
+            }
+        }
+
+        // 1. Establish current time context to check against expired values
+        const currentUnixTimestamp = Math.floor(Date.now() / 1000);
+
+        // 2. Validate that expires exists, is a positive number, and is not already historical
+        const isValidFutureExpiry = c.expires && typeof c.expires === 'number' && c.expires > currentUnixTimestamp;
+
+        const cookieData = {
+            name: c.name,
+            domain: c.domain,
+            // Safely output UTC string or mark cleanly as a browser Session cookie
+            expiry: isValidFutureExpiry ? new Date(c.expires * 1000).toUTCString() : 'Session',
+            description: matchedDescription
+        };
+        
+        // --- COMPLIANT ROUTING ENGINE ---
+
+        // 1. STRICTLY NECESSARY (Infrastructure, Security, and Consent Management)
+        if (
+            ['_cfuvid', 'rollout_token', 'visitor_privacy_metadata'].some(x => name.includes(x)) ||
+            name === 'cookie_consent' || name === 'xcookie'
+        ) {
+            categorised.necessary.push(cookieData);
+        }
+        
+        // 2. PERFORMANCE & ANALYTICS (User Behavior Telemetry & Streaming Bitrate)
+        else if (
+            ['_ga', '_gid', '_gat', 'pk_', 'ysc', 'visitor_info1_live'].some(x => name.includes(x))
+        ) {
+            categorised.analytics.push(cookieData);
+        }
+
+        // 3. USER PREFERENCES (UI Customization)
+        else if (
+            ['__secure-ynid'].some(x => name.includes(x))
+        ) {
+            categorised.preferences.push(cookieData); 
+        }
+        
+        // 4. MARKETING & BEHAVIORAL ADVERTISING (Cross-site profiles and pixel arrays)
+        else if (
+            ['nid', 'pixel', 'ads', '_fbp'].some(x => name.includes(x)) || 
+            name.includes('__secure-3p')
+        ) {
+            categorised.marketing.push(cookieData);
+        } 
+        
+        // 5. COMPLIANT FALLBACK
+        else {
+            categorised.necessary.push(cookieData);
         }
     }
 
-    // 1. Establish current time context to check against expired values
-    const currentUnixTimestamp = Math.floor(Date.now() / 1000);
-
-    // 2. Validate that expires exists, is a positive number, and is not already historical
-    const isValidFutureExpiry = c.expires && typeof c.expires === 'number' && c.expires > currentUnixTimestamp;
-
-    const cookieData = {
-        name: c.name,
-        domain: c.domain,
-        // Safely output UTC string or mark cleanly as a browser Session cookie
-        expiry: isValidFutureExpiry ? new Date(c.expires * 1000).toUTCString() : 'Session',
-        description: matchedDescription
-    };
-    
-    // --- COMPLIANT ROUTING ENGINE ---
-
-    // 1. STRICTLY NECESSARY (Infrastructure, Security, and Consent Management)
-    if (
-        ['_cfuvid', 'rollout_token', 'visitor_privacy_metadata'].some(x => name.includes(x)) ||
-        name === 'cookie_consent' || name === 'xcookie'
-    ) {
-        categorised.necessary.push(cookieData);
-    }
-    
-    // 2. PERFORMANCE & ANALYTICS (User Behavior Telemetry & Streaming Bitrate)
-    else if (
-        ['_ga', '_gid', '_gat', 'pk_', 'ysc', 'visitor_info1_live'].some(x => name.includes(x))
-    ) {
-        categorised.analytics.push(cookieData);
-    }
-
-    // 3. USER PREFERENCES (UI Customization - Provided it does not track cross-site)
-    else if (
-        ['__secure-ynid'].some(x => name.includes(x))
-    ) {
-        // Ensure you have an array initialized: categorised.preferences = categorised.preferences || [];
-        // If your schema only allows 3 categories, fallback to categorised.necessary.push(cookieData)
-        categorised.preferences.push(cookieData); 
-    }
-    
-    // 4. MARKETING & BEHAVIORAL ADVERTISING (Cross-site profiles and pixel arrays)
-    else if (
-        ['nid', 'pixel', 'ads', '_fbp'].some(x => name.includes(x)) || 
-        name.includes('__secure-3p') // Double-check targeting identifiers
-    ) {
-        categorised.marketing.push(cookieData);
-    } 
-    
-    // 5. COMPLIANT FALLBACK (Safe Default)
-    else {
-        // Unidentified cookies default to Necessary to prevent system lockouts, 
-        // or prioritize user privacy depending on platform strictness.
-        categorised.necessary.push(cookieData);
-    }
-}
-
-
-
-    console.log(`📊 Scanned Consolidated Count: ${cookies.length} cookies found.`);
-    console.log(`   └─ Necessary: ${categorised.necessary.length} | Analytics: ${categorised.analytics.length} | Marketing: ${categorised.marketing.length}`);
-
-    const dir = path.dirname(OUTPUT_FILE);
-    await fs.mkdir(dir, { recursive: true });
-    await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf8');
-    console.log(`💾 Saved complete site data to ${OUTPUT_FILE}`);
+    // Save outputs back to file system
+    await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf-8');
+    console.log(`💾 JSON database successfully stored in: ${OUTPUT_FILE}`);
 }
 
 scanCookies().catch(err => {
-    console.error('❌ Multi-page crawl failed:', err);
+    console.error("❌ Critical execution crash encountered:", err);
     process.exit(1);
 });
