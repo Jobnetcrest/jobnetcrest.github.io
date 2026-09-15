@@ -10,9 +10,19 @@ async function scanCookies() {
     console.log(`🕵️ Scanning ${TARGET_URL}...`);
     
     // Launch headless browser
+ //   const browser = await chromium.launch({ headless: true });
+ //   const context = await browser.newContext();
+ //   const page = await context.newPage();
+
+    // Launch headless browser with realistic desktop metrics
     const browser = await chromium.launch({ headless: true });
-    const context = await browser.newContext();
+    const context = await browser.newContext({
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+        viewport: { width: 1920, height: 1080 },
+        deviceScaleFactor: 1
+    });
     const page = await context.newPage();
+
 
     // Set a strict 30-second timeout to prevent the GitHub action from hanging forever
     page.setDefaultTimeout(30000);
@@ -63,6 +73,9 @@ async function scanCookies() {
     await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf8');
     console.log(`💾 Fresh audit database deployed to ${OUTPUT_FILE}!`);
 }
+// Print Visual Progress to Workflow Logs
+console.log(`📊 Scanned Raw Count: ${cookies.length} cookies found.`);
+console.log(`   └─ Necessary: ${categorised.necessary.length} | Analytics: ${categorised.analytics.length} | Marketing: ${categorised.marketing.length}`);
 
 scanCookies().catch(err => {
     console.error('❌ Scan failed:', err);
