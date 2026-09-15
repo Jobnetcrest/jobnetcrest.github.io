@@ -136,10 +136,17 @@ async function scanCookies() {
         }
     }
 
+    // 1. Establish current time context to check against expired values
+    const currentUnixTimestamp = Math.floor(Date.now() / 1000);
+
+    // 2. Validate that expires exists, is a positive number, and is not already historical
+    const isValidFutureExpiry = c.expires && typeof c.expires === 'number' && c.expires > currentUnixTimestamp;
+
     const cookieData = {
         name: c.name,
         domain: c.domain,
-        expiry: c.expires ? new Date(c.expires * 1000).toUTCString() : 'Session',
+        // Safely output UTC string or mark cleanly as a browser Session cookie
+        expiry: isValidFutureExpiry ? new Date(c.expires * 1000).toUTCString() : 'Session',
         description: matchedDescription
     };
     
