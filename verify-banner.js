@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 
-const TARGET_URL = 'https://github.io';
+const TARGET_URL = 'https://jobnetcrest.github.io';
 
 // --- CONFIGURATION MAPPINGS ---
 // Includes common selector variants for CookieConsent v3 structures
