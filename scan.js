@@ -41,7 +41,7 @@ async function scanCookies() {
     // Tracking queues
     const visitedUrls = new Set();
     const urlsToScan = [TARGET_URL];
-    const linkArchitectureMap = {};
+    // const linkArchitectureMap = {}; - declared later
 
     // Helper worker to scan a single page and pull its links
     async function auditPage(url) {
