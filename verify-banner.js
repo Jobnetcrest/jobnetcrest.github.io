@@ -1,43 +1,50 @@
 import { chromium } from 'playwright';
 
-const TARGET_URL = 'https://jobnetcrest.github.io';
+const TARGET_URL = 'https://github.io';
 
-// --- CONFIGURATION ---
-// Update these selectors to match your specific Cookie Banner/CMP markup
-const COOKIE_BANNER_SELECTOR = '#cc-bnd, .cookie-banner, #klaro, .cm-wrapper'; 
-const ACCEPT_BUTTON_SELECTOR = 'button:has-text("Accept All"), button:has-text("Allow all"), .cm-btn-success';
+// --- ROBUST TARGET MAPPINGS ---
+// Targets the specific DOM IDs and functional data attributes rendered by CookieConsent v3
+const COOKIE_BANNER_SELECTOR = '#cc-main, .cc__component, #cc-bnd'; 
+const ACCEPT_BUTTON_SELECTOR = 'button[data-cc="accept-all"], #cc-nb-ok, button:has-text("Accept all")';
+const REJECT_BUTTON_SELECTOR = 'button[data-cc="accept-necessary"], button:has-text("Reject all")';
 
 async function verifyFullConsentLifecycle() {
     console.log(`🧪 Initialising Advanced Consent Lifecycle Audit on: ${TARGET_URL}\n`);
 
     const browser = await chromium.launch({ headless: true });
+    
+    // Configured with explicit locale arguments to ensure correct text rendering structures in headless mode
     const context = await browser.newContext({
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
-        viewport: { width: 1200, height: 800 }
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+        viewport: { width: 1920, height: 1080 },
+        locale: 'en-GB'
     });
 
     const page = await context.newPage();
     
-    // Tracking Arrays
     const preConsentNetworkLeaks = [];
     const postConsentNetworkActivations = [];
     const trackingDomains = ['google-analytics.com', 'analytics.google', 'doubleclick.net', 'facebook.net', '://youtube.com'];
     
     let standardConsentGiven = false;
 
-    // Monitor ongoing network pipelines dynamically
+    // Monitor ongoing network pipelines dynamically with safety wrappers
     await page.route('**/*', async (route) => {
-        const url = route.request().url();
-        const matchesTracker = trackingDomains.some(domain => url.includes(domain));
-        
-        if (matchesTracker) {
-            if (!standardConsentGiven) {
-                preConsentNetworkLeaks.push(url);
-            } else {
-                postConsentNetworkActivations.push(url);
+        try {
+            const url = route.request().url();
+            const matchesTracker = trackingDomains.some(domain => url.includes(domain));
+            
+            if (matchesTracker) {
+                if (!standardConsentGiven) {
+                    preConsentNetworkLeaks.push(url);
+                } else {
+                    postConsentNetworkActivations.push(url);
+                }
             }
+            await route.continue();
+        } catch (routeErr) {
+            // Absorb background connection state errors if browser close interrupts a request
         }
-        await route.continue();
     });
 
     try {
@@ -45,9 +52,8 @@ async function verifyFullConsentLifecycle() {
         // 🛡️ PHASE 1: TESTING PRE-CONSENT PRIVACY
         // ==========================================
         console.log(`📡 [PHASE 1] Navigating to target. Testing zero-cookie isolation layer...`);
-        await page.goto(TARGET_URL, { waitUntil: 'networkidle' });
+        await page.goto(TARGET_URL, { waitUntil: 'domcontentloaded' });
         
-        // Wake up delayed tracking elements
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
         await page.waitForTimeout(2500);
 
@@ -73,23 +79,25 @@ async function verifyFullConsentLifecycle() {
         // ==========================================
         console.log(`\n📡 [PHASE 2] Checking for interactive Consent Management Banner UI components...`);
         
-        // Ensure the layout elements are fully visible on screen before attempting an interactive action
-        await page.waitForSelector(COOKIE_BANNER_SELECTOR, { timeout: 5000 }).catch(() => {
-            console.log("⚠️  Notice: Custom CMP wrapper selector not instantly identified. Checking generic button mappings...");
-        });
+        // Wait for the popup configuration layer to manifest on the canvas layout
+        await page.waitForSelector(COOKIE_BANNER_SELECTOR, { timeout: 5000 });
 
-        const acceptButton = page.locator(ACCEPT_BUTTON_SELECTOR).first();
+        // Target the visibility profile of the action buttons explicitly
+        let acceptButton = page.locator(ACCEPT_BUTTON_SELECTOR).first();
         
+        if (!(await acceptButton.isVisible())) {
+            console.log("🔍 Primary data attributes hidden. Polling generic structural button trees...");
+            acceptButton = page.locator('button').filter({ hasText: /^accept\s?all$/i }).first();
+        }
+
         if (await acceptButton.isVisible()) {
-            console.log(`🖱️  Clicking on designated Opt-In CTA action: "${await acceptButton.innerText()}"...`);
+            const buttonText = await acceptButton.innerText();
+            console.log(`\n🖱️  Clicking on designated Opt-In CTA action: "${buttonText.trim()}"...`);
             
-            // Set flag to transition network routing buckets
+            // Toggle the state mapping before firing the event interaction loop
             standardConsentGiven = true; 
-            
-            // Fire opt-in click
             await acceptButton.click();
             
-            // Wait for dynamic tags to mount into the DOM infrastructure and register
             console.log(`⏱️  Allowing page scripts to deploy third-party trackers...`);
             await page.waitForTimeout(4000);
 
@@ -105,19 +113,17 @@ async function verifyFullConsentLifecycle() {
                 validTrackingFootprints.forEach(c => console.log(`   -> 🍪 Active Cookie: ${c.name} (${c.domain})`));
                 Array.from(new Set(postConsentNetworkActivations)).forEach(url => console.log(`   -> 🔗 Active Network Asset: ${url.substring(0, 75)}...`));
             } else {
-                console.warn(`⚠️  WARNING: Banner clicked, but no structural tracking payloads or scripts initialized.`);
-                console.warn(`   Verify whether your CMP is actually triggering tag injection callbacks correctly.`);
+                console.warn(`⚠️  WARNING: Banner clicked, but no tracking scripts initialized.`);
             }
         } else {
-            console.error(`\n❌ CRITICAL CRASH: Unable to find an accessible cookie accept button using the selector.`);
-            console.error(`   Please verify that your button markup matches: '${ACCEPT_BUTTON_SELECTOR}'`);
+            console.error(`\n❌ CRITICAL CRASH: Unable to locate the accept element block via configuration mappings.`);
         }
 
         console.log(`\n=====================================================`);
         if (phase1Passed && standardConsentGiven) {
-            console.log(`🎉 LIFECYCLE SUCCESS: Website is fully compliant. Intercepts before choice, fires upon acceptance!`);
+            console.log(`🎉 LIFECYCLE SUCCESS: UI engine interacts perfectly. Restricts before choice, fires on acceptance!`);
         } else {
-            console.log(`❌ LIFECYCLE FAILED: Review the audit log details above to clean up tracking order flaws.`);
+            console.log(`❌ LIFECYCLE FAILED: Check execution outputs above to patch structural sequencing flaws.`);
         }
         console.log(`=====================================================`);
 
@@ -129,4 +135,3 @@ async function verifyFullConsentLifecycle() {
 }
 
 verifyFullConsentLifecycle();
-
