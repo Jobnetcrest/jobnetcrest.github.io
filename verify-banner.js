@@ -104,14 +104,13 @@ async function verifyFullConsentLifecycle() {
         });
 
         if (bannerFound) {
-            let acceptButton = page.locator(ACCEPT_BUTTON_SELECTOR).first();
+            // FIX: Use Playwright's native locator abstraction with automatic visual rendering waits
+            const acceptButton = page.locator(ACCEPT_BUTTON_SELECTOR).first();
             
-            // Generic backup filter in case text formatting changes dynamically
-            if (!(await acceptButton.isVisible())) {
-                acceptButton = page.locator('button').filter({ hasText: /^accept\s?all$/i }).first();
-            }
-
-            if (await acceptButton.isVisible()) {
+            try {
+                // Wait explicitly for the layout styles to finish animating onto the page layer
+                await acceptButton.waitFor({ state: 'visible', timeout: 5000 });
+                
                 const buttonText = await acceptButton.innerText();
                 console.log(`🖱️  Clicking on designated Opt-In CTA action: "${buttonText.trim()}"...`);
                 
@@ -135,10 +134,12 @@ async function verifyFullConsentLifecycle() {
                 } else {
                     console.warn(`⚠️  WARNING: Banner clicked, but no structural tracking payloads or scripts initialized.`);
                 }
-            } else {
-                console.error(`\n❌ FAIL: Located the consent layout framework, but the action buttons remain hidden.`);
+            } catch (clickErr) {
+                console.error(`\n❌ FAIL: Located the consent framework layout, but the action buttons failed to render visibly on screen.`);
+                console.error(`   Internal Details: ${clickErr.message}`);
             }
         } else {
+
             const storageDump = await page.evaluate(() => JSON.stringify(localStorage));
             const activeCookies = await context.cookies();
             
