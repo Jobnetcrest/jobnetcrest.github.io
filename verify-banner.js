@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 
-const TARGET_URL = 'https://github.io';
+const TARGET_URL = 'https://jobnetcrest.github.io';
 
 // --- ROBUST TARGET MAPPINGS ---
 // Targets the specific DOM IDs and functional data attributes rendered by CookieConsent v3
