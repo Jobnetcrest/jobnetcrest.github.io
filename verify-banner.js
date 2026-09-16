@@ -3,6 +3,7 @@ import { chromium } from 'playwright';
 const TARGET_URL = 'https://github.io';
 
 // --- CONFIGURATION MAPPINGS ---
+// Includes common selector variants for CookieConsent v3 structures
 const COOKIE_BANNER_SELECTOR = '#cc-main, .cc__component, #cc-bnd, .cookie-banner'; 
 const ACCEPT_BUTTON_SELECTOR = 'button[data-cc="accept-all"], #cc-nb-ok, button:has-text("Accept all")';
 
@@ -11,6 +12,7 @@ async function verifyFullConsentLifecycle() {
 
     const browser = await chromium.launch({ headless: true });
     
+    // Clear context storage completely to force banner visibility
     const context = await browser.newContext({
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
         viewport: { width: 1920, height: 1080 },
@@ -25,7 +27,7 @@ async function verifyFullConsentLifecycle() {
     
     let standardConsentGiven = false;
 
-    // Monitor ongoing network pipelines dynamically
+    // Track dynamic network pipelines safely
     await page.route('**/*', async (route) => {
         try {
             const url = route.request().url();
@@ -40,7 +42,7 @@ async function verifyFullConsentLifecycle() {
             }
             await route.continue();
         } catch (e) {
-            // Absorb connection state drops cleanly
+            // Silently absorb background connection state drops on browser close
         }
     });
 
@@ -50,18 +52,27 @@ async function verifyFullConsentLifecycle() {
         // ==========================================
         console.log(`📡 [PHASE 1] Navigating to target with deep-clean initialization...`);
         
+        // Force clean start: clear cookies out before page execution triggers
         await context.clearCookies();
+        
+        // Load the HTML document baseline layer
         await page.goto(TARGET_URL, { waitUntil: 'commit' });
         
+        // Clear out internal data frames before scripts evaluate keys
         await page.evaluate(() => {
             localStorage.clear();
             sessionStorage.clear();
         });
 
+        // Trigger a fresh reload to boot the live clean engine
         await page.reload({ waitUntil: 'domcontentloaded' });
         
+        // Wake up lagging lazy loaders or hidden pixels
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-        await page.waitForTimeout(2500);
+        
+        // FIX: Allow up to 3 seconds for external CDN script elements to fully load and compile
+        console.log("⏱️  Waiting for cookie consent script execution engine to boot...");
+        await page.waitForTimeout(3000);
 
         const preConsentCookies = await context.cookies();
         const nonCompliantPreCookies = preConsentCookies.filter(c => 
@@ -77,7 +88,7 @@ async function verifyFullConsentLifecycle() {
             nonCompliantPreCookies.forEach(c => console.error(`   -> 🍪 Prohibited Cookie Found: ${c.name}`));
             Array.from(new Set(preConsentNetworkLeaks)).forEach(url => console.error(`   -> 🔗 Prohibited Network Hit: ${url.substring(0, 75)}...`));
         } else {
-            console.log(`✅ PASS: Absolute cookie isolation maintained. No telemetry dropped prior to engagement.`);
+            console.log("✅ PASS: Absolute cookie isolation maintained. No telemetry dropped prior to engagement.");
         }
 
         // ==========================================
@@ -85,8 +96,9 @@ async function verifyFullConsentLifecycle() {
         // ==========================================
         console.log(`\n📡 [PHASE 2] Checking for interactive Consent Management Banner UI components...`);
         
+        // Wait for the popup framework to attach to the live layout DOM tree
         let bannerFound = true;
-        await page.waitForSelector(COOKIE_BANNER_SELECTOR, { timeout: 4000, state: 'attached' }).catch(() => {
+        await page.waitForSelector(COOKIE_BANNER_SELECTOR, { timeout: 5000, state: 'attached' }).catch(() => {
             bannerFound = false;
             console.log("⚠️  Notice: CMP UI element not displayed visually. Evaluating local client preferences...");
         });
@@ -94,6 +106,7 @@ async function verifyFullConsentLifecycle() {
         if (bannerFound) {
             let acceptButton = page.locator(ACCEPT_BUTTON_SELECTOR).first();
             
+            // Generic backup filter in case text formatting changes dynamically
             if (!(await acceptButton.isVisible())) {
                 acceptButton = page.locator('button').filter({ hasText: /^accept\s?all$/i }).first();
             }
@@ -135,7 +148,7 @@ async function verifyFullConsentLifecycle() {
 
             const engineState = await page.evaluate(() => localStorage.getItem('cc_cookie') || localStorage.getItem('klaro'));
             if (engineState) {
-                console.log(`💡 Bypass verified: Storage payload "${engineState.substring(0,25)}..." suppressed the banner dynamically.`);
+                console.log(`💡 Bypass detected: Storage layer config confirmed active. Banner was suppressed intentionally.`);
             } else {
                 console.error(`\n❌ FAIL: The website failed to present a cookie consent banner layout to a new user.`);
             }
@@ -156,4 +169,4 @@ async function verifyFullConsentLifecycle() {
     }
 }
 
-verifyFullConsentLifecycle().catch(err => console.error("💥 Execution error:", err));
+verifyFullConsentLifecycle();
