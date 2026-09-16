@@ -41,6 +41,7 @@ async function scanCookies() {
     // Tracking queues
     const visitedUrls = new Set();
     const urlsToScan = [TARGET_URL];
+    const linkArchitectureMap = {};
 
     // Helper worker to scan a single page and pull its links
     async function auditPage(url) {
@@ -68,7 +69,15 @@ async function scanCookies() {
             // Speed up tracking pixel loads by blocking large graphic binary downloads
             await page.route('**/*.{png,jpg,jpeg,gif,webp,svg,mp4,webm}', route => route.abort());
 
-            await page.goto(url, { waitUntil: 'networkidle' });
+            try {
+                // PRIMARY ATTEMPT: Wait for complete network silence
+                await page.goto(url, { waitUntil: 'networkidle', timeout: 12000 });
+            } catch (initialErr) {
+                console.log(`⏳ Network idle timed out on ${url}. Retrying with DOMContentLoaded fallback...`);
+                
+                // SECONDARY ATTEMPT: Fallback strategy ignoring hanging asset loading requests
+                await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+            }
             
             // Wake up tracking pixels
             await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
@@ -96,6 +105,9 @@ async function scanCookies() {
         }
     }
 
+    // Initialize the structure map right before the loop starts
+    const linkArchitectureMap = {};
+
     // Main crawling orchestrator loop
     while (urlsToScan.length > 0) {
         // Pull a batch of URLs based on your concurrency limit
@@ -113,6 +125,16 @@ async function scanCookies() {
         // Run the batch in parallel
         const results = await Promise.all(batch.map(url => auditPage(url)));
 
+        // --- FIXED COMPLIANCE ARCHITECTURE MAPPER ---
+        // Map parent URLs to their discovered child routes after results resolve
+        for (let i = 0; i < batch.length; i++) {
+            const parentUrl = batch[i];
+            const childLinks = results[i];
+            
+            // Log the relationship structure array for compliance reporting
+            linkArchitectureMap[parentUrl] = childLinks;
+        }
+
         // Flatten results and queue up new undiscovered links
         for (const foundLinks of results) {
             for (const link of foundLinks) {
@@ -122,6 +144,7 @@ async function scanCookies() {
             }
         }
     }
+
 
     console.log(`🏁 Crawl finished. Audited ${visitedUrls.size} unique pages.`);
 
@@ -240,9 +263,14 @@ async function scanCookies() {
     try {
         await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 4), 'utf-8');
         console.log(`💾 Cookie database successfully written to ${OUTPUT_FILE}`);
+
+     // Add at the very end of your script file system operations block
+        await fs.writeFile('link-architecture.json', JSON.stringify(linkArchitectureMap, null, 4), 'utf-8');
+        console.log(`💾 Compliance link architecture saved to link-architecture.json`);
     } catch (writeErr) {
         console.error(`❌ Failed to write JSON output database:`, writeErr.message);
     }
+
 }
 
 scanCookies().catch(err => {
