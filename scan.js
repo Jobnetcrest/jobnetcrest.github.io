@@ -216,9 +216,13 @@ async function scanCookies() {
         }
     }
 
-    // Save outputs back to file system
-    await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 2), 'utf-8');
-    console.log(`💾 JSON database successfully stored in: ${OUTPUT_FILE}`);
+      // Write final output structured storage configuration to disk
+    try {
+        await fs.writeFile(OUTPUT_FILE, JSON.stringify(categorised, null, 4), 'utf-8');
+        console.log(`💾 Cookie database successfully written to ${OUTPUT_FILE}`);
+    } catch (writeErr) {
+        console.error(`❌ Failed to write JSON output database:`, writeErr.message);
+    }
 }
 
 scanCookies().catch(err => {
