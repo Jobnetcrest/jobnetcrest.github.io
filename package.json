@@ -1,6 +1,7 @@
 {
   "name": "jobnetcrest.github.io",
   "version": "1.0.0",
+   "type": "module",
   "description": "This template is designed to help you quickly set up a professional-looking website for a pickleball club.",
   "main": "cookieconsent.js",
   "type": "module",

@@ -280,7 +280,8 @@
 <!-- 2. Load the CDN UMD JavaScript file -->
 <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3.1.0/dist/cookieconsent.umd.min.js"></script>
 
-
+<!-- Insert this line directly above your CookieConsent.run initialization script -->
+<div id="cc-main"></div>
 <!-- 3. CRITICAL: Run the initialization script to generate the window -->
 <script>
     // Start the cookie consent plugin
@@ -299,12 +300,16 @@
                 flipButtons: false
             }
         },
-        categories: {
-            necessary: {
-                readOnly: true
-            },
-            analytics: {}
-        },
+categories: {
+    necessary: {
+        readOnly: true,
+        enabled: true  // Required structural parameter
+    },
+    analytics: {
+        enabled: false // Forces opt-in out of the box (GDPR Compliant!)
+    }
+},
+
         language: {
             default: "en",
             autoDetect: "browser",

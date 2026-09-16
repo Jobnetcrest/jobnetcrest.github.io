@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 
-const TARGET_URL = 'https://jobnetcrest.github.io';
+const TARGET_URL = 'https://github.io';
 
 // --- CONFIGURATION MAPPINGS ---
 const COOKIE_BANNER_SELECTOR = '#cc-main, .cc__component, #cc-bnd, .cookie-banner'; 
@@ -11,9 +11,8 @@ async function verifyFullConsentLifecycle() {
 
     const browser = await chromium.launch({ headless: true });
     
-    // 1. ALWAYS boot into a completely isolated browser profile
     const context = await browser.newContext({
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
         viewport: { width: 1920, height: 1080 },
         locale: 'en-GB'
     });
@@ -51,35 +50,16 @@ async function verifyFullConsentLifecycle() {
         // ==========================================
         console.log(`📡 [PHASE 1] Navigating to target with deep-clean initialization...`);
         
-        // Wipe high-level context cache profiles
         await context.clearCookies();
-
-        // FIX: Utilize 'commit' state to pause right when the document context loads, 
-        // completely blocking scripts from evaluating any lingering storage states.
-
-        // Actively monitor asset loads to catch 404/500 script or styling dropouts
-        page.on('response', response => {
-            const status = response.status();
-            const url = response.url();
-            if (status >= 400) {
-                console.error(`❌ NETWORK FILE BREAKDOWN (${status}): Failed to load resource from path -> ${url}`);
-            }
-        });
-
-        
-        
         await page.goto(TARGET_URL, { waitUntil: 'commit' });
         
-        // OBLITERATE MOCK STORAGE INTERNALS BEFORE SCRIPTS ENGAGE:
         await page.evaluate(() => {
             localStorage.clear();
             sessionStorage.clear();
         });
 
-        // Fresh reload to run the live consent engine with a completely clean slate
         await page.reload({ waitUntil: 'domcontentloaded' });
         
-        // Wake up lagging pixels or components
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
         await page.waitForTimeout(2500);
 
@@ -146,7 +126,6 @@ async function verifyFullConsentLifecycle() {
                 console.error(`\n❌ FAIL: Located the consent layout framework, but the action buttons remain hidden.`);
             }
         } else {
-            // DEBUG ENGINE RUN: Capture the precise state data to spot sneaky persistent footprints
             const storageDump = await page.evaluate(() => JSON.stringify(localStorage));
             const activeCookies = await context.cookies();
             
@@ -177,4 +156,4 @@ async function verifyFullConsentLifecycle() {
     }
 }
 
-verifyFullConsentLifecycle();
+verifyFullConsentLifecycle().catch(err => console.error("💥 Execution error:", err));
