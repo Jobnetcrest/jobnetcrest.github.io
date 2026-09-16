@@ -56,6 +56,18 @@ async function verifyFullConsentLifecycle() {
 
         // FIX: Utilize 'commit' state to pause right when the document context loads, 
         // completely blocking scripts from evaluating any lingering storage states.
+
+        // Actively monitor asset loads to catch 404/500 script or styling dropouts
+        page.on('response', response => {
+            const status = response.status();
+            const url = response.url();
+            if (status >= 400) {
+                console.error(`❌ NETWORK FILE BREAKDOWN (${status}): Failed to load resource from path -> ${url}`);
+            }
+        });
+
+        
+        
         await page.goto(TARGET_URL, { waitUntil: 'commit' });
         
         // OBLITERATE MOCK STORAGE INTERNALS BEFORE SCRIPTS ENGAGE:
