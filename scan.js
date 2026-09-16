@@ -150,6 +150,9 @@ async function scanCookies() {
         preferences: [],
         marketing: []
     };
+
+    // Track total metrics across all categories
+    const counts = { necessary: 0, analytics: 0, preferences: 0, marketing: 0 };
     
     for (const c of cookies) {
         const name = c.name.toLowerCase();
@@ -186,6 +189,7 @@ async function scanCookies() {
             name === 'cookie_consent' || name === 'xcookie'
         ) {
             categorised.necessary.push(cookieData);
+            counts.necessary++;
         }
         
         // 2. PERFORMANCE & ANALYTICS (User Behavior Telemetry & Streaming Bitrate)
@@ -193,6 +197,7 @@ async function scanCookies() {
             ['_ga', '_gid', '_gat', 'pk_', 'ysc', 'visitor_info1_live'].some(x => name.includes(x))
         ) {
             categorised.analytics.push(cookieData);
+            counts.analytics++;
         }
 
         // 3. USER PREFERENCES (UI Customization)
@@ -200,6 +205,7 @@ async function scanCookies() {
             ['__secure-ynid'].some(x => name.includes(x))
         ) {
             categorised.preferences.push(cookieData); 
+            counts.preferences++;
         }
         
         // 4. MARKETING & BEHAVIORAL ADVERTISING (Cross-site profiles and pixel arrays)
@@ -208,13 +214,27 @@ async function scanCookies() {
             name.includes('__secure-3p')
         ) {
             categorised.marketing.push(cookieData);
+            counts.marketing++;
         } 
         
         // 5. COMPLIANT FALLBACK
         else {
             categorised.necessary.push(cookieData);
+            counts.necessary++;
+        // Highlight unmapped cookies so you can easily update your COOKIE_DICTIONARY or routing arrays
+            console.log(`⚠️  [UNCLASSIFIED COOKIE]: Found "${c.name}" on domain "${c.domain}". Routed to Necessary fallback.`);
+
         }
     }
+
+        // Print summary report metrics to console
+        const totalCookies = cookies.length;
+        console.log(`\n📊 Cookie Discovery Audit Summary:`);
+        console.log(`   Total Identified : ${totalCookies}`);
+        console.log(`   🔒 Necessary    : ${counts.necessary}`);
+        console.log(`   📈 Analytics    : ${counts.analytics}`);
+        console.log(`   ⚙️ Preferences  : ${counts.preferences}`);
+        console.log(`   🎯 Marketing    : ${counts.marketing}\n`);
 
       // Write final output structured storage configuration to disk
     try {
