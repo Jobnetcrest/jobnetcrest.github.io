@@ -541,12 +541,8 @@ td {
   --fc-daygrid-event-dot-width: 0px; /* Hide default event dots */
   font-family: 'Inter', sans-serif;
 }
-
-/* Transparent inner calendar container grid background */
-.fc-theme-standard .fc-scrollgrid, 
-.fc-theme-standard td, 
-.fc-theme-standard th {
-  background: transparent !important;
+.calendar-container {
+  background-color: #98e4a7 !important; /* Exact matching light mint green backdrop */
 }
 
 /* Days of the week header text styling */
@@ -613,9 +609,7 @@ td {
 /* ==========================================================================
    11. TEXT-WRAPPING EVENT PILL DESIGN (CONSOLIDATED)
    ========================================================================== */
-//* ==========================================================================
-   11. TEXT-WRAPPING EVENT PILL DESIGN (V7 SPECIAL SPECIFICITY OVERRIDES)
-   ========================================================================== */
+
 
 /* Base Pill Layout Block Configuration */
 .fc .fc-daygrid-body .fc-daygrid-event,
@@ -663,82 +657,66 @@ td {
 /* ==========================================================================
    HIGH-SPECIFICITY CLASS INJECTIONS OVERRIDING PURPLE GLOBAL VARIATIONS
    ========================================================================== */
-
 /* ==========================================================================
-   11. TEXT-WRAPPING EVENT PILL DESIGN (V7 SPECIAL SPECIFICITY OVERRIDES)
+   HIGH-SPECIFICITY CLASS INJECTIONS (OVERGROWN THEME OVERRIDES)
    ========================================================================== */
 
-/* Base Pill Layout Block Configuration */
-.fc .fc-daygrid-body .fc-daygrid-event,
-.fc-daygrid-event {
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  border-radius: 8px !important;       
-  padding: 5px 10px !important;
-  margin: 3px 2px !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  
-  /* Core layout rules to completely stop layout string clipping */
-  display: block !important;
-  white-space: normal !important;
-  word-break: break-word !important;
-}
-
-/* Remove default dots */
-.fc-daygrid-event-dot, .fc-event-dot {
-  display: none !important;
-}
-
-/* Structural Text Elements */
-.fc-custom-pill-inner, .fc-daygrid-event-body, .fc-event-main {
-  display: block !important;
-  width: 100% !important;
-  white-space: normal !important;
-}
-.fc-custom-pill-title {
-  display: block !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  white-space: normal !important;
-  overflow: visible !important;
-}
-.fc-custom-pill-time {
-  display: block !important;
-  font-size: 10px !important;
-  font-weight: 600 !important;
-  opacity: 0.9;
-  margin-bottom: 2px !important;
-  line-height: 1.1 !important;
-}
-
-/* ==========================================================================
-   HIGH-SPECIFICITY CLASS INJECTIONS OVERRIDING PURPLE GLOBAL VARIATIONS
-   ========================================================================== */
-
-/* Blue Track: Wednesday Graded Play */
-.fc-daygrid-event.pbg-pill-blue {
-  background-color: #4a77d4 !important;
-  --fc-event-bg-color: #4a77d4 !important;
-  border-color: #1e3a75 !important;
+/* Blue Track: Wednesday Graded Play (Matches Club Mid-Blue logo color) */
+.fc-daygrid-event.pbg-pill-blue,
+.fc-daygrid-block-event.pbg-pill-blue,
+.pbg-pill-blue {
+  background-color: #4E89DB !important;
+  --fc-event-bg-color: #4E89DB !important;
+  border-color: #1e4b85 !important;
 }
 .pbg-pill-blue .fc-custom-pill-title,
 .pbg-pill-blue .fc-custom-pill-time {
   color: #ffffff !important;
 }
 
-/* Lime Track: Friday Night Lights / Social Play */
-.fc-daygrid-event.pbg-pill-lime {
-  background-color: #e6ee1a !important;
-  --fc-event-bg-color: #e6ee1a !important;
-  border-color: #8c9300 !important;
+/* Lime/Yellow Track: Friday Night Lights / Social Play (Matches Club Yellow ball) */
+.fc-daygrid-event.pbg-pill-lime,
+.fc-daygrid-block-event.pbg-pill-lime,
+.pbg-pill-lime {
+  background-color: #F9FE04 !important;
+  --fc-event-bg-color: #F9FE04 !important;
+  border-color: #b5ba02 !important;
 }
 .pbg-pill-lime .fc-custom-pill-title,
 .pbg-pill-lime .fc-custom-pill-time {
-  color: #333900 !important; /* Dark text overlay for yellow visibility */
+  color: #000000 !important; /* Premium rich black text for high readability overlay */
 }
 
-/* Grey Track: Booking Reminders & Slots */
-.fc-daygrid-event.pbg-pill-grey {
+/* League Track: Competitive Club Matches (Matches Club Apple Green flag color) */
+.fc-daygrid-event.pbg-pill-league,
+.fc-daygrid-block-event.pbg-pill-league,
+.pbg-pill-league {
+  background-color: #A2D786 !important;
+  --fc-event-bg-color: #A2D786 !important;
+  border-color: #5c8f42 !important;
+}
+.pbg-pill-league .fc-custom-pill-title,
+.pbg-pill-league .fc-custom-pill-time {
+  color: #12331c !important; /* Dark pine text overlay for sharp contrast on light green */
+}
+
+/* Festival Track: Special Tournaments & Festivals (Vibrant Festival Purple) */
+.fc-daygrid-event.pbg-pill-festival,
+.fc-daygrid-block-event.pbg-pill-festival,
+.pbg-pill-festival {
+  background-color: #7c3aed !important; 
+  --fc-event-bg-color: #7c3aed !important;
+  border-color: #5b21b6 !important;
+}
+.pbg-pill-festival .fc-custom-pill-title,
+.pbg-pill-festival .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+/* Grey Track: Booking Reminders & System Slots */
+.fc-daygrid-event.pbg-pill-grey,
+.fc-daygrid-block-event.pbg-pill-grey,
+.pbg-pill-grey {
   background-color: #f1f3f5 !important;
   --fc-event-bg-color: #f1f3f5 !important;
   border-color: #ced4da !important;
@@ -749,6 +727,71 @@ td {
 .pbg-pill-grey .fc-custom-pill-time {
   color: #6c757d !important;
 }
+
+/* Fallback Blueprint Track (Caches all untagged general events cleanly - Slate Gray) */
+.fc-daygrid-event.pbg-pill-default,
+.fc-daygrid-block-event.pbg-pill-default,
+.pbg-pill-default {
+  background-color: #64748b !important; 
+  --fc-event-bg-color: #64748b !important;
+  border-color: #475569 !important;
+}
+.pbg-pill-default .fc-custom-pill-title,
+.pbg-pill-default .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   11. TEXT-WRAPPING EVENT PILL DESIGN (V7 SPECIAL SPECIFICITY OVERRIDES)
+   ========================================================================== */
+
+/* Base Pill Layout Block Configuration */
+.fc .fc-daygrid-body .fc-daygrid-event,
+.fc-daygrid-event {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;       
+  padding: 5px 10px !important;
+  margin: 3px 2px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  
+  /* Core layout rules to completely stop layout string clipping */
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+/* Remove default dots */
+.fc-daygrid-event-dot, .fc-event-dot {
+  display: none !important;
+}
+
+/* Structural Text Elements */
+.fc-custom-pill-inner, .fc-daygrid-event-body, .fc-event-main {
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+}
+.fc-custom-pill-title {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+.fc-custom-pill-time {
+  display: block !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  opacity: 0.9;
+  margin-bottom: 2px !important;
+  line-height: 1.1 !important;
+}
+
+/* ==========================================================================
+   HIGH-SPECIFICITY CLASS INJECTIONS OVERRIDING PURPLE GLOBAL VARIATIONS
+   ========================================================================== */
+
 
 /* NEW - Festival Purple Track (Vibrant Festival Aesthetic) */
 .fc-daygrid-event.pbg-pill-festival {

@@ -190,8 +190,16 @@ background_image: ""
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('adaptive-calendar-root');
     
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
+var calendar = new FullCalendar.Calendar(calendarEl, {
+            // === UPDATED: DETERMINES INITIAL VIEW BASED ON LANDING DEVICE RESOLUTION ===
+      initialView: window.innerWidth < 768 ? 'timeGridWeek' : 'dayGridMonth',
+      
+      // === FIX: SCOPES TIMEGRID VIEWS FROM 8:00 AM TO 10:00 PM (22:00) ===
+      slotMinTime: '08:00:00',  /* Absolute timeline starting boundary */
+      slotMaxTime: '22:00:00',  /* Absolute timeline ending cutoff boundary */
+            // === FIX: FORCES 1 SOLID BLOCK PER HOUR (REMOVES THE 30-MIN SPLIT) ===
+      slotDuration: '01:00:00', /* Configures rows into exact 1-hour blocks */
+
       eventDisplay: 'block',
       displayEventTime: true,
       displayEventEnd: true, 
@@ -206,6 +214,20 @@ background_image: ""
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
+
+            // === FIX: RESPONDS TO VIEWPORT OVERLAYS ON FLIPS AND MOBILE ORIENTATION RESIZES ===
+      windowResize: function(arg) {
+        if (window.innerWidth < 768) {
+          if (calendar.view.type !== 'timeGridWeek') {
+            calendar.changeView('timeGridWeek');
+          }
+        } else {
+          if (calendar.view.type !== 'dayGridMonth') {
+            calendar.changeView('dayGridMonth');
+          }
+        }
+      },
+
       
       googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
       events: {
