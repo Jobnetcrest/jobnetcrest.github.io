@@ -4,37 +4,6 @@ title: Regular Play Schedule
 background_image: ""
 ---
 
-<!-- Core FullCalendar CDN Stylesheets & Scripts -->
-    <!-- STYLESHEETS -->
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/skeleton.css' rel='stylesheet' />
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/theme.css' rel='stylesheet' />
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/palettes/purple.css' rel='stylesheet' />
-
-
-    <!-- STANDARD JS -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/all/global.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@7.1.0/global.min.js"></script>
-
-    <!-- THEME JS -->
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/global.js"></script>
-
-<style>
-  /* Optional UI alignment overrides to make FullCalendar look great in your Bootstrap frame */
-  .fc {
-    font-family: inherit;
-    --fc-button-bg-color: #0d6efd; /* Bootstrap Primary */
-    --fc-button-border-color: #0d6efd;
-    --fc-button-hover-bg-color: #0b5ed7;
-    --fc-button-hover-border-color: #0a58ca;
-    --fc-button-active-bg-color: #0a58ca;
-    --fc-button-active-border-color: #0a53be;
-  }
-  .calendar-container {
-    min-height: 600px;
-  }
-</style>
-
 <section id="schedule" class="section py-5" style="position: relative;">
 <div class="container my-5">
   
@@ -43,14 +12,15 @@ background_image: ""
   <!-- ========================================================================= -->
   <div class="row g-4 mb-5">
     
-      <!-- LEFT-HAND SIDE: FULLCALENDAR COMPARTMENT -->
-      <div class="col-lg-8 d-flex flex-column">
-        <!-- Calendar Render Container -->
-        <div class="flex-grow-1 p-3 bg-white rounded-3 shadow-sm mb-4 calendar-container">
-          <!-- FullCalendar attaches itself right here -->
-          <div id="adaptive-calendar-root"></div>
+  <!-- LEFT-HAND SIDE: ELFSIGHT WIDGET COMPARTMENT -->
+    <div class="col-lg-8 d-flex flex-column">
+        <!-- Elfsight Render Container -->
+        <div class="flex-grow-1 p-3 bg-light rounded-3 shadow-sm mb-4 calendar-container">
+               <!-- The calendar attaches itself directly inside this element -->
+              <div id="adaptive-calendar-root"></div>
+
         </div>
-      </div>
+    </div>
 
     <!-- RIGHT-HAND SIDE: PICKLEBALL GLOUCESTERSHIRE (STACKED) -->
     <div class="col-lg-4">
@@ -214,34 +184,57 @@ background_image: ""
 </style>
 
 
-<!-- 5. Your Initialization Engine -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('adaptive-calendar-root');
-    
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-    // In v7, the theme is explicitly assigned as an active object/plugin wrapper
-        theme: 'breezy', 
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      // Google Calendar configuration is placed back at root layout level in v7
-      googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
-      events: {
-        googleCalendarId: 'pickleballgloucestershire@gmail.com'
-      },
-      // Safely handle event clicks so users aren't redirected to Google Calendar directly
-      eventClick: function(info) {
-        info.jsEvent.preventDefault();
-        alert('Event: ' + info.event.title + '\nLocation: ' + (info.event.extendedProps.location || 'N/A'));
+(function() {
+  const WIDGET_ID = "373d4a85-75e2-4845-809b-573e851a4f29"; 
+  const root = document.getElementById("adaptive-calendar-root");
+  let currentLayout = null;
+
+  function renderCalendar() {
+    const isMobile = window.innerWidth < 1024;
+    const targetLayout = isMobile ? "grid" : "month";
+
+    // Only rebuild the widget if the layout breakpoint actually changes
+    if (currentLayout !== targetLayout) {
+      currentLayout = targetLayout;
+      
+      // Clear previous instance
+      root.innerHTML = "";
+
+      // Create new widget container with the updated layout target
+      const widgetDiv = document.createElement("div");
+      widgetDiv.className = `elfsight-app-${WIDGET_ID}`;
+      widgetDiv.setAttribute("data-elfsight-app-lazy", "");
+      widgetDiv.setAttribute("data-elfsight-app-layout", targetLayout);
+      
+      root.appendChild(widgetDiv);
+
+      // Re-trigger Elfsight's global initialization script if it already exists
+      if (window.ElfsightApps) {
+        window.ElfsightApps.init();
       }
-    });
-    
-    calendar.render();
+    }
+  }
+
+  // Initial load execution
+  renderCalendar();
+
+  // Listen for window resizing and adjust layout dynamically
+  let resizeTimeout;
+  window.addEventListener("resize", function() {
+    clearTimeout(resizeTimeout);
+    // Debounce the resize event slightly so it doesn't stutter while dragging
+    resizeTimeout = setTimeout(renderCalendar, 150);
   });
+
+  // Inject the platform script loader if it hasn't been added yet
+  if (!document.querySelector('script[src*="elfsightcdn.com"]')) {
+    const script = document.createElement("script");
+    script.src = "https://elfsightcdn.com/platform.js";
+    script.async = true;
+    document.head.appendChild(script);
+  }
+})();
 </script>
 
 
