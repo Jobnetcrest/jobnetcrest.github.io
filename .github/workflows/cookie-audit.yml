@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout Codebase
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Node.js Runtime
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install Project Dependencies
@@ -35,23 +35,32 @@ jobs:
           npm list playwright || npm install playwright
           npx playwright install --with-deps chromium
 
-      - name: Run Headless Audit
+      - name: Run Headless Audit & Mapping Loop
         run: node scan.js
 
-      - name: Execute Consent Lifecycle Verification Test
-        # This will fail the build if rogue pixels fire before a user selects "Accept All"
+      - name: Execute Opt-In Lifecycle Verification Test
+        # This will fail the build if rogue pixels fire before user interaction or drop out on acceptance
+        id: opt_in_check
         run: node verify-banner.js
 
+      - name: Execute Opt-Out Lifecycle Verification Test
+        # This will fail the build if cookies leak into the context environment after a user clicks "Reject All"
+        id: opt_out_check
+        run: node verify-reject-flow.js
+
       - name: Push Data back to Git
-              # This step only runs if the compliance verification step passes success
+        # FIX: Adjusted indentation spacing and set to run even if checks flag compliance failures 
+        # so that your generated documentation logs are permanently captured on production repository tracks.
+        if: always()
         run: |
           git config --global user.name "CookieScannerBot"
           git config --global user.email "bot@github.com"
           
-          git add cookie-database.json
+          # Added tracking parameters to commit both core validation files together
+          git add cookie-database.json link-architecture.json GDPR-compliance-report.md
           
           if ! git diff --cached --quiet; then
-            git commit -m "chore: auto-updated active cookie catalog [skip ci]"
+            git commit -m "chore: auto-updated active cookie catalog & architecture map [skip ci]"
             git pull --rebase origin main
             git push
             echo "Changes committed and pushed successfully."
@@ -60,9 +69,11 @@ jobs:
           fi
 
       - name: Archive Audited Cookie Database Artifact
-        if: always() # Runs even if the verification script fails so you can inspect the file logs
-        uses: actions/upload-artifact@v5
+        if: always() # Runs even if the verification scripts fail so you can download file logs
+        uses: actions/upload-artifact@v4
         with:
           name: audited-cookie-inventory
-          path: cookie-database.json
+          path: |
+            cookie-database.json
+            link-architecture.json
           retention-days: 30
