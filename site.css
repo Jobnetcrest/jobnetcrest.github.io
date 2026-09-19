@@ -395,20 +395,23 @@ td {
 /* ==========================================================================
    9. SCHEDULE & SESSION STYLES
    ========================================================================== */
+/* ==========================================================================
+   9. SCHEDULE & SESSION STYLES
+   ========================================================================== */
 .schedule-section {
   position: relative;
 }
 
-/* Fix mobile height scroll conflicts for the Elfsight calendar */
+/* Fix mobile height scroll conflicts for the calendar */
 @media (max-width: 991.98px) {
   .calendar-container {
-    min-height: 600px !important; /* Force a minimum height so it doesn't collapse */
-    overflow-y: auto !important;   /* Allows standard touch momentum scrolling */
-    -webkit-overflow-scrolling: touch; /* Ensures smooth scrolling on iPhones/iOS */
+    min-height: 600px !important; 
+    overflow-y: auto !important;   
+    -webkit-overflow-scrolling: touch; 
   }
 }
 
-/* Forces the internal Elfsight widget frame to conform to 100% screen width */
+/* Forces internal frame widgets to conform to 100% screen width */
 .calendar-container iframe, 
 .calendar-container div[class^="elfsight-app-"] {
   width: 100% !important;
@@ -529,154 +532,323 @@ td {
 .info-link-olive {
   color: #8c9300;
 }
-  <!-- 3. Custom CSS Matching Your Exact Layout Layout FULL CALENDAR -->
-  
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      padding: 20px;
-    }
 
-
-
-
-
-
-    /* --- FullCalendar Layout Customizations --- */
-    .fc {
-      --fc-border-color: rgba(0, 0, 0, 0.06);
-      --fc-daygrid-event-dot-width: 0px; /* Hide event dots */
-    }
-
-    /* Transparent inner calendar container grid background */
-    .fc-theme-standard .fc-scrollgrid, 
-    .fc-theme-standard td, 
-    .fc-theme-standard th {
-      background: transparent !important;
-    }
-
-    /* Days of the week header text styling */
-    .fc .fc-col-header-cell-cushion {
-      color: #718096 !important;
-      font-weight: 600;
-      text-transform: capitalize;
-      font-size: 14px;
-      padding-bottom: 8px;
-    }
-
-    /* Day Numbers text styling */
-    .fc .fc-daygrid-day-number {
-      color: #718096 !important;
-      font-weight: 500;
-      padding: 8px !important;
-      font-size: 14px;
-    }
-
-    /* Current date highlight circle wrapper */
-    .fc .fc-day-today .fc-daygrid-day-number {
-      background-color: #000000 !important;
-      color: #ffffff !important;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      margin: 4px;
-      padding: 0 !important;
-    }
-
-    /* Customizing the toolbar header components */
-    .fc .fc-toolbar {
-      margin-bottom: 20px !important;
-      align-items: center;
-    }
-
-    .fc .fc-toolbar-title {
-      font-size: 18px !important;
-      font-weight: 600 !important;
-      color: #2d3748;
-    }
-
-    /* Custom button aesthetics matching standard HTML button look */
-    .fc .fc-button {
-      background-color: transparent !important;
-      border: 1px solid rgba(0, 0, 0, 0.15) !important;
-      color: #2d3748 !important;
-      font-weight: 500 !important;
-      border-radius: 6px !important;
-      padding: 4px 12px !important;
-      font-size: 14px !important;
-      text-transform: capitalize !important;
-      box-shadow: none !important;
-      transition: all 0.2s ease;
-    }
-
-    .fc .fc-button:hover {
-      background-color: rgba(0, 0, 0, 0.05) !important;
-    }
-
-    /* --- Custom Pill Event Card Designs --- */
-.fc-v-event, .fc-h-event, .fc-daygrid-event {
-  background-color: var(--fc-event-bg-color, #e2e8f0) !important;
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  border-radius: 12px !important; 
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  margin-bottom: 4px !important;
-
-  
-
-      /* Custom Inner Event Typography Layout */
-    .fc-event-main-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .fc-event-title {
-      font-weight: 700 !important;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 12px !important;
-    }
-
-    .fc-event-time {
-      font-weight: 500 !important;
-      font-size: 11px !important;
-      opacity: 0.9;
-    }
-  
-    /* === MODIFIED IN THE STYLE TAG === */
-.fc-v-event, .fc-h-event, .fc-daygrid-event {
-  background-color: var(--fc-event-bg-color, #e2e8f0) !important;
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  border-radius: 12px !important;    /* Changed: Blocky rounded pill shape */
-  padding: 6px 10px !important;       /* Changed: Increased inner padding space */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  display: block !important;          /* Added: Forces elements to stack vertically */
-  margin-bottom: 4px !important;
-  white-space: normal !important;     /* Added: Prevents truncation, allows line wraps */
+/* ==========================================================================
+   10. FULLCALENDAR CORE SYSTEM OVERRIDES
+   ========================================================================== */
+.fc {
+  --fc-border-color: rgba(0, 0, 0, 0.06);
+  --fc-daygrid-event-dot-width: 0px; /* Hide default event dots */
+  font-family: 'Inter', sans-serif;
 }
 
-/* === ADDED TO SEPARATE AND STYLE TITLE/TIME BLOCKS === */
-.fc-event-title {
-  color: #111111 !important;
-  font-weight: 700 !important;
-  font-size: 0.75rem !important;
-  display: block !important;          /* Added: Independent top line block */
-  margin-bottom: 2px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Transparent inner calendar container grid background */
+.fc-theme-standard .fc-scrollgrid, 
+.fc-theme-standard td, 
+.fc-theme-standard th {
+  background: transparent !important;
 }
 
-.fc-event-time {
-  color: rgba(0, 0, 0, 0.75) !important;
+/* Days of the week header text styling */
+.fc .fc-col-header-cell-cushion {
+  color: #718096 !important;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+/* Day Numbers text styling */
+.fc .fc-daygrid-day-number {
+  color: #718096 !important;
+  font-weight: 500;
+  padding: 8px !important;
+  font-size: 14px;
+}
+
+/* Current date highlight circle wrapper */
+.fc .fc-day-today .fc-daygrid-day-number {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 4px;
+  padding: 0 !important;
+}
+
+/* Customizing the toolbar header components */
+.fc .fc-toolbar {
+  margin-bottom: 20px !important;
+  align-items: center;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 18px !important;
   font-weight: 600 !important;
-  font-size: 0.7rem !important;
-  display: block !important;          /* Added: Drops time directly under the title */
+  color: #2d3748;
 }
+
+/* Custom button aesthetics matching flat browser look */
+.fc .fc-button {
+  background-color: transparent !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  color: #2d3748 !important;
+  font-weight: 500 !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-size: 14px !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+}
+
+.fc .fc-button:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ==========================================================================
+   11. TEXT-WRAPPING EVENT PILL DESIGN (CONSOLIDATED)
+   ========================================================================== */
+//* ==========================================================================
+   11. TEXT-WRAPPING EVENT PILL DESIGN (V7 SPECIAL SPECIFICITY OVERRIDES)
+   ========================================================================== */
+
+/* Base Pill Layout Block Configuration */
+.fc .fc-daygrid-body .fc-daygrid-event,
+.fc-daygrid-event {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;       
+  padding: 5px 10px !important;
+  margin: 3px 2px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  
+  /* Core layout rules to completely stop layout string clipping */
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+/* Remove default dots */
+.fc-daygrid-event-dot, .fc-event-dot {
+  display: none !important;
+}
+
+/* Structural Text Elements */
+.fc-custom-pill-inner, .fc-daygrid-event-body, .fc-event-main {
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+}
+.fc-custom-pill-title {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+.fc-custom-pill-time {
+  display: block !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  opacity: 0.9;
+  margin-bottom: 2px !important;
+  line-height: 1.1 !important;
+}
+
+/* ==========================================================================
+   HIGH-SPECIFICITY CLASS INJECTIONS OVERRIDING PURPLE GLOBAL VARIATIONS
+   ========================================================================== */
+
+/* ==========================================================================
+   11. TEXT-WRAPPING EVENT PILL DESIGN (V7 SPECIAL SPECIFICITY OVERRIDES)
+   ========================================================================== */
+
+/* Base Pill Layout Block Configuration */
+.fc .fc-daygrid-body .fc-daygrid-event,
+.fc-daygrid-event {
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;       
+  padding: 5px 10px !important;
+  margin: 3px 2px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  
+  /* Core layout rules to completely stop layout string clipping */
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+/* Remove default dots */
+.fc-daygrid-event-dot, .fc-event-dot {
+  display: none !important;
+}
+
+/* Structural Text Elements */
+.fc-custom-pill-inner, .fc-daygrid-event-body, .fc-event-main {
+  display: block !important;
+  width: 100% !important;
+  white-space: normal !important;
+}
+.fc-custom-pill-title {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+.fc-custom-pill-time {
+  display: block !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  opacity: 0.9;
+  margin-bottom: 2px !important;
+  line-height: 1.1 !important;
+}
+
+/* ==========================================================================
+   HIGH-SPECIFICITY CLASS INJECTIONS OVERRIDING PURPLE GLOBAL VARIATIONS
+   ========================================================================== */
+
+/* Blue Track: Wednesday Graded Play */
+.fc-daygrid-event.pbg-pill-blue {
+  background-color: #4a77d4 !important;
+  --fc-event-bg-color: #4a77d4 !important;
+  border-color: #1e3a75 !important;
+}
+.pbg-pill-blue .fc-custom-pill-title,
+.pbg-pill-blue .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+/* Lime Track: Friday Night Lights / Social Play */
+.fc-daygrid-event.pbg-pill-lime {
+  background-color: #e6ee1a !important;
+  --fc-event-bg-color: #e6ee1a !important;
+  border-color: #8c9300 !important;
+}
+.pbg-pill-lime .fc-custom-pill-title,
+.pbg-pill-lime .fc-custom-pill-time {
+  color: #333900 !important; /* Dark text overlay for yellow visibility */
+}
+
+/* Grey Track: Booking Reminders & Slots */
+.fc-daygrid-event.pbg-pill-grey {
+  background-color: #f1f3f5 !important;
+  --fc-event-bg-color: #f1f3f5 !important;
+  border-color: #ced4da !important;
+}
+.pbg-pill-grey .fc-custom-pill-title {
+  color: #495057 !important;
+}
+.pbg-pill-grey .fc-custom-pill-time {
+  color: #6c757d !important;
+}
+
+/* NEW - Festival Purple Track (Vibrant Festival Aesthetic) */
+.fc-daygrid-event.pbg-pill-festival {
+  background-color: #7c3aed !important; /* Deep rich purple */
+  --fc-event-bg-color: #7c3aed !important;
+  border-color: #5b21b6 !important;
+}
+.pbg-pill-festival .fc-custom-pill-title,
+.pbg-pill-festival .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+/* NEW - League Track (Dark Athletic Blue) */
+.fc-daygrid-event.pbg-pill-league {
+  background-color: #0f172a !important; /* Premium Midnight Dark Blue */
+  --fc-event-bg-color: #0f172a !important;
+  border-color: #020617 !important;
+}
+.pbg-pill-league .fc-custom-pill-title,
+.pbg-pill-league .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+/* Fallback Blueprint Track (Slate Gray) */
+.fc-daygrid-event.pbg-pill-default {
+  background-color: #64748b !important; 
+  --fc-event-bg-color: #64748b !important;
+  border-color: #475569 !important;
+}
+.pbg-pill-default .fc-custom-pill-title,
+.pbg-pill-default .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+
+
+/* ==========================================================================
+   HIGH-SPECIFICITY PALETTES (OVERGROWN MONARCH THEME VARIABLES)
+   ========================================================================== */
+
+/* Blue Track: Wednesday Graded Play */
+.fc-daygrid-event.pbg-pill-blue,
+.fc-daygrid-block-event.pbg-pill-blue,
+.pbg-pill-blue {
+  background-color: #4a77d4 !important;
+  --fc-event-bg-color: #4a77d4 !important;
+  border-color: #1e3a75 !important;
+}
+.pbg-pill-blue .fc-custom-pill-title,
+.pbg-pill-blue .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+/* Lime Track: Friday Night Lights / Social Play */
+.fc-daygrid-event.pbg-pill-lime,
+.fc-daygrid-block-event.pbg-pill-lime,
+.pbg-pill-lime {
+  background-color: #e6ee1a !important;
+  --fc-event-bg-color: #e6ee1a !important;
+  border-color: #8c9300 !important;
+}
+.pbg-pill-lime .fc-custom-pill-title,
+.pbg-pill-lime .fc-custom-pill-time {
+  color: #333900 !important; /* High contrast dark text for yellow/lime */
+}
+
+/* Grey Track: Booking Reminders & Slots */
+.fc-daygrid-event.pbg-pill-grey,
+.fc-daygrid-block-event.pbg-pill-grey,
+.pbg-pill-grey {
+  background-color: #f1f3f5 !important;
+  --fc-event-bg-color: #f1f3f5 !important;
+  border-color: #ced4da !important;
+}
+.pbg-pill-grey .fc-custom-pill-title {
+  color: #495057 !important;
+}
+.pbg-pill-grey .fc-custom-pill-time {
+  color: #6c757d !important;
+}
+
+/* Fallback Blueprint Track (Caches all untagged general events cleanly) */
+.fc-daygrid-event.pbg-pill-default,
+.fc-daygrid-block-event.pbg-pill-default,
+.pbg-pill-default {
+  background-color: #64748b !important; /* Neutral Slate Gray */
+  --fc-event-bg-color: #64748b !important;
+  border-color: #475569 !important;
+}
+.pbg-pill-default .fc-custom-pill-title,
+.pbg-pill-default .fc-custom-pill-time {
+  color: #ffffff !important;
+}
+
+
+
+
+
+
+
 /* ==========================================================================
    10. PARTNER CLASSES TABLE & UTILITY OVERRIDES
    ========================================================================== */

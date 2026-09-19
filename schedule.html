@@ -19,21 +19,7 @@ background_image: ""
     <!-- THEME JS -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/global.js"></script>
 
-<style>
-  /* Optional UI alignment overrides to make FullCalendar look great in your Bootstrap frame */
-  .fc {
-    font-family: inherit;
-    --fc-button-bg-color: #0d6efd; /* Bootstrap Primary */
-    --fc-button-border-color: #0d6efd;
-    --fc-button-hover-bg-color: #0b5ed7;
-    --fc-button-hover-border-color: #0a58ca;
-    --fc-button-active-bg-color: #0a58ca;
-    --fc-button-active-border-color: #0a53be;
-  }
-  .calendar-container {
-    min-height: 600px;
-  }
-</style>
+
 
 <section id="schedule" class="section py-5" style="position: relative;">
 <div class="container my-5">
@@ -197,21 +183,6 @@ background_image: ""
 
 </section>
 
-<!-- Additional Custom CSS Layout Support -->
-<style>
-  .fw-black { font-weight: 900; }
-  .fw-extrabold { font-weight: 800; }
-  .tracking-wide { letter-spacing: 0.05em; }
-  .tracking-wider { letter-spacing: 0.1em; }
-  
-  @keyframes flash {
-    0%, 100% { background-color: #dc3545; }
-    50% { background-color: #b91c1c; }
-  }
-  .animate-flash {
-    animation: flash 1.5s infinite ease-in-out;
-  }
-</style>
 
 
 <!-- 5. Your Initialization Engine -->
@@ -221,14 +192,13 @@ background_image: ""
     
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-    // In v7, the theme is explicitly assigned as an active object/plugin wrapper
-        theme: 'breezy', 
-              displayEventTime: true, /* Forces the render engine to display time strings on month view grids */
-      displayEventEnd: true,  /* Explicitly requests the addition of event end times alongside the start values */
+      eventDisplay: 'block',
+      displayEventTime: true,
+      displayEventEnd: true, 
       eventTimeFormat: { 
         hour: 'numeric',
         minute: '2-digit',
-        meridiem: 'short', /* Renders cleanly as e.g., "7:30 PM - 9:30 PM" to mirror your reference image */
+        meridiem: 'short',
         omitZeroMinute: false
       },
       headerToolbar: {
@@ -236,12 +206,57 @@ background_image: ""
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      // Google Calendar configuration is placed back at root layout level in v7
+      
       googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
       events: {
         googleCalendarId: 'pickleballgloucestershire@gmail.com'
       },
-      // Safely handle event clicks so users aren't redirected to Google Calendar directly
+
+      // === ASSIGNS CLASSES BASED STRICTLY UPON DESCRIPTION HASHTAG VALUES ===
+      eventClass: function(arg) {
+        var desc = (arg.event.extendedProps.description || '').toLowerCase();
+        
+        // 1. Blue Track: Wednesday Graded Play
+        if (desc.includes('#graded')) {
+          return 'pbg-pill-blue';
+        } 
+        
+        // 2. Lime/Yellow Track: Friday Night Lights / Social Play
+        else if (desc.includes('#social')) {
+          return 'pbg-pill-lime';
+        } 
+        
+        // 3. Grey Track: System Booking Reminders
+        else if (desc.includes('#reminder')) {
+          return 'pbg-pill-grey';
+        }
+
+        // 4. NEW - Purple Track: Special Tournaments / Festivals
+        else if (desc.includes('#festival')) {
+          return 'pbg-pill-festival';
+        }
+
+        // 5. NEW - Dark Blue Track: Competitive League Matches
+        else if (desc.includes('#league')) {
+          return 'pbg-pill-league';
+        }
+        
+        // === FALLBACK: Applied instantly if no hashtags match or exist ===
+        return 'pbg-pill-default';
+      },
+
+      // STRUCTURAL INJECTION (Maintains perfect multi-line auto-wrapping layout)
+      eventContent: function(info) {
+        var timeText = info.timeText; 
+        var titleText = info.event.title;
+        var customHtml = 
+          '<div class="fc-custom-pill-inner">' +
+            '<span class="fc-custom-pill-time">' + timeText + '</span>' +
+            '<span class="fc-custom-pill-title">' + titleText + '</span>' +
+          '</div>';
+        return { html: customHtml };
+      },
+
       eventClick: function(info) {
         info.jsEvent.preventDefault();
         alert('Event: ' + info.event.title + '\nLocation: ' + (info.event.extendedProps.location || 'N/A'));
@@ -251,6 +266,21 @@ background_image: ""
     calendar.render();
   });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
