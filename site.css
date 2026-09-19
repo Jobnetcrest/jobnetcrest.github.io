@@ -537,24 +537,10 @@ td {
       padding: 20px;
     }
 
-    /* Container matching your image layout background color */
-    .calendar-container {
-      background-color: #a3e6ba; /* Mint Green wrapper */
-      padding: 24px;
-      border-radius: 12px;
-      max-width: 1100px;
-      margin: 0 auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
 
-    .calendar-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: #000000;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+
+
+
 
     /* --- FullCalendar Layout Customizations --- */
     .fc {
@@ -631,15 +617,17 @@ td {
     }
 
     /* --- Custom Pill Event Card Designs --- */
-    .fc-v-event, .fc-h-event {
-      border: 1px solid rgba(0, 0, 0, 0.1) !important;
-      border-radius: 20px !important; /* Rounded capsule layout */
-      padding: 6px 12px !important;
-      margin: 3px 4px !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
+.fc-v-event, .fc-h-event, .fc-daygrid-event {
+  background-color: var(--fc-event-bg-color, #e2e8f0) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 12px !important; 
+  padding: 6px 10px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 4px !important;
 
-    /* Custom Inner Event Typography Layout */
+  
+
+      /* Custom Inner Event Typography Layout */
     .fc-event-main-container {
       display: flex;
       flex-direction: column;
@@ -660,6 +648,35 @@ td {
       opacity: 0.9;
     }
   
+    /* === MODIFIED IN THE STYLE TAG === */
+.fc-v-event, .fc-h-event, .fc-daygrid-event {
+  background-color: var(--fc-event-bg-color, #e2e8f0) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 12px !important;    /* Changed: Blocky rounded pill shape */
+  padding: 6px 10px !important;       /* Changed: Increased inner padding space */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: block !important;          /* Added: Forces elements to stack vertically */
+  margin-bottom: 4px !important;
+  white-space: normal !important;     /* Added: Prevents truncation, allows line wraps */
+}
+
+/* === ADDED TO SEPARATE AND STYLE TITLE/TIME BLOCKS === */
+.fc-event-title {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  display: block !important;          /* Added: Independent top line block */
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fc-event-time {
+  color: rgba(0, 0, 0, 0.75) !important;
+  font-weight: 600 !important;
+  font-size: 0.7rem !important;
+  display: block !important;          /* Added: Drops time directly under the title */
+}
 /* ==========================================================================
    10. PARTNER CLASSES TABLE & UTILITY OVERRIDES
    ========================================================================== */
