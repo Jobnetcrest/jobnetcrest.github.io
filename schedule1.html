@@ -4,6 +4,23 @@ title: Regular Play Schedule
 background_image: ""
 ---
 
+<!-- Core FullCalendar CDN Stylesheets & Scripts -->
+    <!-- STYLESHEETS -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/skeleton.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/theme.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/palettes/purple.css' rel='stylesheet' />
+
+
+    <!-- STANDARD JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/all/global.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@7.1.0/global.min.js"></script>
+
+    <!-- THEME JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.0/themes/monarch/global.js"></script>
+
+
+
 <section id="schedule" class="section py-5" style="position: relative;">
 <div class="container my-5">
   
@@ -12,15 +29,16 @@ background_image: ""
   <!-- ========================================================================= -->
   <div class="row g-4 mb-5">
     
-  <!-- LEFT-HAND SIDE: ELFSIGHT WIDGET COMPARTMENT -->
-    <div class="col-lg-8 d-flex flex-column">
-        <!-- Elfsight Render Container -->
-        <div class="flex-grow-1 p-3 bg-light rounded-3 shadow-sm mb-4 calendar-container">
-               <!-- The calendar attaches itself directly inside this element -->
-              <div id="adaptive-calendar-root"></div>
 
+    
+      <!-- LEFT-HAND SIDE: FULLCALENDAR COMPARTMENT -->
+      <div class="col-lg-8 d-flex flex-column">
+        <!-- Calendar Render Container -->
+        <div class="flex-grow-1 p-3 bg-white rounded-3 shadow-sm mb-4 calendar-container">
+          <!-- FullCalendar attaches itself right here -->
+          <div id="adaptive-calendar-root"></div>
         </div>
-    </div>
+      </div>
 
     <!-- RIGHT-HAND SIDE: PICKLEBALL GLOUCESTERSHIRE (STACKED) -->
     <div class="col-lg-4">
@@ -167,75 +185,126 @@ background_image: ""
 
 </section>
 
-<!-- Additional Custom CSS Layout Support -->
-<style>
-  .fw-black { font-weight: 900; }
-  .fw-extrabold { font-weight: 800; }
-  .tracking-wide { letter-spacing: 0.05em; }
-  .tracking-wider { letter-spacing: 0.1em; }
-  
-  @keyframes flash {
-    0%, 100% { background-color: #dc3545; }
-    50% { background-color: #b91c1c; }
-  }
-  .animate-flash {
-    animation: flash 1.5s infinite ease-in-out;
-  }
-</style>
 
 
+<!-- 5. Your Initialization Engine -->
 <script>
-(function() {
-  const WIDGET_ID = "373d4a85-75e2-4845-809b-573e851a4f29"; 
-  const root = document.getElementById("adaptive-calendar-root");
-  let currentLayout = null;
-
-  function renderCalendar() {
-    const isMobile = window.innerWidth < 1024;
-    const targetLayout = isMobile ? "grid" : "month";
-
-    // Only rebuild the widget if the layout breakpoint actually changes
-    if (currentLayout !== targetLayout) {
-      currentLayout = targetLayout;
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('adaptive-calendar-root');
+    
+var calendar = new FullCalendar.Calendar(calendarEl, {
+            // === UPDATED: DETERMINES INITIAL VIEW BASED ON LANDING DEVICE RESOLUTION ===
+      initialView: window.innerWidth < 768 ? 'timeGridWeek' : 'dayGridMonth',
       
-      // Clear previous instance
-      root.innerHTML = "";
+      // === FIX: SCOPES TIMEGRID VIEWS FROM 8:00 AM TO 10:00 PM (22:00) ===
+      slotMinTime: '08:00:00',  /* Absolute timeline starting boundary */
+      slotMaxTime: '22:00:00',  /* Absolute timeline ending cutoff boundary */
+            // === FIX: FORCES 1 SOLID BLOCK PER HOUR (REMOVES THE 30-MIN SPLIT) ===
+      slotDuration: '01:00:00', /* Configures rows into exact 1-hour blocks */
 
-      // Create new widget container with the updated layout target
-      const widgetDiv = document.createElement("div");
-      widgetDiv.className = `elfsight-app-${WIDGET_ID}`;
-      widgetDiv.setAttribute("data-elfsight-app-lazy", "");
-      widgetDiv.setAttribute("data-elfsight-app-layout", targetLayout);
+      eventDisplay: 'block',
+      displayEventTime: true,
+      displayEventEnd: true, 
+      eventTimeFormat: { 
+        hour: 'numeric',
+        minute: '2-digit',
+        meridiem: 'short',
+        omitZeroMinute: false
+      },
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+
+            // === FIX: RESPONDS TO VIEWPORT OVERLAYS ON FLIPS AND MOBILE ORIENTATION RESIZES ===
+      windowResize: function(arg) {
+        if (window.innerWidth < 768) {
+          if (calendar.view.type !== 'timeGridWeek') {
+            calendar.changeView('timeGridWeek');
+          }
+        } else {
+          if (calendar.view.type !== 'dayGridMonth') {
+            calendar.changeView('dayGridMonth');
+          }
+        }
+      },
+
       
-      root.appendChild(widgetDiv);
+      googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
+      events: {
+        googleCalendarId: 'pickleballgloucestershire@gmail.com'
+      },
 
-      // Re-trigger Elfsight's global initialization script if it already exists
-      if (window.ElfsightApps) {
-        window.ElfsightApps.init();
+      // === ASSIGNS CLASSES BASED STRICTLY UPON DESCRIPTION HASHTAG VALUES ===
+      eventClass: function(arg) {
+        var desc = (arg.event.extendedProps.description || '').toLowerCase();
+        
+        // 1. Blue Track: Wednesday Graded Play
+        if (desc.includes('#graded')) {
+          return 'pbg-pill-blue';
+        } 
+        
+        // 2. Lime/Yellow Track: Friday Night Lights / Social Play
+        else if (desc.includes('#social')) {
+          return 'pbg-pill-lime';
+        } 
+        
+        // 3. Grey Track: System Booking Reminders
+        else if (desc.includes('#reminder')) {
+          return 'pbg-pill-grey';
+        }
+
+        // 4. NEW - Purple Track: Special Tournaments / Festivals
+        else if (desc.includes('#festival')) {
+          return 'pbg-pill-festival';
+        }
+
+        // 5. NEW - Dark Blue Track: Competitive League Matches
+        else if (desc.includes('#league')) {
+          return 'pbg-pill-league';
+        }
+        
+        // === FALLBACK: Applied instantly if no hashtags match or exist ===
+        return 'pbg-pill-default';
+      },
+
+      // STRUCTURAL INJECTION (Maintains perfect multi-line auto-wrapping layout)
+      eventContent: function(info) {
+        var timeText = info.timeText; 
+        var titleText = info.event.title;
+        var customHtml = 
+          '<div class="fc-custom-pill-inner">' +
+            '<span class="fc-custom-pill-time">' + timeText + '</span>' +
+            '<span class="fc-custom-pill-title">' + titleText + '</span>' +
+          '</div>';
+        return { html: customHtml };
+      },
+
+      eventClick: function(info) {
+        info.jsEvent.preventDefault();
+        alert('Event: ' + info.event.title + '\nLocation: ' + (info.event.extendedProps.location || 'N/A'));
       }
-    }
-  }
-
-  // Initial load execution
-  renderCalendar();
-
-  // Listen for window resizing and adjust layout dynamically
-  let resizeTimeout;
-  window.addEventListener("resize", function() {
-    clearTimeout(resizeTimeout);
-    // Debounce the resize event slightly so it doesn't stutter while dragging
-    resizeTimeout = setTimeout(renderCalendar, 150);
+    });
+    
+    calendar.render();
   });
-
-  // Inject the platform script loader if it hasn't been added yet
-  if (!document.querySelector('script[src*="elfsightcdn.com"]')) {
-    const script = document.createElement("script");
-    script.src = "https://elfsightcdn.com/platform.js";
-    script.async = true;
-    document.head.appendChild(script);
-  }
-})();
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
