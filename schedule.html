@@ -28,7 +28,22 @@ background_image: ""
   <!-- MAIN MAIN STAGE: CLUB SESSIONS (LHS) vs ELFSIGHT WIDGET (RHS)            -->
   <!-- ========================================================================= -->
   <div class="row g-4 mb-5">
-    
+      <!-- FullCalendar Detail Modal -->
+    <div id="fcEventModal" class="fc-modal-overlay" aria-hidden="true">
+      <div class="fc-modal-content">
+        <div class="fc-modal-header">
+          <h3 id="modalEventTitle">Event Details</h3>
+          <button id="modalCloseBtn" class="fc-modal-close">&times;</button>
+        </div>
+        <div class="fc-modal-body">
+          <p class="modal-time-row">⏰ <span id="modalEventTime"></span></p>
+          <p id="modalEventDescription"></p>
+        </div>
+      </div>
+    </div>
+  
+
+
       <!-- LEFT-HAND SIDE: FULLCALENDAR COMPARTMENT -->
       <div class="col-lg-8 d-flex flex-column">
         <!-- Calendar Render Container -->
@@ -189,15 +204,18 @@ background_image: ""
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('adaptive-calendar-root');
+    var modal = document.getElementById('fcEventModal');
+    var closeBtn = document.getElementById('modalCloseBtn');
     
-var calendar = new FullCalendar.Calendar(calendarEl, {
-            // === UPDATED: DETERMINES INITIAL VIEW BASED ON LANDING DEVICE RESOLUTION ===
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      // === DETERMINES INITIAL VIEW BASED ON LANDING DEVICE RESOLUTION ===
       initialView: window.innerWidth < 768 ? 'timeGridWeek' : 'dayGridMonth',
       
-      // === FIX: SCOPES TIMEGRID VIEWS FROM 8:00 AM TO 10:00 PM (22:00) ===
+      // === SCOPES TIMEGRID VIEWS FROM 8:00 AM TO 10:00 PM (22:00) ===
       slotMinTime: '08:00:00',  /* Absolute timeline starting boundary */
       slotMaxTime: '22:00:00',  /* Absolute timeline ending cutoff boundary */
-            // === FIX: FORCES 1 SOLID BLOCK PER HOUR (REMOVES THE 30-MIN SPLIT) ===
+      
+      // === FORCES 1 SOLID BLOCK PER HOUR (REMOVES THE 30-MIN SPLIT) ===
       slotDuration: '01:00:00', /* Configures rows into exact 1-hour blocks */
 
       eventDisplay: 'block',
@@ -215,7 +233,7 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
 
-            // === FIX: RESPONDS TO VIEWPORT OVERLAYS ON FLIPS AND MOBILE ORIENTATION RESIZES ===
+      // === RESPONDS TO VIEWPORT OVERLAYS ON FLIPS AND MOBILE ORIENTATION RESIZES ===
       windowResize: function(arg) {
         if (window.innerWidth < 768) {
           if (calendar.view.type !== 'timeGridWeek') {
@@ -228,7 +246,6 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         }
       },
 
-      
       googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
       events: {
         googleCalendarId: 'pickleballgloucestershire@gmail.com'
@@ -253,12 +270,12 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
           return 'pbg-pill-grey';
         }
 
-        // 4. NEW - Purple Track: Special Tournaments / Festivals
+        // 4. Purple Track: Special Tournaments / Festivals
         else if (desc.includes('#festival')) {
           return 'pbg-pill-festival';
         }
 
-        // 5. NEW - Dark Blue Track: Competitive League Matches
+        // 5. Dark Blue Track: Competitive League Matches
         else if (desc.includes('#league')) {
           return 'pbg-pill-league';
         }
@@ -279,15 +296,52 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         return { html: customHtml };
       },
 
+      // === CONSOLIDATED MODAL CLICK-THROUGH HOOK ===
       eventClick: function(info) {
         info.jsEvent.preventDefault();
-        alert('Event: ' + info.event.title + '\nLocation: ' + (info.event.extendedProps.location || 'N/A'));
+
+        // 1. Extract plain text descriptions cleanly (removing raw HTML nodes from feed)
+        var rawDesc = info.event.extendedProps.description || '';
+        var cleanDesc = rawDesc.replace(/<\/?[^>]+(>|$)/g, "").trim();
+        if (!cleanDesc) {
+          cleanDesc = 'No additional information provided for this session.';
+        }
+
+        // 2. Inject parameters safely into DOM Elements
+        document.getElementById('modalEventTitle').innerText = info.event.title;
+        document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
+        document.getElementById('modalEventDescription').innerText = cleanDesc;
+
+        // 3. Activate the overlay component smoothly
+        if (modal) {
+          modal.classList.add('is-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
       }
     });
     
     calendar.render();
+
+    // Functional Modal Closure Methods
+    function closeModal() {
+      if (modal) {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+    
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
   });
 </script>
+
 
 
 

@@ -814,6 +814,94 @@ td {
   color: #ffffff !important;
 }
 
+/* ==========================================================================
+   11C. FULLCALENDAR INTERACTIVE MODAL COMPONENT
+   ========================================================================== */
+
+/* Pointer update to show events are clickable */
+.fc-daygrid-event {
+  cursor: pointer !important;
+}
+
+/* Hidden Overlay Container */
+.fc-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Active Class Show State */
+.fc-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Content Card Box */
+.fc-modal-content {
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header Design matching Flat System overrides */
+.fc-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #f8fafc;
+}
+
+.fc-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.fc-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+  padding: 0;
+}
+.fc-modal-close:hover {
+  color: #0f172a;
+}
+
+/* Body Copy Setup */
+.fc-modal-body {
+  padding: 20px;
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal-time-row {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
 
 
 
