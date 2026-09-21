@@ -38,6 +38,11 @@ background_image: ""
         <div class="fc-modal-body">
           <p class="modal-time-row">⏰ <span id="modalEventTime"></span></p>
           <p id="modalEventDescription"></p>
+          <!-- Inside your #fcEventModal body -->
+            <div id="modalEventImageContainer" style="display: none; margin-bottom: 1rem; text-align: center;">
+              <img id="modalEventImage" src="" alt="Session Attachment" style="max-width: 100%; height: auto; border-radius: 8px;" />
+            </div>
+            <div id="modalEventDescription"></div>
         </div>
       </div>
     </div>
@@ -200,24 +205,21 @@ background_image: ""
 
 
 
-<!-- 5. Your Initialization Engine -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('adaptive-calendar-root');
     var modal = document.getElementById('fcEventModal');
     var closeBtn = document.getElementById('modalCloseBtn');
     
+    // Explicitly target the new image elements
+    var imgContainer = document.getElementById('modalEventImageContainer');
+    var imgEl = document.getElementById('modalEventImage');
+    
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      // === DETERMINES INITIAL VIEW BASED ON LANDING DEVICE RESOLUTION ===
       initialView: window.innerWidth < 768 ? 'timeGridWeek' : 'dayGridMonth',
-      
-      // === SCOPES TIMEGRID VIEWS FROM 8:00 AM TO 10:00 PM (22:00) ===
-      slotMinTime: '08:00:00',  /* Absolute timeline starting boundary */
-      slotMaxTime: '22:00:00',  /* Absolute timeline ending cutoff boundary */
-      
-      // === FORCES 1 SOLID BLOCK PER HOUR (REMOVES THE 30-MIN SPLIT) ===
-      slotDuration: '01:00:00', /* Configures rows into exact 1-hour blocks */
-
+      slotMinTime: '08:00:00',
+      slotMaxTime: '22:00:00',
+      slotDuration: '01:00:00',
       eventDisplay: 'block',
       displayEventTime: true,
       displayEventEnd: true, 
@@ -233,8 +235,95 @@ background_image: ""
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
 
-      // === RESPONDS TO VIEWPORT OVERLAYS ON FLIPS AND MOBILE ORIENTATION RESIZES ===
-      windowResize: function(arg) {
+
+      googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
+      events: {
+        googleCalendarId: 'pickleballgloucestershire@gmail.com'
+      },
+
+      eventDidMount: function(arg) {
+        var desc = (arg.event.extendedProps.description || '').toLowerCase();
+        var targetClass = 'pbg-pill-default';
+        
+        if (desc.includes('#graded')) { targetClass = 'pbg-pill-blue'; } 
+        else if (desc.includes('#social')) { targetClass = 'pbg-pill-lime'; } 
+        else if (desc.includes('#reminder')) { targetClass = 'pbg-pill-grey'; }
+        else if (desc.includes('#festival')) { targetClass = 'pbg-pill-festival'; }
+        else if (desc.includes('#league')) { targetClass = 'pbg-pill-league'; }
+        
+        arg.el.classList.add(targetClass);
+      },
+
+      eventContent: function(info) {
+        var timeText = info.timeText; 
+        var titleText = info.event.title;
+        var container = document.createElement('div');
+        container.className = 'fc-custom-pill-inner';
+        container.innerHTML = 
+          '<span class="fc-custom-pill-time">' + timeText + '</span>' +
+          '<span class="fc-custom-pill-title">' + titleText + '</span>';
+          
+        return { domNodes: [container] };
+      },
+
+      // === UPDATED V7 MODAL HOOK: FIXES BROKEN GOOGLE DRIVE RENDERING ===
+      eventClick: function(info) {
+        info.jsEvent.preventDefault();
+
+        // 1. Reset image element state before populating to avoid layout flickering
+        if (imgEl && imgContainer) {
+          imgEl.src = '';
+          imgContainer.style.display = 'none';
+        }
+
+        // 2. Extract description and check for raw Google Drive links embedded inside text
+        var rawDesc = info.event.extendedProps.description || '';
+        
+        // Regex pattern to locate and extract the Google Drive file ID from a URL string
+        var driveRegex = /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/[^\s]+/i;
+        var match = rawDesc.match(driveRegex);
+
+        if (match && match[1]) {
+          var fileId = match[1];
+          // Convert view URL to direct image thumbnail/stream API link
+          var directImageUrl = 'https://googleusercontent.com' + fileId;
+          
+          if (imgEl && imgContainer) {
+            imgEl.src = directImageUrl;
+            imgContainer.style.display = 'block';
+          }
+          
+          // Clean the link string entirely out of the text block so it doesn't duplicate
+          rawDesc = rawDesc.replace(driveRegex, '');
+        }
+
+        // 3. Extract clean text descriptions safely (removing raw HTML markup and remaining hashtags)
+        var cleanDesc = rawDesc.replace(/<\/?[^>]+(>|$)/g, "").replace(/#\w+/g, "").trim();
+        if (!cleanDesc) {
+          cleanDesc = 'No additional information provided for this session.';
+        }
+
+        // 4. Inject standard text parameters into DOM
+        document.getElementById('modalEventTitle').innerText = info.event.title;
+        document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
+        document.getElementById('modalEventDescription').innerText = cleanDesc;
+
+        // 5. Activate the overlay component smoothly
+        if (modal) {
+          modal.classList.add('is-active');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+      }
+
+    });
+    
+    calendar.render();
+
+        // 2. Insert native viewport listener directly underneath your render activation
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
         if (window.innerWidth < 768) {
           if (calendar.view.type !== 'timeGridWeek') {
             calendar.changeView('timeGridWeek');
@@ -244,85 +333,9 @@ background_image: ""
             calendar.changeView('dayGridMonth');
           }
         }
-      },
-
-      googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
-      events: {
-        googleCalendarId: 'pickleballgloucestershire@gmail.com'
-      },
-
-      // === ASSIGNS CLASSES BASED STRICTLY UPON DESCRIPTION HASHTAG VALUES ===
-      eventClass: function(arg) {
-        var desc = (arg.event.extendedProps.description || '').toLowerCase();
-        
-        // 1. Blue Track: Wednesday Graded Play
-        if (desc.includes('#graded')) {
-          return 'pbg-pill-blue';
-        } 
-        
-        // 2. Lime/Yellow Track: Friday Night Lights / Social Play
-        else if (desc.includes('#social')) {
-          return 'pbg-pill-lime';
-        } 
-        
-        // 3. Grey Track: System Booking Reminders
-        else if (desc.includes('#reminder')) {
-          return 'pbg-pill-grey';
-        }
-
-        // 4. Purple Track: Special Tournaments / Festivals
-        else if (desc.includes('#festival')) {
-          return 'pbg-pill-festival';
-        }
-
-        // 5. Dark Blue Track: Competitive League Matches
-        else if (desc.includes('#league')) {
-          return 'pbg-pill-league';
-        }
-        
-        // === FALLBACK: Applied instantly if no hashtags match or exist ===
-        return 'pbg-pill-default';
-      },
-
-      // STRUCTURAL INJECTION (Maintains perfect multi-line auto-wrapping layout)
-      eventContent: function(info) {
-        var timeText = info.timeText; 
-        var titleText = info.event.title;
-        var customHtml = 
-          '<div class="fc-custom-pill-inner">' +
-            '<span class="fc-custom-pill-time">' + timeText + '</span>' +
-            '<span class="fc-custom-pill-title">' + titleText + '</span>' +
-          '</div>';
-        return { html: customHtml };
-      },
-
-      // === CONSOLIDATED MODAL CLICK-THROUGH HOOK ===
-      eventClick: function(info) {
-        info.jsEvent.preventDefault();
-
-        // 1. Extract plain text descriptions cleanly (removing raw HTML nodes from feed)
-        var rawDesc = info.event.extendedProps.description || '';
-        var cleanDesc = rawDesc.replace(/<\/?[^>]+(>|$)/g, "").trim();
-        if (!cleanDesc) {
-          cleanDesc = 'No additional information provided for this session.';
-        }
-
-        // 2. Inject parameters safely into DOM Elements
-        document.getElementById('modalEventTitle').innerText = info.event.title;
-        document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
-        document.getElementById('modalEventDescription').innerText = cleanDesc;
-
-        // 3. Activate the overlay component smoothly
-        if (modal) {
-          modal.classList.add('is-active');
-          modal.setAttribute('aria-hidden', 'false');
-        }
-      }
+      }, 150); // Debounce delay avoids layout recalculation loops
     });
-    
-    calendar.render();
 
-    // Functional Modal Closure Methods
     function closeModal() {
       if (modal) {
         modal.classList.remove('is-active');
@@ -341,6 +354,7 @@ background_image: ""
     });
   });
 </script>
+
 
 
 
