@@ -268,30 +268,27 @@ background_image: ""
         return { domNodes: [container] };
       },
 
-      // === UPDATED V7 MODAL HOOK: FIXES BROKEN GOOGLE DRIVE RENDERING ===
-              eventClick: function(info) {
+      // === ROUTED V7 HOOK: TABS FOR IMAGES / MODALS FOR STANDARD TEXT ===
+      eventClick: function(info) {
         info.jsEvent.preventDefault();
 
-        if (imgEl && imgContainer) {
-          imgEl.src = '';
-          imgContainer.style.display = 'none';
-        }
-
         var rawDesc = info.event.extendedProps.description || '';
+        
+        // Regex pattern to look for Google Drive links inside the event text notes
         var driveRegex = /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/[^\s]+/i;
         var match = rawDesc.match(driveRegex);
 
-        if (match && match[1]) {
-          var fileId = match[1];
-          // CRITICAL FIX: Explicit slash added after /d/ to prevent domain parsing collapse
-          var directImageUrl = 'https://lh3.googleusercontent.com/d/' + fileId;
+        // ROUTE 1: If an image/attachment link is found, open it in a new window tab immediately
+        if (match && match[0]) {
+          var targetUrl = match[0];
+          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          return; // Stop execution here so the modal stays closed
+        }
 
-          
-          if (imgEl && imgContainer) {
-            imgEl.src = directImageUrl;
-            imgContainer.style.display = 'block';
-          }
-          rawDesc = rawDesc.replace(driveRegex, '');
+        // ROUTE 2: Standard text fallback. Reset and open the enlarged modal window
+        if (imgEl && imgContainer) {
+          imgEl.src = '';
+          imgContainer.style.display = 'none';
         }
 
         var cleanDesc = rawDesc.replace(/<\/?[^>]+(>|$)/g, "").replace(/#\w+/g, "").trim();
@@ -299,15 +296,18 @@ background_image: ""
           cleanDesc = 'No additional information provided for this session.';
         }
 
+        // Inject standard text parameters into DOM Elements
         document.getElementById('modalEventTitle').innerText = info.event.title;
         document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
         document.getElementById('modalEventDescription').innerText = cleanDesc;
 
+        // Open the modal window safely
         if (modal) {
           modal.classList.add('is-active');
-          modal.setAttribute('aria-hidden', 'false');
+          if (closeBtn) { closeBtn.focus(); } // Clean accessibility focus shift
         }
       }
+
 
 
     });
