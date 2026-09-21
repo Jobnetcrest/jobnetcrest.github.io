@@ -38,9 +38,10 @@ background_image: ""
         <div class="fc-modal-body">
           <p class="modal-time-row">⏰ <span id="modalEventTime"></span></p>
           <p id="modalEventDescription"></p>
-          <!-- Inside your #fcEventModal body -->
-            <div id="modalEventImageContainer" style="display: none; margin-bottom: 1rem; text-align: center;">
-              <img id="modalEventImage" src="" alt="Session Attachment" style="max-width: 100%; height: auto; border-radius: 8px;" />
+            <!-- Inside the _includes/calendar.html modal layout section -->
+            <div id="modalEventImageContainer" style="display: none; margin: 15px 0; text-align: center;">
+                <!-- Added referrerpolicy="no-referrer" to guarantee direct embedding -->
+                <img id="modalEventImage" src="" referrerpolicy="no-referrer" alt="Session Attachment" style="max-width: 100%; max-height: 260px; height: auto; border-radius: 6px; border: 1px solid #e2e8f0;" />
             </div>
             <div id="modalEventDescription"></div>
         </div>
@@ -54,7 +55,8 @@ background_image: ""
         <!-- Calendar Render Container -->
         <div class="flex-grow-1 p-3 bg-white rounded-3 shadow-sm mb-4 calendar-container">
           <!-- FullCalendar attaches itself right here -->
-          <div id="adaptive-calendar-root"></div>
+          <!-- Calendar Target Mounting Element (Added explicit focus layout index fallback) -->
+          <div id="adaptive-calendar-root" tabindex="-1"></div> 
         </div>
       </div>
 
@@ -267,53 +269,46 @@ background_image: ""
       },
 
       // === UPDATED V7 MODAL HOOK: FIXES BROKEN GOOGLE DRIVE RENDERING ===
-      eventClick: function(info) {
+              eventClick: function(info) {
         info.jsEvent.preventDefault();
 
-        // 1. Reset image element state before populating to avoid layout flickering
         if (imgEl && imgContainer) {
           imgEl.src = '';
           imgContainer.style.display = 'none';
         }
 
-        // 2. Extract description and check for raw Google Drive links embedded inside text
         var rawDesc = info.event.extendedProps.description || '';
-        
-        // Regex pattern to locate and extract the Google Drive file ID from a URL string
         var driveRegex = /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/[^\s]+/i;
         var match = rawDesc.match(driveRegex);
 
         if (match && match[1]) {
           var fileId = match[1];
-          // Convert view URL to direct image thumbnail/stream API link
-          var directImageUrl = 'https://googleusercontent.com' + fileId;
+          // CRITICAL FIX: Explicit slash added after /d/ to prevent domain parsing collapse
+          var directImageUrl = 'https://lh3.googleusercontent.com/d/' + fileId;
+
           
           if (imgEl && imgContainer) {
             imgEl.src = directImageUrl;
             imgContainer.style.display = 'block';
           }
-          
-          // Clean the link string entirely out of the text block so it doesn't duplicate
           rawDesc = rawDesc.replace(driveRegex, '');
         }
 
-        // 3. Extract clean text descriptions safely (removing raw HTML markup and remaining hashtags)
         var cleanDesc = rawDesc.replace(/<\/?[^>]+(>|$)/g, "").replace(/#\w+/g, "").trim();
         if (!cleanDesc) {
           cleanDesc = 'No additional information provided for this session.';
         }
 
-        // 4. Inject standard text parameters into DOM
         document.getElementById('modalEventTitle').innerText = info.event.title;
         document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
         document.getElementById('modalEventDescription').innerText = cleanDesc;
 
-        // 5. Activate the overlay component smoothly
         if (modal) {
           modal.classList.add('is-active');
           modal.setAttribute('aria-hidden', 'false');
         }
       }
+
 
     });
     
