@@ -1,22 +1,28 @@
 {
     "necessary": [
         {
+            "name": "elfsight_viewed_recently",
+            "domain": "core.service.elfsight.com",
+            "expiry": "Mon, 21 Sep 2026 04:06:05 GMT",
+            "description": "Auto-detected during deployment multi-page audit loop."
+        },
+        {
             "name": "_cfuvid",
             "domain": ".elfsight.com",
             "expiry": "Session",
             "description": "Elfsight security and request validation rate-limiter managed through the Cloudflare network proxy framework."
         },
         {
-            "name": "__Secure-ROLLOUT_TOKEN",
-            "domain": ".youtube.com",
-            "expiry": "Mon, 15 Mar 2027 17:07:00 GMT",
-            "description": "Secure tracking token deployed by YouTube to optimize infrastructure rollouts on embedded players."
-        },
-        {
             "name": "VISITOR_PRIVACY_METADATA",
             "domain": ".youtube.com",
-            "expiry": "Mon, 15 Mar 2027 17:07:00 GMT",
+            "expiry": "Sat, 20 Mar 2027 04:05:55 GMT",
             "description": "YouTube compliance tracking state used to store user privacy choices regarding embedded video playback."
+        },
+        {
+            "name": "__Secure-ROLLOUT_TOKEN",
+            "domain": ".youtube.com",
+            "expiry": "Sat, 20 Mar 2027 04:05:55 GMT",
+            "description": "Secure tracking token deployed by YouTube to optimize infrastructure rollouts on embedded players."
         }
     ],
     "analytics": [
@@ -29,7 +35,7 @@
         {
             "name": "VISITOR_INFO1_LIVE",
             "domain": ".youtube.com",
-            "expiry": "Mon, 15 Mar 2027 17:07:00 GMT",
+            "expiry": "Sat, 20 Mar 2027 04:05:55 GMT",
             "description": "YouTube bandwidth metrics tracker used to measure stream quality across embedded frames."
         }
     ],
@@ -37,7 +43,7 @@
         {
             "name": "__Secure-YNID",
             "domain": ".youtube.com",
-            "expiry": "Mon, 15 Mar 2027 17:07:00 GMT",
+            "expiry": "Sat, 20 Mar 2027 04:05:55 GMT",
             "description": "Secure security and profile preference handler managed by embedded YouTube integrations."
         }
     ],
@@ -45,7 +51,7 @@
         {
             "name": "NID",
             "domain": ".google.com",
-            "expiry": "Thu, 18 Mar 2027 17:07:04 GMT",
+            "expiry": "Tue, 23 Mar 2027 04:05:58 GMT",
             "description": "Google user profiling cookie utilized to customize advertisement delivery across integrated web structures."
         }
     ]
