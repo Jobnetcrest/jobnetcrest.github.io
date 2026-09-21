@@ -88,6 +88,21 @@
   category: "main"
   caption: "Is that serve legal?"  
 
+- image: "main/gallery19.jpg"
+  alt: "General Club Photos"
+  category: "main"
+  caption: "Top Spin Pro" 
+
+- image: "main/gallery20.jpg"
+  alt: "General Club Photos"
+  category: "main"
+  caption: "Newport medallers 20/9/2026" 
+
+- image: "main/gallery21.jpg"
+  alt: "General Club Photos"
+  category: "main"
+  caption: "Ian and Rob Williams" 
+
 - image: "graded-play/WA2026-09-09-01.jpeg"
   alt: "Inaugral Graded Play Wednesday Session"
   category: "graded-play"
