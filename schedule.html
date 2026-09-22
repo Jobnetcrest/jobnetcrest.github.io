@@ -153,53 +153,116 @@ background_image: ""
  <!-- ========================================================================= -->
 <!-- BOTTOM SECTION: FREEDOM LEISURE PARTNER SESSIONS (MUTED / FOOTNOTE POOL) -->
 <!-- ========================================================================= -->
-<div class="row pt-2">
-  <div class="col-12">
-    <div class="rounded-3 bg-light partner-container">
-      <h4 class="fw-bold mb-1 partner-title">🏛️ Partner Classes (Freedom Leisure)</h4>
-      <p class="text-muted mb-3 partner-desc">These sessions are operated standalone by the center operator. Managed independently of Pickleball Gloucestershire.</p>
+<!-- 🟢 FIX: Added negative horizontal margins directly to the outer row class to override parent wrapper cushions on small viewports -->
+<div class="row pt-2 px-0 mx-n3 mx-sm-0">
+  <div class="col-8 px-0">
+    <!-- 🏛️ CONTAINER CARD: Clean base with overflow-hidden to automatically shape the header corners -->
+    <div class="rounded-3 bg-white partner-container shadow-sm overflow-hidden" style="border: 1px solid #e0e0e0;">
+
       
-      <div class="table-responsive">
-        <table class="table table-sm table-borderless align-middle mb-0 partner-table">
-          <thead>
-              <tr class="text-muted partner-header-row">
+      <!-- 🎨 BRANDED HEADER BLOCK: Sitting cleanly at the top layer level so it touches the outer container lines naturally -->
+      <div class="p-3 text-white d-flex align-items-center gap-3" style="background-color: #7A2962; border-bottom: 4px solid #4A154B;">
+        <div class="bg-white rounded-2 p-1 d-inline-flex align-items-center justify-content-center" style="height: 36px; width: auto;">
+          <img src="images/freedom-leisure-logo.png" alt="Freedom Leisure Logo" style="height: 28px; width: auto; object-fit: contain;">
+        </div>
+        <h4 class="fw-bold mb-0 text-white partner-title" style="letter-spacing: 0.5px; font-family: Arial, sans-serif;">
+          Partner Classes (Freedom Leisure)
+        </h4>
+      </div>
+
+      <!-- 📦 INDEPENDENT INNER WRAPPER: Padding is now safely applied ONLY to the content body items below the header -->
+      <div class="p-3">
+        <p class="text-muted mb-4 partner-desc" style="font-size: 0.95rem;">
+          These sessions are operated standalone by the center operator. Managed independently of Pickleball Gloucestershire.
+        </p>
+      
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless align-middle mb-0 partner-table">
+            <thead>
+              <tr class="text-muted partner-header-row align-middle" style="border-bottom: 1px solid #eee;">
                 <th class="py-2 col-schedule">Schedule</th>
                 <th class="py-2 col-class">Classification</th>
-                <th class="py-2 col-location">Location</th>
-                <!-- FIXED: Changed text-end to text-center so the header title balances with the centered buttons below -->
-                <th class="py-2 text-center col-link">Partner Link</th>
+                <th class="py-2 text-center col-location">Location</th>
+                <th class="py-2 text-center col-link" style="min-width: 125px !important; text-align: center !important;">
+                  Link
+                </th>
               </tr>
             </thead>
             <tbody>
-            <tr class="partner-dashed-row">
-              <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">18:00 - 19:30</span></td>
-              <td><span class="badge text-white fw-normal track-badge">Beginners Track</span></td>
-              <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- FIXED: Changed text-end to text-center and verified align-middle to perfectly centre the action button -->
-              <td class="text-center align-middle partner-cell-merge" rowspan="2">
-                <a href="https://gladstonego.cloud" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary partner-btn">Book External ↗</a>
-              </td>
-            </tr>
-            <tr class="partner-dashed-row">
-              <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">19:30 - 21:00</span></td>
-              <td><span class="badge text-white fw-normal track-badge">Improvers Track</span></td>
-              <td class="text-muted">Oxstalls Tennis Centre</td>
-            </tr>
-            <tr>
-              <td class="py-2 fw-bold text-muted">Thurs <span class="fw-normal text-muted time-subtext">Daytime</span></td>
-              <td><span class="badge text-white fw-normal track-badge">Daytime Track</span></td>
-              <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- FIXED: Changed text-end to text-center and added align-middle to align "Coming Soon" with the button column -->
-              <td class="text-center align-middle text-muted coming-soon-text">Coming Soon</td>
-            </tr>
+              <!-- Tuesday Session 1: Beginners -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">18:00 - 19:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge">Beginners Track</span>
+                </td>
+                <!-- MERGED LOCATION COLUMN: Spans all 5 rows cleanly down the center axis with dynamic mapping pin link -->
+                <td class="text-center align-middle" rowspan="5" style="text-align: center !important; font-weight: 500;">
+                  <a href="https://maps.app.goo.gl/iea1JXdEGHdFq59V6" target="_blank" rel="noopener noreferrer" class="text-decoration-none partner-map-link" style="color: #234b58; font-weight: bold;">
+                    📍 Oxstalls Tennis Centre <span style="font-size: 11px; font-weight: normal; display: block; color: #7A2962; margin-top: 2px;">Open Maps ↗</span>
+                  </a>
+                </td>
+                <!-- MERGED PARTNER BOOKING COLUMN: Spans all 5 rows cleanly down the center axis -->
+                <td class="text-center align-middle partner-cell-merge" rowspan="5" style="text-align: center !important; padding: 25px 0 !important;">
+                  <a href="https://flgloucester.gladstonego.cloud/book" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary partner-btn" style="white-space: nowrap !important; font-weight: bold; border-color: #7A2962; color: #7A2962;">Book External ↗</a>
+                </td>
+              </tr>
+              
+              <!-- Tuesday Session 2: Improvers -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">19:30 - 21:00</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge">Improvers Track</span>
+                </td>
+              </tr>
+              
+              <!-- Thursday Session: Recreational with Flyer PDF underneath -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Thurs <span class="fw-normal text-muted time-subtext">09:30 - 11:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge" style="background-color: #E5F91e; color: #234b58 !important;">Recreational</span>
+                  <div class="mt-1">
+                    <a href="docs/Recreational_pickleball.pdf" target="_blank" rel="noopener" style="font-size: 11px; text-decoration: none; font-weight: bold; color: #dc3545;">📄 View Flyer (PDF)</a>
+                  </div>
+                </td>
+              </tr>
+              
+              <!-- Sunday Session 1: Family Track with Flyer PDF underneath -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Sun <span class="fw-normal text-muted time-subtext">09:30 - 10:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge" style="background-color: #0072BB;">Family Track</span>
+                  <div class="mt-1">
+                    <a href="docs/Family_Pickleball.pdf" target="_blank" rel="noopener" style="font-size: 11px; text-decoration: none; font-weight: bold; color: #dc3545;">📄 View Flyer (PDF)</a>
+                  </div>
+                </td>
+              </tr>
+              
+              <!-- Sunday Session 2: Intermediate Adult Coaching -->
+              <tr>
+                <td class="py-2 fw-bold text-muted">Sun <span class="fw-normal text-muted time-subtext">10:30 - 11:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge" style="background-color: #126631;">Adult Coaching</span>
+                  <!-- 🆕 FLYER PLACEMENT: Added inline flyer layout for Sunday Adult Coaching -->
+                  <div class="mt-1">
+                    <a href="docs/Intermediate_Adult_Coaching.pdf" target="_blank" rel="noopener" style="font-size: 11px; text-decoration: none; font-weight: bold; color: #dc3545;">📄 View Flyer (PDF)</a>
+                  </div>
+                </td>
+              </tr>
             </tbody>
-
-        </table>
+          </table>
+        </div>
       </div>
 
     </div>
   </div>
 </div> <!--class ="row pt-2 END"-->
+
+
+
+
+
+
+
 
 </div>
 
