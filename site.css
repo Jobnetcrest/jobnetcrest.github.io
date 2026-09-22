@@ -308,7 +308,6 @@ td {
 
 
 /* ==========================================================================
-/* ==========================================================================
    7. RESPONSIVE BREAKPOINTS & MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 1200px) {
@@ -333,17 +332,85 @@ td {
         width: calc(50% - 10px);
     }
     
-    /* RESTORED: General tables are dynamic again to preserve column layouts */
+    /* General tables are dynamic to preserve column layouts */
     table {
         width: 100%;
     }
     
-    /* NEW TARGETED APPROACH: Only wraps long links/text inside specifically marked items */
+    /* Only wraps long links/text inside specifically marked items */
     .mobile-text-break,
     .mobile-text-break a {
         word-break: break-all !important;
         word-wrap: break-word !important;
         white-space: normal !important;
+    }
+
+    /* Force location tabs to stay inline and allow horizontal scrolling touch gestures */
+    .nav-tabs, 
+    [role="tablist"] {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      white-space: nowrap !important;
+      -webkit-overflow-scrolling: touch; /* Smooth inertia swiping on iOS devices */
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    /* Keep the individual tab selectors clean with locked boundary widths */
+    .nav-tabs .nav-item,
+    .nav-tabs .nav-link {
+      flex: 0 0 auto !important; /* Prevents text elements from squishing uncomfortably */
+      display: inline-block !important;
+    }
+
+    /* CALENDAR GREEN SPACE FIX: Forces container card elements to expand full-width */
+    .col-12,
+    .col-lg-8,
+    .content-wrapper,
+    .section,
+    div:has(#adaptive-calendar-root) {
+      padding-left: 0px !important;   /* Dropped to 0 to capture absolute maximum green screen space */
+      padding-right: 0px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    #adaptive-calendar-root, .fc {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+
+    /* GALLERY TEXT ENGINE REVEAL: Strips away opacity locks on ALL structural image nodes */
+    .gallery-item .overlay,
+    .gallery-item .hover-text,
+    .gallery-item .text-container,
+    .gallery-caption,
+    .gallery-item .overlay-content,
+    .gallery-item .hover-text-inner,
+    .gallery-item span,
+    .gallery-item p,
+    .gallery-item h3 {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: block !important;
+      transform: none !important;      /* Halts desktop translation glide physics */
+      -webkit-transform: none !important;
+      transition: none !important;
+    }
+
+    /* HARD LAYER ANCHORING: Locks the caption layout inside the bottom frame strip */
+    .gallery-item .overlay,
+    .gallery-item .hover-text {
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      background: linear-gradient(transparent, rgba(18, 102, 49, 0.95)) !important; /* Forces signature gradient background strip to build if missing */
+      padding: 15px 10px !important;
+      box-sizing: border-box !important;
     }
 }
 
@@ -358,79 +425,6 @@ td {
     h2 { font-size: 20px; }
 }
 
-@media (max-width: 768px) {
-  /* 1. Force tabs to stay inline and allow horizontal scrolling touch gestures */
-  .nav-tabs, 
-  [role="tablist"] {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    white-space: nowrap !important;
-    -webkit-overflow-scrolling: touch; /* Smooth inertia swiping on iOS devices */
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-  }
-
-  /* 2. Keep the individual tab selectors clean with locked boundary widths */
-  .nav-tabs .nav-item,
-  .nav-tabs .nav-link {
-    flex: 0 0 auto !important; /* Prevents text elements from squishing uncomfortably */
-    display: inline-block !important;
-  }
-}
-/* ==========================================================================
-   MOBILE GALLERY ACCESSIBILITY OVERRIDE
-   ========================================================================== */
-@media (max-width: 768px) {
-  /* 1. Force the hidden overlay layer to be permanently visible */
-  .gallery-item .overlay,
-  .gallery-item .hover-text,
-  .gallery-item .text-container,
-  .gallery-caption {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important; /* Disables sliding/moving transformations on mobile */
-  }
-
-  /* 2. Optional: Adjust text position or background if it covers the photo completely */
-  .gallery-item .overlay {
-    background: rgba(35, 75, 88, 0.85) !important; /* Your signature Slate Blue with high readability contrast */
-  }
-
-  /* 3. Ensure links inside the text blocks are easily tappable with thumbs */
-  .gallery-item a {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-top: 5px;
-  }
-}
-
-/* Make calendar stretch across the full width on mobile screens */
-@media (max-width: 768px) {
-  /* 1. Remove forced padding or narrow restrictions from the parent elements */
-  .col-lg-8,
-  .content-wrapper,
-  .section,
-  div:has(#adaptive-calendar-root) {
-    padding-left: 5px !important;
-    padding-right: 5px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* 2. Force the FullCalendar root element to fill 100% of its immediate space */
-  #adaptive-calendar-root {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* 3. Reduce extra interior margins inside the calendar framework card */
-  .fc {
-    max-width: 100% !important;
-  }
-}
 
 
 /* ==========================================================================
