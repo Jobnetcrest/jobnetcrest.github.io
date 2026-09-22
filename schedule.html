@@ -153,11 +153,12 @@ background_image: ""
  <!-- ========================================================================= -->
 <!-- BOTTOM SECTION: FREEDOM LEISURE PARTNER SESSIONS (MUTED / FOOTNOTE POOL) -->
 <!-- ========================================================================= -->
-<!-- 🟢 FIX: Added negative horizontal margins directly to the outer row class to override parent wrapper cushions on small viewports -->
-<div class="row pt-2 px-0 mx-n3 mx-sm-0">
-  <div class="col-8 px-0">
+<div class="row pt-2 justify-content-center">
+  <!-- 🟢 FIXED: Uses 12 full columns on mobile (col-12) but safely shrinks to your preferred 8 columns on large screens (col-lg-8) -->
+  <div class="col-12 col-lg-8 px-0">
     <!-- 🏛️ CONTAINER CARD: Clean base with overflow-hidden to automatically shape the header corners -->
     <div class="rounded-3 bg-white partner-container shadow-sm overflow-hidden" style="border: 1px solid #e0e0e0;">
+
 
       
       <!-- 🎨 BRANDED HEADER BLOCK: Sitting cleanly at the top layer level so it touches the outer container lines naturally -->
