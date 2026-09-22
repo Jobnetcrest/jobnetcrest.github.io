@@ -217,8 +217,8 @@ background_image: ""
     var imgEl = document.getElementById('modalEventImage');
     
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      // FIXED: Set initial view to 'listWeek' for mobile users on page load
-      initialView: window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth',
+      // FIXED: Set initial view to 'listMonth' for mobile users on page load
+      initialView: window.innerWidth < 768 ? 'listMonth' : 'dayGridMonth',
       slotMinTime: '08:00:00',
       slotMaxTime: '22:00:00',
       slotDuration: '01:00:00',
@@ -231,11 +231,11 @@ background_image: ""
         meridiem: 'short',
         omitZeroMinute: false
       },
-      // FIXED: Swapped 'timeGridWeek' to 'listWeek' inside the mobile toolbar rule mapping
+      // FIXED: Swapped 'timeGridWeek' to 'listMonth' inside the mobile toolbar rule mapping
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: window.innerWidth < 768 ? 'listWeek,dayGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
+        right: window.innerWidth < 768 ? 'listMonth,dayGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
       },
 
       googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',

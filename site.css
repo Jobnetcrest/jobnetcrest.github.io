@@ -406,6 +406,31 @@ td {
   }
 }
 
+/* Make calendar stretch across the full width on mobile screens */
+@media (max-width: 768px) {
+  /* 1. Remove forced padding or narrow restrictions from the parent elements */
+  .col-lg-8,
+  .content-wrapper,
+  .section,
+  div:has(#adaptive-calendar-root) {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 2. Force the FullCalendar root element to fill 100% of its immediate space */
+  #adaptive-calendar-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* 3. Reduce extra interior margins inside the calendar framework card */
+  .fc {
+    max-width: 100% !important;
+  }
+}
 
 
 /* ==========================================================================
