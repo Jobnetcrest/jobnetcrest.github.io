@@ -333,16 +333,16 @@ td {
         width: calc(50% - 10px);
     }
     
-    /* MODIFIED: Added table-layout fixed to prevent cells from stretching wider than the phone screen */
+    /* RESTORED: General tables are dynamic again to preserve column layouts */
     table {
         width: 100%;
-        table-layout: fixed !important;
     }
     
-    /* NEW: Forces long text like glospickle@gmail.com to break into lines instead of breaking the card layout */
-    table td, table a {
+    /* NEW TARGETED APPROACH: Only wraps long links/text inside specifically marked items */
+    .mobile-text-break,
+    .mobile-text-break a {
+        word-break: break-all !important;
         word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
         white-space: normal !important;
     }
 }
