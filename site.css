@@ -379,6 +379,32 @@ td {
     display: inline-block !important;
   }
 }
+/* ==========================================================================
+   MOBILE GALLERY ACCESSIBILITY OVERRIDE
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Force the hidden overlay layer to be permanently visible */
+  .gallery-item .overlay,
+  .gallery-item .hover-text,
+  .gallery-item .text-container,
+  .gallery-caption {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important; /* Disables sliding/moving transformations on mobile */
+  }
+
+  /* 2. Optional: Adjust text position or background if it covers the photo completely */
+  .gallery-item .overlay {
+    background: rgba(35, 75, 88, 0.85) !important; /* Your signature Slate Blue with high readability contrast */
+  }
+
+  /* 3. Ensure links inside the text blocks are easily tappable with thumbs */
+  .gallery-item a {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-top: 5px;
+  }
+}
 
 
 

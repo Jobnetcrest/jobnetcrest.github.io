@@ -309,13 +309,13 @@ background_image: ""
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function() {
         if (window.innerWidth < 768) {
-          if (calendar.view.type !== 'listWeek') {
-            calendar.changeView('listWeek');
+          if (calendar.view.type !== 'listMonth') {
+            calendar.changeView('listMonth');
             // Dynamically change header controls for narrow layout viewports
             calendar.setOption('headerToolbar', {
               left: 'prev,next today',
               center: 'title',
-              right: 'listWeek,dayGridDay'
+              right: 'listMonth,dayGridDay'
             });
           }
         } else {
