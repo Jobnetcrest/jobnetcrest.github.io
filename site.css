@@ -1215,6 +1215,11 @@ td {
     display: flex;
     white-space: nowrap;
     animation: tickerLoop 25s linear infinite;
+
+    /* ADD ONLY THESE THREE LINES BELOW: */
+    will-change: transform;            /* Tells mobile to prepare the GPU */
+    backface-visibility: hidden;       /* Eliminates micro-stuttering on iOS */
+    -webkit-backface-visibility: hidden; 
 }
 
 /* MERGED: Combined both .ticker-item definitions into one clean block */

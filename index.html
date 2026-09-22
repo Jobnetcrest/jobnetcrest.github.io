@@ -112,7 +112,7 @@ background_image: ""
   function loadLiveTicker() {
     const blogDomain = "pickleball-gloucestershire.blogspot.com";
     const script = document.createElement('script');
-    script.src = "https://pickleball-gloucestershire.blogspot.com/feeds/posts/default?alt=json-in-script&callback=processLiveTicker&max-results=3";
+    script.src = "https://pickleball-gloucestershire.blogspot.com/feeds/posts/default?alt=json-in-script&callback=processLiveTicker&max-results=5";
     
     script.onerror = function() { 
       console.log("Blogger feed unreachable. Using fallback text."); 
@@ -132,6 +132,7 @@ background_image: ""
       let entries = json.feed.entry;
       
       // Target the date of the single newest entry safely
+      
       let dateString = entries[0]?.published?.$t || entries[0]?.updated?.$t;
       if (!dateString) {
         resetStaticLoop();
