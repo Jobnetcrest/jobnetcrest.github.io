@@ -411,7 +411,7 @@ td {
       white-space: nowrap !important;
       width: max-content !important;    /* Forces text strings to expand outwards into a long fluid line */
       /* Completely overrides desktop transitions with a hardware-accelerated 10s mobile cycle */
-      animation: mobileTickerLoop 18s linear infinite !important; 
+      animation: mobileTickerLoop 25s linear infinite !important; 
       will-change: transform !important;
     }
 
