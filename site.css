@@ -442,6 +442,11 @@ td {
     h2 { font-size: 20px; }
 }
 
+/* 🚀 NEW INDEPENDENT TIMELINE ENGINE: Bypasses desktop caching to dictate instant responsive momentum */
+@keyframes mobileTickerLoop {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
 
 
 
