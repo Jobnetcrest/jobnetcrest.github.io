@@ -184,12 +184,25 @@ background_image: ""
     }
   }
 
+  // FIXED: Explicitly populates the loop with structured fallback items
   function resetStaticLoop() {
     const container = document.getElementById('club-ticker');
-    if (container) {
-      container.innerHTML = container.innerHTML + container.innerHTML;
-    }
-  }
+    if (!container) return;
+
+    // Define your static fallback messages here
+    const fallbackItems = [
+      { text: "Welcome to Pickleball Gloucestershire!", link: "https://pickleball-gloucestershire.blogspot.com" },
+      { text: "Check back soon for latest tournament news and updates.", link: "https://pickleball-gloucestershire.blogspot.com" }
+    ];
+
+    let fallbackHTML = "";
+    fallbackItems.forEach(item => {
+      fallbackHTML += `<a href="${item.link}" class="ticker-item" target="_blank" rel="noopener"><img src="images/PBGlos-Logo.png" alt="PBGlos Logo" class="ticker-logo"> ${item.text}</a>`;
+    });
+
+    // Injects and duplicates for seamless continuous scrolling animation
+    container.innerHTML = fallbackHTML + fallbackHTML;
+  } 
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadLiveTicker);
