@@ -213,12 +213,12 @@ background_image: ""
     var modal = document.getElementById('fcEventModal');
     var closeBtn = document.getElementById('modalCloseBtn');
     
-    // Explicitly target the new image elements
     var imgContainer = document.getElementById('modalEventImageContainer');
     var imgEl = document.getElementById('modalEventImage');
     
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: window.innerWidth < 768 ? 'timeGridWeek' : 'dayGridMonth',
+      // FIXED: Set initial view to 'listWeek' for mobile users on page load
+      initialView: window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth',
       slotMinTime: '08:00:00',
       slotMaxTime: '22:00:00',
       slotDuration: '01:00:00',
@@ -231,12 +231,12 @@ background_image: ""
         meridiem: 'short',
         omitZeroMinute: false
       },
+      // FIXED: Swapped 'timeGridWeek' to 'listWeek' inside the mobile toolbar rule mapping
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        right: window.innerWidth < 768 ? 'listWeek,dayGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-
 
       googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
       events: {
@@ -268,24 +268,19 @@ background_image: ""
         return { domNodes: [container] };
       },
 
-      // === ROUTED V7 HOOK: TABS FOR IMAGES / MODALS FOR STANDARD TEXT ===
       eventClick: function(info) {
         info.jsEvent.preventDefault();
 
         var rawDesc = info.event.extendedProps.description || '';
-        
-        // Regex pattern to look for Google Drive links inside the event text notes
         var driveRegex = /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/[^\s]+/i;
         var match = rawDesc.match(driveRegex);
 
-        // ROUTE 1: If an image/attachment link is found, open it in a new window tab immediately
         if (match && match[0]) {
           var targetUrl = match[0];
           window.open(targetUrl, '_blank', 'noopener,noreferrer');
-          return; // Stop execution here so the modal stays closed
+          return; 
         }
 
-        // ROUTE 2: Standard text fallback. Reset and open the enlarged modal window
         if (imgEl && imgContainer) {
           imgEl.src = '';
           imgContainer.style.display = 'none';
@@ -296,39 +291,45 @@ background_image: ""
           cleanDesc = 'No additional information provided for this session.';
         }
 
-        // Inject standard text parameters into DOM Elements
         document.getElementById('modalEventTitle').innerText = info.event.title;
         document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
         document.getElementById('modalEventDescription').innerText = cleanDesc;
 
-        // Open the modal window safely
         if (modal) {
           modal.classList.add('is-active');
-          if (closeBtn) { closeBtn.focus(); } // Clean accessibility focus shift
+          if (closeBtn) { closeBtn.focus(); } 
         }
       }
-
-
-
     });
     
     calendar.render();
 
-        // 2. Insert native viewport listener directly underneath your render activation
     var resizeTimeout;
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(function() {
         if (window.innerWidth < 768) {
-          if (calendar.view.type !== 'timeGridWeek') {
-            calendar.changeView('timeGridWeek');
+          if (calendar.view.type !== 'listWeek') {
+            calendar.changeView('listWeek');
+            // Dynamically change header controls for narrow layout viewports
+            calendar.setOption('headerToolbar', {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'listWeek,dayGridDay'
+            });
           }
         } else {
           if (calendar.view.type !== 'dayGridMonth') {
             calendar.changeView('dayGridMonth');
+            // Re-establish broad options for desktop controls
+            calendar.setOption('headerToolbar', {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            });
           }
         }
-      }, 150); // Debounce delay avoids layout recalculation loops
+      }, 150); 
     });
 
     function closeModal() {
@@ -349,6 +350,7 @@ background_image: ""
     });
   });
 </script>
+
 
 
 
