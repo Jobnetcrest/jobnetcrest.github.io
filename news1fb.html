@@ -1,0 +1,68 @@
+---
+layout: default
+title: News & Updates
+background_image: ""
+---
+
+<!-- Main Content Area -->
+<div class="container-fluid py-5 px-md-5 text-black">
+  <div class="row g-4">
+     
+
+<!-- 2. LEFT SIDE: SOCIAL FEED SECTION -->
+<div class="col-12 col-lg-7">
+  <h2 class="h4 fw-bold text-uppercase tracking-wide mb-3 pb-2 border-bottom border-dark border-2 d-inline-block">
+    News & Social Updates
+  </h2>
+ 
+  <!-- Feed Wrapper Card -->
+  <div class="feed-wrapper-card">
+      
+    <!-- 1. Meta JavaScript SDK (Updated to standard English and current API) -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" 
+            src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0">
+    </script>
+
+    <!-- 2. Official Meta Page Plugin for Pickleball Gloucestershire -->
+    <div class="fb-page"
+         data-href="https://www.facebook.com/profile.php?id=61593653082617"
+         data-tabs="timeline,events,messages"
+         data-width="500"
+         data-height="600"
+         data-small-header="false"
+         data-adapt-container-width="true"
+         data-hide-cover="false"
+         data-show-facepile="true">
+      <blockquote cite="https://www.facebook.com/profile.php?id=61593653082617" class="fb-xfbml-parse-ignore">
+        <a href="https://www.facebook.com/profile.php?id=61593653082617">Pickleball Gloucestershire</a>
+      </blockquote>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+    
+
+    <!-- 3. RIGHT SIDE: LIVE BLOG SECTION -->
+    <div class="col-12 col-lg-5">
+      <h2 class="h4 fw-bold text-uppercase tracking-wide mb-3 pb-2 border-bottom border-dark border-2 d-inline-block">
+        Live Blog
+      </h2>
+      <div class="card border border-dark border-2 shadow-sm overflow-hidden rounded-3 blog-frame-card">
+        <!-- Frame integration targeting official club blog timeline -->
+        <iframe 
+          src="https://pickleball-gloucestershire.blogspot.com/" 
+          width="100%" 
+          class="blog-iframe-fluid"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+  </div> <!-- Closes Row -->
+</div> <!-- Closes Container -->
