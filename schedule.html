@@ -162,21 +162,22 @@ background_image: ""
       <div class="table-responsive">
         <table class="table table-sm table-borderless align-middle mb-0 partner-table">
           <thead>
-            <tr class="text-muted partner-header-row">
-              <th class="py-2 col-schedule">Schedule</th>
-              <th class="py-2 col-class">Classification</th>
-              <th class="py-2 col-location">Location</th>
-              <th class="py-2 text-end col-link">Partner Link</th>
-            </tr>
-          </thead>
-          <tbody>
+              <tr class="text-muted partner-header-row">
+                <th class="py-2 col-schedule">Schedule</th>
+                <th class="py-2 col-class">Classification</th>
+                <th class="py-2 col-location">Location</th>
+                <!-- FIXED: Changed text-end to text-center so the header title balances with the centered buttons below -->
+                <th class="py-2 text-center col-link">Partner Link</th>
+              </tr>
+            </thead>
+            <tbody>
             <tr class="partner-dashed-row">
               <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">18:00 - 19:30</span></td>
               <td><span class="badge text-white fw-normal track-badge">Beginners Track</span></td>
               <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- Merged booking cell: CHANGED text-end to text-center and added vertical alignment utilities -->
+              <!-- FIXED: Changed text-end to text-center and verified align-middle to perfectly centre the action button -->
               <td class="text-center align-middle partner-cell-merge" rowspan="2">
-                <a href="https://flgloucester.gladstonego.cloud/book" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary partner-btn">Book External ↗</a>
+                <a href="https://gladstonego.cloud" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary partner-btn">Book External ↗</a>
               </td>
             </tr>
             <tr class="partner-dashed-row">
@@ -188,10 +189,10 @@ background_image: ""
               <td class="py-2 fw-bold text-muted">Thurs <span class="fw-normal text-muted time-subtext">Daytime</span></td>
               <td><span class="badge text-white fw-normal track-badge">Daytime Track</span></td>
               <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- Coming Soon cell: CHANGED text-end to text-center and added align-middle -->
+              <!-- FIXED: Changed text-end to text-center and added align-middle to align "Coming Soon" with the button column -->
               <td class="text-center align-middle text-muted coming-soon-text">Coming Soon</td>
             </tr>
-          </tbody>
+            </tbody>
 
         </table>
       </div>

@@ -336,6 +336,22 @@ td {
     table {
         width: 100%;
     }
+
+    /* Widens the compressed right column to fit button text on one line and centers everything */
+    .col-link, 
+    th.text-center,
+    td.text-center {
+        min-width: 110px !important;     /* Pushes table border out so text stops wrapping messy */
+        text-align: center !important;   /* Hard-overrides any remaining alignment issues */
+        padding: 8px 4px !important;
+    }
+    
+    .partner-btn {
+        width: 100% !important;
+        max-width: 100px;
+        display: inline-block !important;
+        margin: 0 auto !important;
+    }
     
     /* Only wraps long links/text inside specifically marked items */
     .mobile-text-break,
@@ -383,12 +399,30 @@ td {
       margin: 0 !important;
     }
 
-    /* ⚡ NEW: MOBILE TICKER SPEED ADJUSTMENT (Changes loop runtime from 25s down to 12s) */
-    .club-ticker-content {
-      animation: tickerLoop 12s linear infinite !important;
+    /* ⚡ FIXED LIVE TICKER ENGINE FOR MOBILE: Force complete layout engine restructuring */
+    .club-ticker-wrap {
+      overflow: hidden !important;
+      width: 100% !important;
     }
 
-    /* 🟢 FIXED GALLERY ENGINE: Breaks open visibility parameters via explicit wildcard selectors */
+    .club-ticker-content {
+      display: flex !important;
+      flex-direction: row !important;
+      white-space: nowrap !important;
+      width: max-content !important;    /* Forces text strings to expand outwards into a long fluid line */
+      /* Completely overrides desktop transitions with a hardware-accelerated 10s mobile cycle */
+      animation: mobileTickerLoop 10s linear infinite !important; 
+      will-change: transform !important;
+    }
+
+    .ticker-item {
+      display: inline-flex !important;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
+      padding-right: 60px !important;   /* Tightens space gaps between scrolling alerts on narrow displays */
+    }
+
+    /* GALLERY TEXT ENGINE REVEAL: Strips away opacity locks on ALL structural image nodes */
     .gallery-item div,
     .gallery-item .overlay,
     .gallery-item .hover-text,
@@ -442,11 +476,13 @@ td {
     h2 { font-size: 20px; }
 }
 
-/* 🚀 NEW INDEPENDENT TIMELINE ENGINE: Bypasses desktop caching to dictate instant responsive momentum */
+/* 🚀 PURE GPU TRANSITION ENGINE: Bypasses desktop layout property locks completely */
 @keyframes mobileTickerLoop {
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(-50%, 0, 0); }
 }
+
+
 
 
 
@@ -850,7 +886,7 @@ td {
   color: #000000 !important; /* Premium rich black text for high readability overlay */
 }
 
-/* League Track: Competitive Club Matches (Premium Midnight Dark Blue Variant) */
+/* League Track: Competitive Club Matches (Premium Midnight Dark Blue Variant) /
 .fc-daygrid-event.pbg-pill-league,
 .fc-daygrid-block-event.pbg-pill-league,
 .pbg-pill-league {
@@ -863,7 +899,7 @@ td {
   color: #ffffff !important;
 }
 
-/* Alternative League Track (Uncomment if you want to fall back to the original Apple Green)
+/* Alternative League Track (Uncomment if you want to fall back to the original Apple Green) */
 .fc-daygrid-event.pbg-pill-league,
 .fc-daygrid-block-event.pbg-pill-league,
 .pbg-pill-league {
