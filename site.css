@@ -383,32 +383,49 @@ td {
       margin: 0 !important;
     }
 
-    /* GALLERY TEXT ENGINE REVEAL: Strips away opacity locks on ALL structural image nodes */
+    /* ⚡ NEW: MOBILE TICKER SPEED ADJUSTMENT (Changes loop runtime from 25s down to 12s) */
+    .club-ticker-content {
+      animation: tickerLoop 12s linear infinite !important;
+    }
+
+    /* 🟢 FIXED GALLERY ENGINE: Breaks open visibility parameters via explicit wildcard selectors */
+    .gallery-item div,
     .gallery-item .overlay,
     .gallery-item .hover-text,
     .gallery-item .text-container,
     .gallery-caption,
+    .gallery-item [class*="overlay"],
+    .gallery-item [class*="hover"],
     .gallery-item .overlay-content,
-    .gallery-item .hover-text-inner,
-    .gallery-item span,
-    .gallery-item p,
-    .gallery-item h3 {
+    .gallery-item .hover-text-inner {
       opacity: 1 !important;
       visibility: visible !important;
       display: block !important;
-      transform: none !important;      /* Halts desktop translation glide physics */
+      transform: none !important;      /* Halts desktop translation layer movements */
       -webkit-transform: none !important;
       transition: none !important;
     }
 
-    /* HARD LAYER ANCHORING: Locks the caption layout inside the bottom frame strip */
+    /* Forces hidden inner text blocks to render cleanly in solid white text */
+    .gallery-item h3,
+    .gallery-item p,
+    .gallery-item span,
+    .gallery-item a {
+      opacity: 1 !important;
+      visibility: visible !important;
+      color: #ffffff !important;
+      display: inline-block !important;
+    }
+
+    /* Anchors the descriptive gradient band layout to the lower third boundary box */
     .gallery-item .overlay,
-    .gallery-item .hover-text {
+    .gallery-item [class*="overlay"],
+    .gallery-item [class*="hover"] {
       position: absolute !important;
       bottom: 0 !important;
       left: 0 !important;
       width: 100% !important;
-      background: linear-gradient(transparent, rgba(18, 102, 49, 0.95)) !important; /* Forces signature gradient background strip to build if missing */
+      background: linear-gradient(transparent, rgba(18, 102, 49, 0.95)) !important; 
       padding: 15px 10px !important;
       box-sizing: border-box !important;
     }
@@ -424,6 +441,7 @@ td {
     h1 { font-size: 24px; }
     h2 { font-size: 20px; }
 }
+
 
 
 
