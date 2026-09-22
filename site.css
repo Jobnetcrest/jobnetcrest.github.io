@@ -308,6 +308,7 @@ td {
 
 
 /* ==========================================================================
+/* ==========================================================================
    7. RESPONSIVE BREAKPOINTS & MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 1200px) {
@@ -331,8 +332,18 @@ td {
     .gallery-item, .bio {
         width: calc(50% - 10px);
     }
+    
+    /* MODIFIED: Added table-layout fixed to prevent cells from stretching wider than the phone screen */
     table {
         width: 100%;
+        table-layout: fixed !important;
+    }
+    
+    /* NEW: Forces long text like glospickle@gmail.com to break into lines instead of breaking the card layout */
+    table td, table a {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
     }
 }
 
@@ -346,6 +357,31 @@ td {
     h1 { font-size: 24px; }
     h2 { font-size: 20px; }
 }
+
+@media (max-width: 768px) {
+  /* 1. Force tabs to stay inline and allow horizontal scrolling touch gestures */
+  .nav-tabs, 
+  [role="tablist"] {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch; /* Smooth inertia swiping on iOS devices */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+
+  /* 2. Keep the individual tab selectors clean with locked boundary widths */
+  .nav-tabs .nav-item,
+  .nav-tabs .nav-link {
+    flex: 0 0 auto !important; /* Prevents text elements from squishing uncomfortably */
+    display: inline-block !important;
+  }
+}
+
+
+
 /* ==========================================================================
    8. CLUB INFORMATION & TEAM LAYOUT
    ========================================================================== */
