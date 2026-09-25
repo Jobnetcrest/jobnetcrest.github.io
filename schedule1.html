@@ -28,15 +28,35 @@ background_image: ""
   <!-- MAIN MAIN STAGE: CLUB SESSIONS (LHS) vs ELFSIGHT WIDGET (RHS)            -->
   <!-- ========================================================================= -->
   <div class="row g-4 mb-5">
-    
+      <!-- FullCalendar Detail Modal -->
+    <div id="fcEventModal" class="fc-modal-overlay" aria-hidden="true">
+      <div class="fc-modal-content">
+        <div class="fc-modal-header">
+          <h3 id="modalEventTitle">Event Details</h3>
+          <button id="modalCloseBtn" class="fc-modal-close">&times;</button>
+        </div>
+        <div class="fc-modal-body">
+          <p class="modal-time-row">⏰ <span id="modalEventTime"></span></p>
+          <p id="modalEventDescription"></p>
+            <!-- Inside the _includes/calendar.html modal layout section -->
+            <div id="modalEventImageContainer" style="display: none; margin: 15px 0; text-align: center;">
+                <!-- Added referrerpolicy="no-referrer" to guarantee direct embedding -->
+                <img id="modalEventImage" src="" referrerpolicy="no-referrer" alt="Session Attachment" style="max-width: 100%; max-height: 260px; height: auto; border-radius: 6px; border: 1px solid #e2e8f0;" />
+            </div>
+            <div id="modalEventDescription"></div>
+        </div>
+      </div>
+    </div>
+  
 
-    
+
       <!-- LEFT-HAND SIDE: FULLCALENDAR COMPARTMENT -->
       <div class="col-lg-8 d-flex flex-column">
         <!-- Calendar Render Container -->
         <div class="flex-grow-1 p-3 bg-white rounded-3 shadow-sm mb-4 calendar-container">
           <!-- FullCalendar attaches itself right here -->
-          <div id="adaptive-calendar-root"></div>
+          <!-- Calendar Target Mounting Element (Added explicit focus layout index fallback) -->
+          <div id="adaptive-calendar-root" tabindex="-1"></div> 
         </div>
       </div>
 
@@ -133,52 +153,117 @@ background_image: ""
  <!-- ========================================================================= -->
 <!-- BOTTOM SECTION: FREEDOM LEISURE PARTNER SESSIONS (MUTED / FOOTNOTE POOL) -->
 <!-- ========================================================================= -->
-<div class="row pt-2">
-  <div class="col-12">
-    <div class="rounded-3 bg-light partner-container">
-      <h4 class="fw-bold mb-1 partner-title">🏛️ Partner Classes (Freedom Leisure)</h4>
-      <p class="text-muted mb-3 partner-desc">These sessions are operated standalone by the center operator. Managed independently of Pickleball Gloucestershire.</p>
+<div class="row pt-2 justify-content-center">
+  <!-- 🟢 FIXED: Uses 12 full columns on mobile (col-12) but safely shrinks to your preferred 8 columns on large screens (col-lg-8) -->
+  <div class="col-12 col-lg-8 px-0">
+    <!-- 🏛️ CONTAINER CARD: Clean base with overflow-hidden to automatically shape the header corners -->
+    <div class="rounded-3 bg-white partner-container shadow-sm overflow-hidden" style="border: 1px solid #e0e0e0;">
+
+
       
-      <div class="table-responsive">
-        <table class="table table-sm table-borderless align-middle mb-0 partner-table">
-          <thead>
-            <tr class="text-muted partner-header-row">
-              <th class="py-2 col-schedule">Schedule</th>
-              <th class="py-2 col-class">Classification</th>
-              <th class="py-2 col-location">Location</th>
-              <th class="py-2 text-end col-link">Partner Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="partner-dashed-row">
-              <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">18:00 - 19:30</span></td>
-              <td><span class="badge text-white fw-normal track-badge">Beginners Track</span></td>
-              <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- Merged booking cell starts here and spans two rows -->
-              <td class="text-end align-middle partner-cell-merge" rowspan="2">
-                <a href="https://flgloucester.gladstonego.cloud/book" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary partner-btn">Book External ↗</a>
-              </td>
-            </tr>
-            <tr class="partner-dashed-row">
-              <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">19:30 - 21:00</span></td>
-              <td><span class="badge text-white fw-normal track-badge">Improvers Track</span></td>
-              <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- Row 2 booking cell is omitted because it is merged with Row 1 -->
-            </tr>
-            <tr>
-              <td class="py-2 fw-bold text-muted">Thurs <span class="fw-normal text-muted time-subtext">Daytime</span></td>
-              <td><span class="badge text-white fw-normal track-badge">Daytime Track</span></td>
-              <td class="text-muted">Oxstalls Tennis Centre</td>
-              <!-- Booking link replaced with text -->
-              <td class="text-end text-muted coming-soon-text">Coming Soon</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 🎨 BRANDED HEADER BLOCK: Sitting cleanly at the top layer level so it touches the outer container lines naturally -->
+      <div class="p-3 text-white d-flex align-items-center gap-3" style="background-color: #7A2962; border-bottom: 4px solid #4A154B;">
+        <div class="bg-white rounded-2 p-1 d-inline-flex align-items-center justify-content-center" style="height: 36px; width: auto;">
+          <img src="images/freedom-leisure-logo.png" alt="Freedom Leisure Logo" style="height: 28px; width: auto; object-fit: contain;">
+        </div>
+        <h4 class="fw-bold mb-0 text-white partner-title" style="letter-spacing: 0.5px; font-family: Arial, sans-serif;">
+          Partner Classes (Freedom Leisure)
+        </h4>
+      </div>
+
+      <!-- 📦 INDEPENDENT INNER WRAPPER: Padding is now safely applied ONLY to the content body items below the header -->
+      <div class="p-3">
+        <p class="text-muted mb-4 partner-desc" style="font-size: 0.95rem;">
+          These sessions are operated standalone by the center operator. Managed independently of Pickleball Gloucestershire.
+        </p>
+      
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless align-middle mb-0 partner-table">
+            <thead>
+              <tr class="text-muted partner-header-row align-middle" style="border-bottom: 1px solid #eee;">
+                <th class="py-2 col-schedule">Schedule</th>
+                <th class="py-2 col-class">Classification</th>
+                <th class="py-2 text-center col-location">Location</th>
+                <th class="py-2 text-center col-link" style="min-width: 125px !important; text-align: center !important;">
+                  Link
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Tuesday Session 1: Beginners -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">18:00 - 19:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge">Beginners Track</span>
+                </td>
+                <!-- MERGED LOCATION COLUMN: Spans all 5 rows cleanly down the center axis with dynamic mapping pin link -->
+                <td class="text-center align-middle" rowspan="5" style="text-align: center !important; font-weight: 500;">
+                  <a href="https://maps.app.goo.gl/iea1JXdEGHdFq59V6" target="_blank" rel="noopener noreferrer" class="text-decoration-none partner-map-link" style="color: #234b58; font-weight: bold;">
+                    📍 Oxstalls Tennis Centre <span style="font-size: 11px; font-weight: normal; display: block; color: #7A2962; margin-top: 2px;">Open Maps ↗</span>
+                  </a>
+                </td>
+                <!-- MERGED PARTNER BOOKING COLUMN: Spans all 5 rows cleanly down the center axis -->
+                <td class="text-center align-middle partner-cell-merge" rowspan="5" style="text-align: center !important; padding: 25px 0 !important;">
+                  <a href="https://flgloucester.gladstonego.cloud/book" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary partner-btn" style="white-space: nowrap !important; font-weight: bold; border-color: #7A2962; color: #7A2962;">Book External ↗</a>
+                </td>
+              </tr>
+              
+              <!-- Tuesday Session 2: Improvers -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">19:30 - 21:00</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge">Improvers Track</span>
+                </td>
+              </tr>
+              
+              <!-- Thursday Session: Recreational with Flyer PDF underneath -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Thurs <span class="fw-normal text-muted time-subtext">09:30 - 11:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge" style="background-color: #E5F91e; color: #234b58 !important;">Recreational</span>
+                  <div class="mt-1">
+                    <a href="docs/Recreational_pickleball.pdf" target="_blank" rel="noopener" style="font-size: 11px; text-decoration: none; font-weight: bold; color: #dc3545;">📄 View Flyer (PDF)</a>
+                  </div>
+                </td>
+              </tr>
+              
+              <!-- Sunday Session 1: Family Track with Flyer PDF underneath -->
+              <tr class="partner-dashed-row">
+                <td class="py-2 fw-bold text-muted">Sun <span class="fw-normal text-muted time-subtext">09:30 - 10:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge" style="background-color: #0072BB;">Family Track</span>
+                  <div class="mt-1">
+                    <a href="docs/Family_Pickleball.pdf" target="_blank" rel="noopener" style="font-size: 11px; text-decoration: none; font-weight: bold; color: #dc3545;">📄 View Flyer (PDF)</a>
+                  </div>
+                </td>
+              </tr>
+              
+              <!-- Sunday Session 2: Intermediate Adult Coaching -->
+              <tr>
+                <td class="py-2 fw-bold text-muted">Sun <span class="fw-normal text-muted time-subtext">10:30 - 11:30</span></td>
+                <td class="py-2">
+                  <span class="badge text-white fw-normal track-badge" style="background-color: #126631;">Adult Coaching</span>
+                  <!-- 🆕 FLYER PLACEMENT: Added inline flyer layout for Sunday Adult Coaching -->
+                  <div class="mt-1">
+                    <a href="docs/Intermediate_Adult_Coaching.pdf" target="_blank" rel="noopener" style="font-size: 11px; text-decoration: none; font-weight: bold; color: #dc3545;">📄 View Flyer (PDF)</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
   </div>
 </div> <!--class ="row pt-2 END"-->
+
+
+
+
+
+
+
 
 </div>
 
@@ -187,21 +272,21 @@ background_image: ""
 
 
 
-<!-- 5. Your Initialization Engine -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('adaptive-calendar-root');
+    var modal = document.getElementById('fcEventModal');
+    var closeBtn = document.getElementById('modalCloseBtn');
     
-var calendar = new FullCalendar.Calendar(calendarEl, {
-            // === UPDATED: DETERMINES INITIAL VIEW BASED ON LANDING DEVICE RESOLUTION ===
-      initialView: window.innerWidth < 768 ? 'timeGridWeek' : 'dayGridMonth',
-      
-      // === FIX: SCOPES TIMEGRID VIEWS FROM 8:00 AM TO 10:00 PM (22:00) ===
-      slotMinTime: '08:00:00',  /* Absolute timeline starting boundary */
-      slotMaxTime: '22:00:00',  /* Absolute timeline ending cutoff boundary */
-            // === FIX: FORCES 1 SOLID BLOCK PER HOUR (REMOVES THE 30-MIN SPLIT) ===
-      slotDuration: '01:00:00', /* Configures rows into exact 1-hour blocks */
-
+    var imgContainer = document.getElementById('modalEventImageContainer');
+    var imgEl = document.getElementById('modalEventImage');
+    
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      // FIXED: Set initial view to 'listMonth' for mobile users on page load
+      initialView: window.innerWidth < 768 ? 'listMonth' : 'dayGridMonth',
+      slotMinTime: '08:00:00',
+      slotMaxTime: '22:00:00',
+      slotDuration: '01:00:00',
       eventDisplay: 'block',
       displayEventTime: true,
       displayEventEnd: true, 
@@ -211,85 +296,128 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         meridiem: 'short',
         omitZeroMinute: false
       },
+      // FIXED: Swapped 'timeGridWeek' to 'listMonth' inside the mobile toolbar rule mapping
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        right: window.innerWidth < 768 ? 'listMonth,dayGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
       },
 
-            // === FIX: RESPONDS TO VIEWPORT OVERLAYS ON FLIPS AND MOBILE ORIENTATION RESIZES ===
-      windowResize: function(arg) {
-        if (window.innerWidth < 768) {
-          if (calendar.view.type !== 'timeGridWeek') {
-            calendar.changeView('timeGridWeek');
-          }
-        } else {
-          if (calendar.view.type !== 'dayGridMonth') {
-            calendar.changeView('dayGridMonth');
-          }
-        }
-      },
-
-      
       googleCalendarApiKey: 'AIzaSyB8Du9e6BMnXVLxd8w-IcTy4urDdOpSvSo',
       events: {
         googleCalendarId: 'pickleballgloucestershire@gmail.com'
       },
 
-      // === ASSIGNS CLASSES BASED STRICTLY UPON DESCRIPTION HASHTAG VALUES ===
-      eventClass: function(arg) {
+      eventDidMount: function(arg) {
         var desc = (arg.event.extendedProps.description || '').toLowerCase();
+        var targetClass = 'pbg-pill-default';
         
-        // 1. Blue Track: Wednesday Graded Play
-        if (desc.includes('#graded')) {
-          return 'pbg-pill-blue';
-        } 
+        if (desc.includes('#graded')) { targetClass = 'pbg-pill-blue'; } 
+        else if (desc.includes('#social')) { targetClass = 'pbg-pill-lime'; } 
+        else if (desc.includes('#reminder')) { targetClass = 'pbg-pill-grey'; }
+        else if (desc.includes('#festival')) { targetClass = 'pbg-pill-festival'; }
+        else if (desc.includes('#league')) { targetClass = 'pbg-pill-league'; }
         
-        // 2. Lime/Yellow Track: Friday Night Lights / Social Play
-        else if (desc.includes('#social')) {
-          return 'pbg-pill-lime';
-        } 
-        
-        // 3. Grey Track: System Booking Reminders
-        else if (desc.includes('#reminder')) {
-          return 'pbg-pill-grey';
-        }
-
-        // 4. NEW - Purple Track: Special Tournaments / Festivals
-        else if (desc.includes('#festival')) {
-          return 'pbg-pill-festival';
-        }
-
-        // 5. NEW - Dark Blue Track: Competitive League Matches
-        else if (desc.includes('#league')) {
-          return 'pbg-pill-league';
-        }
-        
-        // === FALLBACK: Applied instantly if no hashtags match or exist ===
-        return 'pbg-pill-default';
+        arg.el.classList.add(targetClass);
       },
 
-      // STRUCTURAL INJECTION (Maintains perfect multi-line auto-wrapping layout)
       eventContent: function(info) {
         var timeText = info.timeText; 
         var titleText = info.event.title;
-        var customHtml = 
-          '<div class="fc-custom-pill-inner">' +
-            '<span class="fc-custom-pill-time">' + timeText + '</span>' +
-            '<span class="fc-custom-pill-title">' + titleText + '</span>' +
-          '</div>';
-        return { html: customHtml };
+        var container = document.createElement('div');
+        container.className = 'fc-custom-pill-inner';
+        container.innerHTML = 
+          '<span class="fc-custom-pill-time">' + timeText + '</span>' +
+          '<span class="fc-custom-pill-title">' + titleText + '</span>';
+          
+        return { domNodes: [container] };
       },
 
       eventClick: function(info) {
         info.jsEvent.preventDefault();
-        alert('Event: ' + info.event.title + '\nLocation: ' + (info.event.extendedProps.location || 'N/A'));
+
+        var rawDesc = info.event.extendedProps.description || '';
+        var driveRegex = /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/[^\s]+/i;
+        var match = rawDesc.match(driveRegex);
+
+        if (match && match[0]) {
+          var targetUrl = match[0];
+          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          return; 
+        }
+
+        if (imgEl && imgContainer) {
+          imgEl.src = '';
+          imgContainer.style.display = 'none';
+        }
+
+        var cleanDesc = rawDesc.replace(/<\/?[^>]+(>|$)/g, "").replace(/#\w+/g, "").trim();
+        if (!cleanDesc) {
+          cleanDesc = 'No additional information provided for this session.';
+        }
+
+        document.getElementById('modalEventTitle').innerText = info.event.title;
+        document.getElementById('modalEventTime').innerText = info.timeText || 'All Day / Custom Duration';
+        document.getElementById('modalEventDescription').innerText = cleanDesc;
+
+        if (modal) {
+          modal.classList.add('is-active');
+          if (closeBtn) { closeBtn.focus(); } 
+        }
       }
     });
     
     calendar.render();
+
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        if (window.innerWidth < 768) {
+          if (calendar.view.type !== 'listMonth') {
+            calendar.changeView('listMonth');
+            // Dynamically change header controls for narrow layout viewports
+            calendar.setOption('headerToolbar', {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'listMonth,dayGridDay'
+            });
+          }
+        } else {
+          if (calendar.view.type !== 'dayGridMonth') {
+            calendar.changeView('dayGridMonth');
+            // Re-establish broad options for desktop controls
+            calendar.setOption('headerToolbar', {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            });
+          }
+        }
+      }, 150); 
+    });
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+    
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
   });
 </script>
+
+
+
 
 
 

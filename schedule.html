@@ -156,17 +156,20 @@ background_image: ""
 <div class="row pt-2 justify-content-center">
   <!-- 🟢 FIXED: Uses 12 full columns on mobile (col-12) but safely shrinks to your preferred 8 columns on large screens (col-lg-8) -->
   <div class="col-12 col-lg-8 px-0">
-    <!-- 🏛️ CONTAINER CARD: Clean base with overflow-hidden to automatically shape the header corners -->
-    <div class="rounded-3 bg-white partner-container shadow-sm overflow-hidden" style="border: 1px solid #e0e0e0;">
+
+    <!-- 🏛️ CONTAINER CARD: Updated background tint to match your lavender-gray theme -->
+        <div class="rounded-3 partner-container shadow-sm overflow-hidden" style="border: 2px solid #7A2962 !important; background-color: #ECE9F0 !important;">
 
 
       
-      <!-- 🎨 BRANDED HEADER BLOCK: Sitting cleanly at the top layer level so it touches the outer container lines naturally -->
-      <div class="p-3 text-white d-flex align-items-center gap-3" style="background-color: #7A2962; border-bottom: 4px solid #4A154B;">
-        <div class="bg-white rounded-2 p-1 d-inline-flex align-items-center justify-content-center" style="height: 36px; width: auto;">
-          <img src="images/freedom-leisure-logo.png" alt="Freedom Leisure Logo" style="height: 28px; width: auto; object-fit: contain;">
+      <!-- 🎨 BRANDED HEADER BLOCK: Clean, open layout to match the minimalist club sessions design -->
+      <div class="d-flex align-items-center gap-2 pb-2" style="border-bottom: 1px solid #7A2962;">
+        <!-- Logo container sized cleanly to match the visual height of the text -->
+        <div class="d-inline-flex align-items-center justify-content-center" style="height: 24px; width: auto;">
+          <img src="images/freedom-leisure-logo.png" alt="Freedom Leisure Logo" style="height: 33px; width: auto; object-fit: contain;">
         </div>
-        <h4 class="fw-bold mb-0 text-white partner-title" style="letter-spacing: 0.5px; font-family: Arial, sans-serif;">
+        <!-- Branded typography aligned to the layout -->
+        <h4 class="fw-bold mb-0" style="color: #7A2962; font-family: Arial, sans-serif; font-size: 1.25rem; letter-spacing: 0.3px;">
           Partner Classes (Freedom Leisure)
         </h4>
       </div>
@@ -179,20 +182,22 @@ background_image: ""
       
         <div class="table-responsive">
           <table class="table table-sm table-borderless align-middle mb-0 partner-table">
-            <thead>
-              <tr class="text-muted partner-header-row align-middle" style="border-bottom: 1px solid #eee;">
-                <th class="py-2 col-schedule">Schedule</th>
-                <th class="py-2 col-class">Classification</th>
-                <th class="py-2 text-center col-location">Location</th>
-                <th class="py-2 text-center col-link" style="min-width: 125px !important; text-align: center !important;">
-                  Link
-                </th>
-              </tr>
-            </thead>
+          <!-- 🎨 BLUE & PURPLE ACCENT HEADER ROW: Corporate blue text paired with a branded purple divider -->
+          <!-- 🎨 APPLIED: Heading elements updated with inline coloring to guarantee color rendering -->
+          <thead>
+            <tr class="partner-header-row align-middle" style="border-bottom: 1px solid #7A2962;">
+              <th class="py-2 fw-bold col-schedule" style="color: #0022e4 !important;">SCHEDULE</th>
+              <th class="py-2 fw-bold col-class" style="color: #0022e4 !important;">CLASSIFICATION</th>
+              <th class="py-2 fw-bold text-center col-location" style="color: #0022e4 !important;">LOCATION</th>
+              <th class="py-2 fw-bold text-center col-link" style="min-width: 125px !important; text-align: center !important; color: #0022e4 !important;">
+                LINK
+              </th>
+            </tr>
+          </thead>
             <tbody>
               <!-- Tuesday Session 1: Beginners -->
               <tr class="partner-dashed-row">
-                <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">18:00 - 19:30</span></td>
+                <td class="py-2 fw-bold ">Tues <span class="fw-bold time-subtext">18:00 - 19:30</span></td>
                 <td class="py-2">
                   <span class="badge text-white fw-normal track-badge">Beginners Track</span>
                 </td>
@@ -210,7 +215,7 @@ background_image: ""
               
               <!-- Tuesday Session 2: Improvers -->
               <tr class="partner-dashed-row">
-                <td class="py-2 fw-bold text-muted">Tues <span class="fw-normal text-muted time-subtext">19:30 - 21:00</span></td>
+                <td class="py-2 fw-bold ">Tues <span class="fw-bold time-subtext">19:30 - 21:00</span></td>
                 <td class="py-2">
                   <span class="badge text-white fw-normal track-badge">Improvers Track</span>
                 </td>
@@ -218,7 +223,7 @@ background_image: ""
               
               <!-- Thursday Session: Recreational with Flyer PDF underneath -->
               <tr class="partner-dashed-row">
-                <td class="py-2 fw-bold text-muted">Thurs <span class="fw-normal text-muted time-subtext">09:30 - 11:30</span></td>
+                <td class="py-2 fw-bold ">Thurs <span class="fw-bold time-subtext">09:30 - 11:30</span></td>
                 <td class="py-2">
                   <span class="badge text-white fw-normal track-badge" style="background-color: #E5F91e; color: #234b58 !important;">Recreational</span>
                   <div class="mt-1">
@@ -229,7 +234,7 @@ background_image: ""
               
               <!-- Sunday Session 1: Family Track with Flyer PDF underneath -->
               <tr class="partner-dashed-row">
-                <td class="py-2 fw-bold text-muted">Sun <span class="fw-normal text-muted time-subtext">09:30 - 10:30</span></td>
+                <td class="py-2 fw-bold">Sun <span class="fw-bold time-subtext">09:30 - 10:30</span></td>
                 <td class="py-2">
                   <span class="badge text-white fw-normal track-badge" style="background-color: #0072BB;">Family Track</span>
                   <div class="mt-1">
@@ -240,7 +245,7 @@ background_image: ""
               
               <!-- Sunday Session 2: Intermediate Adult Coaching -->
               <tr>
-                <td class="py-2 fw-bold text-muted">Sun <span class="fw-normal text-muted time-subtext">10:30 - 11:30</span></td>
+                <td class="py-2 fw-bold ">Sun <span class="fw-bold time-subtext">10:30 - 11:30</span></td>
                 <td class="py-2">
                   <span class="badge text-white fw-normal track-badge" style="background-color: #126631;">Adult Coaching</span>
                   <!-- 🆕 FLYER PLACEMENT: Added inline flyer layout for Sunday Adult Coaching -->
