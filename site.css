@@ -1212,6 +1212,17 @@ td {
   }
 }
 
+/* Targets the outer block element containing your facebook feed */
+/* Targets ONLY the specific Curator widget wrapper element */
+#curator-feed, 
+.crt-widget {
+    background-color: #FFF68F !important; /* Changes background inside layout */
+    padding: 20px; /* Optional: adds a nice spacing inside the yellow box */
+    border-radius: 12px; /* Curves the container corners to match the theme */
+}
+
+
+
 /* ==========================================================================
    16. PICKLEBALL RESOURCES (VIDEO EMBEDS & EXTERNAL LISTINGS)
    ========================================================================== */
