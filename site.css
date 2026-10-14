@@ -178,6 +178,30 @@ p {
                  0 0 12px rgba(57, 255, 20, 0.6);
                  
     transition: all 0.25s ease-in-out;
+
+    /* 📱 MOBILE COMPATIBILITY TRACKING ACCESSIBILITY FIXES */
+    max-width: 100%;             /* Prevents long button strings from overflowing screen edges */
+    white-space: normal;         /* Allows long title content text to break down into double lines safely */
+    word-wrap: break-word;       /* Secures safe layout constraints on tiny viewports */
+    box-sizing: border-box;       /* Ensures borders/paddings stay inside parent calculations */
+    touch-action: manipulation;  /* Bypasses double-tap delays on mobile browsers for instant click performance */
+}
+
+/* Enhancing touch click performance for active press states on mobile screens */
+.neon-lime-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 6px #39ff14, 
+                0 0 15px rgba(57, 255, 20, 0.4);
+    opacity: 0.95;
+}
+
+/* Responsive handling to prevent clipping or hiding elements on compact smartphone views */
+@media (max-width: 576px) {
+    .neon-lime-btn {
+        font-size: 14px;         /* Proportional size scaling to look clean at 320px resolutions */
+        padding: 12px 20px;      /* Tighter responsive padding to free up layout room inside slideshow cards */
+        letter-spacing: 1px;     /* Reduces text layout pressure */
+    }
 }
 
 /* Hyper-Glow Activation on Hover */
@@ -365,6 +389,15 @@ td {
     /* Expanded carousel real estate for tablet viewports */
     .carousel-wrapper {
         max-width: 90%;
+    }
+}
+
+/* Ensure the main bootstrap container cap doesn't mask interactive links on mobile layouts */
+@media (max-width: 576px) {
+    .carousel-caption {
+        bottom: 5% !important; /* Raises the element space slightly higher off the display floor layout */
+        width: 90% !important;
+        left: 5% !important;
     }
 }
 

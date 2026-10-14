@@ -36,7 +36,7 @@ background_image: ""
 
         <div class="carousel-inner">
           
-          <!-- Slide 1 (Active) -->
+<!-- Slide 1 (Active) -->
           <div class="carousel-item active">
             <!-- Dark overlay helper wrapper for legibility -->
             <div class="w-100 h-100 bg-dark position-absolute opacity-25 overlay-layer"></div>
@@ -45,15 +45,25 @@ background_image: ""
               <h5 class="display-6 display-md-4 fw-bold mb-2 text-uppercase tracking-wide text-white text-shadow-heavy">
                 Join the Action
               </h5>
-              <p class="fs-6 fs-md-4 mb-0 caption-text text-shadow-heavy">
+              <p class="fs-6 fs-md-4 mb-4 caption-text text-shadow-heavy">
                 Discover sessions across Gloucester, Cheltenham, and the whole of Gloucestershire.
               </p>
-              <!-- Add this below your existing subtitle paragraph -->
-              <div class="festival-container">
-                  <a href="/festival.html" class="neon-lime-btn">DOUBLE GLOUCESTER FESTIVAL INFO</a>
+              
+              <!-- Top Button: Displays as full width on mobile, inline on desktop -->
+              <div class="d-block d-sm-inline-block m-2">
+                  <a href="/festival.html" class="neon-lime-btn d-block">DOUBLE GLOUCESTER FESTIVAL INFO</a>
+              </div>
+              
+              <!-- Bottom Button: Features a top margin buffer space (mt-4) for clean mobile stacking layout -->
+              <div class="d-block d-sm-inline-block m-2 mt-4 mt-sm-2">
+                  <a href="/league.html" class="neon-lime-btn d-block">GLOUCESTER PICKLEBALL LEAGUE INFO</a>
               </div>
             </div>
           </div>
+
+
+
+
 
           <!-- Slide 2 -->
           <div class="carousel-item">
@@ -200,7 +210,7 @@ background_image: ""
     // Define your static fallback messages here
     const fallbackItems = [
       { text: "Welcome to Pickleball Gloucestershire!", link: "https://pickleball-gloucestershire.blogspot.com" },
-      { text: "Check back soon for latest tournament news and updates.", link: "https://pickleball-gloucestershire.blogspot.com" }
+      { text: "Check back soon for latest news and updates.", link: "https://pickleball-gloucestershire.blogspot.com" }
     ];
 
     let fallbackHTML = "";
