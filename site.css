@@ -1490,3 +1490,187 @@ td {
     100% { transform: translate3d(-50%, 0, 0); }
 }
 
+
+/* ==========================================================================
+   20. WORK WITH US
+   ========================================================================== */
+
+
+  :root {
+    /* Brand Color Architecture Sample Derived Directly From Your Logo Identity */
+    --logo-black: #000000;
+    --logo-blue: #3b7ddd;       /* The corporate blue from the paddle cross face */
+    --logo-green: #90d26d;      /* Accent green inside paddle corner slice */
+    --logo-yellow: #f8fc04;     /* Electric yellow from the ball badge token */
+    --logo-dark-slate: #234b58; /* Premium slate blue matching your site dividers */
+    
+    /* Layout Mapping Constraints Alignment */
+    --pbg-navy: var(--logo-black);
+    --pbg-blue: var(--logo-blue);
+    --pbg-white: #ffffff;
+    --pbg-card: var(--pbg-white);
+    --pbg-border: #dee2e6;
+  }
+
+  /* Structural Title Controls */
+  .sponsor-title-border {
+    border-color: var(--pbg-blue) !important;
+  }
+  
+  .sponsor-main-title {
+    color: var(--pbg-navy);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-icon-main {
+    max-height: 45px;
+    width: auto;
+  }
+
+  /* Metric Tracking Header Panel Ribbon matching Section 2 Divider styling rules */
+  .metrics-ribbon {
+    background: var(--pbg-white);
+    border: 2px solid var(--logo-dark-slate);
+    border-radius: 16px;
+  }
+
+  /* Three-Column Tier Cards - Crisp White Brand Base matching info-team-section standards */
+  .column-tier-card {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+    border-radius: 16px !important;
+    background-color: var(--pbg-card);
+    border: 1px solid var(--pbg-border) !important;
+    color: var(--logo-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .column-tier-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(35, 75, 88, 0.12) !important;
+  }
+
+  /* Card Border Adjustments on Hover Focus using Site Palette rules */
+  .tier-gold-col:hover {
+    border-color: var(--logo-blue) !important;
+  }
+  .tier-silver-col:hover {
+    border-color: var(--logo-green) !important;
+  }
+  .tier-bronze-col:hover {
+    border-color: var(--logo-dark-slate) !important;
+  }
+
+  /* Structural Badges matching Section 9 Theme Variables */
+  .badge-gold {
+    background-color: var(--logo-blue);
+    color: var(--pbg-white) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .badge-silver {
+    background-color: var(--logo-green);
+    color: var(--logo-black) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .badge-bronze {
+    background-color: var(--logo-dark-slate);
+    color: var(--pbg-white) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .price-text-gold { color: var(--logo-blue); font-weight: 900; }
+  .price-text-silver { color: #556b2f; font-weight: 900; } /* Fallback safe olive text */
+  .price-text-bronze { color: var(--logo-dark-slate); font-weight: 900; }
+
+  /* Interactive Asset Mockup Wireframes matching Section 10 Overrides */
+  .mockup-frame {
+    background-color: rgba(59, 125, 221, 0.04);
+    border: 2px dashed rgba(59, 125, 221, 0.25);
+    border-radius: 12px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .perk-list-item {
+    padding: 6px 0;
+    font-size: 0.95rem;
+    color: #334155;
+    list-style: none;
+    text-align: left;
+  }
+  .perk-list-item::before {
+    content: "🏓 ";
+    color: var(--logo-blue);
+    margin-right: 6px;
+  }
+
+  /* Dynamic Call-To-Action Button - Leveraging Brand Yellow & Neon glow matrix */
+  .cta-link-lime {
+    background-color: var(--logo-yellow);
+    color: var(--logo-black) !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid #d1d510;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(248, 252, 4, 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  .cta-link-lime:hover {
+    background-color: var(--logo-blue);
+    color: var(--pbg-white) !important;
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(59, 125, 221, 0.3);
+    border-color: var(--logo-blue);
+    text-decoration: none;
+  }
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e7;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 32px;
+    /* CHANGE HERE: Removed 'max-width: 900px' and set width to 100% */
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+
+        .heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #515154;
+            margin: 0;
+            width: 100%;
+        }
+
+        .email-link {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .email-link:hover {
+            border-color: #0066cc;
+        } 

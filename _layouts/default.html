@@ -127,6 +127,12 @@
                 League
             </a>
         </li>
+                <li>
+            <a class="dropdown-item {% if page.url contains '/robwilliams' %}active{% endif %}" 
+               href="{{ '/robwilliams.html' | relative_url }}">
+                Rob Williams Coaching
+            </a>
+        </li>
     </ul>
 </li>
 
@@ -147,6 +153,12 @@
                         <a class="nav-link {% if page.url contains '/pickle' %}active{% endif %}"
                         {% if page.url contains '/pickle' %}aria-current="page"{% endif %}
                         href="{{ '/pickle-resources.html' | relative_url }}">Pickleball Resources</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if page.url contains '/work' %}active{% endif %}"
+                        {% if page.url contains '/work' %}aria-current="page"{% endif %}
+                        href="{{ '/work_with_us.html' | relative_url }}">Work with us</a>
                     </li>
                 </ul>
 
