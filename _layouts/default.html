@@ -105,13 +105,13 @@
 
 <!-- Events Dropdown Menu -->
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle {% if page.url contains '/festival' or page.url contains '/Evengallery' or page.url contains '/league' %}active{% endif %}"
+    <a class="nav-link dropdown-toggle {% if page.url contains '/festival' or page.url contains '/Evengallery' or page.url contains '/league' or page.url contains '/robwilliams' %}active{% endif %}"
        href="#" 
        id="eventsDropdown" 
        role="button" 
        data-bs-toggle="dropdown" 
        aria-expanded="false"
-       {% if page.url contains '/festival' or page.url contains '/Evengallery' or page.url contains '/league' %}aria-current="page"{% endif %}>
+       {% if page.url contains '/festival' or page.url contains '/Evengallery' or page.url contains '/league' or page.url contains '/robwilliams' %}aria-current="page"{% endif %}>
         Events
     </a>
     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="eventsDropdown">
@@ -127,8 +127,12 @@
                 League
             </a>
         </li>
-                <li>
-            <a class="dropdown-item {% if page.url contains '/robwilliams' %}active{% endif %}" 
+        
+        <!-- Past Events Section -->
+        <li><hr class="dropdown-divider"></li>
+        <li><h6 class="dropdown-header">Past Events</h6></li>
+        <li>
+            <a class="dropdown-item text-white-50 {% if page.url contains '/robwilliams' %}active{% endif %}" 
                href="{{ '/robwilliams.html' | relative_url }}">
                 Rob Williams Coaching
             </a>
