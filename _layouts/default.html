@@ -132,6 +132,12 @@
         <li><hr class="dropdown-divider"></li>
         <li><h6 class="dropdown-header">Past Events</h6></li>
         <li>
+            <a class="dropdown-item text-white-50 {% if page.url contains '/League2nd' %}active{% endif %}" 
+               href="{{ '/league2nd.html' | relative_url }}">
+                GPL 2nd Edition
+            </a>
+        </li>        
+        <li>
             <a class="dropdown-item text-white-50 {% if page.url contains '/robwilliams' %}active{% endif %}" 
                href="{{ '/robwilliams.html' | relative_url }}">
                 Rob Williams Coaching
