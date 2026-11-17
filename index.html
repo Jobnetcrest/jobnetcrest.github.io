@@ -163,8 +163,8 @@ background_image: ""
       let timeDifference = currentDate.getTime() - newestPostDate.getTime();
       let daysDifference = timeDifference / (1000 * 3600 * 24);
       
-      // If the latest post is older than 7 days, fallback to the hardcoded loop
-      if (daysDifference > 7) {
+      // If the latest post is older than 14 days, fallback to the hardcoded loop
+      if (daysDifference > 14) {
         resetStaticLoop();
         return;
       }
