@@ -128,16 +128,20 @@
             </a>
         </li>
         <li>
-            <a class="dropdown-item text-white-50 {% if page.url contains '/rwilliams_271126' %}active{% endif %}" 
+            <a class="dropdown-item {% if page.url contains '/rwilliams_271126' %}active{% endif %}" 
                href="{{ '/rwilliams_271126.html' | relative_url }}">
                 Rob Williams Coaching 27th Nov 2026
             </a>
         </li>
         
         <!-- Past Events Section -->
-        <li><hr class="dropdown-divider"></li>
-        <li><h6 class="dropdown-header">Past Events</h6></li>
-        <li>
+            <li><hr class="dropdown-divider border-secondary opacity-50 my-2"></li>
+            <li>
+            <h6 class="dropdown-header text-uppercase fw-bold small px-3 pt-1 pb-1" 
+                style="color: #25D366; letter-spacing: 1px;">
+                Past Events
+            </h6>
+            </li>
             <a class="dropdown-item text-white-50 {% if page.url contains '/League2nd' %}active{% endif %}" 
                href="{{ '/league2nd.html' | relative_url }}">
                 GPL 2nd Edition

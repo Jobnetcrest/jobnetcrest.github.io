@@ -195,6 +195,17 @@ p {
     opacity: 0.95;
 }
 
+.countdown-box {
+  min-width: 54px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #FF007F
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.25);
+}
+
+.countdown-num {
+  color: #FF007F
+}
+
 /* Responsive handling to prevent clipping or hiding elements on compact smartphone views */
 @media (max-width: 576px) {
     .neon-lime-btn {
