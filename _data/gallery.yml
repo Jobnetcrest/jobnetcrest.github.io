@@ -297,7 +297,7 @@
 - image: "festival/DG_PBF_2026_11_22_018.jpg"
   alt: "Festival Event 22/11/2026"
   category: "festival"
-  caption: "Watch the camera?"  
+  caption: "Eye on the .....?"  
 
 - image: "festival/DG_PBF_2026_11_22_019.jpg"
   alt: "Festival Event 22/11/2026"
@@ -487,10 +487,25 @@
   category: "festival"
   caption: "Early Birds!"
 
+- image: "festival/DG_PBF_2026_11_22_060.jpg"
+  alt: "Festival Event 22/11/2026"
+  category: "festival"
+  caption: "Oh Superman/woman!"  
+
 - image: "festival/DG_PBF_2026_11_22_061.jpg"
   alt: "Festival Event 22/11/2026"
   category: "festival"
-  caption: "Patience"       
+  caption: "Patience"    
+
+- image: "festival/DG_PBF_2026_11_22_062.jpg"
+  alt: "Festival Event 22/11/2026"
+  category: "festival"
+  caption: "The one that got away"      
+
+- image: "festival/DG_PBF_2026_11_22_063.jpg"
+  alt: "Festival Event 22/11/2026"
+  category: "festival"
+  caption: "Happy, happy, happy!"     
 
 - image: "festival/DG_PBF_2026_11_22_064.jpg"
   alt: "Festival Event 22/11/2026"
